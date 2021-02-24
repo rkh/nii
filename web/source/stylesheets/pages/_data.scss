@@ -1,0 +1,27 @@
+body.data {
+  .data-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    th, td {
+      white-space: nowrap;
+      padding: 0.1rem 0.4rem;
+      height: 1.2rem;
+      border-top: $border;
+      text-align: center;
+      &:not(:last-child) {
+        border-right: $border;
+      }
+    }
+    th {
+      background-color: var(--color-3);
+      color: var(--color-1);
+      font-weight: $font-weight-normal;
+    }
+    td {
+      background-color: var(--color-0);
+      &:first-child {
+        background-color: var(--color-1);
+      }
+    }
+  }
+}

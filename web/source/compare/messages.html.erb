@@ -1,0 +1,386 @@
+---
+title: "Feature Comparison: Message Translation"
+css_class: compare
+---
+
+<div class="table-wrapper">
+  <table class="comparison">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Nii</th>
+        <th>Ruby I18n</th>
+        <th>R18n</th>
+        <th>Ruby gettext</th>
+        <th>FastGettext</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="in-table-headline">
+        <th colspan="6"><span>General Features</span></th>
+      </tr>
+
+      <tr>
+        <td>
+          Automatic Reloading in Development Mode
+        </td>
+        <!-- Nii -->
+        <td class="yes">
+          <i class="fas fa-check"></i>
+          <span>built-in</span>
+        </td>
+        <!-- Ruby I18n -->
+        <td class="partial with-info">
+          <i class="fas fa-slash"></i>
+          <span>limited</span>
+          <div class="info">
+            Not automatic (needs to be triggered manually).
+            Reloads everything, not just changed fileds.
+            Does not load newly added files.
+          </div>
+        </td>
+        <!-- R18n -->
+        <td class="partial with-info">
+          <i class="fas fa-slash"></i>
+          <span>limited</span>
+          <div class="info">
+            Not automatic (needs to be triggered manually).
+            Reloads everything, not just changed fileds.
+          </div>
+        </td>
+        <!-- Ruby gettext -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+        <!-- FastGettext -->
+        <td class="partial with-info">
+          <i class="fas fa-slash"></i>
+          <span>limited</span>
+          <div class="info">
+            Not automatic (needs to be triggered manually).
+            Reloads everything, not just changed fileds.
+          </div>
+        </td>
+      </tr>
+
+      <tr class="in-table-headline">
+        <th colspan="6"><span>Message Interpolation</span></th>
+      </tr>
+
+      <tr>
+        <td>
+          Simple Interpolation
+        </td>
+        <!-- Nii -->
+        <td class="yes">
+          <i class="fas fa-check"></i>
+          <span>built-in</span>
+        </td>
+        <!-- Ruby I18n -->
+        <td class="yes">
+          <i class="fas fa-check"></i>
+          <span>built-in</span>
+        </td>
+        <!-- R18n -->
+        <td class="yes">
+          <i class="fas fa-check"></i>
+          <span>built-in</span>
+        </td>
+        <!-- Ruby gettext -->
+        <td class="yes">
+          <i class="fas fa-check"></i>
+          <span>built-in</span>
+        </td>
+        <!-- FastGettext -->
+        <td class="yes">
+          <i class="fas fa-check"></i>
+          <span>built-in</span>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Safe HTML Interpolation
+        </td>
+        <!-- Nii -->
+        <td class="yes">
+          <i class="fas fa-check"></i>
+          <span>built-in</span>
+        </td>
+        <!-- Ruby I18n -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+        <!-- R18n -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+        <!-- Ruby gettext -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+        <!-- FastGettext -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Reusable Terms
+        </td>
+        <!-- Nii -->
+        <td class="yes">
+          <i class="fas fa-check"></i>
+          <span>built-in</span>
+        </td>
+        <!-- Ruby I18n -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+        <!-- R18n -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+        <!-- Ruby gettext -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+        <!-- FastGettext -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Automatic Variable Formatting
+        </td>
+        <!-- Nii -->
+        <td class="yes">
+          <i class="fas fa-check"></i>
+          <span>built-in</span>
+        </td>
+        <!-- Ruby I18n -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+        <!-- R18n -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+        <!-- Ruby gettext -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+        <!-- FastGettext -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Explicit Variable Formatting
+        </td>
+        <!-- Nii -->
+        <td class="yes">
+          <i class="fas fa-check"></i>
+          <span>built-in</span>
+        </td>
+        <!-- Ruby I18n -->
+        <td class="partial with-info">
+          <i class="fas fa-slash"></i>
+          <span>limited</span>
+          <div class="info">Only available when storing translations as Ruby code.</div>
+        </td>
+        <!-- R18n -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+        <!-- Ruby gettext -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+        <!-- FastGettext -->
+        <td class="no">
+          <i class="fas fa-times-circle"></i>
+          <span>not supported</span>
+        </td>
+      </tr>
+
+      <tr class="in-table-headline">
+        <th colspan="6"><span>Supported Formats</span></th>
+      </tr>
+
+      <tr>
+        <td>Standard Format</td>
+        <!-- Nii -->
+        <td>Fluent</td>
+        <!-- Ruby I18n -->
+        <td>I18n (JSON/YAML/Ruby)</td>
+        <!-- R18n -->
+        <td>R18n Tagged YAML</td>
+        <!-- Ruby gettext -->
+        <td>Gettext</td>
+        <!-- FastGettext -->
+        <td>Gettext</td>
+      </tr>
+
+      <tr>
+        <td>Fluent</td>
+        <!-- Nii -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+        <!-- Ruby I18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- R18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- Ruby gettext -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- FastGettext -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+      </tr>
+
+      <tr>
+        <td>Gettext (mo)</td>
+        <!-- Nii -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- Ruby I18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- R18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- Ruby gettext -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+        <!-- FastGettext -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+      </tr>
+
+      <tr>
+        <td>Gettext (po)</td>
+        <!-- Nii -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+        <!-- Ruby I18n -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+        <!-- R18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- Ruby gettext -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+        <!-- FastGettext -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+      </tr>
+
+      <tr>
+        <td>I18n (JSON/YAML/Ruby)</td>
+        <!-- Nii -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+        <!-- Ruby I18n -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+        <!-- R18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- Ruby gettext -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- FastGettext -->
+        <td class="partial"><i class="fas fa-slash"></i></td>
+      </tr>
+
+      <tr>
+        <td>Java Properties Files</td>
+        <!-- Nii -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+        <!-- Ruby I18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- R18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- Ruby gettext -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- FastGettext -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+      </tr>
+
+      <tr>
+        <td>JSON (simple key-value)</td>
+        <!-- Nii -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+        <!-- Ruby I18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- R18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- Ruby gettext -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- FastGettext -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+      </tr>
+
+      <tr>
+        <td>R18n Tagged YAML</td>
+        <!-- Nii -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+        <!-- Ruby I18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- R18n -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+        <!-- Ruby gettext -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- FastGettext -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+      </tr>
+
+      <tr>
+        <td>Text Files (TXT)</td>
+        <!-- Nii -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+        <!-- Ruby I18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- R18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- Ruby gettext -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- FastGettext -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+      </tr>
+
+      <tr>
+        <td>Unicode RBNF</td>
+        <!-- Nii -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+        <!-- Ruby I18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- R18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- Ruby gettext -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- FastGettext -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+      </tr>
+
+      <tr>
+        <td>YAML (simple key-value)</td>
+        <!-- Nii -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+        <!-- Ruby I18n -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- R18n -->
+        <td class="yes"><i class="fas fa-check"></i></td>
+        <!-- Ruby gettext -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+        <!-- FastGettext -->
+        <td class="no"><i class="fas fa-times-circle"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

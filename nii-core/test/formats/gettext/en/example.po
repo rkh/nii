@@ -1,0 +1,10 @@
+# this is a comment
+#, flag
+msgid "key"
+msgstr "value"
+
+msgid "interpolated"
+msgstr "Hi %{name}s!"
+
+msgid "positional"
+msgstr "%s!"

@@ -1,0 +1,65 @@
+---
+css_class: setup
+---
+
+<div class="summary">
+  <%= option.summary %>
+</div>
+
+<div class="default">
+  <h2>Default</h2>
+  <% case option['default']
+     when nil %>The <code><%= option.name %></code> option has no default value.
+  <% when "false" %>The <code><%= option.name %></code> option is disabled by default.
+  <% when "true" %>The <code><%= option.name %></code> option is enabled by default.
+  <% else %>When <code><%= option.name %></code> isn't set explicitely, it will default to <code><%= option['default'] %></code>.
+  <% end %>
+</div>
+
+<div class="scopes">
+  <h2><%= option.scopes.size == 1 ? "Scope" : "Scopes" %></h2>
+  <% if option.scopes == 'everywhere '%>
+   You can use <code><%= option.name %></code> everywhere.
+  <% elsif option.scopes.size == 1 %>
+    Available in the <%= link_to(option.scopes.first.capitalize, "/setup/scope/#{option.scopes.first}") %> scope.
+  <% else %>
+    <%= option.scopes.map { |s| s == 'everywhere' ? 'Everywhere' : link_to(s.capitalize, "/setup/scope/#{s}") }.join(', ') %>.
+  <% end %>
+</div>
+
+<div class="aliases">
+  <h2>Aliases</h2>
+  <% if option.aliases&.any? %>
+    This option is available as <%= option.aliases.map { |a| "<code>#{a}</code>#{", " if option.aliases.size > 1}" }.join %>
+    and <code><%= option.name %></code>.
+  <% else %>
+    This options has no aliases.
+  <% end %>
+</div>
+
+<% if option.example %>
+  <div class="example <%= option.name %>">
+    <h2>Example</h2>
+    <%= Middleman::Syntax::Highlighter.highlight(option.example, "ruby", {}) %>
+  </div>
+<% end %>
+
+<% if option.documentation and option.documentation != option.summary %>
+  <div class="documentation <%= "no-example" unless option.example %> <%= option.name %>">
+    <h2>Details</h2>
+    <%= Tilt[:md].new { option.documentation.sub(option.summary, '').strip.
+      gsub(/{#(\w+)}/, '<code><a href="/setup/\1">\1</a></code>') }.render %>
+  </div>
+<% end %>
+
+<nav class="setup-nav">
+  <h2>All Options</h2>
+  <% data.setup_options['methods'].each_with_index do |other, index| %>
+    <%= " • " if index > 0 %>
+    <% if other == option or option.aliases.include? other.name %>
+      <b><%= other.name %></b>
+    <% else %>
+      <%= link_to(other.name, "/setup/#{other.alias_for || other.name}") %>
+    <% end %>
+  <% end %>
+</nav>

@@ -1,0 +1,207 @@
+---
+title: Welcome to Nii
+css_class: index
+---
+
+<blockquote id="opening-quote">
+<p>“The diversity of languages is not a diversity of signs and sounds but a diversity of views of the world.”</p>
+<footer>– Wilhelm von Humboldt (1820)</footer>
+</blockquote>
+
+<div id="intro">
+  <p>
+    Nii is an <b>internationalization</b> (<i>i18n</i>) and <b>localization</b> (<i>l10n</i>) solution for Ruby.<br>
+    It is <b>modular</b>, <b>comprehensive</b>, <b>fast</b>, and built on top of <b>modern standards</b> and <b>best practices</b>.
+  </p>
+  <p>
+  It is heavily inspired by <a href="https://github.com/ruby-i18n/i18n">Ruby I18n</a>,
+  <a href="https://github.com/ruby-gettext/gettext">Ruby gettext</a>, as well as various localization projects from Mozilla,
+  especially <a href="https://www.projectfluent.org/">Project Fluent</a>; the <a href="http://cldr.unicode.org/">Unicode Common Locale Data Repository</a>,
+  <a href="http://site.icu-project.org/">International Components for Unicode</a>, and the
+  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl">ECMAScript Internationalization API</a>.
+</div>
+
+<div id="feature-overview">
+  <h2>Things Nii Can Do</h2>
+  <ul>
+    <li><i class="fas fa-fw fa-file-alt"></i><span>Manage Translations</span></li>
+    <li><i class="fas fa-fw fa-file-import"></i><span>Load Files from Ruby I18n, R18n, Gettext, i18next & more</span></li>
+    <!-- <li><i class="fas fa-fw fa-database"></i><span>Load Translations from a Database</span></li> -->
+    <!-- <li><i class="fas fa-fw fa-server"></i><span>Load Translations from a Webserver</span></li> -->
+    <li><i class="fas fa-fw fa-language"></i><span>Detect User Language</span></li>
+    <li><i class="fas fa-fw fa-calendar-check"></i><span>Convert between Calendars</span></li>
+    <!-- <li><i class="fas fa-fw fa-money-bill-wave"></i><span>Choose and Track Currency</span></li> -->
+    <!-- <li><i class="fas fa-fw fa-thermometer-three-quarters"></i><span>Detect and Convert Units</span></li> -->
+    <li><i class="fas fa-fw fa-clock"></i><span>Manage User Timezone</span></li>
+    <li><i class="fas fa-fw fa-superscript"></i><span>Format Numbers, Dates, Units, and much more</span></li>
+    <!-- <li><i class="fas fa-fw fa-sort-alpha-down"></i><span>Localized Sorting (Collation)</span></li> -->
+    <!-- <li><i class="fas fa-fw fa-puzzle-piece"></i><span>Custom Model Localization</span></li> -->
+    <li><i class="fas fa-fw fa-calculator"></i><span>Convert Numbers to other Numbering Systems</span></li>
+    <!-- <li><i class="fas fa-fw fa-spell-check"></i><span>Spell out Numbers as Words</span></li> -->
+    <!-- <li><i class="fas fa-fw fa-code"></i><span>Generate HTML based on Sentence Structure</span></li> -->
+    <li><i class="fas fa-fw fa-shield-alt"></i><span>Properly Escape Markup</span></li>
+    <li><i class="fas fa-fw fa-map-signs"></i><span>Generate Bidirectional Text (HTML & UTF)</span></li>
+    <!-- <li><i class="fas fa-fw fa-quote-right"></i><span>Localized Smart Quotes</span></li> -->
+    <!-- <li><i class="fas fa-fw fa-scroll"></i><span>Convert between Scripts</span></li> -->
+    <!-- <li><i class="fas fa-fw fa-file-export"></i><span>Export and Re-import XLIFF</span></li> -->
+    <!-- <li><i class="fas fa-fw fa-project-diagram"></i><span>Deal with Plural Rules, Cases, Genders, etc.</span></li> -->
+    <li><i class="fas fa-fw fa-person-booth"></i><span>Act as a Backend for Ruby I18n</span></li>
+    <li><i class="fas fa-fw fa-city"></i><span>Multitenant Setups</span></li>
+    <li><i class="fas fa-fw fa-tasks"></i><span>Easy and Powerful Customization</span></li>
+    <li><i class="fas fa-fw fa-ellipsis-h"></i><span>and more</span></li>
+  </ul>
+</div>
+
+<div id="example-i18n" class="example">
+<h2>Internationalization</h2>
+<div id="example-ruby">
+<h3>Ruby</h3>
+<% code("ruby") do %>
+# Say hi to Maria!
+context[:name] = "Maria"
+context.render :hello
+  # en: "Hi there, Maria! How are you?"
+  # de: "Hallo Maria! Wie geht es dir?"
+
+# Format a number
+context.format 1530
+  # en: "1,530", de: "1.530", ar: "١٬٥٣٠"
+context.format 1530, numbers: :traditional
+  # en: "1,530", zh: "一千五百三十"
+
+# Sometimes sentence structure dictates HTML.
+# We still don't want that to leak into our
+# translation files.
+context.format_variable :user do |user|
+  context.html "<a href='?'>?</a>",
+    user.profile_link, user.name
+end
+
+# {$user} will be replaced with a link
+context.render :message, { user: current_user }
+
+# Maybe you want to generate an invoce pdf?
+context.measurement_system.paper_size
+  # en-US: "US-Letter", en-GB: "A4"
+
+# Are we in a Chinese leap month right now?
+Nii::Date.today(:chinese).leap_month?
+
+# Use Nii as a backend for Ruby I18n
+I18n.backend = Nii::I18n::Backend.new
+<% end %>
+</div>
+<p>
+  The last two examples require <b>nii-calendars</b> and <b>nii-i18n</b> respectively.<br>
+  All other examples only rely on <b>nii-core</b>.
+</p>
+</div>
+
+<div id="example-l10n" class="example">
+<h2>Localization</h2>
+<div id="example-english">
+<h3>English</h3>
+<% code("fluent") do %>
+# A simple greeting
+hello = Hi there, {$name}! How are you?
+
+# Reusable term
+-project = Nii
+
+# Message with an attribute
+welcome = Welcome to {-project}
+  .html = Welcome to <i>{-project}</i>
+
+# Inline variable formatting
+today = Today is { DATETIME($day, weekday: "short") }
+
+# Plural categories depend on the language.
+# English has two ordinal (and four cardinal)
+# plural categories.
+invites-left = You have { $count ->
+  [0] no invites
+  [one] one invite 
+ *[other] {$count} invites } left.
+<% end %>
+</div>
+
+<div id="example-german">
+<h3>German</h3>
+<% code("fluent") do %>
+# A slightly more complex greeting
+hello =
+  Hallo {$name}! Wie geht es {TONE() ->
+    [formal] Ihnen
+   *[informal] dir
+  }?
+<% end %>
+</div>
+
+<p>
+  Nii supports a wide range of localization formats. <b>Fluent</b>
+  is the recommended one, but you can easily <a href="…">choose another</a>.
+</p>
+</div>
+
+<div id="nii-modules">
+  <h2>Main Modules</h2>
+
+  <div class="important">
+    <div class="module" id="nii-modules-core">
+      <h3>nii-core</h3>
+      <p><b>A multi-tenant, high concurrency, pure Ruby i18n engine and l10n repository.</b></p>
+      <p>Manages and compiles message templates, aware of advanded grammatical constructs.</p>
+      <p>Built-in formatters for dates, times, numbers, currencies, and more.</p>
+      <p>Preloaded with localziation data for hundreds of languages.</p>
+      <p>Supports a wide range of scripts, including bidirectionality and script conversion.</p>
+    </div>
+
+    <div class="module" id="nii-modules-units">
+      <h3>nii-units</h3>
+      <p><b>Safely and easily handle all common units and measurements.</b></p>
+      <p>Implements all arithmetic operations properly for all units included in the Unicode Common Locale Data Repository.</p>
+      <p>Perfect for locale based string formatting and unit representation (like using Fahrenheit for the US, and Celsius for other countries).</p>
+      <p>Can be used as a stand-alone library, without any other part of Nii.</p>
+    </div>
+
+    <div class="module" id="nii-modules-calendars">
+      <h3>nii-calendars</h3>
+      <p><b>Easily calculate and display dates in various calendar systems.</b></p>
+      <p>Converts dates from one calendar system to another.</p>
+      <p>
+        Nii will automatically pick the right formatting rules based on language, location, and calendar system.
+        It can also choose the most appropriate calendar for you, based on user location and preferences.
+      </p>
+      <p>Includes amongst others the Chinese, Islamic, Persian, and Hebrew calendars.</p>
+    </div>
+  </div>
+
+  <div class="less-important">
+    <h3>Additional Modules</h3>
+
+    <div class="module" id="nii-modules-global">
+      <h4>nii-global</h4>
+      <p>A shared state interface, so you can use Nii in the same way as Ruby I18n or R18n.</p>
+    </div>
+
+    <div class="module" id="nii-modules-extra-locales">
+      <h4>nii-extra-locales</h4>
+      <p>Localization data for less common languages and locale combinations.</p>
+    </div>
+
+    <div class="module" id="nii-modules-historic">
+      <h4>nii-historic</h4>
+      <p>Want to make sure you get your historic dates right? Let nii-historic help you.</p>
+    </div>
+
+    <div class="module" id="nii-modules-xml">
+      <h4>nii-xml</h4>
+      <p>Adds support for XML based message templates, including XLIFF.</p>
+    </div>
+  </div>
+</div>
+
+<div id="nii-use-cases">
+  <h2>Use Cases and Integration</h2>
+  <div class="use-case">
+</div>

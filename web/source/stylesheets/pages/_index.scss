@@ -1,0 +1,196 @@
+@mixin nii-module {
+  background-color: var(--color-1);
+  border-radius: 0.4rem;
+  box-shadow: $shadow;
+  text-align: center;
+  >:first-child {
+    background-color: var(--color-3);
+    text-shadow: $shadow;
+    color: var(--color-1);
+    border-radius: 0.4rem 0.4rem 0 0;
+  }
+  >* {
+    padding: $padding;
+    margin: 0;
+  }
+  padding-bottom: nth($padding, 1);
+}
+
+body.index {
+
+  #feature-overview {
+    ul {
+      display: block;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      margin: 0.25rem;
+      align-items: center;
+      overflow-x: hidden;
+      white-space: nowrap;
+      border-radius: 0.5rem;
+      border: solid 0.02rem var(--color-3);
+      background-color: var(--color-3);
+      >* {
+        padding: 0.25rem;
+      }
+      span {
+        flex: 1;
+        max-width: calc(100% - 2.5rem);
+        text-overflow: ellipsis;
+        background-color: var(--color-1);
+        border-radius: 0 0.5rem 0.5rem 0;
+      }
+      .fas {
+        background-color: var(--color-3);
+        border-radius: 0.5rem 0 0 0.5rem;
+        color: var(--color-1);
+        width: 1.5rem;
+      }
+    }
+  }
+
+  @media (min-width: 50rem) {
+    main {
+      text-align: center;
+    }
+    #feature-overview {
+      li {
+        display: inline-flex;
+      }
+    }
+    #example-ruby {
+      grid-column: 1 / span 6;
+    }
+    #example-i18n {
+      display: contents;
+      >* {
+        margin: 0;
+        grid-column: 1 / span 6;
+      }
+    }
+    #example-l10n {
+      display: contents;
+      h2 {
+        grid-row: 4;
+      }
+      >* {
+        margin: 0;
+        grid-column: 7 / span 6;
+      }
+    }
+    #example-english {
+      grid-row: 5;
+    }
+    #example-german {
+      grid-row: 6;
+      align-self: end;
+    }
+    #example-ruby {
+      grid-row: 5 / span 2;
+    }
+    #intro {
+      grid-column: span 8;
+      grid-row: 2;
+      text-align: left;
+      align-self: center;
+      >:first-child {
+        font-size: 1.2rem;
+      }
+    }
+    #opening-quote {
+      grid-column: 9 / span 4;
+      grid-row: 2;
+      align-self: center;
+    }
+  }
+
+  h1 {
+    text-align: center;
+    font-size: clamp(2rem, 14vw, 6rem);
+    text-shadow: $shadow;
+  }
+
+  #intro {
+    margin: 2rem 0;
+  }
+
+  #opening-quote {
+    padding: $padding;
+    background-color: var(--color-1);
+    color: var(--color-4);
+    text-align: center;
+    box-shadow: $shadow;
+    p {
+      font-size: 1.4rem;
+    }
+    footer {
+      text-align: right;
+    }
+  }
+
+  #nii-modules {
+    display: contents;
+
+    h2 {
+      grid-column: span 12;
+      margin: 0;
+    }
+
+    .important {
+      display: contents;
+    }
+
+    .important .module {
+      grid-column: span 12;
+      @include nii-module;
+    }
+
+    .less-important {
+      grid-column: span 12;
+      @media (max-width: 34.9999rem) {
+        @include nii-module;
+        .module {
+          text-align: left;
+          h4 {
+            display: inline;
+            margin-bottom: 0;
+            &::after {
+              content: ":";
+            }
+          }
+          p {
+            display: inline;
+            margin-top: 0;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 35rem) {
+      .important .module {
+        grid-column: span 12;
+      }
+      .less-important {
+        display: contents;
+        >:not(.module) { display: none; }
+        .module {
+          grid-column: span 6;
+          @include nii-module;
+        }
+      }
+    }
+
+    @media (min-width: 50rem) {
+      .important .module {
+        grid-column: span 4;
+      }
+
+      .less-important .module {
+        grid-column: span 3;
+      }
+    }
+  }
+}

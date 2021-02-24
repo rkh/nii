@@ -1,0 +1,71 @@
+# frozen_string_literal: true
+
+module Nii
+  # @api internal
+  module Utils
+    # Typically used to remove the lock on a frozen object.
+    module DummyLock
+      extend self
+      def with_read_lock  = yield
+      def with_write_lock = yield
+    end
+
+    INTEGERS   = 1.to_s.frozen? ? [] : (-1000..1000).map { |i| i.to_s.freeze }
+    IS_UNICODE = { Encoding::GB18030 => true, Encoding::ASCII => true }
+    private_constant :IS_UNICODE, :INTEGERS
+
+    extend self
+
+    # Recursively freezes Hashes and Arrays.
+    # @param object [Object]
+    # @return [Object] the object passed as argument
+    def deep_freeze(object)
+      return object.deep_freeze if object.respond_to? :deep_freeze and not object.is_a? Utils
+      return object unless object.respond_to? :freeze
+      return object if object.frozen?
+
+      case object
+      when Array, Set
+        object.each { |value| deep_freeze(value) }
+      when Hash
+        object.each_value { |value| deep_freeze(value) }
+        object.each_key   { |value| deep_freeze(value) }
+      end
+      
+      object.freeze
+    end
+
+    # Converts a value into a string, but avoids the additional allocation of #to_s if possible.
+    # @param value [#to_s]
+    # @return [String]
+    def string(value)
+      case value
+      when Symbol   then value.name
+      when String   then value
+      when Integer  then INTEGERS[value] || value.to_s
+      when Pathname then value.instance_variable_get(:@path).freeze
+      else value.to_s
+      end
+    end
+
+    # @!method class_name(mod)
+    #   Same as Module#name, but ignores any overrides the module might have made.
+    #   @param mod [Module, Class]
+    #   @return [String, nil]
+    define_method(:class_name, &::Module.instance_method(:name).method(:bind_call))
+
+    # @example
+    #   Nii::Utils.is_unicode? "UCS-4LE" # => true
+    #   Nii::Utils.is_unicode? "ASCII"   # => false
+    #
+    # @param encoding [Encoding, String]
+    #
+    # @return [true, false]
+    #   Whether or not a string encoding is based on the Unicode standard.
+    #   Relevant for normalization, collation, etc.
+    def is_unicode?(encoding)
+      encoding = Encoding.find(encoding) unless encoding.is_a? Encoding
+      IS_UNICODE.fetch(encoding) { IS_UNICODE[encoding] = encoding.names.any? { |name| name.start_with? 'UTF-' } }
+    end
+  end
+end

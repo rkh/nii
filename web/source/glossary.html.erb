@@ -1,0 +1,10 @@
+---
+title: Glossary
+css_class: glossary
+---
+
+<%- Dir.glob("#{__dir__}/glossary/summaries/_*.html.*").sort.each do |file| %>
+  <section class="glossary-entry <%= File.basename(file, ".html#{File.extname(file)}").sub(/^_/, '').tr('_', '-') %>">
+    <%= partial file[%r{glossary/.*(?=\.html)}] %>
+  </section>
+<% end %>

@@ -1,0 +1,43 @@
+<% wrap_layout :layout do %>
+  <nav class="sidebar">
+    <h1>Formats</h1>
+    <div class="sidebar-content">
+      <ul>
+        <li><%= link_to 'Overview', '/formats' %></li>
+        <li>
+          <span>ni-core</span>
+          <ul>
+            <li><%= link_to 'Appication Resources Bundle', '/formats/arb', class: (:active if current_page.url == '/formats/arb/') %></li>
+            <li><%= link_to 'CSV/TSV', '/formats/csv', class: (:active if current_page.url == '/formats/csv/') %></li>
+            <li><%= link_to 'Gettext', '/formats/gettext', class: (:active if current_page.url == '/formats/gettext/') %></li>
+            <li><%= link_to 'Fluent', '/formats/fluent', class: (:active if current_page.url == '/formats/fluent/') %></li>
+            <li><%= link_to 'JSON', '/formats/json', class: (:active if current_page.url == '/formats/json/') %></li>
+            <li><%= link_to 'Markdown', '/formats/md', class: (:active if current_page.url == '/formats/md/') %></li>
+            <li><%= link_to 'Plain Text', '/formats/txt', class: (:active if current_page.url == '/formats/txt/') %></li>
+            <li><%= link_to 'Properties', '/formats/properties', class: (:active if current_page.url == '/formats/properties/') %></li>
+            <li><%= link_to 'Ruby', '/formats/ruby', class: (:active if current_page.url == '/formats/ruby/') %></li>
+            <li><%= link_to 'Unicode RBNF', '/formats/rbnf', class: (:active if current_page.url == '/formats/rbnf/') %></li>
+            <li><%= link_to 'Windows JS Resource', '/formats/resjson', class: (:active if current_page.url == '/formats/resjson/') %></li>
+            <li><%= link_to 'YAML', '/formats/yaml', class: (:active if current_page.url == '/formats/yaml/') %></li>
+          </ul>
+        </li>
+        <li>
+          <span>ni-xml</span>
+          <ul>
+            <li><%= link_to 'Apple PLIST', '/formats/plist', class: (:active if current_page.url == '/formats/plist/') %></li>
+            <li><%= link_to 'Java XML Properties', '/formats/plist', class: (:active if current_page.url == '/formats/plist/') %></li>
+            <li><%= link_to 'Managed Resource File', '/formats/resx', class: (:active if current_page.url == '/formats/resx/') %></li>
+            <li><%= link_to 'Mozilla DTD', '/formats/dtd', class: (:active if current_page.url == '/formats/dtd/') %></li>
+            <li><%= link_to 'TermBase eXchange', '/formats/tbx', class: (:active if current_page.url == '/formats/tbx/') %></li>
+            <li><%= link_to 'Translation Memory eXchange', '/formats/tmx', class: (:active if current_page.url == '/formats/tmx/') %></li>
+            <li><%= link_to 'XLIFF', '/formats/xliff', class: (:active if current_page.url == '/formats/xliff/') %></li>
+            <li><%= link_to 'XML (Auto Detect)', '/formats/xml', class: (:active if current_page.url == '/formats/xml/') %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <article>
+    <%= yield %>
+  </article>
+<% end %>

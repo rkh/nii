@@ -1,0 +1,13 @@
+<nav id="footer-links">
+  <%= link_to 'About',   '/about'   %>
+  <span class="separator">&bull;</span>
+  <%= link_to 'License', '/license' %>
+  <span class="separator">&bull;</span>
+  <%= link_to 'Contact', '/contact' %>
+  <span class="separator">&bull;</span>
+  <%= link_to 'Code of Conduct', '/conduct' %>
+</nav>
+
+<div id="copyright">
+  &copy; 2021<%= "-#{Time.now.year}" if Time.now.year > 2021 %> Konstantin Haase
+</div>

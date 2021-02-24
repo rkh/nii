@@ -1,0 +1,36 @@
+---
+title: Setup API
+css_class: setup
+---
+
+<h2>Available Options</h2>
+<div class="table-wrapper">
+  <table class="setup-table">
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Summary</th>
+        <th>Default</th>
+        <th>Scopes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.setup_options['methods'].each do |method| %>
+        <tr>
+          <td><code><%= link_to method.name, "/setup/#{method.alias_for || method.name}" %></code></td>
+          <td><%= Tilt[:md].new { method.summary }.render.gsub(%r{\A\s*<p>|\s*</p>\Z}m, '') %></td>
+          <td>
+            <% if method['default'] %>
+              <code><%= method['default'] %></code>
+            <% else %>
+              –
+            <% end %>
+          </td>
+          <td>
+            <%= method.scopes.map { |s| s == 'everywhere' ? 'Everywhere' : link_to(s.capitalize, "/setup/scope/#{s}") }.join(', ') %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

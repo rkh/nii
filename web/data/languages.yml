@@ -1,0 +1,7263 @@
+---
+- code: af
+  names:
+    en:
+    - Afrikaans
+    af:
+    - Afrikaans
+  locales:
+    nii-core:
+    - af
+    - af
+    - af-NA
+    - af-ZA
+    - afr
+  territories:
+  - ZA
+  - NA
+  numbers:
+    default: latn
+  aliases:
+    af: af-ZA
+    afr: af
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: agq
+  names:
+    en:
+    - Aghem
+    agq:
+    - Aghem
+  locales:
+    nii-extra-locales:
+    - agq
+    - agq
+    - agq-CM
+  territories:
+  - CM
+  numbers:
+    default: latn
+  aliases:
+    agq: agq-CM
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ak
+  names:
+    en:
+    - Akan
+    ak:
+    - Akan
+  locales:
+    nii-extra-locales:
+    - ak
+    - ak
+    - ak-GH
+    - aka
+    - fat
+    - tw
+    - twi
+  territories:
+  - GH
+  numbers:
+    default: latn
+  aliases:
+    ak: ak-GH
+    aka: ak
+    fat: ak
+    tw: ak
+    twi: ak
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: am
+  names:
+    en:
+    - Amharic
+    am:
+    - አማርኛ
+  locales:
+    nii-core:
+    - am
+    - am
+    - am-ET
+    - amh
+  territories:
+  - ET
+  numbers:
+    default: latn
+    traditional: ethi
+  aliases:
+    am: am-ET
+    amh: am
+  scripts:
+  - Ethi
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: ar
+  names:
+    en:
+    - Arabic
+    ar:
+    - العربية
+  locales:
+    nii-core:
+    - ar
+    - ar
+    - ar-001
+    - ar-AE
+    - ar-BH
+    - ar-DJ
+    - ar-DZ
+    - ar-EG
+    - ar-EH
+    - ar-ER
+    - ar-IL
+    - ar-IQ
+    - ar-JO
+    - ar-KM
+    - ar-KW
+    - ar-LB
+    - ar-LY
+    - ar-MA
+    - ar-MR
+    - ar-OM
+    - ar-PS
+    - ar-QA
+    - ar-SA
+    - ar-SD
+    - ar-SO
+    - ar-SS
+    - ar-SY
+    - ar-TD
+    - ar-TN
+    - ar-YE
+    - ara
+    - arb
+  territories:
+  - '001'
+  - AE
+  - BH
+  - DJ
+  - DZ
+  - EG
+  - EH
+  - ER
+  - IL
+  - IQ
+  - JO
+  - KM
+  - KW
+  - LB
+  - LY
+  - MA
+  - MR
+  - OM
+  - PS
+  - QA
+  - SA
+  - SD
+  - SO
+  - SS
+  - SY
+  - TD
+  - TN
+  - YE
+  numbers:
+    default: arab
+    latn: latn
+  aliases:
+    ar: ar-001
+    ara: ar
+    arb: ar
+  scripts:
+  - Arab
+  - Syrc
+  plurals:
+    cardinal:
+    - other
+    - zero
+    - one
+    - two
+    - few
+    - many
+    ordinal:
+    - other
+  genders:
+  - masculine
+  - feminine
+  cases:
+  - nominative
+  - genitive
+  - accusative
+  definiteness:
+  - definite
+  - indefinite
+  - construct
+- code: as
+  names:
+    en:
+    - Assamese
+    as:
+    - অসমীয়া
+  locales:
+    nii-core:
+    - as
+    - as
+    - as-IN
+    - asm
+  territories:
+  - IN
+  numbers:
+    default: beng
+  aliases:
+    as: as-IN
+    asm: as
+  scripts:
+  - Beng
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+    - two
+    - few
+    - many
+- code: asa
+  names:
+    en:
+    - Asu
+    asa:
+    - Kipare
+  locales:
+    nii-extra-locales:
+    - asa
+    - asa
+    - asa-TZ
+  territories:
+  - TZ
+  numbers:
+    default: latn
+  aliases:
+    asa: asa-TZ
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: ast
+  names:
+    en:
+    - Asturian
+    ast:
+    - asturianu
+  locales:
+    nii-extra-locales:
+    - ast
+    - ast
+    - ast-ES
+  territories:
+  - ES
+  numbers:
+    default: latn
+  aliases:
+    ast: ast-ES
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: az
+  names:
+    en:
+    - Azerbaijani
+    - Azeri
+    az:
+    - azərbaycan
+    - azəri
+    - азәрбајҹан
+  locales:
+    nii-core:
+    - az
+    - az
+    - az-Cyrl-AZ
+    - az-Latn
+    - az-Latn-AZ
+    - aze
+    - azj
+    nii-extra-locales:
+    - az-Arab
+    - az-Cyrl
+  territories:
+  - AZ
+  numbers:
+    default: latn
+  aliases:
+    az: az-Latn-AZ
+    aze: az
+    azj: az
+  scripts:
+  - Arab
+  - Cyrl
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+    - few
+    - many
+- code: bas
+  names:
+    en:
+    - Basaa
+    bas:
+    - Ɓàsàa
+  locales:
+    nii-extra-locales:
+    - bas
+    - bas
+    - bas-CM
+  territories:
+  - CM
+  numbers:
+    default: latn
+  aliases:
+    bas: bas-CM
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: be
+  names:
+    en:
+    - Belarusian
+    be:
+    - беларуская
+  locales:
+    nii-core:
+    - be
+    - be
+    - be-BY
+    - bel
+  territories:
+  - BY
+  numbers:
+    default: latn
+  aliases:
+    be: be-BY
+    bel: be
+  scripts:
+  - Cyrl
+  plurals:
+    cardinal:
+    - other
+    - one
+    - few
+    - many
+    ordinal:
+    - other
+    - few
+- code: bem
+  names:
+    en:
+    - Bemba
+    bem:
+    - Ichibemba
+  locales:
+    nii-extra-locales:
+    - bem
+    - bem
+    - bem-ZM
+  territories:
+  - ZM
+  numbers:
+    default: latn
+  aliases:
+    bem: bem-ZM
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: bez
+  names:
+    en:
+    - Bena
+    bez:
+    - Hibena
+  locales:
+    nii-extra-locales:
+    - bez
+    - bez
+    - bez-TZ
+  territories:
+  - TZ
+  numbers:
+    default: latn
+  aliases:
+    bez: bez-TZ
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: bg
+  names:
+    en:
+    - Bulgarian
+    bg:
+    - български
+  locales:
+    nii-core:
+    - bg
+    - bg
+    - bg-BG
+    - bul
+  territories:
+  - BG
+  numbers:
+    default: latn
+  aliases:
+    bg: bg-BG
+    bul: bg
+  scripts:
+  - Cyrl
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: blt
+  names:
+    en:
+  locales:
+    nii-extra-locales:
+    - blt-Latn
+  numbers:
+    default: latn
+  aliases: {}
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: bm
+  names:
+    en:
+    - Bambara
+    bm:
+    - bamanakan
+  locales:
+    nii-extra-locales:
+    - bam
+    - bm
+    - bm
+    - bm-ML
+    - bm-Nkoo
+  territories:
+  - ML
+  numbers:
+    default: latn
+  aliases:
+    bam: bm
+    bm: bm-ML
+  scripts:
+  - Latn
+  - Nkoo
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: bn
+  names:
+    en:
+    - Bangla
+    bn:
+    - বাংলা
+  locales:
+    nii-core:
+    - ben
+    - bn
+    - bn
+    - bn-BD
+    - bn-IN
+  territories:
+  - BD
+  - IN
+  numbers:
+    default: beng
+  aliases:
+    ben: bn
+    bn: bn-BD
+  scripts:
+  - Beng
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+    - two
+    - few
+    - many
+  genders:
+  - masculine
+  - feminine
+  cases:
+  - nominative
+  - accusative
+  - genitive
+  - locative
+  definiteness:
+  - definite
+  - indefinite
+- code: bo
+  names:
+    en:
+    - Tibetan
+    bo:
+    - བོད་སྐད་
+  locales:
+    nii-extra-locales:
+    - bo
+    - bo
+    - bo-CN
+    - bo-IN
+    - bod
+    - tib
+  territories:
+  - CN
+  - IN
+  numbers:
+    default: latn
+    native: tibt
+  aliases:
+    bo: bo-CN
+    bod: bo
+    tib: bo
+  scripts:
+  - Tibt
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: br
+  names:
+    en:
+    - Breton
+    br:
+    - brezhoneg
+  locales:
+    nii-extra-locales:
+    - br
+    - br
+    - br-FR
+    - bre
+  territories:
+  - FR
+  numbers:
+    default: latn
+  aliases:
+    br: br-FR
+    bre: br
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - two
+    - few
+    - many
+    ordinal:
+    - other
+- code: brx
+  names:
+    en:
+    - Bodo
+    brx:
+    - बड़ो
+  locales:
+    nii-extra-locales:
+    - brx
+    - brx
+    - brx-IN
+  territories:
+  - IN
+  numbers:
+    default: latn
+    native: deva
+  aliases:
+    brx: brx-IN
+  scripts:
+  - Deva
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: bs
+  names:
+    en:
+    - Bosnian
+    bs:
+    - bosanski
+    - босански
+  locales:
+    nii-core:
+    - bos
+    - bs
+    - bs
+    - bs-Cyrl-BA
+    - bs-Latn
+    - bs-Latn-BA
+    nii-extra-locales:
+    - bs-Cyrl
+  territories:
+  - BA
+  numbers:
+    default: latn
+  aliases:
+    bos: bs
+    bs: bs-Latn-BA
+  scripts:
+  - Cyrl
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - few
+    ordinal:
+    - other
+- code: byn
+  names:
+    en:
+    - Blin
+  locales:
+    nii-extra-locales:
+    - byn-Latn
+  numbers:
+    default: latn
+  aliases: {}
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ca
+  names:
+    en:
+    - Catalan
+    ca:
+    - català
+  locales:
+    nii-core:
+    - ca
+    - ca
+    - ca-AD
+    - ca-ES
+    - ca-ES-valencia
+    - ca-FR
+    - ca-IT
+    - cat
+  territories:
+  - ES
+  - AD
+  - FR
+  - IT
+  numbers:
+    default: latn
+  aliases:
+    ca: ca-ES
+    cat: ca
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+    - two
+    - few
+- code: ccp
+  names:
+    en:
+    - Chakma
+    ccp:
+    - "\U0001110C\U0001110B\U00011134\U0001111F\U00011133\U00011126"
+  locales:
+    nii-extra-locales:
+    - ccp
+    - ccp
+    - ccp-BD
+    - ccp-IN
+  territories:
+  - BD
+  - IN
+  numbers:
+    default: cakm
+  aliases:
+    ccp: ccp-BD
+  scripts:
+  - Beng
+  - Cakm
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ce
+  names:
+    en:
+    - Chechen
+    ce:
+    - нохчийн
+  locales:
+    nii-extra-locales:
+    - ce
+    - ce
+    - ce-RU
+    - che
+  territories:
+  - RU
+  numbers:
+    default: latn
+  aliases:
+    ce: ce-RU
+    che: ce
+  scripts:
+  - Cyrl
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: ceb
+  names:
+    en:
+    - Cebuano
+    ceb:
+    - Binisaya
+  locales:
+    nii-extra-locales:
+    - ceb
+    - ceb
+    - ceb-PH
+  territories:
+  - PH
+  numbers:
+    default: latn
+  aliases:
+    ceb: ceb-PH
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: cgg
+  names:
+    en:
+    - Chiga
+    cgg:
+    - Rukiga
+  locales:
+    nii-extra-locales:
+    - cgg
+    - cgg
+    - cgg-UG
+  territories:
+  - UG
+  numbers:
+    default: latn
+  aliases:
+    cgg: cgg-UG
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: chr
+  names:
+    en:
+    - Cherokee
+    chr:
+    - ᏣᎳᎩ
+  locales:
+    nii-extra-locales:
+    - chr
+    - chr
+    - chr-US
+  territories:
+  - US
+  numbers:
+    default: latn
+  aliases:
+    chr: chr-US
+  scripts:
+  - Cher
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: ckb
+  names:
+    en:
+    - Central Kurdish
+    - Kurdish, Sorani
+    ckb:
+    - کوردیی ناوەندی
+  locales:
+    nii-extra-locales:
+    - ckb
+    - ckb
+    - ckb-IQ
+    - ckb-IR
+  territories:
+  - IQ
+  - IR
+  numbers:
+    default: arab
+  aliases:
+    ckb: ckb-IQ
+  scripts:
+  - Arab
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: co
+  names:
+    en:
+    - Corsican
+  locales:
+    nii-extra-locales:
+    - co
+    - cos
+  numbers:
+    default: latn
+  aliases:
+    cos: co
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: cs
+  names:
+    en:
+    - Czech
+    cs:
+    - čeština
+  locales:
+    nii-core:
+    - ces
+    - cs
+    - cs
+    - cs-CZ
+    - cze
+  territories:
+  - CZ
+  numbers:
+    default: latn
+  aliases:
+    ces: cs
+    cs: cs-CZ
+    cze: cs
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - few
+    - many
+    ordinal:
+    - other
+  genders:
+  - animate
+  - inanimate
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  - instrumental
+  - vocative
+  - locative
+- code: cu
+  names:
+    en:
+    - Church Slavic
+  locales:
+    nii-extra-locales:
+    - chu
+    - cu
+    - cu-Glag
+  numbers:
+    default: latn
+  aliases:
+    chu: cu
+  scripts:
+  - Glag
+  - Cyrl
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: cy
+  names:
+    en:
+    - Welsh
+    cy:
+    - Cymraeg
+  locales:
+    nii-core:
+    - cy
+    - cy
+    - cy-GB
+    - cym
+    - wel
+  territories:
+  - GB
+  numbers:
+    default: latn
+  aliases:
+    cy: cy-GB
+    cym: cy
+    wel: cy
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - zero
+    - one
+    - two
+    - few
+    - many
+    ordinal:
+    - other
+    - zero
+    - one
+    - two
+    - few
+    - many
+- code: da
+  names:
+    en:
+    - Danish
+    da:
+    - dansk
+  locales:
+    nii-core:
+    - da
+    - da
+    - da-DK
+    - da-GL
+    - dan
+  territories:
+  - DK
+  - GL
+  numbers:
+    default: latn
+  aliases:
+    da: da-DK
+    dan: da
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+  genders:
+  - common
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  definiteness:
+  - definite
+  - indefinite
+  - unspecified
+- code: dav
+  names:
+    en:
+    - Taita
+    dav:
+    - Kitaita
+  locales:
+    nii-extra-locales:
+    - dav
+    - dav
+    - dav-KE
+  territories:
+  - KE
+  numbers:
+    default: latn
+  aliases:
+    dav: dav-KE
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: de
+  names:
+    en:
+    - German
+    de:
+    - Deutsch
+  locales:
+    nii-core:
+    - de
+    - de
+    - de-AT
+    - de-BE
+    - de-CH
+    - de-DE
+    - de-IT
+    - de-LI
+    - de-LU
+    - deu
+    - ger
+  territories:
+  - DE
+  - AT
+  - BE
+  - CH
+  - IT
+  - LI
+  - LU
+  numbers:
+    default: latn
+  aliases:
+    de: de-DE
+    deu: de
+    ger: de
+  scripts:
+  - Latn
+  - Runr
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+  genders:
+  - masculine
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+- code: dje
+  names:
+    en:
+    - Zarma
+    dje:
+    - Zarmaciine
+  locales:
+    nii-extra-locales:
+    - dje
+    - dje
+    - dje-Arab
+    - dje-NE
+  territories:
+  - NE
+  numbers:
+    default: latn
+  aliases:
+    dje: dje-NE
+  scripts:
+  - Latn
+  - Arab
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: doi
+  names:
+    en:
+    - Dogri
+    doi:
+    - डोगरी
+  locales:
+    nii-extra-locales:
+    - dgo
+    - doi
+    - doi
+    - doi-IN
+  territories:
+  - IN
+  numbers:
+    default: latn
+    native: deva
+  aliases:
+    dgo: doi
+    doi: doi-IN
+  scripts:
+  - Deva
+  - Arab
+  - Takr
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: dsb
+  names:
+    en:
+    - Lower Sorbian
+    dsb:
+    - dolnoserbšćina
+  locales:
+    nii-extra-locales:
+    - dsb
+    - dsb
+    - dsb-DE
+  territories:
+  - DE
+  numbers:
+    default: latn
+  aliases:
+    dsb: dsb-DE
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - two
+    - few
+    ordinal:
+    - other
+- code: dua
+  names:
+    en:
+    - Duala
+    dua:
+    - duálá
+  locales:
+    nii-extra-locales:
+    - dua
+    - dua
+    - dua-CM
+  territories:
+  - CM
+  numbers:
+    default: latn
+  aliases:
+    dua: dua-CM
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: dyo
+  names:
+    en:
+    - Jola-Fonyi
+    dyo:
+    - joola
+  locales:
+    nii-extra-locales:
+    - dyo
+    - dyo
+    - dyo-Arab
+    - dyo-SN
+  territories:
+  - SN
+  numbers:
+    default: latn
+  aliases:
+    dyo: dyo-SN
+  scripts:
+  - Latn
+  - Arab
+  - Arab
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: dz
+  names:
+    en:
+    - Dzongkha
+    dz:
+    - རྫོང་ཁ
+  locales:
+    nii-extra-locales:
+    - adp
+    - dz
+    - dz
+    - dz-BT
+    - dzo
+  territories:
+  - BT
+  numbers:
+    default: tibt
+  aliases:
+    adp: dz
+    dz: dz-BT
+    dzo: dz
+  scripts:
+  - Tibt
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ebu
+  names:
+    en:
+    - Embu
+    ebu:
+    - Kĩembu
+  locales:
+    nii-extra-locales:
+    - ebu
+    - ebu
+    - ebu-KE
+  territories:
+  - KE
+  numbers:
+    default: latn
+  aliases:
+    ebu: ebu-KE
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ee
+  names:
+    en:
+    - Ewe
+    ee:
+    - Eʋegbe
+  locales:
+    nii-extra-locales:
+    - ee
+    - ee
+    - ee-GH
+    - ee-TG
+    - ewe
+  territories:
+  - GH
+  - TG
+  numbers:
+    default: latn
+  aliases:
+    ee: ee-GH
+    ewe: ee
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: el
+  names:
+    en:
+    - Greek
+    el:
+    - Ελληνικά
+  locales:
+    nii-core:
+    - el
+    - el
+    - el-CY
+    - el-GR
+    - ell
+    - gre
+  territories:
+  - GR
+  - CY
+  numbers:
+    default: latn
+    traditional: grek
+  aliases:
+    el: el-GR
+    ell: el
+    gre: el
+  scripts:
+  - Grek
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: en
+  names:
+    en:
+    - English
+  locales:
+    nii-core:
+    - en
+    - en
+    - en-001
+    - en-150
+    - en-AE
+    - en-AG
+    - en-AI
+    - en-AS
+    - en-AT
+    - en-AU
+    - en-BB
+    - en-BE
+    - en-BI
+    - en-BM
+    - en-BS
+    - en-BW
+    - en-BZ
+    - en-CA
+    - en-CC
+    - en-CH
+    - en-CK
+    - en-CM
+    - en-CX
+    - en-CY
+    - en-DE
+    - en-DG
+    - en-DK
+    - en-DM
+    - en-ER
+    - en-FI
+    - en-FJ
+    - en-FK
+    - en-FM
+    - en-GB
+    - en-GD
+    - en-GG
+    - en-GH
+    - en-GI
+    - en-GM
+    - en-GU
+    - en-GY
+    - en-HK
+    - en-IE
+    - en-IL
+    - en-IM
+    - en-IN
+    - en-IO
+    - en-JE
+    - en-JM
+    - en-KE
+    - en-KI
+    - en-KN
+    - en-KY
+    - en-LC
+    - en-LR
+    - en-LS
+    - en-MG
+    - en-MH
+    - en-MO
+    - en-MP
+    - en-MS
+    - en-MT
+    - en-MU
+    - en-MW
+    - en-MY
+    - en-NA
+    - en-NF
+    - en-NG
+    - en-NL
+    - en-NR
+    - en-NU
+    - en-NZ
+    - en-PG
+    - en-PH
+    - en-PK
+    - en-PN
+    - en-PR
+    - en-PW
+    - en-RW
+    - en-SB
+    - en-SC
+    - en-SD
+    - en-SE
+    - en-SG
+    - en-SH
+    - en-SI
+    - en-SL
+    - en-SS
+    - en-SX
+    - en-SZ
+    - en-TC
+    - en-TK
+    - en-TO
+    - en-TT
+    - en-TV
+    - en-TZ
+    - en-UG
+    - en-UM
+    - en-US
+    - en-US-posix
+    - en-VC
+    - en-VG
+    - en-VI
+    - en-VU
+    - en-WS
+    - en-ZA
+    - en-ZM
+    - en-ZW
+    - eng
+    - i-default
+    nii-extra-locales:
+    - en-Dsrt
+    - en-Shaw
+  territories:
+  - US
+  - '001'
+  - '150'
+  - AE
+  - AG
+  - AI
+  - AS
+  - AT
+  - AU
+  - BB
+  - BE
+  - BI
+  - BM
+  - BS
+  - BW
+  - BZ
+  - CA
+  - CC
+  - CH
+  - CK
+  - CM
+  - CX
+  - CY
+  - DE
+  - DG
+  - DK
+  - DM
+  - ER
+  - FI
+  - FJ
+  - FK
+  - FM
+  - GB
+  - GD
+  - GG
+  - GH
+  - GI
+  - GM
+  - GU
+  - GY
+  - HK
+  - IE
+  - IL
+  - IM
+  - IN
+  - IO
+  - JE
+  - JM
+  - KE
+  - KI
+  - KN
+  - KY
+  - LC
+  - LR
+  - LS
+  - MG
+  - MH
+  - MO
+  - MP
+  - MS
+  - MT
+  - MU
+  - MW
+  - MY
+  - NA
+  - NF
+  - NG
+  - NL
+  - NR
+  - NU
+  - NZ
+  - PG
+  - PH
+  - PK
+  - PN
+  - PR
+  - PW
+  - RW
+  - SB
+  - SC
+  - SD
+  - SE
+  - SG
+  - SH
+  - SI
+  - SL
+  - SS
+  - SX
+  - SZ
+  - TC
+  - TK
+  - TO
+  - TT
+  - TV
+  - TZ
+  - UG
+  - UM
+  - VC
+  - VG
+  - VI
+  - VU
+  - WS
+  - ZA
+  - ZM
+  - ZW
+  numbers:
+    default: latn
+  aliases:
+    en: en-US
+    eng: en
+    i-default: en
+  scripts:
+  - Latn
+  - Dsrt
+  - Shaw
+  - Dsrt
+  - Shaw
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+    - two
+    - few
+- code: eo
+  names:
+    en:
+    - Esperanto
+    eo:
+    - esperanto
+  locales:
+    nii-extra-locales:
+    - eo
+    - eo
+    - eo-001
+    - epo
+  territories:
+  - '001'
+  numbers:
+    default: latn
+  aliases:
+    eo: eo-001
+    epo: eo
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: es
+  names:
+    en:
+    - Spanish
+    es:
+    - español
+  locales:
+    nii-core:
+    - es
+    - es
+    - es-419
+    - es-AR
+    - es-BO
+    - es-BR
+    - es-BZ
+    - es-CL
+    - es-CO
+    - es-CR
+    - es-CU
+    - es-DO
+    - es-EA
+    - es-EC
+    - es-ES
+    - es-GQ
+    - es-GT
+    - es-HN
+    - es-IC
+    - es-MX
+    - es-NI
+    - es-PA
+    - es-PE
+    - es-PH
+    - es-PR
+    - es-PY
+    - es-SV
+    - es-US
+    - es-UY
+    - es-VE
+    - spa
+  territories:
+  - ES
+  - '419'
+  - AR
+  - BO
+  - BR
+  - BZ
+  - CL
+  - CO
+  - CR
+  - CU
+  - DO
+  - EA
+  - EC
+  - GQ
+  - GT
+  - HN
+  - IC
+  - MX
+  - NI
+  - PA
+  - PE
+  - PH
+  - PR
+  - PY
+  - SV
+  - US
+  - UY
+  - VE
+  numbers:
+    default: latn
+  aliases:
+    es: es-ES
+    spa: es
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+  genders:
+  - masculine
+  - feminine
+- code: et
+  names:
+    en:
+    - Estonian
+    et:
+    - eesti
+  locales:
+    nii-core:
+    - ekk
+    - est
+    - et
+    - et
+    - et-EE
+  territories:
+  - EE
+  numbers:
+    default: latn
+  aliases:
+    ekk: et
+    est: et
+    et: et-EE
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: eu
+  names:
+    en:
+    - Basque
+    eu:
+    - euskara
+  locales:
+    nii-core:
+    - baq
+    - eu
+    - eu
+    - eu-ES
+    - eus
+  territories:
+  - ES
+  numbers:
+    default: latn
+  aliases:
+    baq: eu
+    eu: eu-ES
+    eus: eu
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: ewo
+  names:
+    en:
+    - Ewondo
+    ewo:
+    - ewondo
+  locales:
+    nii-extra-locales:
+    - ewo
+    - ewo
+    - ewo-CM
+  territories:
+  - CM
+  numbers:
+    default: latn
+  aliases:
+    ewo: ewo-CM
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: fa
+  names:
+    en:
+    - Persian
+    fa:
+    - فارسی
+  locales:
+    nii-core:
+    - drw
+    - fa
+    - fa
+    - fa-AF
+    - fa-IR
+    - fas
+    - per
+    - pes
+    - prs
+    - tnf
+  territories:
+  - AF
+  - IR
+  numbers:
+    default: arabext
+  aliases:
+    drw: fa-AF
+    fa: fa-IR
+    fas: fa
+    per: fa
+    pes: fa
+    prs: fa-AF
+    tnf: fa-AF
+  scripts:
+  - Arab
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: ff
+  names:
+    en:
+    - Fulah
+    ff:
+    - Pulaar
+    - "\U0001E906\U0001E935\U0001E924\U0001E922\U0001E92A"
+  locales:
+    nii-extra-locales:
+    - ff
+    - ff
+    - ff-Adlm
+    - ff-Adlm-BF
+    - ff-Adlm-CM
+    - ff-Adlm-GH
+    - ff-Adlm-GM
+    - ff-Adlm-GN
+    - ff-Adlm-GW
+    - ff-Adlm-LR
+    - ff-Adlm-MR
+    - ff-Adlm-NE
+    - ff-Adlm-NG
+    - ff-Adlm-SL
+    - ff-Adlm-SN
+    - ff-Arab
+    - ff-Latn
+    - ff-Latn-BF
+    - ff-Latn-CM
+    - ff-Latn-GH
+    - ff-Latn-GM
+    - ff-Latn-GN
+    - ff-Latn-GW
+    - ff-Latn-LR
+    - ff-Latn-MR
+    - ff-Latn-NE
+    - ff-Latn-NG
+    - ff-Latn-SL
+    - ff-Latn-SN
+    - fuc
+    - ful
+  territories:
+  - SN
+  - BF
+  - CM
+  - GH
+  - GM
+  - GN
+  - GW
+  - LR
+  - MR
+  - NE
+  - NG
+  - SL
+  numbers:
+    default: latn
+    native: adlm
+  aliases:
+    ff: ff-Latn-SN
+    fuc: ff
+    ful: ff
+  scripts:
+  - Latn
+  - Adlm
+  - Arab
+  - Adlm
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: fi
+  names:
+    en:
+    - Finnish
+    fi:
+    - suomi
+  locales:
+    nii-core:
+    - fi
+    - fi
+    - fi-FI
+    - fin
+  territories:
+  - FI
+  numbers:
+    default: latn
+  aliases:
+    fi: fi-FI
+    fin: fi
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: fil
+  names:
+    en:
+    - Filipino
+    fil:
+    - Filipino
+  locales:
+    nii-core:
+    - fil
+    - fil
+    - fil-PH
+    - tgl
+    - tl
+  territories:
+  - PH
+  numbers:
+    default: latn
+  aliases:
+    fil: fil-PH
+    tgl: fil
+    tl: fil
+  scripts:
+  - Latn
+  - Tglg
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+- code: fo
+  names:
+    en:
+    - Faroese
+    fo:
+    - føroyskt
+  locales:
+    nii-extra-locales:
+    - fao
+    - fo
+    - fo
+    - fo-DK
+    - fo-FO
+  territories:
+  - FO
+  - DK
+  numbers:
+    default: latn
+  aliases:
+    fao: fo
+    fo: fo-FO
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: fr
+  names:
+    en:
+    - French
+    fr:
+    - français
+  locales:
+    nii-core:
+    - fr
+    - fr
+    - fr-BE
+    - fr-BF
+    - fr-BI
+    - fr-BJ
+    - fr-BL
+    - fr-CA
+    - fr-CD
+    - fr-CF
+    - fr-CG
+    - fr-CH
+    - fr-CI
+    - fr-CM
+    - fr-DJ
+    - fr-DZ
+    - fr-FR
+    - fr-GA
+    - fr-GF
+    - fr-GN
+    - fr-GP
+    - fr-GQ
+    - fr-HT
+    - fr-KM
+    - fr-LU
+    - fr-MA
+    - fr-MC
+    - fr-MF
+    - fr-MG
+    - fr-ML
+    - fr-MQ
+    - fr-MR
+    - fr-MU
+    - fr-NC
+    - fr-NE
+    - fr-PF
+    - fr-PM
+    - fr-RE
+    - fr-RW
+    - fr-SC
+    - fr-SN
+    - fr-SY
+    - fr-TD
+    - fr-TG
+    - fr-TN
+    - fr-VU
+    - fr-WF
+    - fr-YT
+    - fra
+    - fre
+  territories:
+  - FR
+  - BE
+  - BF
+  - BI
+  - BJ
+  - BL
+  - CA
+  - CD
+  - CF
+  - CG
+  - CH
+  - CI
+  - CM
+  - DJ
+  - DZ
+  - GA
+  - GF
+  - GN
+  - GP
+  - GQ
+  - HT
+  - KM
+  - LU
+  - MA
+  - MC
+  - MF
+  - MG
+  - ML
+  - MQ
+  - MR
+  - MU
+  - NC
+  - NE
+  - PF
+  - PM
+  - RE
+  - RW
+  - SC
+  - SN
+  - SY
+  - TD
+  - TG
+  - TN
+  - VU
+  - WF
+  - YT
+  numbers:
+    default: latn
+  aliases:
+    fr: fr-FR
+    fra: fr
+    fre: fr
+  scripts:
+  - Latn
+  - Dupl
+  plurals:
+    cardinal:
+    - other
+    - one
+    - many
+    ordinal:
+    - other
+    - one
+  genders:
+  - masculine
+  - feminine
+- code: frc
+  names:
+    en:
+    - Cajun French
+  locales:
+    nii-extra-locales:
+    - frc
+  numbers:
+    default: latn
+  aliases: {}
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: fur
+  names:
+    en:
+    - Friulian
+    fur:
+    - furlan
+  locales:
+    nii-extra-locales:
+    - fur
+    - fur
+    - fur-IT
+  territories:
+  - IT
+  numbers:
+    default: latn
+  aliases:
+    fur: fur-IT
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: fy
+  names:
+    en:
+    - Western Frisian
+    fy:
+    - Frysk
+  locales:
+    nii-extra-locales:
+    - fry
+    - fy
+    - fy
+    - fy-NL
+  territories:
+  - NL
+  numbers:
+    default: latn
+  aliases:
+    fry: fy
+    fy: fy-NL
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: ga
+  names:
+    en:
+    - Irish
+    ga:
+    - Gaeilge
+  locales:
+    nii-core:
+    - ga
+    - ga
+    - ga-GB
+    - ga-IE
+    - gle
+  territories:
+  - IE
+  - GB
+  numbers:
+    default: latn
+  aliases:
+    ga: ga-IE
+    gle: ga
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - two
+    - few
+    - many
+    ordinal:
+    - other
+    - one
+- code: gd
+  names:
+    en:
+    - Scottish Gaelic
+    gd:
+    - Gàidhlig
+  locales:
+    nii-extra-locales:
+    - gd
+    - gd
+    - gd-GB
+    - gla
+  territories:
+  - GB
+  numbers:
+    default: latn
+  aliases:
+    gd: gd-GB
+    gla: gd
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - two
+    - few
+    ordinal:
+    - other
+    - one
+    - two
+    - few
+- code: gl
+  names:
+    en:
+    - Galician
+    gl:
+    - galego
+  locales:
+    nii-core:
+    - gl
+    - gl
+    - gl-ES
+    - glg
+  territories:
+  - ES
+  numbers:
+    default: latn
+  aliases:
+    gl: gl-ES
+    glg: gl
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: gsw
+  names:
+    en:
+    - Swiss German
+    gsw:
+    - Schwiizertüütsch
+  locales:
+    nii-extra-locales:
+    - gsw
+    - gsw
+    - gsw-CH
+    - gsw-FR
+    - gsw-LI
+  territories:
+  - CH
+  - FR
+  - LI
+  numbers:
+    default: latn
+  aliases:
+    gsw: gsw-CH
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: gu
+  names:
+    en:
+    - Gujarati
+    gu:
+    - ગુજરાતી
+  locales:
+    nii-core:
+    - gu
+    - gu
+    - gu-IN
+    - guj
+  territories:
+  - IN
+  numbers:
+    default: latn
+    native: gujr
+  aliases:
+    gu: gu-IN
+    guj: gu
+  scripts:
+  - Gujr
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+    - two
+    - few
+    - many
+  genders:
+  - masculine
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  - accusative
+  - dative
+  - locative
+  - instrumental
+  - vocative
+- code: guz
+  names:
+    en:
+    - Gusii
+    guz:
+    - Ekegusii
+  locales:
+    nii-extra-locales:
+    - guz
+    - guz
+    - guz-KE
+  territories:
+  - KE
+  numbers:
+    default: latn
+  aliases:
+    guz: guz-KE
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: gv
+  names:
+    en:
+    - Manx
+    gv:
+    - Gaelg
+  locales:
+    nii-extra-locales:
+    - glv
+    - gv
+    - gv
+    - gv-IM
+  territories:
+  - IM
+  numbers:
+    default: latn
+  aliases:
+    glv: gv
+    gv: gv-IM
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - two
+    - few
+    - many
+    ordinal:
+    - other
+- code: ha
+  names:
+    en:
+    - Hausa
+    ha:
+    - Hausa
+  locales:
+    nii-extra-locales:
+    - ha
+    - ha
+    - ha-Arab
+    - ha-GH
+    - ha-NE
+    - ha-NG
+    - hau
+  territories:
+  - NG
+  - GH
+  - NE
+  numbers:
+    default: latn
+  aliases:
+    ha: ha-NG
+    hau: ha
+  scripts:
+  - Arab
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: haw
+  names:
+    en:
+    - Hawaiian
+    haw:
+    - ʻŌlelo Hawaiʻi
+  locales:
+    nii-extra-locales:
+    - haw
+    - haw
+    - haw-US
+  territories:
+  - US
+  numbers:
+    default: latn
+  aliases:
+    haw: haw-US
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: he
+  names:
+    en:
+    - Hebrew
+    he:
+    - עברית
+  locales:
+    nii-core:
+    - he
+    - he
+    - he-IL
+    - heb
+    - iw
+  territories:
+  - IL
+  numbers:
+    default: latn
+    traditional: hebr
+  aliases:
+    he: he-IL
+    heb: he
+    iw: he
+  scripts:
+  - Hebr
+  plurals:
+    cardinal:
+    - other
+    - one
+    - two
+    - many
+    ordinal:
+    - other
+  genders:
+  - masculine
+  - feminine
+  definiteness:
+  - definite
+  - indefinite
+  - construct
+- code: hi
+  names:
+    en:
+    - Hindi
+    hi:
+    - हिन्दी
+  locales:
+    nii-core:
+    - hi
+    - hi
+    - hi-IN
+    - hin
+    nii-extra-locales:
+    - hi-Latn
+  territories:
+  - IN
+  numbers:
+    default: latn
+    native: deva
+  aliases:
+    hi: hi-IN
+    hin: hi
+  scripts:
+  - Deva
+  - Latn
+  - Latn
+  - Mahj
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+    - two
+    - few
+    - many
+  genders:
+  - masculine
+  - feminine
+  cases:
+  - nominative
+  - oblique
+- code: hmn
+  names:
+    en:
+    - Hmong
+  locales:
+    nii-extra-locales:
+    - hea
+    - hmn
+  numbers:
+    default: latn
+  aliases:
+    hea: hmn
+  scripts:
+  - Latn
+  - Hmng
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: hr
+  names:
+    en:
+    - Croatian
+    hr:
+    - hrvatski
+  locales:
+    nii-core:
+    - hr
+    - hr
+    - hr-BA
+    - hr-HR
+    - hrv
+    - scr
+  territories:
+  - HR
+  - BA
+  numbers:
+    default: latn
+  aliases:
+    hr: hr-HR
+    hrv: hr
+    scr: hr
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - few
+    ordinal:
+    - other
+- code: hsb
+  names:
+    en:
+    - Upper Sorbian
+    hsb:
+    - hornjoserbšćina
+  locales:
+    nii-extra-locales:
+    - hsb
+    - hsb
+    - hsb-DE
+  territories:
+  - DE
+  numbers:
+    default: latn
+  aliases:
+    hsb: hsb-DE
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - two
+    - few
+    ordinal:
+    - other
+- code: ht
+  names:
+    en:
+    - Haitian Creole
+  locales:
+    nii-extra-locales:
+    - hat
+    - ht
+  numbers:
+    default: latn
+  aliases:
+    hat: ht
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: hu
+  names:
+    en:
+    - Hungarian
+    hu:
+    - magyar
+  locales:
+    nii-core:
+    - hu
+    - hu
+    - hu-HU
+    - hun
+  territories:
+  - HU
+  numbers:
+    default: latn
+  aliases:
+    hu: hu-HU
+    hun: hu
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+- code: hy
+  names:
+    en:
+    - Armenian
+    hy:
+    - հայերեն
+  locales:
+    nii-core:
+    - arm
+    - hy
+    - hy
+    - hy-AM
+    - hye
+  territories:
+  - AM
+  numbers:
+    default: latn
+    traditional: armn
+  aliases:
+    arm: hy
+    hy: hy-AM
+    hye: hy
+  scripts:
+  - Armn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+- code: ia
+  names:
+    en:
+    - Interlingua
+    ia:
+    - interlingua
+  locales:
+    nii-extra-locales:
+    - ia
+    - ia
+    - ia-001
+    - ina
+  territories:
+  - '001'
+  numbers:
+    default: latn
+  aliases:
+    ia: ia-001
+    ina: ia
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: id
+  names:
+    en:
+    - Indonesian
+    id:
+    - Indonesia
+  locales:
+    nii-core:
+    - id
+    - id
+    - id-ID
+    - in
+    - ind
+  territories:
+  - ID
+  numbers:
+    default: latn
+  aliases:
+    id: id-ID
+    in: id
+    ind: id
+  scripts:
+  - Latn
+  - Arab
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+  definiteness:
+  - definite
+  - indefinite
+- code: ig
+  names:
+    en:
+    - Igbo
+    ig:
+    - Igbo
+  locales:
+    nii-extra-locales:
+    - ibo
+    - ig
+    - ig
+    - ig-NG
+  territories:
+  - NG
+  numbers:
+    default: latn
+  aliases:
+    ibo: ig
+    ig: ig-NG
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ii
+  names:
+    en:
+    - Sichuan Yi
+    ii:
+    - ꆈꌠꉙ
+  locales:
+    nii-extra-locales:
+    - ii
+    - ii
+    - ii-CN
+    - iii
+  territories:
+  - CN
+  numbers:
+    default: latn
+  aliases:
+    ii: ii-CN
+    iii: ii
+  scripts:
+  - Yiii
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: is
+  names:
+    en:
+    - Icelandic
+    is:
+    - íslenska
+  locales:
+    nii-core:
+    - ice
+    - is
+    - is
+    - is-IS
+    - isl
+  territories:
+  - IS
+  numbers:
+    default: latn
+  aliases:
+    ice: is
+    is: is-IS
+    isl: is
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: it
+  names:
+    en:
+    - Italian
+    it:
+    - italiano
+  locales:
+    nii-core:
+    - it
+    - it
+    - it-CH
+    - it-IT
+    - it-SM
+    - it-VA
+    - ita
+  territories:
+  - IT
+  - CH
+  - SM
+  - VA
+  numbers:
+    default: latn
+  aliases:
+    it: it-IT
+    ita: it
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - many
+  genders:
+  - masculine
+  - feminine
+- code: iu
+  names:
+    en:
+    - Inuktitut
+  locales:
+    nii-extra-locales:
+    - iu-Latn
+  numbers:
+    default: latn
+  aliases: {}
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ja
+  names:
+    en:
+    - Japanese
+    ja:
+    - 日本語
+  locales:
+    nii-core:
+    - ja
+    - ja
+    - ja-JP
+    - jpn
+  territories:
+  - JP
+  numbers:
+    default: latn
+    traditional: jpan
+    finance: jpanfin
+  aliases:
+    ja: ja-JP
+    jpn: ja
+  scripts:
+  - Jpan
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: jgo
+  names:
+    en:
+    - Ngomba
+    jgo:
+    - Ndaꞌa
+  locales:
+    nii-extra-locales:
+    - jgo
+    - jgo
+    - jgo-CM
+  territories:
+  - CM
+  numbers:
+    default: latn
+  aliases:
+    jgo: jgo-CM
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: jmc
+  names:
+    en:
+    - Machame
+    jmc:
+    - Kimachame
+  locales:
+    nii-extra-locales:
+    - jmc
+    - jmc
+    - jmc-TZ
+  territories:
+  - TZ
+  numbers:
+    default: latn
+  aliases:
+    jmc: jmc-TZ
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: jv
+  names:
+    en:
+    - Javanese
+    jv:
+    - Jawa
+  locales:
+    nii-core:
+    - jav
+    - jv
+    - jv
+    - jv-ID
+    - jw
+  territories:
+  - ID
+  numbers:
+    default: latn
+    native: java
+  aliases:
+    jav: jv
+    jv: jv-ID
+    jw: jv
+  scripts:
+  - Latn
+  - Java
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ka
+  names:
+    en:
+    - Georgian
+    ka:
+    - ქართული
+  locales:
+    nii-core:
+    - geo
+    - ka
+    - ka
+    - ka-GE
+    - kat
+  territories:
+  - GE
+  numbers:
+    default: latn
+    traditional: geor
+  aliases:
+    geo: ka
+    ka: ka-GE
+    kat: ka
+  scripts:
+  - Geor
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+    - many
+- code: kab
+  names:
+    en:
+    - Kabyle
+    kab:
+    - Taqbaylit
+  locales:
+    nii-extra-locales:
+    - kab
+    - kab
+    - kab-DZ
+  territories:
+  - DZ
+  numbers:
+    default: latn
+  aliases:
+    kab: kab-DZ
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: kam
+  names:
+    en:
+    - Kamba
+    kam:
+    - Kikamba
+  locales:
+    nii-extra-locales:
+    - kam
+    - kam
+    - kam-KE
+  territories:
+  - KE
+  numbers:
+    default: latn
+  aliases:
+    kam: kam-KE
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: kde
+  names:
+    en:
+    - Makonde
+    kde:
+    - Chimakonde
+  locales:
+    nii-extra-locales:
+    - kde
+    - kde
+    - kde-TZ
+  territories:
+  - TZ
+  numbers:
+    default: latn
+  aliases:
+    kde: kde-TZ
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: kea
+  names:
+    en:
+    - Kabuverdianu
+    kea:
+    - kabuverdianu
+  locales:
+    nii-extra-locales:
+    - kea
+    - kea
+    - kea-CV
+  territories:
+  - CV
+  numbers:
+    default: latn
+  aliases:
+    kea: kea-CV
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: kgp
+  names:
+    en:
+    - Kaingang
+  locales:
+    nii-extra-locales:
+    - kgp
+  numbers:
+    default: latn
+  aliases: {}
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: khq
+  names:
+    en:
+    - Koyra Chiini
+    khq:
+    - Koyra ciini
+  locales:
+    nii-extra-locales:
+    - khq
+    - khq
+    - khq-ML
+  territories:
+  - ML
+  numbers:
+    default: latn
+  aliases:
+    khq: khq-ML
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ki
+  names:
+    en:
+    - Kikuyu
+    ki:
+    - Gikuyu
+  locales:
+    nii-extra-locales:
+    - ki
+    - ki
+    - ki-KE
+    - kik
+  territories:
+  - KE
+  numbers:
+    default: latn
+  aliases:
+    ki: ki-KE
+    kik: ki
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: kk
+  names:
+    en:
+    - Kazakh
+    kk:
+    - қазақ тілі
+  locales:
+    nii-core:
+    - kaz
+    - kk
+    - kk
+    - kk-KZ
+    nii-extra-locales:
+    - kk-Arab
+  territories:
+  - KZ
+  numbers:
+    default: latn
+  aliases:
+    kaz: kk
+    kk: kk-KZ
+  scripts:
+  - Arab
+  - Cyrl
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - many
+- code: kkj
+  names:
+    en:
+    - Kako
+    kkj:
+    - kakɔ
+  locales:
+    nii-extra-locales:
+    - kkj
+    - kkj
+    - kkj-CM
+  territories:
+  - CM
+  numbers:
+    default: latn
+  aliases:
+    kkj: kkj-CM
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: kl
+  names:
+    en:
+    - Kalaallisut
+    kl:
+    - kalaallisut
+  locales:
+    nii-extra-locales:
+    - kal
+    - kl
+    - kl
+    - kl-GL
+  territories:
+  - GL
+  numbers:
+    default: latn
+  aliases:
+    kal: kl
+    kl: kl-GL
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: kln
+  names:
+    en:
+    - Kalenjin
+    kln:
+    - Kalenjin
+  locales:
+    nii-extra-locales:
+    - kln
+    - kln
+    - kln-KE
+    - spy
+  territories:
+  - KE
+  numbers:
+    default: latn
+  aliases:
+    kln: kln-KE
+    spy: kln
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: km
+  names:
+    en:
+    - Khmer
+    km:
+    - ខ្មែរ
+  locales:
+    nii-core:
+    - khm
+    - km
+    - km
+    - km-KH
+  territories:
+  - KH
+  numbers:
+    default: latn
+    native: khmr
+  aliases:
+    khm: km
+    km: km-KH
+  scripts:
+  - Khmr
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: kn
+  names:
+    en:
+    - Kannada
+    kn:
+    - ಕನ್ನಡ
+  locales:
+    nii-core:
+    - kan
+    - kn
+    - kn
+    - kn-IN
+  territories:
+  - IN
+  numbers:
+    default: latn
+    native: knda
+  aliases:
+    kan: kn
+    kn: kn-IN
+  scripts:
+  - Knda
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+  genders:
+  - masculine
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  - accusative
+  - dative
+  - locative
+  - instrumental
+  - vocative
+- code: ko
+  names:
+    en:
+    - Korean
+    ko:
+    - 한국어
+  locales:
+    nii-core:
+    - ko
+    - ko
+    - ko-KP
+    - ko-KR
+    - kor
+  territories:
+  - KR
+  - KP
+  numbers:
+    default: latn
+  aliases:
+    ko: ko-KR
+    kor: ko
+  scripts:
+  - Kore
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: kok
+  names:
+    en:
+    - Konkani
+    kok:
+    - कोंकणी
+  locales:
+    nii-extra-locales:
+    - knn
+    - kok
+    - kok
+    - kok-IN
+  territories:
+  - IN
+  numbers:
+    default: latn
+    native: deva
+  aliases:
+    knn: kok
+    kok: kok-IN
+  scripts:
+  - Deva
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ks
+  names:
+    en:
+    - Kashmiri
+    ks:
+    - کٲشُر
+  locales:
+    nii-extra-locales:
+    - kas
+    - ks
+    - ks
+    - ks-Arab
+    - ks-Arab-IN
+    - ks-Deva
+  territories:
+  - IN
+  numbers:
+    default: arabext
+  aliases:
+    kas: ks
+    ks: ks-Arab-IN
+  scripts:
+  - Arab
+  - Deva
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: ksb
+  names:
+    en:
+    - Shambala
+    ksb:
+    - Kishambaa
+  locales:
+    nii-extra-locales:
+    - ksb
+    - ksb
+    - ksb-TZ
+  territories:
+  - TZ
+  numbers:
+    default: latn
+  aliases:
+    ksb: ksb-TZ
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: ksf
+  names:
+    en:
+    - Bafia
+    ksf:
+    - rikpa
+  locales:
+    nii-extra-locales:
+    - ksf
+    - ksf
+    - ksf-CM
+  territories:
+  - CM
+  numbers:
+    default: latn
+  aliases:
+    ksf: ksf-CM
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ksh
+  names:
+    en:
+    - Colognian
+    ksh:
+    - Kölsch
+  locales:
+    nii-extra-locales:
+    - ksh
+    - ksh
+    - ksh-DE
+  territories:
+  - DE
+  numbers:
+    default: latn
+  aliases:
+    ksh: ksh-DE
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - zero
+    - one
+    ordinal:
+    - other
+- code: ku
+  names:
+    en:
+    - Kurdish
+    ku:
+    - kurdî
+  locales:
+    nii-extra-locales:
+    - kmr
+    - ku
+    - ku
+    - ku-Arab
+    - ku-TR
+    - kur
+  territories:
+  - TR
+  numbers:
+    default: latn
+  aliases:
+    kmr: ku
+    ku: ku-TR
+    kur: ku
+  scripts:
+  - Arab
+  - Cyrl
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: kw
+  names:
+    en:
+    - Cornish
+    kw:
+    - kernewek
+  locales:
+    nii-extra-locales:
+    - cor
+    - kw
+    - kw
+    - kw-GB
+  territories:
+  - GB
+  numbers:
+    default: latn
+  aliases:
+    cor: kw
+    kw: kw-GB
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - zero
+    - one
+    - two
+    - few
+    - many
+    ordinal:
+    - other
+    - one
+    - many
+- code: ky
+  names:
+    en:
+    - Kyrgyz
+    - Kirghiz
+    ky:
+    - кыргызча
+  locales:
+    nii-core:
+    - kir
+    - ky
+    - ky
+    - ky-KG
+    nii-extra-locales:
+    - ky-Arab
+    - ky-Latn
+  territories:
+  - KG
+  numbers:
+    default: latn
+  aliases:
+    kir: ky
+    ky: ky-KG
+  scripts:
+  - Arab
+  - Cyrl
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: la
+  names:
+    en:
+    - Latin
+  locales:
+    nii-extra-locales:
+    - la
+    - lat
+  numbers:
+    default: latn
+  aliases:
+    lat: la
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: lag
+  names:
+    en:
+    - Langi
+    lag:
+    - Kɨlaangi
+  locales:
+    nii-extra-locales:
+    - lag
+    - lag
+    - lag-TZ
+  territories:
+  - TZ
+  numbers:
+    default: latn
+  aliases:
+    lag: lag-TZ
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - zero
+    - one
+    ordinal:
+    - other
+- code: lb
+  names:
+    en:
+    - Luxembourgish
+    lb:
+    - Lëtzebuergesch
+  locales:
+    nii-extra-locales:
+    - i-lux
+    - lb
+    - lb
+    - lb-LU
+    - ltz
+  territories:
+  - LU
+  numbers:
+    default: latn
+  aliases:
+    i-lux: lb
+    lb: lb-LU
+    ltz: lb
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: lg
+  names:
+    en:
+    - Ganda
+    lg:
+    - Luganda
+  locales:
+    nii-extra-locales:
+    - lg
+    - lg
+    - lg-UG
+    - lug
+  territories:
+  - UG
+  numbers:
+    default: latn
+  aliases:
+    lg: lg-UG
+    lug: lg
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: lij
+  names:
+    en:
+    - Ligurian
+  locales:
+    nii-extra-locales:
+    - lij
+  numbers:
+    default: latn
+  aliases: {}
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - many
+  genders:
+  - masculine
+  - feminine
+- code: lkt
+  names:
+    en:
+    - Lakota
+    lkt:
+    - Lakȟólʼiyapi
+  locales:
+    nii-extra-locales:
+    - lkt
+    - lkt
+    - lkt-US
+  territories:
+  - US
+  numbers:
+    default: latn
+  aliases:
+    lkt: lkt-US
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ln
+  names:
+    en:
+    - Lingala
+    ln:
+    - lingála
+  locales:
+    nii-extra-locales:
+    - lin
+    - ln
+    - ln
+    - ln-AO
+    - ln-CD
+    - ln-CF
+    - ln-CG
+  territories:
+  - CD
+  - AO
+  - CF
+  - CG
+  numbers:
+    default: latn
+  aliases:
+    lin: ln
+    ln: ln-CD
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: lo
+  names:
+    en:
+    - Lao
+    lo:
+    - ລາວ
+  locales:
+    nii-core:
+    - lao
+    - lo
+    - lo
+    - lo-LA
+  territories:
+  - LA
+  numbers:
+    default: latn
+    native: laoo
+  aliases:
+    lao: lo
+    lo: lo-LA
+  scripts:
+  - Laoo
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+    - one
+- code: lou
+  names:
+    en:
+    - Louisiana Creole
+  locales:
+    nii-extra-locales:
+    - lou
+  numbers:
+    default: latn
+  aliases: {}
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: lrc
+  names:
+    en:
+    - Northern Luri
+    lrc:
+    - لۊری شومالی
+  locales:
+    nii-extra-locales:
+    - lrc
+    - lrc
+    - lrc-IQ
+    - lrc-IR
+  territories:
+  - IR
+  - IQ
+  numbers:
+    default: arabext
+  aliases:
+    lrc: lrc-IR
+  scripts:
+  - Arab
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: lt
+  names:
+    en:
+    - Lithuanian
+    lt:
+    - lietuvių
+  locales:
+    nii-core:
+    - lit
+    - lt
+    - lt
+    - lt-LT
+  territories:
+  - LT
+  numbers:
+    default: latn
+  aliases:
+    lit: lt
+    lt: lt-LT
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - few
+    - many
+    ordinal:
+    - other
+- code: lu
+  names:
+    en:
+    - Luba-Katanga
+    lu:
+    - Tshiluba
+  locales:
+    nii-extra-locales:
+    - lu
+    - lu
+    - lu-CD
+    - lub
+  territories:
+  - CD
+  numbers:
+    default: latn
+  aliases:
+    lu: lu-CD
+    lub: lu
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: luo
+  names:
+    en:
+    - Luo
+    luo:
+    - Dholuo
+  locales:
+    nii-extra-locales:
+    - luo
+    - luo
+    - luo-KE
+  territories:
+  - KE
+  numbers:
+    default: latn
+  aliases:
+    luo: luo-KE
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: luy
+  names:
+    en:
+    - Luyia
+    luy:
+    - Luluhia
+  locales:
+    nii-extra-locales:
+    - bxk
+    - luy
+    - luy
+    - luy-KE
+  territories:
+  - KE
+  numbers:
+    default: latn
+  aliases:
+    bxk: luy
+    luy: luy-KE
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: lv
+  names:
+    en:
+    - Latvian
+    lv:
+    - latviešu
+  locales:
+    nii-core:
+    - lav
+    - lv
+    - lv
+    - lv-LV
+    - lvs
+  territories:
+  - LV
+  numbers:
+    default: latn
+  aliases:
+    lav: lv
+    lv: lv-LV
+    lvs: lv
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - zero
+    - one
+    ordinal:
+    - other
+- code: mai
+  names:
+    en:
+    - Maithili
+    mai:
+    - मैथिली
+  locales:
+    nii-extra-locales:
+    - mai
+    - mai
+    - mai-IN
+  territories:
+  - IN
+  numbers:
+    default: latn
+    native: deva
+  aliases:
+    mai: mai-IN
+  scripts:
+  - Deva
+  - Tirh
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: mas
+  names:
+    en:
+    - Masai
+    mas:
+    - Maa
+  locales:
+    nii-extra-locales:
+    - mas
+    - mas
+    - mas-KE
+    - mas-TZ
+  territories:
+  - KE
+  - TZ
+  numbers:
+    default: latn
+  aliases:
+    mas: mas-KE
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: mer
+  names:
+    en:
+    - Meru
+    mer:
+    - Kĩmĩrũ
+  locales:
+    nii-extra-locales:
+    - mer
+    - mer
+    - mer-KE
+  territories:
+  - KE
+  numbers:
+    default: latn
+  aliases:
+    mer: mer-KE
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: mfe
+  names:
+    en:
+    - Morisyen
+    mfe:
+    - kreol morisien
+  locales:
+    nii-extra-locales:
+    - mfe
+    - mfe
+    - mfe-MU
+  territories:
+  - MU
+  numbers:
+    default: latn
+  aliases:
+    mfe: mfe-MU
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: mg
+  names:
+    en:
+    - Malagasy
+    mg:
+    - Malagasy
+  locales:
+    nii-extra-locales:
+    - mg
+    - mg
+    - mg-MG
+    - mlg
+    - plt
+  territories:
+  - MG
+  numbers:
+    default: latn
+  aliases:
+    mg: mg-MG
+    mlg: mg
+    plt: mg
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: mgh
+  names:
+    en:
+    - Makhuwa-Meetto
+    mgh:
+    - Makua
+  locales:
+    nii-extra-locales:
+    - mgh
+    - mgh
+    - mgh-MZ
+  territories:
+  - MZ
+  numbers:
+    default: latn
+  aliases:
+    mgh: mgh-MZ
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: mgo
+  names:
+    en:
+    - Metaʼ
+    mgo:
+    - metaʼ
+  locales:
+    nii-extra-locales:
+    - mgo
+    - mgo
+    - mgo-CM
+  territories:
+  - CM
+  numbers:
+    default: latn
+  aliases:
+    mgo: mgo-CM
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: mi
+  names:
+    en:
+    - Maori
+    mi:
+    - te reo Māori
+  locales:
+    nii-extra-locales:
+    - mao
+    - mi
+    - mi
+    - mi-NZ
+    - mri
+  territories:
+  - NZ
+  numbers:
+    default: latn
+  aliases:
+    mao: mi
+    mi: mi-NZ
+    mri: mi
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: mk
+  names:
+    en:
+    - Macedonian
+    mk:
+    - македонски
+  locales:
+    nii-core:
+    - mac
+    - mk
+    - mk
+    - mk-MK
+    - mkd
+  territories:
+  - MK
+  numbers:
+    default: latn
+  aliases:
+    mac: mk
+    mk: mk-MK
+    mkd: mk
+  scripts:
+  - Cyrl
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+    - two
+    - many
+- code: ml
+  names:
+    en:
+    - Malayalam
+    ml:
+    - മലയാളം
+  locales:
+    nii-core:
+    - mal
+    - ml
+    - ml
+    - ml-IN
+    nii-extra-locales:
+    - ml-Arab
+  territories:
+  - IN
+  numbers:
+    default: latn
+    native: mlym
+  aliases:
+    mal: ml
+    ml: ml-IN
+  scripts:
+  - Mlym
+  - Arab
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+  genders:
+  - animate
+  - inanimate
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  - instrumental
+  - locative
+  - comitative
+  - locativecopulative
+  - sociative
+- code: mn
+  names:
+    en:
+    - Mongolian
+    mn:
+    - монгол
+  locales:
+    nii-core:
+    - drh
+    - khk
+    - mn
+    - mn
+    - mn-MN
+    - mon
+    nii-extra-locales:
+    - mn-Mong
+  territories:
+  - MN
+  numbers:
+    default: latn
+  aliases:
+    drh: mn
+    khk: mn
+    mn: mn-MN
+    mon: mn
+  scripts:
+  - Cyrl
+  - Mong
+  - Mong
+  - Phag
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: mni
+  names:
+    en:
+    - Manipuri
+    mni:
+    - মৈতৈলোন্
+  locales:
+    nii-extra-locales:
+    - mni
+    - mni
+    - mni-Beng
+    - mni-Beng-IN
+    - mni-Mtei
+  territories:
+  - IN
+  numbers:
+    default: beng
+    native: latn
+  aliases:
+    mni: mni-Beng-IN
+  scripts:
+  - Beng
+  - Mtei
+  - Mtei
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: mr
+  names:
+    en:
+    - Marathi
+    mr:
+    - मराठी
+  locales:
+    nii-core:
+    - mar
+    - mr
+    - mr
+    - mr-IN
+  territories:
+  - IN
+  numbers:
+    default: deva
+  aliases:
+    mar: mr
+    mr: mr-IN
+  scripts:
+  - Deva
+  - Modi
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+    - two
+    - few
+  genders:
+  - masculine
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - oblique
+  - accusative
+  - dative
+  - ergative
+  - locative
+  - ablative
+  - genitive
+- code: ms
+  names:
+    en:
+    - Malay
+    ms:
+    - Melayu
+  locales:
+    nii-core:
+    - may
+    - ms
+    - ms
+    - ms-BN
+    - ms-ID
+    - ms-MY
+    - ms-SG
+    - msa
+    - zsm
+    nii-extra-locales:
+    - ms-Arab
+  territories:
+  - MY
+  - BN
+  - ID
+  - SG
+  numbers:
+    default: latn
+  aliases:
+    may: ms
+    ms: ms-MY
+    msa: ms
+    zsm: ms
+  scripts:
+  - Arab
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+    - one
+- code: mt
+  names:
+    en:
+    - Maltese
+    mt:
+    - Malti
+  locales:
+    nii-extra-locales:
+    - mlt
+    - mt
+    - mt
+    - mt-MT
+  territories:
+  - MT
+  numbers:
+    default: latn
+  aliases:
+    mlt: mt
+    mt: mt-MT
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - few
+    - many
+    ordinal:
+    - other
+- code: mua
+  names:
+    en:
+    - Mundang
+    mua:
+    - MUNDAŊ
+  locales:
+    nii-extra-locales:
+    - mua
+    - mua
+    - mua-CM
+  territories:
+  - CM
+  numbers:
+    default: latn
+  aliases:
+    mua: mua-CM
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: mul
+  names:
+    en:
+    - Multiple languages
+  locales:
+    nii-extra-locales:
+    - mul
+  numbers:
+    default: latn
+  aliases: {}
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: my
+  names:
+    en:
+    - Burmese
+    - Myanmar Language
+    my:
+    - မြန်မာ
+  locales:
+    nii-core:
+    - bur
+    - my
+    - my
+    - my-MM
+    - mya
+  territories:
+  - MM
+  numbers:
+    default: mymr
+  aliases:
+    bur: my
+    my: my-MM
+    mya: my
+  scripts:
+  - Mymr
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: mzn
+  names:
+    en:
+    - Mazanderani
+    mzn:
+    - مازرونی
+  locales:
+    nii-extra-locales:
+    - mzn
+    - mzn
+    - mzn-IR
+  territories:
+  - IR
+  numbers:
+    default: arabext
+  aliases:
+    mzn: mzn-IR
+  scripts:
+  - Arab
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: naq
+  names:
+    en:
+    - Nama
+    naq:
+    - Khoekhoegowab
+  locales:
+    nii-extra-locales:
+    - naq
+    - naq
+    - naq-NA
+  territories:
+  - NA
+  numbers:
+    default: latn
+  aliases:
+    naq: naq-NA
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - two
+    ordinal:
+    - other
+- code: nb
+  names:
+    en:
+    - Norwegian Bokmål
+    nb:
+    - norsk bokmål
+  locales:
+    nii-core:
+    - nb
+    - nb
+    - nb-NO
+    - nb-SJ
+    - 'no'
+    - no-bok
+    - no-bokmal
+    - nob
+    - nor
+  territories:
+  - 'NO'
+  - SJ
+  numbers:
+    default: latn
+  aliases:
+    nb: nb-NO
+    'no': nb
+    no-bok: nb
+    no-bokmal: nb
+    nob: nb
+    nor: nb
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+  genders:
+  - masculine
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  definiteness:
+  - definite
+  - indefinite
+- code: nd
+  names:
+    en:
+    - North Ndebele
+    nd:
+    - isiNdebele
+  locales:
+    nii-extra-locales:
+    - nd
+    - nd
+    - nd-ZW
+    - nde
+  territories:
+  - ZW
+  numbers:
+    default: latn
+  aliases:
+    nd: nd-ZW
+    nde: nd
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: nds
+  names:
+    en:
+    - Low German
+  locales:
+    nii-extra-locales:
+    - nds
+    - nds
+    - nds-DE
+    - nds-NL
+  territories:
+  - DE
+  - NL
+  numbers:
+    default: latn
+  aliases:
+    nds: nds-DE
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ne
+  names:
+    en:
+    - Nepali
+    ne:
+    - नेपाली
+  locales:
+    nii-core:
+    - ne
+    - ne
+    - ne-IN
+    - ne-NP
+    - nep
+    - npi
+  territories:
+  - NP
+  - IN
+  numbers:
+    default: deva
+  aliases:
+    ne: ne-NP
+    nep: ne
+    npi: ne
+  scripts:
+  - Deva
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+- code: nl
+  names:
+    en:
+    - Dutch
+    nl:
+    - Nederlands
+  locales:
+    nii-core:
+    - dut
+    - nl
+    - nl
+    - nl-AW
+    - nl-BE
+    - nl-BQ
+    - nl-CW
+    - nl-NL
+    - nl-SR
+    - nl-SX
+    - nld
+  territories:
+  - NL
+  - AW
+  - BE
+  - BQ
+  - CW
+  - SR
+  - SX
+  numbers:
+    default: latn
+  aliases:
+    dut: nl
+    nl: nl-NL
+    nld: nl
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+  genders:
+  - common
+  - neuter
+- code: nmg
+  names:
+    en:
+    - Kwasio
+  locales:
+    nii-extra-locales:
+    - nmg
+    - nmg
+    - nmg-CM
+  territories:
+  - CM
+  numbers:
+    default: latn
+  aliases:
+    nmg: nmg-CM
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: nn
+  names:
+    en:
+    - Norwegian Nynorsk
+    nn:
+    - norsk nynorsk
+  locales:
+    nii-extra-locales:
+    - nn
+    - nn
+    - nn-NO
+    - nno
+    - no-nyn
+    - no-nynorsk
+  territories:
+  - 'NO'
+  numbers:
+    default: latn
+  aliases:
+    nn: nn-NO
+    nno: nn
+    no-nyn: nn
+    no-nynorsk: nn
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: nnh
+  names:
+    en:
+    - Ngiemboon
+    nnh:
+    - Shwóŋò ngiembɔɔn
+  locales:
+    nii-extra-locales:
+    - nnh
+    - nnh
+    - nnh-CM
+  territories:
+  - CM
+  numbers:
+    default: latn
+  aliases:
+    nnh: nnh-CM
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: nus
+  names:
+    en:
+    - Nuer
+    nus:
+    - Thok Nath
+  locales:
+    nii-extra-locales:
+    - nus
+    - nus
+    - nus-SS
+  territories:
+  - SS
+  numbers:
+    default: latn
+  aliases:
+    nus: nus-SS
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: nv
+  names:
+    en:
+    - Navajo
+  locales:
+    nii-extra-locales:
+    - i-navajo
+    - nav
+    - nv
+  numbers:
+    default: latn
+  aliases:
+    i-navajo: nv
+    nav: nv
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ny
+  names:
+    en:
+    - Nyanja
+  locales:
+    nii-extra-locales:
+    - ny
+    - nya
+  numbers:
+    default: latn
+  aliases:
+    nya: ny
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: nyn
+  names:
+    en:
+    - Nyankole
+    nyn:
+    - Runyankore
+  locales:
+    nii-extra-locales:
+    - nyn
+    - nyn
+    - nyn-UG
+  territories:
+  - UG
+  numbers:
+    default: latn
+  aliases:
+    nyn: nyn-UG
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: om
+  names:
+    en:
+    - Oromo
+    om:
+    - Oromoo
+  locales:
+    nii-extra-locales:
+    - gaz
+    - om
+    - om
+    - om-ET
+    - om-KE
+    - orm
+  territories:
+  - ET
+  - KE
+  numbers:
+    default: latn
+    traditional: ethi
+  aliases:
+    gaz: om
+    om: om-ET
+    orm: om
+  scripts:
+  - Latn
+  - Ethi
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: or
+  names:
+    en:
+    - Odia
+    or:
+    - ଓଡ଼ିଆ
+  locales:
+    nii-core:
+    - or
+    - or
+    - or-IN
+    - ori
+    - ory
+  territories:
+  - IN
+  numbers:
+    default: latn
+    native: orya
+  aliases:
+    or: or-IN
+    ori: or
+    ory: or
+  scripts:
+  - Orya
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+    - two
+    - few
+    - many
+- code: os
+  names:
+    en:
+    - Ossetic
+    os:
+    - ирон
+  locales:
+    nii-extra-locales:
+    - os
+    - os
+    - os-GE
+    - os-RU
+    - oss
+  territories:
+  - GE
+  - RU
+  numbers:
+    default: latn
+  aliases:
+    os: os-GE
+    oss: os
+  scripts:
+  - Cyrl
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: pa
+  names:
+    en:
+    - Punjabi
+    pa:
+    - ਪੰਜਾਬੀ
+    - پنجابی
+  locales:
+    nii-core:
+    - pa
+    - pa
+    - pa-Arab-PK
+    - pa-Guru
+    - pa-Guru-IN
+    - pan
+    nii-extra-locales:
+    - pa-Arab
+  territories:
+  - IN
+  - PK
+  numbers:
+    default: latn
+    native: guru
+  aliases:
+    pa: pa-Guru-IN
+    pan: pa
+  scripts:
+  - Arab
+  - Guru
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+  genders:
+  - masculine
+  - feminine
+  cases:
+  - nominative
+  - oblique
+- code: pcm
+  names:
+    en:
+    - Nigerian Pidgin
+    pcm:
+    - Naijíriá Píjin
+  locales:
+    nii-extra-locales:
+    - pcm
+    - pcm
+    - pcm-NG
+  territories:
+  - NG
+  numbers:
+    default: latn
+  aliases:
+    pcm: pcm-NG
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: pl
+  names:
+    en:
+    - Polish
+    pl:
+    - polski
+  locales:
+    nii-core:
+    - pl
+    - pl
+    - pl-PL
+    - pol
+  territories:
+  - PL
+  numbers:
+    default: latn
+  aliases:
+    pl: pl-PL
+    pol: pl
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - few
+    - many
+    ordinal:
+    - other
+  genders:
+  - animate
+  - inanimate
+  - personal
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  - instrumental
+  - vocative
+  - locative
+- code: prg
+  names:
+    en:
+    - Prussian
+  locales:
+    nii-extra-locales:
+    - prg
+  numbers:
+    default: latn
+  aliases: {}
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - zero
+    - one
+    ordinal:
+    - other
+- code: ps
+  names:
+    en:
+    - Pashto
+    - Pushto
+    ps:
+    - پښتو
+  locales:
+    nii-core:
+    - pbu
+    - ps
+    - ps
+    - ps-AF
+    - ps-PK
+    - pus
+  territories:
+  - AF
+  - PK
+  numbers:
+    default: arabext
+  aliases:
+    pbu: ps
+    ps: ps-AF
+    pus: ps
+  scripts:
+  - Arab
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: pt
+  names:
+    en:
+    - Portuguese
+    pt:
+    - português
+  locales:
+    nii-core:
+    - por
+    - pt
+    - pt
+    - pt-AO
+    - pt-BR
+    - pt-CH
+    - pt-CV
+    - pt-GQ
+    - pt-GW
+    - pt-LU
+    - pt-MO
+    - pt-MZ
+    - pt-PT
+    - pt-ST
+    - pt-TL
+    nii-extra-locales:
+    - pt-FR
+  territories:
+  - BR
+  - AO
+  - CH
+  - CV
+  - FR
+  - GQ
+  - GW
+  - LU
+  - MO
+  - MZ
+  - PT
+  - ST
+  - TL
+  numbers:
+    default: latn
+  aliases:
+    por: pt
+    pt: pt-BR
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+  genders:
+  - masculine
+  - feminine
+- code: qu
+  names:
+    en:
+    - Quechua
+    qu:
+    - Runasimi
+  locales:
+    nii-extra-locales:
+    - qu
+    - qu
+    - qu-BO
+    - qu-EC
+    - qu-PE
+    - que
+    - quz
+  territories:
+  - PE
+  - BO
+  - EC
+  numbers:
+    default: latn
+  aliases:
+    qu: qu-PE
+    que: qu
+    quz: qu
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: rm
+  names:
+    en:
+    - Romansh
+    rm:
+    - rumantsch
+  locales:
+    nii-extra-locales:
+    - rm
+    - rm
+    - rm-CH
+    - roh
+  territories:
+  - CH
+  numbers:
+    default: latn
+  aliases:
+    rm: rm-CH
+    roh: rm
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: rn
+  names:
+    en:
+    - Rundi
+    rn:
+    - Ikirundi
+  locales:
+    nii-extra-locales:
+    - rn
+    - rn
+    - rn-BI
+    - run
+  territories:
+  - BI
+  numbers:
+    default: latn
+  aliases:
+    rn: rn-BI
+    run: rn
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ro
+  names:
+    en:
+    - Romanian
+    ro:
+    - română
+  locales:
+    nii-core:
+    - mo
+    - mol
+    - ro
+    - ro
+    - ro-MD
+    - ro-RO
+    - ron
+    - rum
+  territories:
+  - RO
+  - MD
+  numbers:
+    default: latn
+  aliases:
+    mo: ro
+    mol: ro
+    ro: ro-RO
+    ron: ro
+    rum: ro
+  scripts:
+  - Latn
+  - Cyrl
+  plurals:
+    cardinal:
+    - other
+    - one
+    - few
+    ordinal:
+    - other
+    - one
+  genders:
+  - masculine
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  definiteness:
+  - definite
+  - indefinite
+- code: rof
+  names:
+    en:
+    - Rombo
+    rof:
+    - Kihorombo
+  locales:
+    nii-extra-locales:
+    - rof
+    - rof
+    - rof-TZ
+  territories:
+  - TZ
+  numbers:
+    default: latn
+  aliases:
+    rof: rof-TZ
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: ru
+  names:
+    en:
+    - Russian
+    ru:
+    - русский
+  locales:
+    nii-core:
+    - ru
+    - ru
+    - ru-BY
+    - ru-KG
+    - ru-KZ
+    - ru-MD
+    - ru-RU
+    - ru-UA
+    - rus
+  territories:
+  - RU
+  - BY
+  - KG
+  - KZ
+  - MD
+  - UA
+  numbers:
+    default: latn
+  aliases:
+    ru: ru-RU
+    rus: ru
+  scripts:
+  - Cyrl
+  plurals:
+    cardinal:
+    - other
+    - one
+    - few
+    - many
+    ordinal:
+    - other
+  genders:
+  - masculine
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  - instrumental
+  - prepositional
+  - vocative
+  - locative
+- code: rw
+  names:
+    en:
+    - Kinyarwanda
+    rw:
+    - Kinyarwanda
+  locales:
+    nii-extra-locales:
+    - kin
+    - rw
+    - rw
+    - rw-RW
+  territories:
+  - RW
+  numbers:
+    default: latn
+  aliases:
+    kin: rw
+    rw: rw-RW
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: rwk
+  names:
+    en:
+    - Rwa
+    rwk:
+    - Kiruwa
+  locales:
+    nii-extra-locales:
+    - rwk
+    - rwk
+    - rwk-TZ
+  territories:
+  - TZ
+  numbers:
+    default: latn
+  aliases:
+    rwk: rwk-TZ
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: sa
+  names:
+    en:
+    - Sanskrit
+    sa:
+    - संस्कृत भाषा
+  locales:
+    nii-extra-locales:
+    - sa
+    - sa
+    - sa-IN
+    - san
+  territories:
+  - IN
+  numbers:
+    default: deva
+  aliases:
+    sa: sa-IN
+    san: sa
+  scripts:
+  - Deva
+  - Gran
+  - Shrd
+  - Sidd
+  - Sinh
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: sah
+  names:
+    en:
+    - Sakha
+    sah:
+    - саха тыла
+  locales:
+    nii-extra-locales:
+    - sah
+    - sah
+    - sah-RU
+  territories:
+  - RU
+  numbers:
+    default: latn
+  aliases:
+    sah: sah-RU
+  scripts:
+  - Cyrl
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: saq
+  names:
+    en:
+    - Samburu
+    saq:
+    - Kisampur
+  locales:
+    nii-extra-locales:
+    - saq
+    - saq
+    - saq-KE
+  territories:
+  - KE
+  numbers:
+    default: latn
+  aliases:
+    saq: saq-KE
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: sat
+  names:
+    en:
+    - Santali
+    sat:
+    - ᱥᱟᱱᱛᱟᱲᱤ
+  locales:
+    nii-extra-locales:
+    - sat
+    - sat
+    - sat-Deva
+    - sat-Olck
+    - sat-Olck-IN
+  territories:
+  - IN
+  numbers:
+    default: olck
+    native: latn
+  aliases:
+    sat: sat-Olck-IN
+  scripts:
+  - Olck
+  - Deva
+  - Beng
+  - Deva
+  - Latn
+  - Orya
+  plurals:
+    cardinal:
+    - other
+    - one
+    - two
+    ordinal:
+    - other
+- code: sbp
+  names:
+    en:
+    - Sangu
+    sbp:
+    - Ishisangu
+  locales:
+    nii-extra-locales:
+    - sbp
+    - sbp
+    - sbp-TZ
+  territories:
+  - TZ
+  numbers:
+    default: latn
+  aliases:
+    sbp: sbp-TZ
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: sd
+  names:
+    en:
+    - Sindhi
+    sd:
+    - सिन्धी
+    - سنڌي
+  locales:
+    nii-core:
+    - sd
+    - sd
+    - sd-Arab
+    - sd-Arab-PK
+    - sd-Deva-IN
+    - snd
+    nii-extra-locales:
+    - sd-Deva
+    - sd-Khoj
+    - sd-Sind
+  territories:
+  - IN
+  - PK
+  numbers:
+    default: arab
+  aliases:
+    sd: sd-Deva-IN
+    snd: sd
+  scripts:
+  - Arab
+  - Deva
+  - Khoj
+  - Sind
+  - Khoj
+  - Sind
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: se
+  names:
+    en:
+    - Northern Sami
+    se:
+    - davvisámegiella
+  locales:
+    nii-extra-locales:
+    - se
+    - se
+    - se-FI
+    - se-NO
+    - se-SE
+    - sme
+  territories:
+  - 'NO'
+  - FI
+  - SE
+  numbers:
+    default: latn
+  aliases:
+    se: se-NO
+    sme: se
+  scripts:
+  - Latn
+  - Cyrl
+  plurals:
+    cardinal:
+    - other
+    - one
+    - two
+    ordinal:
+    - other
+- code: seh
+  names:
+    en:
+    - Sena
+    seh:
+    - sena
+  locales:
+    nii-extra-locales:
+    - seh
+    - seh
+    - seh-MZ
+  territories:
+  - MZ
+  numbers:
+    default: latn
+  aliases:
+    seh: seh-MZ
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: ses
+  names:
+    en:
+    - Koyraboro Senni
+    ses:
+    - Koyraboro senni
+  locales:
+    nii-extra-locales:
+    - ses
+    - ses
+    - ses-ML
+  territories:
+  - ML
+  numbers:
+    default: latn
+  aliases:
+    ses: ses-ML
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: sg
+  names:
+    en:
+    - Sango
+    sg:
+    - Sängö
+  locales:
+    nii-extra-locales:
+    - sag
+    - sg
+    - sg
+    - sg-CF
+  territories:
+  - CF
+  numbers:
+    default: latn
+  aliases:
+    sag: sg
+    sg: sg-CF
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: shi
+  names:
+    en:
+    - Tachelhit
+    shi:
+    - ⵜⴰⵛⵍⵃⵉⵜ
+    - Tashelḥiyt
+  locales:
+    nii-extra-locales:
+    - shi
+    - shi
+    - shi-Latn
+    - shi-Latn-MA
+    - shi-Tfng
+    - shi-Tfng-MA
+  territories:
+  - MA
+  numbers:
+    default: latn
+  aliases:
+    shi: shi-Tfng-MA
+  scripts:
+  - Arab
+  - Latn
+  - Tfng
+  plurals:
+    cardinal:
+    - other
+    - one
+    - few
+    ordinal:
+    - other
+- code: si
+  names:
+    en:
+    - Sinhala
+    si:
+    - සිංහල
+  locales:
+    nii-core:
+    - si
+    - si
+    - si-LK
+    - sin
+  territories:
+  - LK
+  numbers:
+    default: latn
+  aliases:
+    si: si-LK
+    sin: si
+  scripts:
+  - Sinh
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: sk
+  names:
+    en:
+    - Slovak
+    sk:
+    - slovenčina
+  locales:
+    nii-core:
+    - sk
+    - sk
+    - sk-SK
+    - slk
+    - slo
+  territories:
+  - SK
+  numbers:
+    default: latn
+  aliases:
+    sk: sk-SK
+    slk: sk
+    slo: sk
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - few
+    - many
+    ordinal:
+    - other
+  genders:
+  - animate
+  - inanimate
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  - instrumental
+  - vocative
+  - locative
+- code: sl
+  names:
+    en:
+    - Slovenian
+    sl:
+    - slovenščina
+  locales:
+    nii-core:
+    - sl
+    - sl
+    - sl-SI
+    - slv
+  territories:
+  - SI
+  numbers:
+    default: latn
+  aliases:
+    sl: sl-SI
+    slv: sl
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - two
+    - few
+    ordinal:
+    - other
+- code: sm
+  names:
+    en:
+    - Samoan
+  locales:
+    nii-extra-locales:
+    - sm
+    - smo
+  numbers:
+    default: latn
+  aliases:
+    smo: sm
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: smn
+  names:
+    en:
+    - Inari Sami
+    smn:
+    - anarâškielâ
+  locales:
+    nii-extra-locales:
+    - smn
+    - smn
+    - smn-FI
+  territories:
+  - FI
+  numbers:
+    default: latn
+  aliases:
+    smn: smn-FI
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - two
+    ordinal:
+    - other
+- code: sn
+  names:
+    en:
+    - Shona
+    sn:
+    - chiShona
+  locales:
+    nii-extra-locales:
+    - sn
+    - sn
+    - sn-ZW
+    - sna
+  territories:
+  - ZW
+  numbers:
+    default: latn
+  aliases:
+    sn: sn-ZW
+    sna: sn
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: so
+  names:
+    en:
+    - Somali
+    so:
+    - Soomaali
+  locales:
+    nii-core:
+    - so
+    - so
+    - so-DJ
+    - so-ET
+    - so-KE
+    - so-SO
+    - som
+    nii-extra-locales:
+    - so-Arab
+  territories:
+  - SO
+  - DJ
+  - ET
+  - KE
+  numbers:
+    default: latn
+  aliases:
+    so: so-SO
+    som: so
+  scripts:
+  - Latn
+  - Arab
+  - Arab
+  - Osma
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: sq
+  names:
+    en:
+    - Albanian
+    sq:
+    - shqip
+  locales:
+    nii-core:
+    - alb
+    - als
+    - sq
+    - sq
+    - sq-AL
+    - sq-MK
+    - sq-XK
+    - sqi
+  territories:
+  - AL
+  - MK
+  - XK
+  numbers:
+    default: latn
+  aliases:
+    alb: sq
+    als: sq
+    sq: sq-AL
+    sqi: sq
+  scripts:
+  - Latn
+  - Elba
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+    - many
+- code: sr
+  names:
+    en:
+    - Serbian
+    sr:
+    - srpski
+    - српски
+  locales:
+    nii-core:
+    - hbs
+    - scc
+    - sh
+    - sr
+    - sr
+    - sr-Cyrl
+    - sr-Cyrl-BA
+    - sr-Cyrl-ME
+    - sr-Cyrl-RS
+    - sr-Cyrl-XK
+    - sr-Latn
+    - sr-Latn-BA
+    - sr-Latn-ME
+    - sr-Latn-RS
+    - sr-Latn-XK
+    - srp
+  territories:
+  - RS
+  - BA
+  - ME
+  - XK
+  numbers:
+    default: latn
+  aliases:
+    hbs: sr-Latn
+    scc: sr
+    sh: sr-Latn
+    sr: sr-Latn-RS
+    srp: sr
+  scripts:
+  - Cyrl
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    - few
+    ordinal:
+    - other
+- code: st
+  names:
+    en:
+    - Southern Sotho
+  locales:
+    nii-extra-locales:
+    - sot
+    - st
+  numbers:
+    default: latn
+  aliases:
+    sot: st
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: su
+  names:
+    en:
+    - Sundanese
+    su:
+    - Basa Sunda
+  locales:
+    nii-extra-locales:
+    - su
+    - su
+    - su-Latn
+    - su-Latn-ID
+    - sun
+  territories:
+  - ID
+  numbers:
+    default: latn
+  aliases:
+    su: su-Latn-ID
+    sun: su
+  scripts:
+  - Latn
+  - Sund
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: sv
+  names:
+    en:
+    - Swedish
+    sv:
+    - svenska
+  locales:
+    nii-core:
+    - sv
+    - sv
+    - sv-AX
+    - sv-FI
+    - sv-SE
+    - swe
+  territories:
+  - SE
+  - AX
+  - FI
+  numbers:
+    default: latn
+  aliases:
+    sv: sv-SE
+    swe: sv
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - one
+  genders:
+  - common
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  definiteness:
+  - definite
+  - indefinite
+- code: sw
+  names:
+    en:
+    - Swahili
+    sw:
+    - Kiswahili
+  locales:
+    nii-core:
+    - sw
+    - sw
+    - sw-CD
+    - sw-KE
+    - sw-TZ
+    - sw-UG
+    - swa
+    - swc
+    - swh
+    nii-extra-locales:
+    - sw-Arab
+  territories:
+  - TZ
+  - CD
+  - KE
+  - UG
+  numbers:
+    default: latn
+  aliases:
+    sw: sw-TZ
+    swa: sw
+    swc: sw-CD
+    swh: sw
+  scripts:
+  - Latn
+  - Arab
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: ta
+  names:
+    en:
+    - Tamil
+    ta:
+    - தமிழ்
+  locales:
+    nii-core:
+    - ta
+    - ta
+    - ta-IN
+    - ta-LK
+    - ta-MY
+    - ta-SG
+    - tam
+  territories:
+  - IN
+  - LK
+  - MY
+  - SG
+  numbers:
+    default: latn
+    native: tamldec
+    traditional: taml
+  aliases:
+    ta: ta-IN
+    tam: ta
+  scripts:
+  - Taml
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+  cases:
+  - nominative
+  - genitive
+  - accusative
+  - dative
+  - locative
+  - instrumental
+  - ablative
+  - vocative
+- code: te
+  names:
+    en:
+    - Telugu
+    te:
+    - తెలుగు
+  locales:
+    nii-core:
+    - te
+    - te
+    - te-IN
+    - tel
+  territories:
+  - IN
+  numbers:
+    default: latn
+    native: telu
+  aliases:
+    te: te-IN
+    tel: te
+  scripts:
+  - Telu
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+  cases:
+  - nominative
+  - oblique
+  - accusative
+  - dative
+  - locative
+  - instrumental
+- code: teo
+  names:
+    en:
+    - Teso
+    teo:
+    - Kiteso
+  locales:
+    nii-extra-locales:
+    - teo
+    - teo
+    - teo-KE
+    - teo-UG
+  territories:
+  - UG
+  - KE
+  numbers:
+    default: latn
+  aliases:
+    teo: teo-UG
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: tg
+  names:
+    en:
+    - Tajik
+    tg:
+    - тоҷикӣ
+  locales:
+    nii-extra-locales:
+    - tg
+    - tg
+    - tg-Arab
+    - tg-TJ
+    - tgk
+  territories:
+  - TJ
+  numbers:
+    default: latn
+  aliases:
+    tg: tg-TJ
+    tgk: tg
+  scripts:
+  - Arab
+  - Cyrl
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: th
+  names:
+    en:
+    - Thai
+    th:
+    - ไทย
+  locales:
+    nii-core:
+    - th
+    - th
+    - th-TH
+    - tha
+  territories:
+  - TH
+  numbers:
+    default: latn
+    native: thai
+  aliases:
+    th: th-TH
+    tha: th
+  scripts:
+  - Thai
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ti
+  names:
+    en:
+    - Tigrinya
+    ti:
+    - ትግር
+  locales:
+    nii-extra-locales:
+    - ti
+    - ti
+    - ti-ER
+    - ti-ET
+    - tir
+  territories:
+  - ET
+  - ER
+  numbers:
+    default: latn
+    traditional: ethi
+  aliases:
+    ti: ti-ET
+    tir: ti
+  scripts:
+  - Ethi
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: tk
+  names:
+    en:
+    - Turkmen
+    tk:
+    - türkmen dili
+  locales:
+    nii-core:
+    - tk
+    - tk
+    - tk-TM
+    - tuk
+  territories:
+  - TM
+  numbers:
+    default: latn
+  aliases:
+    tk: tk-TM
+    tuk: tk
+  scripts:
+  - Arab
+  - Cyrl
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+    - few
+- code: to
+  names:
+    en:
+    - Tongan
+    to:
+    - lea fakatonga
+  locales:
+    nii-extra-locales:
+    - to
+    - to
+    - to-TO
+    - ton
+  territories:
+  - TO
+  numbers:
+    default: latn
+  aliases:
+    to: to-TO
+    ton: to
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: tr
+  names:
+    en:
+    - Turkish
+    tr:
+    - Türkçe
+  locales:
+    nii-core:
+    - tr
+    - tr
+    - tr-CY
+    - tr-TR
+    - tur
+  territories:
+  - TR
+  - CY
+  numbers:
+    default: latn
+  aliases:
+    tr: tr-TR
+    tur: tr
+  scripts:
+  - Latn
+  - Arab
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  - instrumental
+  - ablative
+  - locative
+- code: tt
+  names:
+    en:
+    - Tatar
+    tt:
+    - татар
+  locales:
+    nii-extra-locales:
+    - tat
+    - tt
+    - tt
+    - tt-RU
+  territories:
+  - RU
+  numbers:
+    default: latn
+  aliases:
+    tat: tt
+    tt: tt-RU
+  scripts:
+  - Cyrl
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: twq
+  names:
+    en:
+    - Tasawaq
+    twq:
+    - Tasawaq senni
+  locales:
+    nii-extra-locales:
+    - twq
+    - twq
+    - twq-NE
+  territories:
+  - NE
+  numbers:
+    default: latn
+  aliases:
+    twq: twq-NE
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: tzm
+  names:
+    en:
+    - Central Atlas Tamazight
+    tzm:
+    - Tamaziɣt n laṭlaṣ
+  locales:
+    nii-extra-locales:
+    - tzm
+    - tzm
+    - tzm-MA
+  territories:
+  - MA
+  numbers:
+    default: latn
+  aliases:
+    tzm: tzm-MA
+  scripts:
+  - Latn
+  - Tfng
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: ug
+  names:
+    en:
+    - Uyghur
+    - Uighur
+    ug:
+    - ئۇيغۇرچە
+  locales:
+    nii-extra-locales:
+    - ug
+    - ug
+    - ug-CN
+    - ug-Cyrl
+    - uig
+  territories:
+  - CN
+  numbers:
+    default: latn
+    native: arabext
+  aliases:
+    ug: ug-CN
+    uig: ug
+  scripts:
+  - Arab
+  - Cyrl
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: uk
+  names:
+    en:
+    - Ukrainian
+    uk:
+    - українська
+  locales:
+    nii-core:
+    - uk
+    - uk
+    - uk-UA
+    - ukr
+  territories:
+  - UA
+  numbers:
+    default: latn
+  aliases:
+    uk: uk-UA
+    ukr: uk
+  scripts:
+  - Cyrl
+  plurals:
+    cardinal:
+    - other
+    - one
+    - few
+    - many
+    ordinal:
+    - other
+    - few
+- code: und
+  names:
+    en:
+    - Unknown language
+  locales:
+    nii-core:
+    - i-enochian
+    - root
+    - und
+    - und-arevela
+    - und-arevmda
+    - und-bokmal
+    - und-hakka
+    - und-lojban
+    - und-nynorsk
+    - und-saaho
+    - und-xiang
+  numbers:
+    default: latn
+  aliases:
+    i-enochian: und
+    root: und
+    und-arevela: und
+    und-arevmda: und
+    und-bokmal: und
+    und-hakka: und
+    und-lojban: und
+    und-nynorsk: und
+    und-saaho: und
+    und-xiang: und
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: ur
+  names:
+    en:
+    - Urdu
+    ur:
+    - اردو
+  locales:
+    nii-core:
+    - ur
+    - ur
+    - ur-IN
+    - ur-PK
+    - urd
+  territories:
+  - PK
+  - IN
+  numbers:
+    default: latn
+    native: arabext
+  aliases:
+    ur: ur-PK
+    urd: ur
+  scripts:
+  - Arab
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+  genders:
+  - masculine
+  - feminine
+  cases:
+  - nominative
+  - oblique
+- code: uz
+  names:
+    en:
+    - Uzbek
+    uz:
+    - o‘zbek
+    - اوزبیک
+    - ўзбекча
+  locales:
+    nii-core:
+    - uz
+    - uz
+    - uz-Arab-AF
+    - uz-Cyrl-UZ
+    - uz-Latn
+    - uz-Latn-UZ
+    - uzb
+    - uzn
+    nii-extra-locales:
+    - uz-Arab
+    - uz-Cyrl
+  territories:
+  - UZ
+  - AF
+  numbers:
+    default: latn
+  aliases:
+    uz: uz-Latn-UZ
+    uzb: uz
+    uzn: uz
+  scripts:
+  - Arab
+  - Cyrl
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: vai
+  names:
+    en:
+    - Vai
+    vai:
+    - ꕙꔤ
+    - Vai
+  locales:
+    nii-extra-locales:
+    - vai
+    - vai
+    - vai-Latn
+    - vai-Latn-LR
+    - vai-Vaii
+    - vai-Vaii-LR
+  territories:
+  - LR
+  numbers:
+    default: latn
+    native: vaii
+  aliases:
+    vai: vai-Vaii-LR
+  scripts:
+  - Latn
+  - Vaii
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: vi
+  names:
+    en:
+    - Vietnamese
+    vi:
+    - Tiếng Việt
+  locales:
+    nii-core:
+    - vi
+    - vi
+    - vi-VN
+    - vie
+  territories:
+  - VN
+  numbers:
+    default: latn
+  aliases:
+    vi: vi-VN
+    vie: vi
+  scripts:
+  - Latn
+  - Hani
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+    - one
+- code: vo
+  names:
+    en:
+    - Volapük
+  locales:
+    nii-extra-locales:
+    - vo
+    - vol
+  numbers:
+    default: latn
+  aliases:
+    vol: vo
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: vun
+  names:
+    en:
+    - Vunjo
+    vun:
+    - Kyivunjo
+  locales:
+    nii-extra-locales:
+    - vun
+    - vun
+    - vun-TZ
+  territories:
+  - TZ
+  numbers:
+    default: latn
+  aliases:
+    vun: vun-TZ
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: wae
+  names:
+    en:
+    - Walser
+    wae:
+    - Walser
+  locales:
+    nii-extra-locales:
+    - wae
+    - wae
+    - wae-CH
+  territories:
+  - CH
+  numbers:
+    default: latn
+  aliases:
+    wae: wae-CH
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: wo
+  names:
+    en:
+    - Wolof
+    wo:
+    - Wolof
+  locales:
+    nii-extra-locales:
+    - wo
+    - wo
+    - wo-Arab
+    - wo-SN
+    - wol
+  territories:
+  - SN
+  numbers:
+    default: latn
+  aliases:
+    wo: wo-SN
+    wol: wo
+  scripts:
+  - Latn
+  - Arab
+  - Arab
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: xh
+  names:
+    en:
+    - Xhosa
+    xh:
+    - isiXhosa
+  locales:
+    nii-extra-locales:
+    - xh
+    - xh
+    - xh-ZA
+    - xho
+  territories:
+  - ZA
+  numbers:
+    default: latn
+  aliases:
+    xh: xh-ZA
+    xho: xh
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: xog
+  names:
+    en:
+    - Soga
+    xog:
+    - Olusoga
+  locales:
+    nii-extra-locales:
+    - xog
+    - xog
+    - xog-UG
+  territories:
+  - UG
+  numbers:
+    default: latn
+  aliases:
+    xog: xog-UG
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: yav
+  names:
+    en:
+    - Yangben
+    yav:
+    - nuasue
+  locales:
+    nii-extra-locales:
+    - yav
+    - yav
+    - yav-CM
+  territories:
+  - CM
+  numbers:
+    default: latn
+  aliases:
+    yav: yav-CM
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: yi
+  names:
+    en:
+    - Yiddish
+    yi:
+    - ייִדיש
+  locales:
+    nii-extra-locales:
+    - ji
+    - ydd
+    - yi
+    - yi
+    - yi-001
+    - yid
+  territories:
+  - '001'
+  numbers:
+    default: latn
+    traditional: hebr
+  aliases:
+    ji: yi
+    ydd: yi
+    yi: yi-001
+    yid: yi
+  scripts:
+  - Hebr
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: yo
+  names:
+    en:
+    - Yoruba
+    yo:
+    - Èdè Yorùbá
+  locales:
+    nii-extra-locales:
+    - yo
+    - yo
+    - yo-Arab
+    - yo-BJ
+    - yo-NG
+    - yor
+  territories:
+  - NG
+  - BJ
+  numbers:
+    default: latn
+  aliases:
+    yo: yo-NG
+    yor: yo
+  scripts:
+  - Latn
+  - Arab
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: yue
+  names:
+    en:
+    - Cantonese
+    yue:
+    - 粵語
+    - 中文 (粵語)
+    - 粤语
+    - 中文 (粤语)
+  locales:
+    nii-core:
+    - yue
+    - yue
+    - yue-Hans-CN
+    - yue-Hant
+    - yue-Hant-HK
+    - zh-yue
+    nii-extra-locales:
+    - yue-Hans
+  territories:
+  - HK
+  - CN
+  numbers:
+    default: latn
+    native: hanidec
+    traditional: hant
+    finance: hantfin
+  aliases:
+    yue: yue-Hant-HK
+    zh-yue: yue
+  scripts:
+  - Hans
+  - Hant
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: zgh
+  names:
+    en:
+    - Standard Moroccan Tamazight
+    zgh:
+    - ⵜⴰⵎⴰⵣⵉⵖⵜ
+  locales:
+    nii-extra-locales:
+    - zgh
+    - zgh
+    - zgh-MA
+  territories:
+  - MA
+  numbers:
+    default: latn
+  aliases:
+    zgh: zgh-MA
+  scripts:
+  - Tfng
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: zh
+  names:
+    en:
+    - Chinese
+    zh:
+    - 中文
+    - 普通话
+  locales:
+    nii-core:
+    - chi
+    - cmn
+    - zh
+    - zh
+    - zh-Hans
+    - zh-Hans-CN
+    - zh-Hans-HK
+    - zh-Hans-MO
+    - zh-Hans-SG
+    - zh-Hant
+    - zh-Hant-HK
+    - zh-Hant-MO
+    - zh-Hant-TW
+    - zh-cmn
+    - zh-cmn-Hans
+    - zh-cmn-Hant
+    - zh-guoyu
+    - zho
+  territories:
+  - TW
+  - CN
+  - HK
+  - MO
+  - SG
+  numbers:
+    default: latn
+    native: hanidec
+    traditional: hant
+    finance: hantfin
+  aliases:
+    chi: zh
+    cmn: zh
+    zh: zh-Hant-TW
+    zh-cmn: zh
+    zh-cmn-Hans: zh-Hans
+    zh-cmn-Hant: zh-Hant
+    zh-guoyu: zh
+    zho: zh
+  scripts:
+  - Hans
+  - Hant
+  - Bopo
+  - Phag
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other
+- code: zu
+  names:
+    en:
+    - Zulu
+    zu:
+    - isiZulu
+  locales:
+    nii-core:
+    - zu
+    - zu
+    - zu-ZA
+    - zul
+  territories:
+  - ZA
+  numbers:
+    default: latn
+  aliases:
+    zu: zu-ZA
+    zul: zu
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+- code: zxx
+  names:
+    en:
+    - No linguistic content
+  locales:
+    nii-extra-locales:
+    - zxx
+  numbers:
+    default: latn
+  aliases: {}
+  plurals:
+    cardinal:
+    - other
+    ordinal:
+    - other

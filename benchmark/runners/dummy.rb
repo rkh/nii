@@ -1,0 +1,1 @@
+BENCHMARKS[:dummy] = -> { 'Hello World!' }

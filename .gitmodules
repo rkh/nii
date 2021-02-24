@@ -1,0 +1,10 @@
+[submodule "vendor/cldr-json"]
+	path = vendor/cldr-json
+	url = https://github.com/unicode-org/cldr-json
+	shallow = true
+[submodule "vendor/cldr"]
+	path = vendor/cldr
+	url = https://github.com/unicode-org/cldr
+[submodule "vendor/astro-data"]
+	path = vendor/astro-data
+	url = https://github.com/rkh/astro-data
