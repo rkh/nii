@@ -64,7 +64,7 @@ Nii supports anything from simple to complex directory structures, and can reloa
 ### Translator Friendliness
 
 With I18n, all localizations share a single, global namespace. A translator cannot look at a single file or set of files and reason about it in isolation.
-The concept of "deep merging" data as a core part of I18n, but in effect means that what I18n calls scopes is not a reliable isolation mechanism. As mentioned before, most of the file formats supported by I18n are also not particularly user friendly for translators.
+The concept of "deep merging" data is a core part of I18n, but in effect means that what I18n calls scopes is not a reliable isolation mechanism. As mentioned before, most of the file formats supported by I18n are also not particularly user friendly for translators.
 
 Nii supports an unlimited number of namespaces, as well as private terms that a translator can structure and use how ever it fits them, in isolation from the rest of the system.
 
