@@ -3,7 +3,7 @@
 # This file has been generated based on the Unicode Common Locale Data Repository.
 # Do not edit directly.
 
-# Shared namespace for all units. This can module can safely be included in Object or
+# Shared namespace for all units. This module can safely be included in Object or
 # your own namespace, to avoid long class prefixes.
 module Nii::Units
   # Instances of this class represent specific volume values.
