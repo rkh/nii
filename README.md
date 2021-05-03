@@ -53,7 +53,7 @@ The core project has these mandatory dependencies:
 You may also want to install one or more of the following optional dependencies:
 
 * **concurrent-ruby-ext** – Will improve performance, as Nii makes heavy use of concurrent-ruby. This is always recommended if you use MRI/CRuby.
-* **tzinfo-data** – If you work with timezones, this gem will ensure consistent behavior across setups. This is recommended if you work with timezones.
+* **tzinfo-data** – If you work with timezones, this gem will ensure consistent behavior across setups.
 * **tomlrb** – Recommended if you want to use [TOML files](https://toml.io/en/) for localizations. A use case would be to share localizations with [go-i18n](https://github.com/nicksnyder/go-i18n).
 
 ## Etymology
