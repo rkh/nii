@@ -46,8 +46,15 @@ context.render "hello-user" # => "Hello Maria!"
 
 The core project has these mandatory dependencies:
 
-* Ruby 3.0 (or a compatible implementation)
-* concurrent-ruby (installed automatically if you use Ruby )
+* **Ruby 3.0** or a compatible implementation.
+* **concurrent-ruby** – Installed automatically if you use RubyGems/Bundler.
+* **tzinfo** – Installed automatically if you use RubyGems/Bundler.
+
+You may also want to install one or more of the following optional dependencies:
+
+* **concurrent-ruby-ext** – Will improve performance, as Nii makes heavy use of concurrent-ruby. This is always recommended if you use MRI/CRuby.
+* **tzinfo-data** – If you work with timezones, this gem will ensure consistent behavior across setups. This is recommended if you work with timezones.
+* **tomlrb** – Recommended if you want to use [TOML files](https://toml.io/en/) for localizations. A use case would be to share localizations with [go-i18n](https://github.com/nicksnyder/go-i18n).
 
 ## Etymology
 
