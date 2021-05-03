@@ -495,6 +495,20 @@ module Nii
     #   @note    (see Nii::Formatters::Array.format)
     #   @see     Nii::Formatters::Array
     #
+    # @overload format(hash = self.scope, **options)
+    #   Formats a key-value mapping.
+    #
+    #   The given options will also be used to format each
+    #   object in the list (except for the keys/values option,
+    #   which will only apply to the keys or values)
+    #
+    #   @param   list [Hash, Concurrent::Hash, Concurrent::Map]
+    #   @macro   format
+    #   @option  (see Nii::Formatters::Hash.format)
+    #   @example (see Nii::Formatters::Hash.format)
+    #   @note    (see Nii::Formatters::Hash.format)
+    #   @see     Nii::Formatters::Hash
+    #
     # @overload format(money = self.scope, **options)
     #   Formats a money object.
     #
