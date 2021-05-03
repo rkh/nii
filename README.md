@@ -86,7 +86,7 @@ For the time being, all Nii libraries and assets are managed in a mono repositor
   * [`nii-extra-locales`](nii-extra-locales) – Data for less common locales (locales not designated "modern" by the Unicode Consortium).
   * [`nii-global`](nii-global) – A global/thread state implementation for Nii to offer an API similar to Ruby I18n.
   * [`nii-historic`](nii-historic) – Historical calendar system support.
-  * [`nii-i18n`](nii-18n) – Use Nii as a backend for Ruby I18n and/or synchronize state between I18n and a Nii context.
+  * [`nii-i18n`](nii-i18n) – Use Nii as a backend for Ruby I18n and/or synchronize state between I18n and a Nii context.
   * [`nii-rails`](nii-rails) – Framework integration for Rails.
   * [`nii-rbnf`](nii-rbnf) – Implementation for Unicode Rule Based Number Formats. Can be used standalone.
   * [`nii-sinatra`](nii-sinatra) – Framework integration for Sinatra.
