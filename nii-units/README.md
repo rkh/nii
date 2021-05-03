@@ -14,7 +14,6 @@
 * Simple and robust internals
   * One class per quantity (unit category), one super class for all units, one instance per value.
   * No dynamic class generation or runtime meta programming.
-  * Fully documented, full test coverage.
 * Non-invasive
   * Does not extend or modify any objects outside its own namespace.
   * Does not introduce any additional dependencies.
