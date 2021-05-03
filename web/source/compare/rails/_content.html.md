@@ -200,7 +200,7 @@ Or you can set up a reusable formatter for the `author` variable:
 ```
 
 This easy approach to use a callback for injecting markup into a localized structure really starts paying off for more complex situations,
-like formatting a list of things (similar to Rails' `#to_sentence`, but way powerful and flexible):
+like formatting a list of things (similar to Rails' `#to_sentence`, but more powerful and flexible):
 
 ``` erb
 <%= l @article.authors do |author| %>
@@ -223,10 +223,9 @@ Rails supports ordinal plurals for English only (think "1st", "2nd", etc), but d
 ### Lists
 Rails assumes lists in languages all follow the same structure as they do in English. 
 
-Here are some example from the Unicode Standard:
+Here are some example from the Unicode Standard formatted with ActiveSupport:
 
 ``` ruby
-# With Rails/I18n
 ['agua', 'hielo'].to_sentence(locale: :es)
 # => "agua y hielo" (✅ correct)
 
@@ -235,8 +234,11 @@ Here are some example from the Unicode Standard:
 
 [1, 2].to_sentence(locale: :he)
 # => "1 ו2" (❌ incorrect)
+```
 
-# With Nii
+Whereas Nii uses the correct rules:
+
+``` ruby
 context = Nii::Context.new(:es)
 
 context.format ['agua', 'hielo']
