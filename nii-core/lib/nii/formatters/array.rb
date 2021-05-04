@@ -72,6 +72,9 @@ module Nii::Formatters
       end
     end
 
+    # @api internal
+    def yield?(value) = false
+
     private
 
     def insert(context, style, element, first, second, options)

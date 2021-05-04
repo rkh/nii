@@ -42,4 +42,9 @@ class TestArrayFormatter < Minitest::Test
     assert_equal '1 -ו2', @context.format([1, 2])
     assert_equal 'אדום וירוק', @context.format(['אדום', 'ירוק'])
   end
+
+  def test_element_formatting
+    assert_equal 'I, II', @context.format([1, 2], numbers: :roman)
+    assert_equal '2, 3', @context.format([1, 2]) { |e| e + 1 }
+  end
 end

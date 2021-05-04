@@ -569,7 +569,7 @@ module Nii
       value, formatter   = Utils.string(value), Formatters::String unless formatter = Formatters[value.class, config]
       result             = formatter.format(self, value, **options, &block).encode(encoding)
       escape_html        = false if escape_html and formatter.respond_to?(:escape?) and !formatter.escape?(value, **options)
-      result             = yield(result) if block_given?
+      result             = yield(result) if block_given? and (!formatter.respond_to?(:yield?) or formatter.yield?(result))
       result             = escape_html ? html.format(result) : result
       bidi_options, bidi = bidi, true if bidi.is_a? Hash
 
