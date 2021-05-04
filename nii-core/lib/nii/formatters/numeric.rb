@@ -151,10 +151,10 @@ module Nii::Formatters
       case mode.to_sym.downcase
       when :ceiling, :ceil then value.ceil(precision)
       when :floor          then value.floor(precision)
-      when :down           then value.positive?  ? value.floor(precision) : value.ceil(precision)
-      when :up             then value.negative?  ? value.floor(precision) : value.ceil(precision)
-      when :even           then value.to_i.even? ? value.floor(precision) : value.ceil(precision)
-      when :odd            then value.to_i.odd?  ? value.floor(precision) : value.ceil(precision)
+      when :down           then value.positive? ? value.floor(precision) : value.ceil(precision)
+      when :up             then value.negative? ? value.floor(precision) : value.ceil(precision)
+      when :even           then value.negative? ^ value.to_i.even? ? value.floor(precision) : value.ceil(precision)
+      when :odd            then value.negative? ^ value.to_i.odd?  ? value.floor(precision) : value.ceil(precision)
       when :halfceiling    then value % 1 == 0.5 ? round(value, :ceiling, precision) : value.round(precision)
       when :halffloor      then value % 1 == 0.5 ? round(value, :floor,   precision) : value.round(precision)
       when :halfdown       then value % 1 == 0.5 ? round(value, :down,    precision) : value.round(precision)
@@ -163,8 +163,9 @@ module Nii::Formatters
       when :halfodd        then value % 1 == 0.5 ? round(value, :odd,     precision) : value.round(precision)
       when /_|-/           then round(value, mode.to_s.tr('-_', ''), precision)
       when :unnecessary
+        rounded = value.round(precision)
+        return rounded if rounded == value
         raise ArgumentError, "value does not match precision, but rounding mode is #{mode}"
-        value
       else
         raise ArgumentError, "unsupported rounding mode #{mode}"
       end
