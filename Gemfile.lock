@@ -89,6 +89,8 @@ GEM
     neatjson (0.9)
     nokogiri (1.11.1-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.11.1-x86_64-linux)
+      racc (~> 1.4)
     profile (0.4.0)
     progressbar (1.11.0)
     r18n-core (5.0.1)
@@ -139,6 +141,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   activesupport
