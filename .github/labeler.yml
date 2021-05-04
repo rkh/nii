@@ -1,0 +1,12 @@
+nii-calendars: nii-calendars/**/*
+nii-core: nii-core/**/*
+nii-extra-locales: nii-extra-locales/**/*
+nii-global: nii-global/**/*
+nii-historic: nii-historic/**/*
+nii-i18n: nii-i18n/**/*
+nii-rails: nii-rails/**/*
+nii-rbnf: nii-rbnf/**/*
+nii-sinatra: nii-sinatra/**/*
+nii-units: nii-units/**/*
+nii-xml: nii-xml/**/*
+web: web/**/*
