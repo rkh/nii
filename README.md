@@ -74,7 +74,7 @@ The word "Nii" is:
   * "no", "not", "never", or "neither" in Gothic (𐌽𐌹), German (nie), Dutch (nie), Afrikaans (nie), Alemannic (nie), Hunsrik (nie), Polish (nie), French (ni), Serbo-Croatian (ni/ни), Veps (ni), Old Church Slavonic (ни), Russian (ни), Bulgarian (ни), Irish (ní), Macedonian (ни), Ukrainian (ні), Cornish (ny).
   * "yes" in Kaurna (nii)
   * "this" in Nahuatl (ni), Malay (<bdi>ـني</bdi>), Vietnamese (ni).
-  * "I" or "me" (first person singular) in Basque (ni), Unami (ni), Nivkh (ни), Maltese (-ni), Arabic (<bdi>ـني</bid>), Pitjantjatjara (-ṉi), Munsee (nii)Dura (ङि), Ewe (nye).
+  * "I" or "me" (first person singular) in Basque (ni), Unami (ni), Nivkh (ни), Maltese (-ni), Arabic (<bdi>ـني</bid>), Pitjantjatjara (-ṉi), Munsee (nii), Dura (ङि), Ewe (nye).
   * "we", "us" or "our" in Breton (ni), Esperanto (ni), Romanian (ni), Sicilian (ni), Bulgarian (ни), Karelian (-ni), Old Irish (-ni), Quechua (-ni), Welsh (ni), Afar (ni), Akkadian (𒉌).
   * "he", "she", or "they" in Ndrumbea (ni), Tsakonian (νι).
   * "you" or "your" in Abinomn (ni), Swedish (ni), Swahili (-ni), Chinese (as in 你好 - "nii hao", a greeting), Dungan (ни), Korean (니).
