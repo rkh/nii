@@ -1,5 +1,7 @@
 # Nii
 
+[![Test](https://github.com/rkh/nii/actions/workflows/ci.yml/badge.svg)](https://github.com/rkh/nii/actions/workflows/ci.yml)
+
 Nii is an **internationalization** (i18n) and **localization** (l10n) solution for Ruby.
 It is **modular**, **comprehensive**, **fast**, and built on top of **modern standards** and best practices.
 
