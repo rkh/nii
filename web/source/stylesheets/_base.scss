@@ -114,6 +114,9 @@ body > header {
 
     &:hover {
       color: var(--color-0);
+      .submenu {
+        display: block;
+      }
     }
 
     &:last-child {
@@ -145,9 +148,6 @@ body > header {
         text-shadow: $shadow;
       }
     }
-  }
-  :hover > .submenu {
-    display: block;
   }
 }
 

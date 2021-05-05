@@ -17,7 +17,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (9.8.6.5)
       execjs
-    backports (3.20.2)
+    backports (3.21.0)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -83,7 +83,7 @@ GEM
       servolux
       tilt (~> 2.0.9)
       uglifier (~> 3.0)
-    middleman-livereload (3.4.6)
+    middleman-livereload (3.4.7)
       em-websocket (~> 0.5.1)
       middleman-core (>= 3.3)
       rack-livereload (~> 0.3.15)
@@ -106,7 +106,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redcarpet (3.5.1)
-    rexml (3.2.4)
+    rexml (3.2.5)
     sassc (2.4.0)
       ffi (~> 1.9)
     servolux (0.13.0)
