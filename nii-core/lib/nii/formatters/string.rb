@@ -81,7 +81,7 @@ module Nii::Formatters
     # @!scope module
     def format(context, value, **options)
       return value.to_str unless as = options.delete(:as)
-      as = FORMAT_AS[as.to_sym] || ::Nii::Utils.string(as)
+      as = FORMAT_AS[as.to_sym] || Utils.string(as)
       if as.is_a? ::String
         method = "format_as_#{as}"
         raise ArgumentError, "unsupported string format: #{as.inspect}" unless respond_to? method

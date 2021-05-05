@@ -57,7 +57,7 @@ module Nii::Formatters
       end
       
       list_style   = options[:list_style]
-      list_style &&= LIST_STYLE_ALIASES[::Nii::Utils.string(list_style)] || list_style
+      list_style &&= LIST_STYLE_ALIASES[Utils.string(list_style)] || list_style
       list_style ||= 'standard'
       list.compact!
 

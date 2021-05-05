@@ -14,7 +14,9 @@ module Nii
     autoload :Time,          'nii/formatters/time'
     autoload :TZInfo,        'nii/formatters/tzinfo'
 
-    Set = Array
+    Set   = Array
+    Utils = ::Nii::Utils
+    private_constant :Utils
 
     extend self
   
@@ -31,7 +33,7 @@ module Nii
 
       case klass
       when ::String then @register[klass] ||= resolve(klass)
-      when ::Class  then self[::Nii::Utils.class_name(klass), config] ||= self[klass.superclass]
+      when ::Class  then self[Utils.class_name(klass), config] ||= self[klass.superclass]
       when ::Symbol then self[klass.name, config]
       when nil
       end
@@ -39,8 +41,8 @@ module Nii
 
     # @api internal
     def []=(klass, config = nil, value)
-      klass = ::Nii::Utils.class_name(klass) || klass if klass.is_a? Module
-      klass = ::Nii::Utils.string(klass)
+      klass = Utils.class_name(klass) || klass if klass.is_a? Module
+      klass = Utils.string(klass)
 
       return if klass == ''
       @register[klass] = value
