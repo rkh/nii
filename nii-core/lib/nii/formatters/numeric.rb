@@ -208,7 +208,7 @@ module Nii::Formatters
 
     def normalize_options(options)
       options.transform_keys! ECMA_OPTIONS
-      options.transform_values! { |v| Symbol === v ? v.to_s : v }
+      options.transform_values! { |v| Symbol === v ? v.name : v }
       options[:currency]         &&= options[:currency].upcase
       options[:currency_display]   = 'narrow'      if options[:currency_display] == 'narrowSymbol'
       options[:display_sign]       = 'except_zero' if options[:display_sign]     == 'exceptZero'
