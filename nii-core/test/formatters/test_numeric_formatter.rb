@@ -118,4 +118,9 @@ class TestNumericFormatter < Minitest::Test
     assert_equal '1,530', format('en-u-nu-roman', 1530, style: :decimal)
     assert_equal '١٬٥٣٠', format(:ar, 1530, style: :decimal)
   end
+
+  def test_style_percent
+    assert_equal '85%',  format(:en, 0.853, style: :percent)
+    assert_equal '85 %', format(:de, 0.853, style: :percent)
+  end
 end

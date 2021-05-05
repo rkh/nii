@@ -199,7 +199,7 @@ module Nii::Formatters
     end
     
     def format_percent(numbers, value, **options)
-      raise NotImplementedError
+      format_number(:percent, numbers, value, **options)
     end
 
     def format_unit(numbers, value, **options)
