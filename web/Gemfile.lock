@@ -1,5 +1,7 @@
-PATH
-  remote: ../../rouge
+GIT
+  remote: https://github.com/rkh/rouge.git
+  revision: 8a8dd8869f51e2c7f3bffeb6b89082fb5284829e
+  branch: rkh-fluent
   specs:
     rouge (3.26.0)
 

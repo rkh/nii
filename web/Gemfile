@@ -8,5 +8,5 @@ gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby, :x64_mingw]
 gem 'wdm', '~> 0.1', platforms: [:mswin, :mingw, :x64_mingw]
 gem 'webrick'
 
-gem 'rouge', path: '../../rouge'
+gem 'rouge', git: 'https://github.com/rkh/rouge.git', branch: 'rkh-fluent'
 gem 'redcarpet'
