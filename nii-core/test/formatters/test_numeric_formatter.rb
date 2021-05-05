@@ -12,6 +12,14 @@ class TestNumericFormatter < Minitest::Test
     assert_equal '١٬٥٣٠٫٥', format(:ar,     1530.5)
   end
 
+  def test_use_grouping
+    assert_equal '1530.5', format(:root,   1530.5, use_grouping: false)
+    assert_equal '1530.5', format(:en,     1530.5, use_grouping: false)
+    assert_equal '1530,5', format(:de,     1530.5, use_grouping: false)
+    assert_equal '1530.5', format('de-CH', 1530.5, use_grouping: false)
+    assert_equal '١٥٣٠٫٥', format(:ar,     1530.5, use_grouping: false)
+  end
+
   def test_numbering_system
     assert_equal '1,530',      format(:en, 1530, numbers: :traditional)
     assert_equal '一千五百三十', format(:zh, 1530, numbers: :traditional)
@@ -33,6 +41,8 @@ class TestNumericFormatter < Minitest::Test
     assert_equal '2',  format(:en, 1.5,  precision: 0)
     assert_equal '2',  format(:en, 1.6,  precision: 0)
     assert_equal '-2', format(:en, -1.5, precision: 0)
+
+    assert_equal '1',  format(:en, 1.4,  precision: 0, round: :halfeven)
     assert_equal '1',  format(:en, 1.4,  precision: 0, round: :halfeven)
     assert_equal '2',  format(:en, 1.5,  precision: 0, round: :halfeven)
     assert_equal '2',  format(:en, 1.6,  precision: 0, round: :halfeven)
@@ -74,8 +84,38 @@ class TestNumericFormatter < Minitest::Test
     assert_equal '1',  format(:en, 1.6,  precision: 0, round: :floor)
     assert_equal '-2', format(:en, -1.5, precision: 0, round: :floor)
 
+    assert_equal '2',  format(:en, 1.5,  precision: 0, round: :half_even)
+    assert_equal '1',  format(:en, 1.5,  precision: 0, round: :half_odd)
+
     assert '1', format(:en, 1.0, precision: 0, round: :unnecessary)
     assert_raises { format(:en, 1.5, precision: 0, round: :unnecessary) }
     assert_raises { format(:en, 1.5, precision: 0, round: :unknown) }
+  end
+
+  def test_display_sign
+    assert_equal '-1', format(:en, -1, display_sign: :auto)
+    assert_equal '0',  format(:en, 0,  display_sign: :auto)
+    assert_equal '1',  format(:en, 1,  display_sign: :auto)
+    assert_equal '-1', format(:en, -1, display_sign: :always)
+    assert_equal '+0', format(:en, 0,  display_sign: :always)
+    assert_equal '+1', format(:en, 1,  display_sign: :always)
+    assert_equal '1',  format(:en, -1, display_sign: :never)
+    assert_equal '0',  format(:en, 0,  display_sign: :never)
+    assert_equal '1',  format(:en, 1,  display_sign: :never)
+    assert_equal '-1', format(:en, -1, display_sign: :except_zero)
+    assert_equal '0',  format(:en, 0,  display_sign: :except_zero)
+    assert_equal '+1', format(:en, 1,  display_sign: :except_zero)
+    assert_equal '+1', format(:en, 1,  signDisplay:  :exceptZero)
+  end
+
+  def test_style
+    assert_equal '1,530', format(:en, 1530, style: :default)
+    assert_raises { format(:en, 1530, style: :unknown) }
+  end
+
+  def test_style_decimal
+    assert_equal '1,530', format(:en, 1530, style: :decimal)
+    assert_equal '1,530', format('en-u-nu-roman', 1530, style: :decimal)
+    assert_equal '١٬٥٣٠', format(:ar, 1530, style: :decimal)
   end
 end
