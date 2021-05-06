@@ -39,7 +39,7 @@ module Nii::Lookup
       #     end
       #
       #   @param name [String, Symbol]
-      #   @oaram message [String]
+      #   @param message [String]
       #   @return void
       #
       # @overload add(messages)
