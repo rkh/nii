@@ -200,6 +200,8 @@ methods:
     Changing this setting allows you to have more than one context per request.
   scopes:
   - middleware
+  - rails
+  - sinatra
   summary: The Rack environment key to store the context instance under.
 - name: fallback_locale
   aliases:
@@ -596,6 +598,8 @@ methods:
     Used for synchronizing I18n.locale with the request's locale.
   scopes:
   - middleware
+  - rails
+  - sinatra
   summary: The Rack environment key to store the synchronization context under.
 - name: territory
   aliases: []

@@ -113,6 +113,15 @@
     - one
     ordinal:
     - other
+  genders:
+  - masculine
+  - feminine
+  cases:
+  - nominative
+  - accusative
+  definiteness:
+  - definite
+  - indefinite
 - code: ar
   names:
     en:
@@ -336,6 +345,13 @@
     - one
     - few
     - many
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  - ablative
+  - locative
 - code: bas
   names:
     en:
@@ -730,6 +746,9 @@
     - one
     - two
     - few
+  genders:
+  - masculine
+  - feminine
 - code: ccp
   names:
     en:
@@ -1370,6 +1389,15 @@
     - one
     ordinal:
     - other
+  genders:
+  - masculine
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  - accusative
+  - vocative
 - code: en
   names:
     en:
@@ -1848,6 +1876,10 @@
     - one
     ordinal:
     - other
+  definiteness:
+  - definite
+  - indefinite
+  - construct
 - code: ff
   names:
     en:
@@ -1946,6 +1978,21 @@
     - one
     ordinal:
     - other
+  cases:
+  - nominative
+  - abessive
+  - ablative
+  - adessive
+  - allative
+  - comitative
+  - elative
+  - essive
+  - genitive
+  - illative
+  - inessive
+  - instrumental
+  - partitive
+  - translative
 - code: fil
   names:
     en:
@@ -2611,6 +2658,19 @@
     - few
     ordinal:
     - other
+  genders:
+  - animate
+  - inanimate
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  - instrumental
+  - vocative
+  - locative
 - code: hsb
   names:
     en:
@@ -2685,6 +2745,24 @@
     ordinal:
     - other
     - one
+  cases:
+  - nominative
+  - ablative
+  - accusative
+  - adessive
+  - allative
+  - causal
+  - dative
+  - delative
+  - elative
+  - essive
+  - illative
+  - inessive
+  - instrumental
+  - sublative
+  - superessive
+  - terminative
+  - translative
 - code: hy
   names:
     en:
@@ -2716,6 +2794,12 @@
     ordinal:
     - other
     - one
+  cases:
+  - nominative
+  - ablative
+  - dative
+  - locative
+  - instrumental
 - code: ia
   names:
     en:
@@ -2857,6 +2941,18 @@
     - one
     ordinal:
     - other
+  genders:
+  - masculine
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  definiteness:
+  - definite
+  - indefinite
 - code: it
   names:
     en:
@@ -3246,6 +3342,14 @@
     ordinal:
     - other
     - many
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  - instrumental
+  - ablative
+  - locative
 - code: kkj
   names:
     en:
@@ -3649,6 +3753,13 @@
     - one
     ordinal:
     - other
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  - ablative
+  - locative
 - code: la
   names:
     en:
@@ -3927,6 +4038,17 @@
     - many
     ordinal:
     - other
+  genders:
+  - masculine
+  - feminine
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  - instrumental
+  - vocative
+  - locative
 - code: lu
   names:
     en:
@@ -4033,6 +4155,16 @@
     - one
     ordinal:
     - other
+  genders:
+  - masculine
+  - feminine
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  - vocative
+  - locative
 - code: mai
   names:
     en:
@@ -4626,11 +4758,9 @@
     - nb
     - nb-NO
     - nb-SJ
-    - 'no'
     - no-bok
     - no-bokmal
     - nob
-    - nor
   territories:
   - 'NO'
   - SJ
@@ -4638,11 +4768,9 @@
     default: latn
   aliases:
     nb: nb-NO
-    'no': nb
     no-bok: nb
     no-bokmal: nb
     nob: nb
-    nor: nb
   scripts:
   - Latn
   plurals:
@@ -4817,7 +4945,7 @@
     nn:
     - norsk nynorsk
   locales:
-    nii-extra-locales:
+    nii-core:
     - nn
     - nn
     - nn-NO
@@ -4866,6 +4994,38 @@
     - one
     ordinal:
     - other
+- code: 'no'
+  names:
+    en:
+    - Norwegian
+    'no':
+    - norsk
+  locales:
+    nii-core:
+    - 'no'
+    - nor
+  numbers:
+    default: latn
+  aliases:
+    nor: 'no'
+  scripts:
+  - Latn
+  plurals:
+    cardinal:
+    - other
+    - one
+    ordinal:
+    - other
+  genders:
+  - masculine
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  definiteness:
+  - definite
+  - indefinite
 - code: nus
   names:
     en:
@@ -5872,6 +6032,19 @@
     - one
     ordinal:
     - other
+  genders:
+  - masculine
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  - ablative
+  - accusative
+  - dative
+  definiteness:
+  - definite
+  - indefinite
 - code: sk
   names:
     en:
@@ -5945,6 +6118,17 @@
     - few
     ordinal:
     - other
+  genders:
+  - masculine
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  - accusative
+  - dative
+  - instrumental
+  - locative
 - code: sm
   names:
     en:
@@ -6141,6 +6325,19 @@
     - few
     ordinal:
     - other
+  genders:
+  - animate
+  - inanimate
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  - instrumental
+  - vocative
+  - locative
 - code: st
   names:
     en:
@@ -6694,6 +6891,18 @@
     ordinal:
     - other
     - few
+  genders:
+  - masculine
+  - feminine
+  - neuter
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  - instrumental
+  - vocative
+  - locative
 - code: und
   names:
     en:
@@ -6805,6 +7014,13 @@
     - one
     ordinal:
     - other
+  cases:
+  - nominative
+  - genitive
+  - dative
+  - accusative
+  - ablative
+  - locative
 - code: vai
   names:
     en:
