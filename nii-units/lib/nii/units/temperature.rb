@@ -16,9 +16,9 @@ module Nii::Units
     self.quantity  =  'temperature'
     self.base_unit =  'kelvin'
     self.units     =  {
-      'celsius'    => { offset: 273.15r, factor: 1 },
+      'celsius'    => { offset: 273.15r, systems: ["metric"], factor: 1 },
       'fahrenheit' => { factor: 5r/9r, offset: 2298.35r/9r, systems: ["ussystem", "uksystem"] },
-      base_unit    => { factor: 1 }}
+      base_unit    => { systems: ["metric", "si"], factor: 1 }}
     self.aliases   =  {}
     rules.divide   =  { Portion => Temperature }
     rules.multiply =  { Portion => Temperature }

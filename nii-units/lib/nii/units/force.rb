@@ -16,7 +16,7 @@ module Nii::Units
     self.quantity   =  'force'
     self.base_unit  =  'kilogram-meter-per-square-second'
     self.units      =  {
-      'newton'      => { factor: 1 },
+      'newton'      => { systems: ["metric", "si"], factor: 1 },
       'pound-force' => { factor: CONSTANTS[:lb_to_kg]*CONSTANTS[:gravity], systems: ["ussystem", "uksystem"] },
       base_unit     => { factor: 1 }}
     self.aliases    =  {}

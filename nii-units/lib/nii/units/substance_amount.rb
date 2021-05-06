@@ -16,9 +16,9 @@ module Nii::Units
     self.quantity  =  'substance-amount'
     self.base_unit =  'item'
     self.units     =  {
-      'millimole'  => { factor: '6.02214076E+23'.to_r/1000r },
-      'mole'       => { factor: '6.02214076E+23'.to_r       },
-      base_unit    => { factor: 1                           }}
+      'millimole'  => { factor: CONSTANTS[:item_per_mole]/1000r, systems: ["metric", "si"] },
+      'mole'       => { factor: CONSTANTS[:item_per_mole], systems: ["metric", "si"] },
+      base_unit    => { factor: 1 }}
     self.aliases   =  {}
     rules.divide   =  { Portion => SubstanceAmount, Concentration => Volume, Volume => Concentration }
     rules.multiply =  { Portion => SubstanceAmount }

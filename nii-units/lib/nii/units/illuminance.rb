@@ -15,8 +15,8 @@ module Nii::Units
     self.quantity  =  'illuminance'
     self.base_unit =  'candela-per-square-meter'
     self.units     =  {
-      'lux'        => { factor: 1 },
-      base_unit    => { factor: 1 }}
+      'lux'        => { systems: ["metric", "si"], factor: 1 },
+      base_unit    => { factor: 1                            }}
     self.aliases   =  {}
     rules.divide   =  { Portion => Illuminance }
     rules.multiply =  { Portion => Illuminance, Area => LuminousIntensity }

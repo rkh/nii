@@ -51,6 +51,7 @@ puts "The difference is #{c.abs}."
  `Angle`                 |  `revolution`                                     |  `arc-minute`, `arc-second`, `degree`, `radian`
  `Area`                  |  `square-meter`                                   |  `acre`, `dunam`, `hectare`, `square-inch`, `square-centimeter`, `square-foot`, `square-kilometer`, `square-mile`, `square-yard`
  `Concentration`         |  `item-per-cubic-meter`                           | 
+ `ConcentrationMass`     |  `item-per-kilogram`                              |  `ofglucose`
  `Consumption`           |  `cubic-meter-per-meter`                          | 
  `CurrentDensity`        |  `ampere-per-square-meter`                        | 
  `Digital`               |  `bit`                                            |  `byte`, `gigabit`, `gigabyte`, `kilobit`, `kilobyte`, `megabit`, `megabyte`, `petabyte`, `terabit`, `terabyte`
@@ -80,13 +81,12 @@ puts "The difference is #{c.abs}."
  `Power`                 |  `kilogram-square-meter-per-cubic-second`         |  `horsepower`, `solar-luminosity`, `watt`, `gigawatt`, `kilowatt`, `megawatt`, `milliwatt`
  `Pressure`              |  `kilogram-per-meter-square-second`               |  `atmosphere`, `bar`, `pascal`, `hectopascal`, `kilopascal`, `megapascal`, `millibar`
  `PressurePerLength`     |  `kilogram-per-square-meter-square-second`        |  `ofhg`
- `Resolution`            |  `pixel-per-meter`                                | 
+ `Resolution`            |  `pixel-per-meter`                                |  `dot-per-centimeter`, `dot-per-inch`
  `SolidAngle`            |  `square-revolution`                              | 
  `SpecificVolume`        |  `cubic-meter-per-kilogram`                       | 
  `Speed`                 |  `meter-per-second`                               |  `knot`
  `SubstanceAmount`       |  `item`                                           |  `mole`, `millimole`
  `Temperature`           |  `kelvin`                                         |  `celsius`, `fahrenheit`
- `Torque`                |  `kilogram-meter-per-meter-square-second`         | 
  `Typewidth`             |  `em`                                             | 
  `Voltage`               |  `kilogram-square-meter-per-cubic-second-ampere`  |  `volt`
  `Volume`                |  `cubic-meter`                                    |  `barrel`, `bushel`, `cup`, `cup-metric`, `dessert-spoon`, `dessert-spoon-imperial`, `dram`, `drop`, `fluid-ounce`, `fluid-ounce-imperial`, `gallon`, `gallon-imperial`, `jigger`, `liter`, `pinch`, `pint`, `pint-metric`, `quart`, `quart-imperial`, `tablespoon`, `teaspoon`, `centiliter`, `cubic-centimeter`, `cubic-foot`, `cubic-inch`, `cubic-kilometer`, `cubic-mile`, `cubic-yard`, `deciliter`, `hectoliter`, `megaliter`, `milliliter`

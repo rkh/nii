@@ -15,8 +15,8 @@ module Nii::Units
     self.quantity   =  'electric-current'
     self.base_unit  =  'ampere'
     self.units      =  {
-      'milliampere' => { factor: 1r/1000r },
-      base_unit     => { factor: 1        }}
+      'milliampere' => { systems: ["metric", "si"], factor: 1r/1000r },
+      base_unit     => { systems: ["metric", "si"], factor: 1        }}
     self.aliases    =  {}
     rules.divide    =  { Portion => ElectricCurrent, CurrentDensity => Area, Area => CurrentDensity, MagneticFieldStrength => Length, Length => MagneticFieldStrength }
     rules.multiply  =  { Portion => ElectricCurrent, Duration => ElectricCharge, ElectricResistance => Voltage }

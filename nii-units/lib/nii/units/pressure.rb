@@ -21,14 +21,14 @@ module Nii::Units
     self.quantity   =  'pressure'
     self.base_unit  =  'kilogram-per-meter-square-second'
     self.units      =  {
-      'atmosphere'  => { factor: 101325        },
-      'bar'         => { factor: 100000        },
-      'hectopascal' => { factor: 100           },
-      'kilopascal'  => { factor: 1000          },
-      'megapascal'  => { factor: 1000000       },
-      'millibar'    => { factor: 100000r/1000r },
-      'pascal'      => { factor: 1             },
-      base_unit     => { factor: 1             }}
+      'atmosphere'  => { factor: 101325                             },
+      'bar'         => { factor: 100000, systems: ["metric"]        },
+      'hectopascal' => { systems: ["metric", "si"], factor: 100     },
+      'kilopascal'  => { systems: ["metric", "si"], factor: 1000    },
+      'megapascal'  => { systems: ["metric", "si"], factor: 1000000 },
+      'millibar'    => { factor: 100000r/1000r, systems: ["metric"] },
+      'pascal'      => { systems: ["metric", "si"], factor: 1       },
+      base_unit     => { factor: 1                                  }}
     self.aliases    =  {}
     rules.divide    =  { Portion => Pressure, PressurePerLength => Area, Area => PressurePerLength }
     rules.multiply  =  { Portion => Pressure }

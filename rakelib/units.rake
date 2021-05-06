@@ -151,8 +151,8 @@ task :units do
       info   = units[unit] = base_unit.merge('base_unit' => 'cubic-meter', 'quantity' => 'volume', 'factor' => "#{factor}*#{factor}*#{factor}")
     when /^(.+)-per-(.+)$/
       a, b = $1, $2
-      raise "could not resolve #{a}" unless first  = compute_unit(a, units)
-      raise "could not resolve #{b}" unless second = compute_unit(b, units)
+      raise "could not resolve #{a} (#{unit})" unless first  = compute_unit(a, units)
+      raise "could not resolve #{b} (#{unit})" unless second = compute_unit(b, units)
 
       if quantity
         raise 'cannot handle offsets' if first['offset'] or second['offset']
@@ -173,6 +173,8 @@ task :units do
       info = units[unit] = { 'factor' => '1', 'quantity' => quantity }
     when 'pound-force-foot'
       info = units[unit] = { 'factor' => '1.355818', 'quantity' => quantity }
+    when 'milligram-ofglucose'
+      info = compute_unit('milligram', units, quantity)
     when /^([^\-]+)-([^\-]+)$/
       a, b = $1, $2
       raise "could not resolve #{a}" unless first  = compute_unit(a, units)
@@ -342,9 +344,11 @@ task :units do
 
   constants = data['constants']
   constants = constants.map do |key, value|
-    value = parse(value, constants)
-    value = 'Math::PI.to_r' if key == 'PI'
-    "      #{key}:#{' '*(13-key.size)} #{value}"
+    value   = parse(value, constants)
+    value   = 'Math::PI.to_r' if key == 'PI'
+    indent  = 13-key.size
+    indent  = 0 if indent < 0
+    "      #{key}:#{' '*(indent)} #{value}"
   end.sort
 
   constants =  "CONSTANTS = {\n#{constants.join(",\n")}\n    }"

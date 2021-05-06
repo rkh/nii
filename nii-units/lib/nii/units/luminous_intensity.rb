@@ -13,7 +13,7 @@ module Nii::Units
   class LuminousIntensity < GenericUnit
     self.quantity  = 'luminous-intensity'
     self.base_unit = 'candela'
-    self.units     = { base_unit => { factor: 1 }}
+    self.units     = { base_unit => { systems: ["metric", "si"], factor: 1 }}
     self.aliases   = {}
     rules.divide   = { Portion => LuminousIntensity, Illuminance => Area, Area => Illuminance }
     rules.multiply = { Portion => LuminousIntensity }

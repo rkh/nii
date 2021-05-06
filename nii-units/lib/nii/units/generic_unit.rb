@@ -15,8 +15,10 @@ module Nii::Units
       ft_to_m:       0.3048r,
       gal_imp_to_m3: 0.00454609r,
       gal_to_m3:     231r*0.3048r*0.3048r*0.3048r/12r*12r*12r,
+      glucose_molar_mass: 180.1557r,
       gravity:       9.80665r,
       in3_to_m3:     0.3048r*0.3048r*0.3048r/12r*12r*12r,
+      item_per_mole: '6.02214076E+23'.to_r,
       lb_to_kg:      0.45359237r
     }
 
