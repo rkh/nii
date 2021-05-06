@@ -18,11 +18,11 @@ module Nii::Units
     self.quantity  =  'angle'
     self.base_unit =  'revolution'
     self.units     =  {
-      'arc-minute' => { factor: 1r/360r*60r, symbol: 'arcmins'     },
+      'arc-minute' => { factor: 1r/360r*60r, symbol: 'arcmins' },
       'arc-second' => { factor: 1r/360r*60r*60r, symbol: 'arcsecs' },
-      'degree'     => { factor: 1r/360r, symbol: 'deg'             },
-      'radian'     => { factor: 1r/2r*CONSTANTS[:PI]               },
-      base_unit    => { factor: 1                                  }}
+      'degree'     => { factor: 1r/360r, symbol: 'deg' },
+      'radian'     => { factor: 1r/2r*CONSTANTS[:PI], systems: ["metric", "si"] },
+      base_unit    => { factor: 1 }}
     self.aliases   =  {
       'arcmins'    => 'arc-minute',
       'arcsecs'    => 'arc-second',

@@ -27,20 +27,20 @@ module Nii::Units
     self.quantity  =  'mass'
     self.base_unit =  'kilogram'
     self.units     =  {
-      'carat'      => { factor: 0.0002r },
+      'carat'      => { factor: 0.0002r, systems: ["metric"] },
       'earth-mass' => { factor: '5.9722E+24'.to_r },
       'grain'      => { factor: CONSTANTS[:lb_to_kg]/7000r, systems: ["ussystem", "uksystem"] },
-      'gram'       => { factor: 0.001r },
-      'metric-ton' => { factor: 1000 },
-      'microgram'  => { factor: 0.001r/1000000r },
-      'milligram'  => { factor: 0.001r/1000r },
+      'gram'       => { factor: 0.001r, systems: ["metric", "si"] },
+      'metric-ton' => { factor: 1000, systems: ["metric"] },
+      'microgram'  => { factor: 0.001r/1000000r, systems: ["metric", "si"] },
+      'milligram'  => { factor: 0.001r/1000r, systems: ["metric", "si"] },
       'ounce'      => { factor: CONSTANTS[:lb_to_kg]/16r, systems: ["ussystem", "uksystem"] },
       'ounce-troy' => { factor: 0.03110348r, systems: ["ussystem", "uksystem"] },
       'pound'      => { factor: CONSTANTS[:lb_to_kg], systems: ["ussystem", "uksystem"] },
       'solar-mass' => { factor: '1.98847E+30'.to_r },
       'stone'      => { factor: CONSTANTS[:lb_to_kg]*14r, systems: ["uksystem"] },
       'ton'        => { factor: CONSTANTS[:lb_to_kg]*2000r, systems: ["ussystem", "uksystem"] },
-      base_unit    => { factor: 1 }}
+      base_unit    => { systems: ["metric", "si"], factor: 1 }}
     self.aliases   =  {}
     rules.divide   =  { Portion => Mass, MassDensity => Volume, Volume => MassDensity }
     rules.multiply =  { Portion => Mass, MassFraction => Mass, SpecificVolume => Volume }

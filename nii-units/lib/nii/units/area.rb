@@ -25,11 +25,11 @@ module Nii::Units
     self.units            =  {
       'acre'              => { factor: CONSTANTS[:ft2_to_m2]*43560r, systems: ["ussystem", "uksystem"] },
       'dunam'             => { factor: 1000 },
-      'hectare'           => { factor: 10000 },
-      'square-centimeter' => { factor: 1r/100r*1r/100r },
+      'hectare'           => { factor: 10000, systems: ["metric"] },
+      'square-centimeter' => { systems: ["metric", "si"], factor: 1r/100r*1r/100r },
       'square-foot'       => { factor: CONSTANTS[:ft_to_m]*CONSTANTS[:ft_to_m], systems: ["ussystem", "uksystem"] },
       'square-inch'       => { factor: CONSTANTS[:ft_to_m]/12r*CONSTANTS[:ft_to_m]/12r, systems: ["ussystem", "uksystem"] },
-      'square-kilometer'  => { factor: 1000r*1000r },
+      'square-kilometer'  => { systems: ["metric", "si"], factor: 1000r*1000r },
       'square-mile'       => { factor: CONSTANTS[:ft_to_m]*5280r*CONSTANTS[:ft_to_m]*5280r, systems: ["ussystem", "uksystem"] },
       'square-yard'       => { factor: CONSTANTS[:ft_to_m]*3r*CONSTANTS[:ft_to_m]*3r, systems: ["ussystem", "uksystem"] },
       base_unit           => { factor: 1 }}

@@ -15,8 +15,8 @@ module Nii::Units
     self.quantity  =  'electric-resistance'
     self.base_unit =  'kilogram-square-meter-per-cubic-second-square-ampere'
     self.units     =  {
-      'ohm'        => { factor: 1 },
-      base_unit    => { factor: 1 }}
+      'ohm'        => { systems: ["metric", "si"], factor: 1 },
+      base_unit    => { factor: 1                            }}
     self.aliases   =  {}
     rules.divide   =  { Portion => ElectricResistance }
     rules.multiply =  { Portion => ElectricResistance, ElectricCurrent => Voltage, Duration => ElectricInductance }

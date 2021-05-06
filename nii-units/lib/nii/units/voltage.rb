@@ -15,8 +15,8 @@ module Nii::Units
     self.quantity  =  'voltage'
     self.base_unit =  'kilogram-square-meter-per-cubic-second-ampere'
     self.units     =  {
-      'volt'       => { factor: 1 },
-      base_unit    => { factor: 1 }}
+      'volt'       => { systems: ["metric", "si"], factor: 1 },
+      base_unit    => { factor: 1                            }}
     self.aliases   =  {}
     rules.divide   =  { Portion => Voltage, ElectricCurrent => ElectricResistance, ElectricResistance => ElectricCurrent }
     rules.multiply =  { Portion => Voltage }

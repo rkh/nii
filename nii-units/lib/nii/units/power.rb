@@ -21,13 +21,13 @@ module Nii::Units
     self.quantity        =  'power'
     self.base_unit       =  'kilogram-square-meter-per-cubic-second'
     self.units           =  {
-      'gigawatt'         => { factor: 1000000000 },
+      'gigawatt'         => { systems: ["metric", "si"], factor: 1000000000 },
       'horsepower'       => { factor: CONSTANTS[:ft_to_m]*CONSTANTS[:lb_to_kg]*CONSTANTS[:gravity]*550r, systems: ["ussystem", "uksystem"] },
-      'kilowatt'         => { factor: 1000 },
-      'megawatt'         => { factor: 1000000 },
-      'milliwatt'        => { factor: 1r/1000r },
+      'kilowatt'         => { systems: ["metric", "si"], factor: 1000 },
+      'megawatt'         => { systems: ["metric", "si"], factor: 1000000 },
+      'milliwatt'        => { systems: ["metric", "si"], factor: 1r/1000r },
       'solar-luminosity' => { factor: '3.828E+26'.to_r },
-      'watt'             => { factor: 1 },
+      'watt'             => { systems: ["metric", "si"], factor: 1 },
       base_unit          => { factor: 1 }}
     self.aliases         =  {}
     rules.divide         =  { Portion => Power, Force => Speed, Speed => Force, Torque => Speed, Speed => Torque }

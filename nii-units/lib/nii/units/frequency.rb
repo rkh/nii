@@ -18,11 +18,11 @@ module Nii::Units
     self.quantity  =  'frequency'
     self.base_unit =  'revolution-per-second'
     self.units     =  {
-      'gigahertz'  => { factor: 1000000000 },
-      'hertz'      => { factor: 1          },
-      'kilohertz'  => { factor: 1000       },
-      'megahertz'  => { factor: 1000000    },
-      base_unit    => { factor: 1          }}
+      'gigahertz'  => { systems: ["metric", "si"], factor: 1000000000 },
+      'hertz'      => { systems: ["metric", "si"], factor: 1          },
+      'kilohertz'  => { systems: ["metric", "si"], factor: 1000       },
+      'megahertz'  => { systems: ["metric", "si"], factor: 1000000    },
+      base_unit    => { factor: 1                                     }}
     self.aliases   =  {}
     rules.divide   =  { Portion => Frequency }
     rules.multiply =  { Portion => Frequency, Duration => Angle }

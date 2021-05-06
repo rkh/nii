@@ -15,8 +15,8 @@ module Nii::Units
     self.quantity  =  'luminous-flux'
     self.base_unit =  'candela-square-meter-per-square-meter'
     self.units     =  {
-      'lumen'      => { factor: 1 },
-      base_unit    => { factor: 1 }}
+      'lumen'      => { systems: ["metric", "si"], factor: 1 },
+      base_unit    => { factor: 1                            }}
     self.aliases   =  {}
     rules.divide   =  { Portion => LuminousFlux }
     rules.multiply =  { Portion => LuminousFlux }

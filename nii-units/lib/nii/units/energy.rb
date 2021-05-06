@@ -27,13 +27,13 @@ module Nii::Units
       'calorie'              => { factor: 4.184r },
       'dalton'               => { factor: '1.49241808560E-10'.to_r },
       'electronvolt'         => { factor: '1.602177E-19'.to_r },
-      'foodcalorie'          => { factor: 4184, systems: ["ussystem", "uksystem"] },
-      'joule'                => { factor: 1 },
+      'foodcalorie'          => { factor: 4184, systems: ["ussystem", "uksystem"], symbol: 'Cal' },
+      'joule'                => { systems: ["metric", "si"], factor: 1 },
       'kilocalorie'          => { factor: 4.184r*1000r },
-      'kilojoule'            => { factor: 1000 },
+      'kilojoule'            => { systems: ["metric", "si"], factor: 1000 },
       'therm-us'             => { factor: 105480400, systems: ["ussystem"] },
       base_unit              => { factor: 1 }}
-    self.aliases   =  {}
+    self.aliases   =  { 'Cal' => 'foodcalorie' }
     rules.divide   =  { Portion => Energy, Force => Length, Length => Force, Power => Duration, Duration => Power }
     rules.multiply =  { Portion => Energy }
 
@@ -76,6 +76,9 @@ module Nii::Units
     # Whether or not amount is in Calories.
     # @return [true, false]
     def foodcalorie? = unit == 'foodcalorie'
+
+    alias_method :to_Cal, :to_foodcalorie
+    alias_method :Cal?, :foodcalorie?
 
     # Converts the object to joules.
     # @return [Energy] the equivalent instance in joules
