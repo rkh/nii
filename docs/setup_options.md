@@ -182,7 +182,7 @@ end
 ```
 
 ### `env_key`
-**Scope: Middleware**
+**Scope: Middleware, Rails, Sinatra**
 
 The Rack environment key to store the context instance under.
 Changing this setting allows you to have more than one context per request.
@@ -490,7 +490,7 @@ end
 ```
 
 ### `sync_key`
-**Scope: Middleware**
+**Scope: Middleware, Rails, Sinatra**
 
 The Rack environment key to store the synchronization context under.
 Used for synchronizing I18n.locale with the request's locale.
