@@ -228,7 +228,7 @@ module Nii::CLDR
     end
 
     def json(path)
-      JSON.load(root.join("#{path}.json").read)
+      JSON.parse(root.join("#{path}.json").read, object_class: Nii::CLDR::JSObject).to_h
     end
 
     def supplemental(key, namespace: key)

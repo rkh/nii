@@ -65,7 +65,7 @@ module Nii::CLDR
       supplemental(:grammaticalGenderFeatures, suffix: '-targets-nominal') do |data|
         grammar               = store(:core, :info)[:grammar] ||= {}
         gender_info           = grammar[:genders]             ||= {}
-        gender_info[:nominal] = data.fetch('grammaticalGender')
+        gender_info[:nominal] = data.fetch('grammaticalGender') { raise [data, fetch_code].inspect }
         gender_info[:units]   = data['grammaticalGender-scope-units'] if data.include? 'grammaticalGender-scope-units'
       end
 
