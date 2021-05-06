@@ -16,7 +16,7 @@ end
 group :development do
   gem 'rake', '~> 13.0'
   gem 'nii-cldr', path: 'tools'
-  gem 'yard'
+  gem 'yard', git: 'https://github.com/rkh/yard.git', branch: 'rkh-ruby-3'
 end
 
 group :test do

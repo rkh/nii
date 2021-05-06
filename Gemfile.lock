@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/rkh/yard.git
+  revision: 5bbbd9e1e1919528ff361a6052241cb863b8b77c
+  branch: rkh-ruby-3
+  specs:
+    yard (0.9.26)
+
 PATH
   remote: .
   specs:
@@ -136,7 +143,6 @@ GEM
       tzinfo
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    yard (0.9.26)
     zeitwerk (2.4.2)
 
 PLATFORMS
@@ -168,7 +174,7 @@ DEPENDENCIES
   rake (~> 13.0)
   simplecov
   twitter_cldr
-  yard
+  yard!
 
 BUNDLED WITH
    2.2.3
