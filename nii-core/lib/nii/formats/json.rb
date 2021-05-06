@@ -50,8 +50,8 @@ module Nii::Formats
       end
 
       structure.process(content, bundle: bundle, message_format: message_format) do |key, message, **attributes|
-        attributes.transform_values! { |value| compile_value(bundle, value) }
-        message = Nii::Message.new(key, compile_value(bundle, message), **attributes)
+        attributes.transform_values! { |value| compile_value(message_format, bundle, value) }
+        message = Nii::Message.new(key, compile_value(message_format, bundle, message), **attributes)
         bundle.add(message)
       end
     end
@@ -76,11 +76,11 @@ module Nii::Formats
       end
     end
 
-    def build_format(structure, messages) = [Nii::Formats[Structure, structure], Nii::Formats[Messages, messages]]
-    def detect_format?                    = @detect_format
-    def formats                           = @formats        ||= self.class::FORMATS
-    def format_config                     = config.json
-    def parse(source)                     = Nii::Parser.json(source)
-    def compile_value(bundle, value)      = Nii::Template::Element === value ? value : message_format.compile(bundle, value)
+    def build_format(structure, messages)    = [Nii::Formats[Structure, structure], Nii::Formats[Messages, messages]]
+    def detect_format?                       = @detect_format
+    def formats                              = @formats        ||= self.class::FORMATS
+    def format_config                        = config.json
+    def parse(source)                        = Nii::Parser.json(source)
+    def compile_value(format, bundle, value) = Nii::Template::Element === value ? value : format.compile(bundle, value)
   end
 end

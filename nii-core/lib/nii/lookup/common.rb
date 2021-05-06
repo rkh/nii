@@ -12,7 +12,7 @@ module Nii::Lookup
 
     def initialize(config)
       @config            = Nii::Config.new(config)
-      @config            = Nii::Config.new(config.lookup) if config.lookup
+      @config            = Nii::Config.new(config.lookup) if @config.lookup
       @namespaces        = Concurrent::Map.new
       @lock              = Concurrent::ReadWriteLock.new
       @available_locales = nil
