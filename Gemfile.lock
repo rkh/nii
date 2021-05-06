@@ -1,7 +1,7 @@
 GIT
-  remote: https://github.com/rkh/yard.git
-  revision: 5bbbd9e1e1919528ff361a6052241cb863b8b77c
-  branch: rkh-ruby-3
+  remote: https://github.com/lsegal/yard.git
+  revision: b589fa0dc0a21f3304da949dc418e0dc0032182b
+  branch: main
   specs:
     yard (0.9.26)
 
