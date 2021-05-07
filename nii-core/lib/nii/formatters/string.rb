@@ -121,7 +121,7 @@ module Nii::Formatters
     # @option (see #get_name)
     # @!scope module
     def format_as_key(context, value, **options)
-      key, subkey = Array === value ? value : value.downcase.split('.', 2)
+      key, subkey = ::Array === value ? value : value.downcase.split('.', 2)
       if subkey
         result = get_name(context, value, **options) { |style| context.locale_data(:names, :types, key, subkey) }
         Array === result ? result.last : result

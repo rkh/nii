@@ -559,15 +559,18 @@ module Nii
     #   @note    (see Nii::Formatters::TZInfo::Timezone.format)
     #   @see     Nii::Formatters::TZInfo::Timezone
     def format(value = scope, **options, &block)
-      escape_html = options[:escape_html]
-      bidi        = options[:bidi]
-      escape_html = options[:escape_html] = escape_html?   if escape_html.nil?
-      bidi        = options[:bidi]        = text.bidi_mode if bidi.nil?
+      escape_html        = options[:escape_html]
+      bidi               = options[:bidi]
+      escape_html        = options[:escape_html] = escape_html?   if escape_html.nil?
+      bidi               = options[:bidi]        = text.bidi_mode if bidi.nil?
       return value if value.is_a? String and options.all? { !_2 } and !escape_html
 
       value              = prepare_format(value)
       value, formatter   = Utils.string(value), Formatters::String unless formatter = Formatters[value.class, config]
-      result             = formatter.format(self, value, **options, &block).encode(encoding)
+      result             = formatter.format(self, value, **options, &block)
+      return result unless result.is_a? String
+  
+      result             = result.encode(encoding)
       escape_html        = false if escape_html and formatter.respond_to?(:escape?) and !formatter.escape?(value, **options)
       result             = yield(result) if block_given? and (!formatter.respond_to?(:yield?) or formatter.yield?(result))
       result             = escape_html ? html.format(result) : result

@@ -117,7 +117,7 @@ module Nii::Info
         bidi(string, auto_bidi, **options)
       
       when :html, 'html'
-        bidi(string, true, options.merge(format: :html))
+        bidi(string, true, **options.merge(format: :html))
       
       when true
         format      = options[:format]&.downcase&.to_sym || :utf

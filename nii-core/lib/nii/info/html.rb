@@ -20,10 +20,12 @@ module Nii::Info
     #
     # @return [String, ActiveSupport::SafeBuffer, Nii::HTMLString] the string, marked html safe
     def insert(template, *values, **options)
-      values = values.map { |v| format(v, **options) }
-      result = template.gsub('?').with_index { |_, i| values[i] }
-      result.gsub!(PATTERN) { values[$1.to_i] }
-      result
+      if values.any?
+        values = values.map { |v| format(v, **options) }
+        result = template.gsub('?').with_index { |_, i| values[i] }
+        result.gsub!(PATTERN) { values[$1.to_i] }
+      end
+      Nii::HTMLString.new(result || template)
     end
 
     # @api internal
@@ -43,7 +45,7 @@ module Nii::Info
       return string if options[:escape_html] == false
       escape_with(string, encoding) do |source|
         result = String.new
-        source = StringScanner.new(string)
+        source = StringScanner.new Nii::Utils.string(string)
         until source.eos?
           if source.scan(HTML_TAG)
             if TEXT_TAGS.include? source[:tag].downcase
