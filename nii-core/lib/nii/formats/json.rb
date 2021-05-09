@@ -4,13 +4,11 @@ module Nii::Formats
   class JSON
     # @api internal
     FORMATS = {
-      default: [ :simple, :plain ],
-      simple:  [ :simple, :plain ],
-      i18n:    [ :i18n,   :ruby  ]
+      arb:     [ :arb,    :arb      ],
+      default: [ :simple, :flexible ],
+      i18n:    [ :i18n,   :i18n     ],
+      simple:  [ :simple, :plain    ],
     }
-
-    # @api internal
-    DETECT = []
 
     # @api internal
     attr_reader :config, :structure, :message_format
@@ -18,6 +16,7 @@ module Nii::Formats
     # @api internal
     def initialize(config)
       @config   = Nii::Config.new(config)
+      formats   = self.class::FORMATS
       format    = format_config&.format
       format    = format.to_sym        if format.respond_to? :to_sym
       format    = formats.values.first if formats.size == 1
@@ -61,24 +60,22 @@ module Nii::Formats
 
     private
 
+    attr_reader :formats
+
     def detect_format(bundle, content)
-      format = detect_formats.detect { |s, m| format.detect?(bundle, content, m) }
+      format = detect_formats.detect { _1.detect?(bundle, content, _2) }
       format || formats.fetch(:default)
     end
 
     def detect_formats
-      @detect_formats ||= begin
-        list = Array(format_config&.detect || self.class::DETECT)
-        list.select! { |f| formats.include? f     }
-        list.map!    { |f| formats.fetch(f)       }
-        list.select! { |f| f.respond_to? :detect? }
-        list
-      end
+      @detect_formats ||= Array(format_config&.detect || self.class::FORMATS.keys).map do |key|
+        next unless match = format[key]
+        match if match.first.respond_to? :detect?
+      end.compact
     end
 
     def build_format(structure, messages)    = [Nii::Formats[Structure, structure], Nii::Formats[Messages, messages]]
     def detect_format?                       = @detect_format
-    def formats                              = @formats        ||= self.class::FORMATS
     def format_config                        = config.json
     def parse(source)                        = Nii::Parser.json(source)
     def compile_value(format, bundle, value) = Nii::Template::Element === value ? value : format.compile(bundle, value)

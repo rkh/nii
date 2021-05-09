@@ -3,11 +3,13 @@
 module Nii::Formats
   # @api internal
   module Messages
-    autoload :ARB,     'nii/formats/messages/arb'
-    autoload :Detect,  'nii/formats/messages/detect'
-    autoload :Plain,   'nii/formats/messages/plain'
-    autoload :I18n,    'nii/formats/messages/i18n'
-    autoload :ICU,     'nii/formats/messages/icu'
-    autoload :Ruby,    'nii/formats/messages/ruby'
+    autoload :ARB,      'nii/formats/messages/arb'
+    autoload :Flexible, 'nii/formats/messages/flexible'
+    autoload :Detect,   'nii/formats/messages/detect'
+    autoload :I18n,     'nii/formats/messages/i18n'
+    autoload :ICU,      'nii/formats/messages/icu'
+    autoload :Plain,    'nii/formats/messages/plain'
+    autoload :R18n,     'nii/formats/messages/r18n'
+    autoload :Ruby,     'nii/formats/messages/ruby'
   end
 end

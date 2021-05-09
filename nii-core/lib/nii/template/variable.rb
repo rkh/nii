@@ -12,6 +12,7 @@ module Nii::Template
     def resolve(context, variables, default = self.default, &block)
       variable = context.normalize_variable_name(payload)
       result   = variables.fetch(variable, default)
+      result   = result.resolve(context, variables) if result.is_a? Element
       result   = context.unknown_variable(variable, variables) if result == Nii::UNDEFINED
 
       # todo: we should wrap this in some sort of wrapper, so we can access attributes etc

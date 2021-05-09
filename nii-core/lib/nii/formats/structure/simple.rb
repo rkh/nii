@@ -11,9 +11,5 @@ module Nii::Formats::Structure
         yield key, value
       end
     end
-
-    def multipe_locales?
-      false
-    end
   end
 end

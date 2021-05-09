@@ -3,7 +3,7 @@
 module Nii::Formats
   class ARB < JSON
     # @api internal
-    FORMATS = { default: [ :arb, :arb ] }
+    FORMATS = { default: JSON::FORMATS[:arb] }
 
     private
     def format_config = config.arb
