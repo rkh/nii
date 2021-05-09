@@ -6,7 +6,7 @@ module Nii::Formats
     attr_reader :config
 
     # @api internal
-    def initialize(config) = @config = config
+    def initialize(config = nil) = @config = Nii::Config.new(config)
     
     # @api internal
     def compile(bundle, source, name:) = bundle.add(Nii::Message.new(name, compile_template(bundle, source)))
