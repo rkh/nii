@@ -64,6 +64,7 @@ module Nii
   end
 
   # Placeholder for methods that need to differentiate a default argument value from an explicit nil.
+  # @api internal
   UNDEFINED = Object.new
 
   # Reusable instance of {Nii::Data}, already configured to load CLRD locale information.
@@ -74,6 +75,10 @@ module Nii
   # @api internal
   DATA = Data.new File.expand_path('../../data', __dir__)
   raise RuntimeError, 'could not find locate locale data' if DATA.known_locales.empty?
+
+  # Handy for HTML escaping and such.
+  # @api internal
+  HTML = Info::Html.new
 
   # Shorthand for {Nii::Setup.new}.
   #

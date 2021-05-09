@@ -6,7 +6,7 @@ module Nii::Info
     attr_reader :context
 
     # @api internal
-    def initialize(context) = @context = context
+    def initialize(context = Nii::Context.new) = @context = context
 
     private
 

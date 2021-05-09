@@ -25,7 +25,7 @@ module Nii::Info
         result = template.gsub('?').with_index { |_, i| values[i] }
         result.gsub!(PATTERN) { values[$1.to_i] }
       end
-      Nii::HTMLString.new(result || template)
+      safe(result || template)
     end
 
     # @api internal
@@ -99,7 +99,7 @@ module Nii::Info
       end
       string = yield(string)
       string = string.encode(encoding) if string.encoding != encoding
-      Nii::HTMLString.new(string)
+      safe(string)
     end
   end
 end
