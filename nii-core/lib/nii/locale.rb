@@ -375,7 +375,7 @@ module Nii
     def lookup
       @lock.with_read_lock do
         recalculate unless @options[:lookup]
-        @lookup ||= @options[:lookup].map { |code| self.class.new(code) }
+        @lookup ||= @options[:lookup].map { |code| self.class.new(code) }.uniq
       end
     end
 
