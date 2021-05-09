@@ -35,6 +35,13 @@ module Nii
       object.freeze
     end
 
+    # Recursively merges two Hashes. Mainly used for Ruby I18n compatibility, which heavily relies on deep merging.
+    def deep_merge(first, second)
+      return first if second.nil?
+      return second unless first.is_a? Hash and second.is_a? Hash
+      first.merge(second) { deep_merge(_2, _3) }
+    end
+
     # Converts a value into a string, but avoids the additional allocation of #to_s if possible.
     # @param value [#to_s]
     # @return [String]

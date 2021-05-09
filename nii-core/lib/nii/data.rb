@@ -203,19 +203,11 @@ module Nii
           result = dir.split('/').inject({}) do |data, segment|
             path = path ? File.join(path, segment) : segment
             json = load_path.json(bucket_name, directory: path)
-            merge(data, json)
+            Utils.deep_merge(data, json)
           end
 
           Utils.deep_freeze(result)
         end
-      end
-    end
-
-    def merge(data, other)
-      return data if other.nil?
-      data.merge(other) do |key, old, new|
-        next new unless old.is_a? Hash and new.is_a? Hash
-        merge(old, new)
       end
     end
 
