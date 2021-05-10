@@ -10,9 +10,11 @@ Advanced [Nii](https://nii.dev) integration for [Slim](http://slim-lang.com/) te
 span data-value=value = value
 ```
 
-Return values that aren't inside HTML attributes will now be formatted with Nii:
+Return values that aren't inside HTML attributes will be formatted with Nii:
 
 ``` ruby
+require "nii-slim"
+
 template = Slim::Template.new('exmaple.slim')
 template.render(nil, value: 1530)              # => '<span data-value="1530">1,530</span>'
 template.render(nil, value: 1530, locale: :de) # => '<span data-value="1530">1.530</span>'
