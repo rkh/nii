@@ -99,6 +99,7 @@ For the time being, all Nii libraries and assets are managed in a mono repositor
   * [`nii-rails`](nii-rails) – Framework integration for Rails.
   * [`nii-rbnf`](nii-rbnf) – Implementation for Unicode Rule Based Number Formats. Can be used standalone.
   * [`nii-sinatra`](nii-sinatra) – Framework integration for Sinatra.
+  * [`nii-slim`](nii-slim) – Better Nii support for Slim templates.
   * [`nii-units`](nii-units) – Support for scientific units, based on CLDR data. Can be used standalone.
   * [`nii-xml`](nii-xml) – Adds support for XML-based localization formats, including XLIFF.
 

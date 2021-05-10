@@ -8,6 +8,7 @@ path '.' do
   gem 'nii-historic'
   gem 'nii-i18n'
   gem 'nii-rbnf'
+  gem 'nii-slim'
   gem 'nii-sinatra'
   gem 'nii-units'
   gem 'nii-xml'
