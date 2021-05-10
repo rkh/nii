@@ -18,6 +18,6 @@ class TestSlim < Minitest::Test
     app      = MyApp.new
     app.nii  = Nii::Context.new(:ar)
     template = Slim::Template.new { "span data-value=value = value" }
-    assert_equal '<span data-value=\"1530\">١٬٥٣٠</span>', template.render(app)
+    assert_equal '<span data-value="1530">١٬٥٣٠</span>', template.render(app)
   end
 end
