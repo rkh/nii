@@ -23,13 +23,15 @@ module Nii
     # @raise [Nii::Errors::SetupError] if localization context cannot be determined
     def nii(complain = true)
       case
-      when defined?(@nii) && @nii           then @nii.to_nii_context
+      when defined?(@nii) && @nii           then @nii
       when respond_to?(:to_nii_context)     then @nii = self
       when env = RackEnv[self, _nii_config] then @nii = env.context
       when respond_to?(:locale)             then @nii = Context.new(locale, _nii_config)
       when _nii_config.locale               then @nii = Context.new(_nii_config)
       when complain                         then raise Errors::SetupError, 'no nii context'
+      else return
       end
+      @nii.to_nii_context
     end
 
     # Check for a localization context (to avoid an exception when calling {#nii}).
