@@ -15,7 +15,7 @@ module Nii
       @options = options
     end
 
-    def format(**options) = context.format(@object, @options.merge(options))
+    def format(**options) = @context.format(@object, **@options.merge(options))
     alias_method :to_s, :format
 
     def localize(context = nil, **options)
@@ -37,8 +37,8 @@ module Nii
 
     def respond_to_missing?(method, include_private = false) = @object.respond_to?(method)
 
-    def method_missing(method, *args, &block)
-      result = @object.public_send(method, *args, &block)
+    def method_missing(method, ...)
+      result = @object.public_send(method, ...)
       result = @context.localize(result) if __localize__? method, result
       result
     end
