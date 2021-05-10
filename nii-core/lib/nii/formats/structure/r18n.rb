@@ -36,7 +36,7 @@ module Nii::Formats::Structure
 
     def process(*key, content, &block)
       if content.respond_to? :yaml_tag and tag = content.yaml_tag?
-        Nii::Errors::CompileError, "unknown R18n YAML tag: #{tag.inspect}" unless TAGS.include? tag
+        raise Nii::Errors::CompileError, "unknown R18n YAML tag: #{tag.inspect}" unless TAGS.include? tag
         content = send(tag, content)
       end
 
