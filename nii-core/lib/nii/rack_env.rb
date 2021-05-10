@@ -13,7 +13,7 @@ module Nii
 
     def self.[](env, config, depth = 0)
       return if depth >= MAX_DEPTH
-      return new(config, env) if env.is_a? Hash and env['PATH_INFO']
+      return new(env, config) if env.is_a? Hash and env['PATH_INFO']
       return self[env.request, config, depth + 1] if env.respond_to? :request
       self[env.env, config, depth + 1] if env.respond_to? :env
     end
@@ -71,7 +71,7 @@ module Nii
       tz_was                = Nii::UNDEFINED
       Time.zone, tz_was     = timezone, Time.zone if timezone and Time.respond_to? :zone
       status, headers, body = response = yield
-          
+
       # We only want to add headers to response's with a body (or HEAD responses to a request that has a body for GET).
       return response unless status.between? 200, 499 and status != 204 and status != 304
 
@@ -84,6 +84,8 @@ module Nii
           locales.without_extensions.to_s
         end
       end
+
+      [status, headers, body]
     ensure
       Time.zone = tz_was if tz_was != Nii::UNDEFINED
     end
