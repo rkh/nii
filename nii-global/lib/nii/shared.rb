@@ -12,18 +12,13 @@ module Nii
       Nii::Setup(self, &block) if block
     end
 
-    def locale
-      context.locale(true)
-    end
+    def locale = context.locale(true)
 
     def locale=(value)
       self.context = Nii::Context.new(value, config)
     end
 
-    def context
-      @context_store.value ||= Nii::Context.new(config)
-    end
-
+    def context = @context_store.value ||= Nii::Context.new(config)
     alias_method :to_nii_context, :context
 
     def context=(context)
@@ -31,9 +26,7 @@ module Nii
       context.lookup     ||= config.lookup
     end
 
-    def clear_context
-      @context_store.value = nil
-    end
+    def clear_context = @context_store.value = nil
 
     private 
 
@@ -41,9 +34,9 @@ module Nii
       context.respond_to?(method) || super
     end
 
-    def method_missing(method, *arguments, &block)
+    def method_missing(method, ...)
       return super unless context.respond_to? method
-      context.public_send(method, *arguments, &block)
+      context.public_send(method, ...)
     end
   end
 end
