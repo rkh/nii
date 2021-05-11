@@ -24,5 +24,8 @@ module Nii
       store = @messages.fetch(type) { return }
       store[message]
     end
+
+    def all(type: :message) = @messages.fetch(type) { return [] }.keys
+    alias_method :messages, :all
   end
 end
