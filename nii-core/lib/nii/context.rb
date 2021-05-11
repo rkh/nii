@@ -372,6 +372,7 @@ module Nii
     # @return [Nii::Message, nil]
     #   the message (if it could be found)
     def find_message(message, use_fallback: true, **options)
+      return message.to_nii_message if message.respond_to? :to_nii_message
       return with_fallbacks { |c| c.find_message(message, use_fallback: false, **options) } if use_fallback
 
       message = Utils.string(message)

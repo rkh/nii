@@ -54,6 +54,9 @@ module Nii
     def to_fluent(**options) = compile_to(:fluent, **options)
     alias_method :to_ftl, :to_fluent
 
+    # @return [self]
+    def to_nii_message = self
+
     # @private
     def inspect = "#<#{self.class.inspect}:#{name}>"
   end
