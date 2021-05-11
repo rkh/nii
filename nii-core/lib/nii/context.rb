@@ -374,8 +374,9 @@ module Nii
     def find_message(message, use_fallback: true, **options)
       return with_fallbacks { |c| c.find_message(message, use_fallback: false, **options) } if use_fallback
 
-      key    = options.any? ? [message, options] : message
-      stored = @messages[key] ||= nil
+      message = Utils.string(message)
+      key     = options.any? ? [message, options] : message
+      stored  = @messages[key] ||= nil
       return stored if stored
       return unless lookup
 
@@ -423,7 +424,7 @@ module Nii
         else
           default = default.call if default.respond_to? :call
           return default if default != Nii::UNDEFINED
-          unknwon_message(message)
+          unknown_message(message)
         end
       end
     end
@@ -753,7 +754,7 @@ module Nii
 
     # @todo better implementation
     # @api internal
-    def unknwon_message(message)
+    def unknown_message(message)
       raise NotImplementedError
     end
 
