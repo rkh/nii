@@ -69,7 +69,7 @@ module Nii::Formats
 
     def detect_formats
       @detect_formats ||= Array(format_config&.detect || self.class::FORMATS.keys).map do |key|
-        next unless match = format[key]
+        next unless match = @formats[key]
         match if match.first.respond_to? :detect?
       end.compact
     end
