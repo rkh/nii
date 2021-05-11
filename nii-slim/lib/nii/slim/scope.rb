@@ -6,24 +6,13 @@ module Nii::Slim
     CONTEXT_VARS = %i[ to_nii_context nii_context nii context              ]
     CONFIG_VARS  = %i[ to_nii_config  nii_config  nii                      ]
     LOCALE_VARS  = %i[ to_nii_locale  nii_locale  nii locale lang language ]
+    OPTIONS      = %i[ default ]
 
     def initialize(object, binding)
       @object, @binding = object, binding
-
-      if object.is_a? Nii::Context
-        object.variables.each do |key, value|
-          next if binding.local_variable_defined? key
-          binding.local_variable_set(key, value)
-        end
-      end
-
-      binding.local_variables.each do |key|
-        next if key.start_with? '_'
-        context[key] ||= binding.local_variable_get(key)
-      end
     end
 
-    def context = @context ||= get_context
+    def context = @context ||= get_context.scope(@object)
 
     def format(value = Nii::UNDEFINED, **options, &block)
       if value == Nii::UNDEFINED
@@ -32,6 +21,26 @@ module Nii::Slim
         options[:escape_html] = false if options[:escape_html].nil?
       end
       context.format(value, **options, &block)
+    end
+
+    def translate(namespace, message, *arguments)
+      options = {}
+
+      arguments.map! do |argument|
+        case argument
+        when Binding
+          argument.local_variables.map { [_1, argument.local_variable_get(_1)] }.to_h
+        when Hash
+          OPTIONS.each { options[_1] = argument[_1] if argument.include? _1 }
+          argument.except(*OPTIONS)
+        else
+          argument
+        end
+      end
+
+      options[:default]   = message unless options.include? :default
+      options[:namespace] = namespace if namespace
+      context.render(message, arguments, **options)
     end
 
     private

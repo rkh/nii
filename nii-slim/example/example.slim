@@ -1,0 +1,12 @@
+.from-render
+  $ greeting
+
+.from-argument
+  $ greeting(name: "User B")
+
+- users.each do |name|
+  .from-block
+    $ greeting
+
+.array-example
+  $ greeting(name: users)
