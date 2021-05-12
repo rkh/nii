@@ -11,3 +11,4 @@ with-attribute = {with-attribute.attribute}
   .attribute   = 42
 with-shared    = {-shared-term}
 number         = { NUMBER($value, numberingSystem: "roman") }
+string         = { "\"hi\" \u0042 \U01f44b" }
