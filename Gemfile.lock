@@ -94,6 +94,8 @@ GEM
     method_source (1.0.0)
     mini_i18n (0.8.0)
     minitest (5.14.4)
+    minitest-fail-fast (0.1.0)
+      minitest (~> 5)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     neatjson (0.9)
@@ -164,6 +166,7 @@ DEPENDENCIES
   i18n
   mini_i18n
   minitest (~> 5.14)
+  minitest-fail-fast
   nii!
   nii-cldr!
   nii-core!
