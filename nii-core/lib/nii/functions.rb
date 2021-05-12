@@ -54,7 +54,7 @@ module Nii
     #
     #   example = Welcome to { CAPITALIZE($title) }!
     #
-    # @parap value [String, #to_s]
+    # @param value [String, #to_s]
     def capitalize(value) = ::Nii::Utils.string(value).capitalize
 
     # Explicitely formats the given value.
