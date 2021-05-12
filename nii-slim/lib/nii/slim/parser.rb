@@ -9,7 +9,7 @@ module Nii::Slim
       return super unless @line =~ /\A\$/
 
       @line.slice! 0
-      @line.gsub! /\A\s*\{(.*)\}\s*\Z/, '\1'
+      @line.gsub!(/\A\s*\{(.*)\}\s*\Z/, '\1')
 
       block = [:multi]
       @stacks.last << [:nii, @line, block]
