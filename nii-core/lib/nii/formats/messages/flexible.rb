@@ -25,8 +25,8 @@ module Nii::Formats::Messages
     def compile_element(node)
       case node
       in String | Numeric            then Nii::Template::Element.new(bundle, node)
-      in Symbol                      then compile_variable(bundle, node)
-      in [Symbol | String | Numeric] then compile(node.first)
+      in Symbol                      then Nii::Template::Variable.new(bundle, node)
+      in [Symbol | String | Numeric] then compile_element(node.first)
       in [element, Symbol, *args]
         options = args.shift if args.first.is_a? Hash
         method  = :"icu_#{mode}"

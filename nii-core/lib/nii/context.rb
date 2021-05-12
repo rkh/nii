@@ -750,13 +750,13 @@ module Nii
     # @todo better implementation
     # @api internal
     def unknown_variable(key, variables)
-      raise NotImplementedError
+      raise Errors::UnknownVariable, "unknown variable: #{key.inspect}"
     end
 
     # @todo better implementation
     # @api internal
     def unknown_message(message)
-      raise NotImplementedError
+      raise Errors::UnknownMessage, "unknown message: #{message.inspect}"
     end
 
     # @param force [true, false] behaves like the +force+ parameter for {#locale}.

@@ -72,10 +72,10 @@ module Nii::Formats::Structure
     end
 
     def prepare(subkey, value)
-      return value if value.is_a? Nii::Tempalte::Element
+      return value if value.is_a? Nii::Template::Element
       value = Nii::Utils.string(value)
       value = Nii::HTML.safe(value) if subkey == 'html' or subkey.end_with? '_html'
-      format.compile(bundle, value)
+      message_format.compile(bundle, value)
     end
 
     def add(key, value) = @callback.call(key.join(separator), prepare(key.last, value))

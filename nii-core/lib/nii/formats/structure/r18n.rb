@@ -12,7 +12,8 @@ module Nii::Formats::Structure
     # @api internal
     def self.detect?(bundle, content, message_format)
       return false unless content.respond_to? :yaml_tags
-      content.yaml_tags.any? and content.yaml_tags.all? { TAGS.include? _1 }
+      return false unless content.yaml_tags.any?
+      content.yaml_tags.all? { TAGS.include? _1 }
     end
 
     # @api internal
@@ -26,8 +27,8 @@ module Nii::Formats::Structure
     # @api internal
     def load(content)
       process(content) do |key, value|
-        key   = Array(key).flatten.join(separator)
-        value = Nii::Utils.string(value) unless value.is_a? Nii::Tempalte::Element
+        key   = Array(key).flatten.join(@separator)
+        value = Nii::Utils.string(value) unless value.is_a? Nii::Template::Element
         @callback.call key, value
       end
     end
@@ -35,14 +36,14 @@ module Nii::Formats::Structure
     private
 
     def process(*key, content, &block)
-      if content.respond_to? :yaml_tag and tag = content.yaml_tag?
+      if content.respond_to? :yaml_tag and tag = content.yaml_tag
         raise Nii::Errors::CompileError, "unknown R18n YAML tag: #{tag.inspect}" unless TAGS.include? tag
         content = send(tag, content)
       end
 
       case content
-      when Hash  then value.each { process(*key, _1, _2, &block) }
-      when Array then value.each_with_index { process(*key, _2, _1, &block) }
+      when Hash  then content.each { process(*key, _1, _2, &block) }
+      when Array then content.each_with_index { process(*key, _2, _1, &block) }
       else yield key, content
       end
     end

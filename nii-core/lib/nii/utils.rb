@@ -10,7 +10,7 @@ module Nii
       def with_write_lock = yield
     end
 
-    INTEGERS   = 1.to_s.frozen? ? [] : (-1000..1000).map { |i| i.to_s.freeze }
+    INTEGERS   = 1.to_s.frozen? ? [] : (0..1000).map { |i| i.to_s.freeze }
     IS_UNICODE = { Encoding::GB18030 => true, Encoding::ASCII => true }
     private_constant :IS_UNICODE, :INTEGERS
 
@@ -49,7 +49,7 @@ module Nii
       case value
       when Symbol   then value.name
       when String   then value
-      when Integer  then INTEGERS[value] || value.to_s
+      when Integer  then (value >= 0 && INTEGERS[value]) || value.to_s
       when Pathname then value.instance_variable_get(:@path).freeze
       else value.to_s
       end

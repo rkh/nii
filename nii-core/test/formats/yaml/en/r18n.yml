@@ -1,0 +1,10 @@
+key: value
+interpolated: Hi {{name}}!
+positional: '%1!'
+
+escaped: !!escape
+  1 > 2
+
+unescaped: !!html
+  <a>
+

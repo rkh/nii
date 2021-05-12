@@ -8,13 +8,13 @@ module Nii::Formats::Messages
     PATTERN = /%(\d)|%{(\w+)}|{{(\w+)}}/
 
     def compile(bundle, source)
-      return compile_string(bundle, result, true) unless source =~ PATTERN
+      return compile_string(bundle, source, true) unless source =~ PATTERN
       scanner  = StringScanner.new(source)
       elements = []
 
       while result = scanner.scan_until(PATTERN)
         elements << compile_string(bundle, result.sub(scanner.matched, ''))
-        key = Integer(scanner[1]) - 1 if scanner[1]
+        key = Integer(scanner[1]) - 1 if scanner[1] # R18n starts with %1, not %0.
         elements << compile_variable(bundle, key || scanner[2] || scanner[3])
       end
 
@@ -24,7 +24,7 @@ module Nii::Formats::Messages
 
     private
 
-    def compile_string(bundle, result, froce = false)
+    def compile_string(bundle, result, force = false)
       return unless force or result.to_s != ''
       Nii::Template::Element.new(bundle, result.to_s)
     end

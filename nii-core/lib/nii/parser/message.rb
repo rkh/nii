@@ -48,6 +48,7 @@ module Nii::Parser
           return nested
         end
         raise ParseError unless identifier = identifier(input)
+        identifier = :"#{identifier}" if identifier.is_a? Integer
         tokens = [identifier]
         until input.scan(CLOSE)
           raise ParseError unless input.scan(COMMA)

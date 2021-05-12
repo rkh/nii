@@ -7,6 +7,7 @@ module Nii::Formats
       arb:     [ :arb,    :arb      ],
       default: [ :simple, :flexible ],
       i18n:    [ :i18n,   :i18n     ],
+      r18n:    [ :r18n,   :r18n     ],
       simple:  [ :simple, :plain    ],
     }
 

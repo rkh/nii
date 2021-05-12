@@ -1,0 +1,9 @@
+en:
+  key: value
+  interpolated: Hi %{name}!
+  positional: '%s!'
+
+  escaping:
+    html: <a>
+    ends_with_html: <a>
+    escaped: 1 > 2

@@ -8,6 +8,9 @@ module Nii
     DependencyMissing = Class.new(SetupError)
     ConversionError   = Class.new(StandardError)
     UnknownLocale     = Class.new(ArgumentError)
-    UnknownTimezone   = Class.new(UnknownLocale) 
+    UnknownTimezone   = Class.new(UnknownLocale)
+    MessageError      = Class.new(StandardError)
+    UnknownMessage    = Class.new(MessageError)
+    UnknownVariable   = Class.new(MessageError)
   end
 end
