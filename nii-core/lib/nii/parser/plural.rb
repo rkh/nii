@@ -4,15 +4,6 @@ module Nii::Parser
   module Plural
     extend self
 
-    # LITERAL       = /^([finv]|\d+)$/
-    # COMPARE       = /^(.+)=(.+)$/
-    # OPERAND       = /^(.+)(!=)(.+)$/
-    # MODULO        = /^(.+)(?:%|mod)(.+)$/
-    # RANGE_COMPARE = /^(.+)=\s*(-?\d+\s*..\s*-?\d+)\s*$/
-    # LIST_COMPARE = /^(.+)=\s*(-?\d+\s*(?:,\s*-?\d+)+)\s*$/
-
-
-
     is_ops  = ['=', 'is', 'in', 'within']
     not_ops = ['!=', /is\s+not/, /not\s+(with)?in/]
     IS_OPS  = /\A#{Regexp.union(*is_ops)}\Z/
