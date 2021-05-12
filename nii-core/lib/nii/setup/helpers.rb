@@ -3,7 +3,7 @@
 module Nii::Setup
   # Setup scope for an object or class inheriting {Nii::Helpers}.
   class Helpers < Vanilla
-    include Shared::Routing
+    include Shared::Routing, Shared::Locales
 
     # @api internal
     def self.for?(application)

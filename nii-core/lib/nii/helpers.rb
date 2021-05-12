@@ -64,12 +64,13 @@ module Nii
 
     def _nii_config
       @_nii_config ||= begin
-        config   = @nii_config   if defined? @nii_config
-        config ||= nii_config    if respond_to? :nii_config
-        config ||= to_nii_config if respond_to? :to_nii_config
-        config &&= Config.new(config)
-        config ||= Config.new
-        config   = pre_config.merge(config) if pre_config = Config[self.class]
+        config       = @nii_config   if defined? @nii_config
+        config     ||= nii_config    if respond_to? :nii_config
+        config     ||= to_nii_config if respond_to? :to_nii_config
+        config     &&= Config.new(config)
+        config     ||= Config.new
+        pre_config   = Config[self.class]
+        config       = pre_config.merge(config) if pre_config
         config
       end
     end
