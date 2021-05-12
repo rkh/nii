@@ -12,5 +12,6 @@ module Nii
     MessageError      = Class.new(StandardError)
     UnknownMessage    = Class.new(MessageError)
     UnknownVariable   = Class.new(MessageError)
+    UnknownFunction   = Class.new(MessageError)
   end
 end

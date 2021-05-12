@@ -7,7 +7,7 @@ module Nii::Parser
 
       def parse
         return unless parser.scan(PATTERN)
-        @function_name = parser[:key]
+        @function_name = parser[:key].downcase
         @arguments     = parser.parse(:arguments)
         !!arguments
       end

@@ -10,3 +10,4 @@ with-message   = {key}!
 with-attribute = {with-attribute.attribute}
   .attribute   = 42
 with-shared    = {-shared-term}
+number         = {NUMBER($value, numberingSystem: "roman")}

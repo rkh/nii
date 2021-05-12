@@ -12,4 +12,5 @@ class TestFluent < Minitest::Test
   def test_message()   = assert_equal('value!',      @context.render('with-message'))
   def test_attribute() = assert_equal('42',          @context.render('with-attribute'))
   def test_shared()    = assert_equal('correct',     @context.render('with-shared'))
+  def test_number_function() = assert_equal('V', @context.render('number', { value: 5 }))
 end

@@ -57,6 +57,15 @@ module Nii
     #   @option config [Encoding, String] encoding
     #     Overrides which encoding will be used, defaults to +Encoding.default_internal+ (and UTF-8 if it is not set).
     #
+    #   @option config [Class, #invoke] functions (Nii::Functions)
+    #     Object or class used for invoking functions from within message templates.
+    #
+    #     If it is a class, #new will be called with the context object as sole argument, and the return
+    #     value will be used as functions object. Otherwise it will be used directly.
+    #
+    #     The only method called on the functions object is #invoke. It is therefore possible to pass
+    #     a BasicObject.
+    #
     #   @option config ["US", "UK", "metric", nil] measurement_system
     #     Overrides the measurement_system (and thus ignored whatever value is passed via locale preference).
     #     This config option is in turn ignored if the locale is set explicitley (by calling {#locale=}).
@@ -177,6 +186,13 @@ module Nii
       @messages             = {}
       @explit_territory     = false
       @locale_as_preference = false
+      
+      case config.functions
+      when Class then @functions = config.functions.new(self)
+      when nil   then @functions = Nii::Functions.new(self)
+      else            @functions = config.functions
+      end
+
       reset_locale
       self.scope  = config.scope  if config.scope?
       self.locale = config.locale if config.locale?
@@ -736,6 +752,10 @@ module Nii
     # @api internal
     # placeholder to allow more advanced normalization in the future
     def normalize_variable_name(name) = Utils.string(name)
+
+    def call_function(function, ...)
+      @functions.invoke(function, ...)
+    end
 
     # Retrives an attribute for a given object.
     # @see Nii::Template::Attribute

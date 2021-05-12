@@ -25,6 +25,7 @@ module Nii
   autoload :Errors,             'nii/errors'
   autoload :Formats,            'nii/formats'
   autoload :Formatters,         'nii/formatters'
+  autoload :Functions,          'nii/functions'
   autoload :Helpers,            'nii/helpers'
   autoload :HTMLString,         'nii/html_string'
   autoload :Info,               'nii/info'

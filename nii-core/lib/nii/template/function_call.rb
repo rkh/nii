@@ -16,7 +16,7 @@ module Nii::Template
     end
 
     def invoke(context, arguments, options, &block)
-      context.call_function(name, arguments, options, &block)
+      context.call_function(name, *arguments, **options, &block)
     end
 
     def inspect
