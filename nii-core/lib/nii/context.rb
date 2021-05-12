@@ -926,7 +926,10 @@ module Nii
     private
 
     # Retrieves an info object for this context.
-    # Acceptable methods are the same as the keys of {Info::INFO}.
+    #
+    # @overload grammar
+    #   @example (see Nii::Info::Grammar)
+    #   @return [Nii::Info::Grammar]
     #
     # @overload html
     #   @example (see Nii::Info::HTML#escape)

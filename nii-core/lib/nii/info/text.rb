@@ -119,6 +119,9 @@ module Nii::Info
       when :html, 'html'
         bidi(string, true, **options.merge(format: :html))
       
+      when :utf, 'utf'
+        bidi(string, true, **options.merge(format: :utf))
+      
       when true
         format      = options[:format]&.downcase&.to_sym || :utf
         direction   = options[:direction]&.to_sym        || :auto

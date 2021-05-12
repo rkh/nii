@@ -3,6 +3,7 @@
 module Nii
   module Info
     autoload :Generic,           'nii/info/generic'
+    autoload :Grammar,           'nii/info/grammar'
     autoload :Html,              'nii/info/html'
     autoload :MeasurementSystem, 'nii/info/measurement_system'
     autoload :Numbers,           'nii/info/numbers'
