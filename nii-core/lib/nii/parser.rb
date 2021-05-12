@@ -11,6 +11,7 @@ module Nii
     autoload :Message,    'nii/parser/message'
     autoload :Number,     'nii/parser/number'
     autoload :Properties, 'nii/parser/properties'
+    autoload :Plural,     'nii/parser/plural'
     autoload :YAML,       'nii/parser/yaml'
 
     def self.accept(source,      **options) = Accept     .parse(source, **options)
@@ -21,6 +22,7 @@ module Nii
     def self.message(source,     **options) = Message    .parse(source, **options)
     def self.number(source,      **options) = Number     .parse(source, **options)
     def self.properties(source,  **options) = Properties .parse(source, **options)
+    def self.plural(source,      **options) = Plural     .parse(source, **options)
     def self.yaml(source,        **options) = YAML       .parse(source, **options)
   end
 end

@@ -38,6 +38,7 @@ module Nii
   autoload :Middleware,         'nii/middleware'
   autoload :Namespace,          'nii/namespace'
   autoload :Parser,             'nii/parser'
+  autoload :Plurals,            'nii/plurals'
   autoload :RackEnv,            'nii/rack_env'
   autoload :Setup,              'nii/setup'
   autoload :Template,           'nii/template'
