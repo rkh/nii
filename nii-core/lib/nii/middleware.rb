@@ -70,7 +70,7 @@ module Nii
     def call(env)
       return app.call(env) if negotiator.ignore? env['PATH_INFO']
       negotiation = negotiator.call(env)
-      negotiator.process { app.call(negotiator.env) }
+      negotiation.process { app.call(negotiation.env) }
     end
   end
 end

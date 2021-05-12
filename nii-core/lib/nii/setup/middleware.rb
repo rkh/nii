@@ -33,8 +33,9 @@ module Nii::Setup
 
     # @api internal
     def finalize(finalized)
+      config = finalized.config
       raise Nii::Errors::SetupError, 'cannot combine insert_before and insert_after' if config.insert_before? and config.insert_after?
-      Nii::Config[application] = finalized.config if application.is_a? Class
+      Nii::Config[application] = config if application.is_a? Class
     end
   end
 end

@@ -6,20 +6,18 @@ module Nii
     MAX_DEPTH = 3
     private_constant :MAX_DEPTH
 
-    def self.prepare(config)
-      instance = new(config)
-      -> env { instance.dup.call(env) }
-    end
+    def self.prepare(config) = new(config).freeze
 
-    def self.[](env, config, depth = 0)
+    def self.[](env, config = nil, depth = 0)
       return if depth >= MAX_DEPTH
-      return new(env, config) if env.is_a? Hash and env['PATH_INFO']
+      return new(config, env) if env.is_a? Hash and env['PATH_INFO']
       return self[env.request, config, depth + 1] if env.respond_to? :request
       self[env.env, config, depth + 1] if env.respond_to? :env
     end
 
     attr_reader :config, :env, :request, :env_key, :ignore_paths, :content_header, :timezone,
-      :language_header, :timezone_header, :timezone_cookie, :locale_path, :domain, :context
+      :language_header, :timezone_header, :timezone_cookie, :locale_path, :domains, :context,
+      :process_override
 
     def initialize(config, env = nil)
       @config          = Nii::Config.new(config)
@@ -60,14 +58,16 @@ module Nii
     end
 
     def call(env)
+      return dup.call(env) if frozen?
       raise RuntimeError, "env already initialized" if @env
       @env     = env
-      @request = Rack::Request.new(env)
+      @request = Rack::Request.new(env) if defined? Rack::Request
       negotiate!
       self
     end
 
     def process
+      return process_override if process_override
       tz_was                = Nii::UNDEFINED
       Time.zone, tz_was     = timezone, Time.zone if timezone and Time.respond_to? :zone
       status, headers, body = response = yield
@@ -97,8 +97,7 @@ module Nii
       # Duplicates the env so modifications don't "leak" to outer middleware.
       # This way you can use multiple Nii::Middleware instance in your stack.
       @context    = Nii::Context.new(language_header ? env[language_header] : [], config)
-      request     = Rack::Request.new(env)
-      host        = request.host
+      host        = request&.host
       locale_path = @locale_path
 
       # Per domain configuration.
@@ -107,7 +106,7 @@ module Nii
       if domains
         domains.each do |pattern, locale, path, domain_config|
           next unless match = pattern.match(host)
-          context           = context.subcontext(domain_config) unless domain_config.empty?
+          @context          = @context.subcontext(domain_config) unless domain_config.empty?
           locale_path       = path unless path.nil?
           context.locale    = locale if locale
         end
@@ -115,10 +114,12 @@ module Nii
   
       # Path matching. If enabled, this will default to /:locale/* format and attempt to set SCRIPT_NAME and PATH_INFO
       # accordingly.
-      if locale_path
+      if locale_path and path = env['PATH_INFO']
         return locale_redirect(env, context) unless match = locale_path.match(path) and locale = match[:locale]
         return locale_redirect(env, context) unless context.available_locales.nil? or context.available_locales.superset_of? locale
-        context.available_locales = context.available_locales ? context.available_locales & locale : locale
+        context.available_locales  = context.available_locales ? context.available_locales & locale : locale
+        context.locale_preference &= locale
+        context.locale             = locale if context.locale_preference.empty?
 
         # config.remove_locale_path will default to nil, in which case we will only adjust SCRIPT_NAME/PATH_INFO if it makes sense.
         if config.remove_locale_path != false
@@ -128,7 +129,7 @@ module Nii
             path               = remainder.start_with?('/') ? remainder : "/#{remainder}"
             script_name        = script_name[0..-2] if script_name.end_with? '/'
             env['PATH_INFO']   = path
-            env['SCRIPT_NAME'] = script_name
+            env['SCRIPT_NAME'] = Utils.string(env['SCRIPT_NAME']) + script_name
           elsif config.remove_locale_path
             # The path capture wasn't at the end of the path, but the config tells us to set PATH_INFO anyway.
             env['PATH_INFO']   = remainder
@@ -141,7 +142,7 @@ module Nii
         @timezone = Timezone[config.timezone, config.territory, config, complain: true]
       else
         tz_names  = timezone_header.map { |header| env[header] }
-        tz_names += timezone_cookie.map { |cookie| request.cookies[timezone_cookie] }
+        tz_names += timezone_cookie.map { |cookie| request.cookies[timezone_cookie] } if request
         tz_names.each do |name|
           next unless name and tz = Timezone[name, config.territory, config, complain: false]
           @timezone = context.timezone = tz
@@ -152,6 +153,10 @@ module Nii
       # Update env and trigger request
       env[env_key]          = context
       env[language_header]  = context.locale_preference.to_s if language_header
+    end
+
+    def locale_redirect(context, env)
+      @process_override = [500, {'Content-Type' => 'text/plain'}, ['todo: locale path redirect']]
     end
 
     def path_pattern(pattern)

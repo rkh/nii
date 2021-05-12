@@ -20,7 +20,7 @@ module Nii::Setup::Shared
     def domain(name)
       self[:domains]       ||= {}
       self[:domains][name] ||= {}
-      RouteScope.new(self[:domains][name])
+      Nii::Setup::RouteScope.new(self[:domains][name])
     end
 
     # @api setup
