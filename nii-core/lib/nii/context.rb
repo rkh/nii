@@ -747,7 +747,7 @@ module Nii
       case variables
       when Hash  then variables.transform_keys { |key| normalize_variable_name(key) }
       when Array then normalize_variables(variables.each_with_index.map { |v,i| v.is_a?(Hash) ? v : { i => v }  }.inject(:merge!))
-      else normalize_variables(variables.to_h)
+      else variables.respond_to?(:to_h) ? normalize_variables(variables.to_h) : normalize_variables([variables])
       end
     end
 

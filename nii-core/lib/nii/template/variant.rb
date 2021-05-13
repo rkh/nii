@@ -5,8 +5,9 @@ module Nii::Template
     attr_accessor :default
     alias_method :default?, :default
 
-    def initialize(bundle, condition, payload)
+    def initialize(bundle, condition, payload, default: false)
       @matches = [condition, Nii::Utils.string(condition)].uniq.compact
+      @default = default
       super(bundle, payload)
     end
 

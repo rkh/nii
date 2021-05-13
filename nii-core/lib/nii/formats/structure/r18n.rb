@@ -35,6 +35,8 @@ module Nii::Formats::Structure
 
     private
 
+    attr_reader :bundle, :message_format
+
     def process(*key, content, &block)
       if content.respond_to? :yaml_tag and tag = content.yaml_tag
         raise Nii::Errors::CompileError, "unknown R18n YAML tag: #{tag.inspect}" unless TAGS.include? tag
@@ -57,9 +59,10 @@ module Nii::Formats::Structure
       variable = Nii::Template::Variable.new(bundle, 0, 0)
       variable = Nii::Template::Variable.new(bundle, 'count', variable)
       variants = []
-      process(content) do |key, value|
+      process(content.to_h) do |key, value|
+        key   = key.last
         key   = 'other' if key == 'n'
-        value = format.compile(value) unless value.is_a? Nii::Template::Element
+        value = message_format.compile(bundle, value) unless value.is_a? Nii::Template::Element
         variants << Nii::Template::Variant.new(bundle, key, value, default: key == 'other')
       end
       Nii::Template::Select.new(bundle, variable, variants)

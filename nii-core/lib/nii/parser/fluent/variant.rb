@@ -24,9 +24,7 @@ module Nii::Parser
       end
 
       def compile(bundle, config)
-        variant         = Nii::Template::Variant.new(bundle, key, pattern.compile(bundle, config))
-        variant.default = is_default
-        variant
+        Nii::Template::Variant.new(bundle, key, pattern.compile(bundle, config), default: is_default)
       end
     end
   end

@@ -8,3 +8,9 @@ escaped: !!escape
 unescaped: !!html
   <a>
 
+plural: !!pl
+  0: zero
+  1: one
+  2: two
+  n: '%1'
+

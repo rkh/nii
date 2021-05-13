@@ -9,8 +9,8 @@ class TestYAML < Minitest::Test
 
     def test_escaped = assert_equal('1 &gt; 2', @context.render('escaping.escaped'))
     def test_html
-      assert_equal('<a>', @context.render('escaping.html'))
-      assert_equal('<a>', @context.render('escaping.ends_with_html'))
+      assert_equal '<a>', @context.render('escaping.html')
+      assert_equal '<a>', @context.render('escaping.ends_with_html')
     end
   end
 
@@ -22,6 +22,13 @@ class TestYAML < Minitest::Test
 
     def test_escaped = assert_equal('1 &gt; 2', @context.render('escaped'))
     def test_html    = assert_equal('<a>', @context.render('unescaped'))
+
+    def test_plural
+      assert_equal 'zero', @context.render('plural', 0)
+      assert_equal 'one',  @context.render('plural', 1)
+      assert_equal 'two',  @context.render('plural', 2)
+      assert_equal '3',    @context.render('plural', 3)
+    end
   end
 
   def setup
