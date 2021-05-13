@@ -54,14 +54,14 @@ module Nii
       @app = app
 
       if block
-            @config = Nii.setup(&block).to_nii_config
+            @config = Nii.setup(self, &block).to_nii_config
             @config = @config.merge(config) if config
       elsif @config = Config[self.class]
             @config = @config.merge(config) if config
       else  @config = Config.new(config)
       end
 
-      @negotiator = RackEnv.prepare(config)
+      @negotiator = RackEnv.prepare(@config)
     end
 
     # # @param env [Hash] Rack request env

@@ -60,6 +60,7 @@ module Nii
 
     # @api internal
     def self.[]=(key, value)
+      return REGISTER.delete(key) unless value
       REGISTER[key] = new(value)
     end
 
