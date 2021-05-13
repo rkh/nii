@@ -321,7 +321,7 @@ module Nii
     #   context.locale(false) # => #<Nii::Locale:de-CH>
     #
     # @return [Nii::Locale, nil] the primary locale to be used by the context, if already available
-    def locale(force = false)
+    def locale(force = true)
       @locale || negotiate_locale(force)
     end
 
