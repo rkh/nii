@@ -12,6 +12,12 @@ class TestYAML < Minitest::Test
       assert_equal '<a>', @context.render('escaping.html')
       assert_equal '<a>', @context.render('escaping.ends_with_html')
     end
+
+    def test_plural
+      assert_equal 'zero', @context.render('plural', { count: 0 })
+      assert_equal 'one',  @context.render('plural', { count: 1 })
+      assert_equal '2',    @context.render('plural', { count: 2 })
+    end
   end
 
   class TestR18n < TestYAML

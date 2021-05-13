@@ -6,7 +6,7 @@ module Nii::Template
     alias_method :default?, :default
 
     def initialize(bundle, condition, payload, default: false)
-      @matches = [condition, Nii::Utils.string(condition)].uniq.compact
+      @matches = Array(condition).flat_map { [_1, Nii::Utils.string(_1) ] }.uniq.compact
       @default = default
       super(bundle, payload)
     end

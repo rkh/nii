@@ -7,3 +7,8 @@ en:
     html: <a>
     ends_with_html: <a>
     escaped: 1 > 2
+
+  plural:
+    zero:  zero
+    one:   one
+    other: '%{count}'

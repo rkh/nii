@@ -66,9 +66,8 @@ module Nii::Formats::Structure
 
     def plural_variant(key, category, value)
       return unless value.is_a? String and PLURAL_KEYS.include? category
-      # make sure we set both 0 and zero on zero, as some languages have a "zero" category (like Welsh)
-      plural_variant(key, category, 0) if category == 'zero'
-      Nii::Template::Variant.new(bundle, category, prepare(key, value))
+      category = [0, 'zero'] if category == 'zero'
+      Nii::Template::Variant.new(bundle, category, prepare(key, value), default: category == 'other')
     end
 
     def prepare(subkey, value)
