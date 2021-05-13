@@ -18,8 +18,8 @@ module Nii::Units
       'lumen'      => { systems: ["metric", "si"], factor: 1 },
       base_unit    => { factor: 1                            }}
     self.aliases   =  {}
-    rules.divide   =  { Portion => LuminousFlux }
-    rules.multiply =  { Portion => LuminousFlux }
+    rules.divide   =  { :Portion => :LuminousFlux }
+    rules.multiply =  { :Portion => :LuminousFlux }
 
     # Converts the object to lumen.
     # @return [LuminousFlux] the equivalent instance in lumen

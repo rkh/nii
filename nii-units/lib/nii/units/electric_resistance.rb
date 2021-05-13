@@ -18,8 +18,8 @@ module Nii::Units
       'ohm'        => { systems: ["metric", "si"], factor: 1 },
       base_unit    => { factor: 1                            }}
     self.aliases   =  {}
-    rules.divide   =  { Portion => ElectricResistance }
-    rules.multiply =  { Portion => ElectricResistance, ElectricCurrent => Voltage, Duration => ElectricInductance }
+    rules.divide   =  { :Portion => :ElectricResistance }
+    rules.multiply =  { :Portion => :ElectricResistance, :ElectricCurrent => :Voltage, :Duration => :ElectricInductance }
 
     # Converts the object to ohms.
     # @return [ElectricResistance] the equivalent instance in ohms

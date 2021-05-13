@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'kilogram-per-cubic-meter'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => MassDensity }
-    rules.multiply = { Portion => MassDensity, Volume => Mass }
+    rules.divide   = { :Portion => :MassDensity }
+    rules.multiply = { :Portion => :MassDensity, :Volume => :Mass }
 
     # @return [MassDensity] self
     def to_mass_density = self

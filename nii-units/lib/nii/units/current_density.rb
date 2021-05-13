@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'ampere-per-square-meter'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => CurrentDensity }
-    rules.multiply = { Portion => CurrentDensity, Area => ElectricCurrent, Length => MagneticFieldStrength }
+    rules.divide   = { :Portion => :CurrentDensity }
+    rules.multiply = { :Portion => :CurrentDensity, :Area => :ElectricCurrent, :Length => :MagneticFieldStrength }
 
     # @return [CurrentDensity] self
     def to_current_density = self

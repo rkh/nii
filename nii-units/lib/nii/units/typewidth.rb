@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'em'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => Typewidth }
-    rules.multiply = { Portion => Typewidth }
+    rules.divide   = { :Portion => :Typewidth }
+    rules.multiply = { :Portion => :Typewidth }
 
     # Converts the object to typographic em.
     # @return [Typewidth] the equivalent instance in typographic em

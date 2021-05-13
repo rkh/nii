@@ -27,8 +27,8 @@ module Nii::Units
       'arcmins'    => 'arc-minute',
       'arcsecs'    => 'arc-second',
       'deg'        => 'degree'}
-    rules.divide   =  { Portion => Angle, Frequency => Duration, Duration => Frequency, WaveNumber => Length, Length => WaveNumber }
-    rules.multiply =  { Portion => Angle, Angle => SolidAngle }
+    rules.divide   =  { :Portion => :Angle, :Frequency => :Duration, :Duration => :Frequency, :WaveNumber => :Length, :Length => :WaveNumber }
+    rules.multiply =  { :Portion => :Angle, :Angle => :SolidAngle }
 
     # Converts the object to arcminutes.
     # @return [Angle] the equivalent instance in arcminutes

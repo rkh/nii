@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'revolution-per-meter'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => WaveNumber }
-    rules.multiply = { Portion => WaveNumber, Length => Angle }
+    rules.divide   = { :Portion => :WaveNumber }
+    rules.multiply = { :Portion => :WaveNumber, :Length => :Angle }
 
     # Converts the object to revolution-per-meter.
     # @return [WaveNumber] the equivalent instance in revolution-per-meter

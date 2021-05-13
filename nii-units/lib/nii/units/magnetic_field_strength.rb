@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'ampere-per-meter'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => MagneticFieldStrength, CurrentDensity => Length, Length => CurrentDensity }
-    rules.multiply = { Portion => MagneticFieldStrength, Length => ElectricCurrent }
+    rules.divide   = { :Portion => :MagneticFieldStrength, :CurrentDensity => :Length, :Length => :CurrentDensity }
+    rules.multiply = { :Portion => :MagneticFieldStrength, :Length => :ElectricCurrent }
 
     # Converts the object to ampere-per-meter.
     # @return [MagneticFieldStrength] the equivalent instance in ampere-per-meter

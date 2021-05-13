@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'square-meter-per-square-second'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => Dose }
-    rules.multiply = { Portion => Dose }
+    rules.divide   = { :Portion => :Dose }
+    rules.multiply = { :Portion => :Dose }
 
     # @return [Dose] self
     def to_dose = self

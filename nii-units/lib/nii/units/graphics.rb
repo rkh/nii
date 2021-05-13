@@ -20,8 +20,8 @@ module Nii::Units
       'megapixel'  => { factor: 1000000 },
       base_unit    => { factor: 1       }}
     self.aliases   =  {}
-    rules.divide   =  { Portion => Graphics, Resolution => Length, Length => Resolution }
-    rules.multiply =  { Portion => Graphics }
+    rules.divide   =  { :Portion => :Graphics, :Resolution => :Length, :Length => :Resolution }
+    rules.multiply =  { :Portion => :Graphics }
 
     # Converts the object to dot.
     # @return [Graphics] the equivalent instance in dot

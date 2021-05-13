@@ -18,8 +18,8 @@ module Nii::Units
       'g-force'    => { factor: CONSTANTS[:gravity] },
       base_unit    => { factor: 1                   }}
     self.aliases   =  {}
-    rules.divide   =  { Portion => Acceleration }
-    rules.multiply =  { Portion => Acceleration, Duration => Speed }
+    rules.divide   =  { :Portion => :Acceleration }
+    rules.multiply =  { :Portion => :Acceleration, :Duration => :Speed }
 
     # Converts the object to g-force.
     # @return [Acceleration] the equivalent instance in g-force

@@ -36,6 +36,17 @@ module Nii::Units
         other.divide   = other.divide&.dup
         other.multiply = other.multiply&.dup
       end
+
+      # @private
+      def resolve(value = self)
+        case value
+        when Rules  then Rules.new resolve(value.divide), resolve(value.multiply)
+        when Hash   then resolve(value.to_a).to_h
+        when Array  then value.map { resolve(_1) }
+        when Symbol then Nii::Units.const_get(value)
+        else value
+        end
+      end
     end
 
     # @api internal
@@ -195,7 +206,7 @@ module Nii::Units
       end
 
       @base_unit = self.class.base_unit
-      @rules     = self.class.rules.dup
+      @rules     = self.class.rules.resolve
       @unit      = self.class.aliases.fetch(unit&.to_s) { unit&.to_s&.downcase&.tr('_', '-') || @base_unit }
       unit_info  = self.class.units[@unit].to_h
       @systems   = []

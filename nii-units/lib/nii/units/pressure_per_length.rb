@@ -18,8 +18,8 @@ module Nii::Units
       'ofhg'       => { factor: 13595.1r*CONSTANTS[:gravity] },
       base_unit    => { factor: 1                            }}
     self.aliases   =  {}
-    rules.divide   =  { Portion => PressurePerLength }
-    rules.multiply =  { Portion => PressurePerLength, Area => Pressure }
+    rules.divide   =  { :Portion => :PressurePerLength }
+    rules.multiply =  { :Portion => :PressurePerLength, :Area => :Pressure }
 
     # Converts the object to ofhg.
     # @return [PressurePerLength] the equivalent instance in ofhg

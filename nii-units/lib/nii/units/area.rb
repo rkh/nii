@@ -34,8 +34,8 @@ module Nii::Units
       'square-yard'       => { factor: CONSTANTS[:ft_to_m]*3r*CONSTANTS[:ft_to_m]*3r, systems: ["ussystem", "uksystem"] },
       base_unit           => { factor: 1 }}
     self.aliases          =  {}
-    rules.divide          =  { Portion => Area, Length => Length }
-    rules.multiply        =  { Portion => Area, CurrentDensity => ElectricCurrent, Illuminance => LuminousIntensity, Length => Volume, PressurePerLength => Pressure }
+    rules.divide          =  { :Portion => :Area, :Length => :Length }
+    rules.multiply        =  { :Portion => :Area, :CurrentDensity => :ElectricCurrent, :Illuminance => :LuminousIntensity, :Length => :Volume, :PressurePerLength => :Pressure }
 
     # Converts the object to acres.
     # @return [Area] the equivalent instance in acres

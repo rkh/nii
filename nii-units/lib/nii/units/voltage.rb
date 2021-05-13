@@ -18,8 +18,8 @@ module Nii::Units
       'volt'       => { systems: ["metric", "si"], factor: 1 },
       base_unit    => { factor: 1                            }}
     self.aliases   =  {}
-    rules.divide   =  { Portion => Voltage, ElectricCurrent => ElectricResistance, ElectricResistance => ElectricCurrent }
-    rules.multiply =  { Portion => Voltage }
+    rules.divide   =  { :Portion => :Voltage, :ElectricCurrent => :ElectricResistance, :ElectricResistance => :ElectricCurrent }
+    rules.multiply =  { :Portion => :Voltage }
 
     # Converts the object to volts.
     # @return [Voltage] the equivalent instance in volts

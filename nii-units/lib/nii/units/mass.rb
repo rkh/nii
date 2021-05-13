@@ -42,8 +42,8 @@ module Nii::Units
       'ton'        => { factor: CONSTANTS[:lb_to_kg]*2000r, systems: ["ussystem", "uksystem"] },
       base_unit    => { systems: ["metric", "si"], factor: 1 }}
     self.aliases   =  {}
-    rules.divide   =  { Portion => Mass, MassDensity => Volume, Volume => MassDensity }
-    rules.multiply =  { Portion => Mass, MassFraction => Mass, SpecificVolume => Volume }
+    rules.divide   =  { :Portion => :Mass, :MassDensity => :Volume, :Volume => :MassDensity }
+    rules.multiply =  { :Portion => :Mass, :MassFraction => :Mass, :SpecificVolume => :Volume }
 
     # Converts the object to carats.
     # @return [Mass] the equivalent instance in carats

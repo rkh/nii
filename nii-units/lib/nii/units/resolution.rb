@@ -22,8 +22,8 @@ module Nii::Units
     self.aliases           =  {
       'dpcm'               => 'dot-per-centimeter',
       'dpi'                => 'dot-per-inch'}
-    rules.divide           =  { Portion => Resolution }
-    rules.multiply         =  { Portion => Resolution, Length => Graphics }
+    rules.divide           =  { :Portion => :Resolution }
+    rules.multiply         =  { :Portion => :Resolution, :Length => :Graphics }
 
     # Converts the object to pixel-per-meter.
     # @return [Resolution] the equivalent instance in pixel-per-meter

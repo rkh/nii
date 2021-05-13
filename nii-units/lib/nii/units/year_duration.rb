@@ -28,8 +28,8 @@ module Nii::Units
     self.aliases     =  {
       'mths'         => 'month',
       'yrs'          => 'year'}
-    rules.divide     =  { Portion => YearDuration }
-    rules.multiply   =  { Portion => YearDuration }
+    rules.divide     =  { :Portion => :YearDuration }
+    rules.multiply   =  { :Portion => :YearDuration }
 
     # Converts the object to centuries.
     # @return [YearDuration] the equivalent instance in centuries

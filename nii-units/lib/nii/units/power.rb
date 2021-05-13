@@ -30,8 +30,8 @@ module Nii::Units
       'watt'             => { systems: ["metric", "si"], factor: 1 },
       base_unit          => { factor: 1 }}
     self.aliases         =  {}
-    rules.divide         =  { Portion => Power, Force => Speed, Speed => Force, Torque => Speed, Speed => Torque }
-    rules.multiply       =  { Portion => Power, Duration => Energy }
+    rules.divide         =  { :Portion => :Power, :Force => :Speed, :Speed => :Force, :Torque => :Speed, :Speed => :Torque }
+    rules.multiply       =  { :Portion => :Power, :Duration => :Energy }
 
     # Converts the object to horsepower.
     # @return [Power] the equivalent instance in horsepower

@@ -36,8 +36,8 @@ module Nii::Units
       'terabyte'   => { factor: 8r*1000000000000r    },
       base_unit    => { factor: 1                    }}
     self.aliases   =  {}
-    rules.divide   =  { Portion => Digital }
-    rules.multiply =  { Portion => Digital }
+    rules.divide   =  { :Portion => :Digital }
+    rules.multiply =  { :Portion => :Digital }
 
     # Converts the object to bits.
     # @return [Digital] the equivalent instance in bits

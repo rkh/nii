@@ -38,8 +38,8 @@ module Nii::Units
       'hr'          => 'hour',
       'sec'         => 'second',
       'wks'         => 'week'}
-    rules.divide    =  { Portion => Duration }
-    rules.multiply  =  { Portion => Duration, Acceleration => Speed, ElectricCurrent => ElectricCharge, ElectricResistance => ElectricInductance, Frequency => Angle, Power => Energy }
+    rules.divide    =  { :Portion => :Duration }
+    rules.multiply  =  { :Portion => :Duration, :Acceleration => :Speed, :ElectricCurrent => :ElectricCharge, :ElectricResistance => :ElectricInductance, :Frequency => :Angle, :Power => :Energy }
 
     # Converts the object to days.
     # @return [Duration] the equivalent instance in days

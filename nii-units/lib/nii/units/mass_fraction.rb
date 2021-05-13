@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'kilogram-per-kilogram'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => MassFraction }
-    rules.multiply = { Portion => MassFraction, Mass => Mass }
+    rules.divide   = { :Portion => :MassFraction }
+    rules.multiply = { :Portion => :MassFraction, :Mass => :Mass }
 
     # @return [MassFraction] self
     def to_mass_fraction = self

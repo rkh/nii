@@ -18,8 +18,8 @@ module Nii::Units
       'milliampere' => { systems: ["metric", "si"], factor: 1r/1000r },
       base_unit     => { systems: ["metric", "si"], factor: 1        }}
     self.aliases    =  {}
-    rules.divide    =  { Portion => ElectricCurrent, CurrentDensity => Area, Area => CurrentDensity, MagneticFieldStrength => Length, Length => MagneticFieldStrength }
-    rules.multiply  =  { Portion => ElectricCurrent, Duration => ElectricCharge, ElectricResistance => Voltage }
+    rules.divide    =  { :Portion => :ElectricCurrent, :CurrentDensity => :Area, :Area => :CurrentDensity, :MagneticFieldStrength => :Length, :Length => :MagneticFieldStrength }
+    rules.multiply  =  { :Portion => :ElectricCurrent, :Duration => :ElectricCharge, :ElectricResistance => :Voltage }
 
     # Converts the object to amperes.
     # @return [ElectricCurrent] the equivalent instance in amperes

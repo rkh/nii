@@ -60,8 +60,8 @@ module Nii::Units
       'yard'              => { factor: CONSTANTS[:ft_to_m]*3r, systems: ["ussystem", "uksystem"] },
       base_unit           => { systems: ["metric", "si"], factor: 1 }}
     self.aliases          =  {}
-    rules.divide          =  { Portion => Length }
-    rules.multiply        =  { Consumption => Volume, Portion => Length, CurrentDensity => MagneticFieldStrength, Force => Energy, Area => Volume, Length => Area, MagneticFieldStrength => ElectricCurrent, Resolution => Graphics, WaveNumber => Angle }
+    rules.divide          =  { :Portion => :Length }
+    rules.multiply        =  { Consumption => Volume, :Portion => :Length, :CurrentDensity => :MagneticFieldStrength, :Force => :Energy, :Area => :Volume, :Length => :Area, :MagneticFieldStrength => :ElectricCurrent, :Resolution => :Graphics, :WaveNumber => :Angle }
 
     # Converts the object to astronomical units.
     # @return [Length] the equivalent instance in astronomical units

@@ -24,8 +24,8 @@ module Nii::Units
       'megahertz'  => { systems: ["metric", "si"], factor: 1000000    },
       base_unit    => { factor: 1                                     }}
     self.aliases   =  {}
-    rules.divide   =  { Portion => Frequency }
-    rules.multiply =  { Portion => Frequency, Duration => Angle }
+    rules.divide   =  { :Portion => :Frequency }
+    rules.multiply =  { :Portion => :Frequency, :Duration => :Angle }
 
     # Converts the object to hertz.
     # @return [Frequency] the equivalent instance in hertz

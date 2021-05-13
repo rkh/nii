@@ -214,13 +214,13 @@ task :units do
     if type == 'portion'
       data['base_units'].each_key do |other|
         other_class = other.split('-').map(&:capitalize).join
-        multiply << "\n      #{other_class.ljust(21)} => #{other_class}"
+        multiply << "\n      :#{other_class.ljust(21)} => :#{other_class}"
       end
     else
-      multiply << "Portion => #{class_name}"
+      multiply << ":Portion => :#{class_name}"
     end
 
-    divide << "Portion => #{class_name}"
+    divide << ":Portion => :#{class_name}"
 
     comment << "Instances of this class represent #{type.tr('-', ' ')} values." << '' << 'Supported Units:'
     docs << " `#{class_name}` ".ljust(25) << '| ' << " `#{base_unit}` ".ljust(50)  << '| '
@@ -316,12 +316,12 @@ task :units do
 
     rules.each do |a, b, c|
       if a == type
-        multiply << "#{b.split('-').map(&:capitalize).join} => #{c.split('-').map(&:capitalize).join}"
+        multiply << ":#{b.split('-').map(&:capitalize).join} => :#{c.split('-').map(&:capitalize).join}"
       elsif b == type
-        multiply << "#{a.split('-').map(&:capitalize).join} => #{c.split('-').map(&:capitalize).join}"
+        multiply << ":#{a.split('-').map(&:capitalize).join} => :#{c.split('-').map(&:capitalize).join}"
       elsif c == type
-        divide << "#{a.split('-').map(&:capitalize).join} => #{b.split('-').map(&:capitalize).join}"
-        divide << "#{b.split('-').map(&:capitalize).join} => #{a.split('-').map(&:capitalize).join}" if a != b
+        divide << ":#{a.split('-').map(&:capitalize).join} => :#{b.split('-').map(&:capitalize).join}"
+        divide << ":#{b.split('-').map(&:capitalize).join} => :#{a.split('-').map(&:capitalize).join}" if a != b
       end
     end
 

@@ -14,6 +14,7 @@ module Nii
     autoload :JSON,      'nii/formats/json'
     autoload :Messages,  'nii/formats/messages'
     autoload :PO,        'nii/formats/po'
+    autoload :Ruby,      'nii/formats/ruby'
     autoload :Structure, 'nii/formats/structure'
     autoload :TXT,       'nii/formats/txt'
     autoload :YAML,      'nii/formats/yaml'

@@ -27,7 +27,7 @@ module Nii::Setup
     #   setup = Nii.setup { locales :de, :en }
     #   setup.eager_load
     def eager_load(*locales)
-      @lock.synchronized do
+      @lock.synchronize do
         if locales.empty?
           return if @eager_loaded
           locales = Array(config.available_locales)
@@ -62,9 +62,10 @@ module Nii::Setup
     private
 
     def eager_load_constants(base)
-      base.constants.each do |name|
+      base.constants(false).each do |name|
         constant = base.const_get(name)
-        eager_load_constants(constant) if constant.is_a? Module
+        next unless constant.is_a? Module and not constant < Struct
+        eager_load_constants(constant) if constant.name == "#{base.name}::#{name}"
       end
     end
   end

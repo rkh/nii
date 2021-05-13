@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'cubic-meter-per-kilogram'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => SpecificVolume }
-    rules.multiply = { Portion => SpecificVolume, Mass => Volume }
+    rules.divide   = { :Portion => :SpecificVolume }
+    rules.multiply = { :Portion => :SpecificVolume, :Mass => :Volume }
 
     # @return [SpecificVolume] self
     def to_specific_volume = self

@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'candela'
     self.units     = { base_unit => { systems: ["metric", "si"], factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => LuminousIntensity, Illuminance => Area, Area => Illuminance }
-    rules.multiply = { Portion => LuminousIntensity }
+    rules.divide   = { :Portion => :LuminousIntensity, :Illuminance => :Area, :Area => :Illuminance }
+    rules.multiply = { :Portion => :LuminousIntensity }
 
     # Converts the object to candela.
     # @return [LuminousIntensity] the equivalent instance in candela

@@ -30,8 +30,8 @@ module Nii::Units
       'pascal'      => { systems: ["metric", "si"], factor: 1       },
       base_unit     => { factor: 1                                  }}
     self.aliases    =  {}
-    rules.divide    =  { Portion => Pressure, PressurePerLength => Area, Area => PressurePerLength }
-    rules.multiply  =  { Portion => Pressure }
+    rules.divide    =  { :Portion => :Pressure, :PressurePerLength => :Area, :Area => :PressurePerLength }
+    rules.multiply  =  { :Portion => :Pressure }
 
     # Converts the object to atmospheres.
     # @return [Pressure] the equivalent instance in atmospheres

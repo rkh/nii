@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'cubic-second-square-ampere-per-kilogram-square-meter'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => ElectricConductance }
-    rules.multiply = { Portion => ElectricConductance }
+    rules.divide   = { :Portion => :ElectricConductance }
+    rules.multiply = { :Portion => :ElectricConductance }
 
     # @return [ElectricConductance] self
     def to_electric_conductance = self

@@ -20,8 +20,8 @@ module Nii::Units
       'pound-force' => { factor: CONSTANTS[:lb_to_kg]*CONSTANTS[:gravity], systems: ["ussystem", "uksystem"] },
       base_unit     => { factor: 1 }}
     self.aliases    =  {}
-    rules.divide    =  { Portion => Force }
-    rules.multiply  =  { Portion => Force, Length => Energy, Speed => Power }
+    rules.divide    =  { :Portion => :Force }
+    rules.multiply  =  { :Portion => :Force, :Length => :Energy, :Speed => :Power }
 
     # Converts the object to newtons.
     # @return [Force] the equivalent instance in newtons

@@ -20,8 +20,8 @@ module Nii::Units
       'fahrenheit' => { factor: 5r/9r, offset: 2298.35r/9r, systems: ["ussystem", "uksystem"] },
       base_unit    => { systems: ["metric", "si"], factor: 1 }}
     self.aliases   =  {}
-    rules.divide   =  { Portion => Temperature }
-    rules.multiply =  { Portion => Temperature }
+    rules.divide   =  { :Portion => :Temperature }
+    rules.multiply =  { :Portion => :Temperature }
 
     # Converts the object to degrees Celsius.
     # @return [Temperature] the equivalent instance in degrees Celsius

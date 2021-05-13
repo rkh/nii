@@ -65,7 +65,6 @@ module Nii
   # @api internal
   module Compiler
     autoload :Fluent, 'nii/compiler/fluent'
-    autoload :FTL,    'nii/compiler/fluent'
   end
 
   # Placeholder for methods that need to differentiate a default argument value from an explicit nil.

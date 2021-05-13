@@ -18,8 +18,8 @@ module Nii::Units
       'ofglucose'  => { factor: 1000r*CONSTANTS[:item_per_mole]/CONSTANTS[:glucose_molar_mass] },
       base_unit    => { factor: 1 }}
     self.aliases   =  {}
-    rules.divide   =  { Portion => ConcentrationMass }
-    rules.multiply =  { Portion => ConcentrationMass }
+    rules.divide   =  { :Portion => :ConcentrationMass }
+    rules.multiply =  { :Portion => :ConcentrationMass }
 
     # Converts the object to item-per-kilogram.
     # @return [ConcentrationMass] the equivalent instance in item-per-kilogram

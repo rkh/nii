@@ -34,8 +34,8 @@ module Nii::Units
       'therm-us'             => { factor: 105480400, systems: ["ussystem"] },
       base_unit              => { factor: 1 }}
     self.aliases   =  { 'Cal' => 'foodcalorie' }
-    rules.divide   =  { Portion => Energy, Force => Length, Length => Force, Power => Duration, Duration => Power }
-    rules.multiply =  { Portion => Energy }
+    rules.divide   =  { :Portion => :Energy, :Force => :Length, :Length => :Force, :Power => :Duration, :Duration => :Power }
+    rules.multiply =  { :Portion => :Energy }
 
     # Converts the object to British thermal units.
     # @return [Energy] the equivalent instance in British thermal units

@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'square-revolution'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => SolidAngle, Angle => Angle }
-    rules.multiply = { Portion => SolidAngle }
+    rules.divide   = { :Portion => :SolidAngle, :Angle => :Angle }
+    rules.multiply = { :Portion => :SolidAngle }
 
     # Converts the object to square-revolution.
     # @return [SolidAngle] the equivalent instance in square-revolution

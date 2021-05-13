@@ -18,8 +18,8 @@ module Nii::Units
       'knot'       => { factor: 1852r/3600r, systems: ["ussystem", "uksystem"] },
       base_unit    => { factor: 1 }}
     self.aliases   =  {}
-    rules.divide   =  { Portion => Speed, Acceleration => Duration, Duration => Acceleration }
-    rules.multiply =  { Portion => Speed, Force => Power, Torque => Power }
+    rules.divide   =  { :Portion => :Speed, :Acceleration => :Duration, :Duration => :Acceleration }
+    rules.multiply =  { :Portion => :Speed, :Force => :Power, :Torque => :Power }
 
     # Converts the object to knots.
     # @return [Speed] the equivalent instance in knots

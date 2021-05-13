@@ -82,8 +82,8 @@ module Nii::Units
     self.aliases   =  {
       'L'                      => 'liter',
       'gal'                    => 'gallon'}
-    rules.divide   =  { Consumption => Length, Portion => Volume, Length => Area, Area => Length, SpecificVolume => Mass, Mass => SpecificVolume }
-    rules.multiply =  { Portion => Volume, Concentration => SubstanceAmount, MassDensity => Mass }
+    rules.divide   =  { Consumption => Length, :Portion => :Volume, :Length => :Area, :Area => :Length, :SpecificVolume => :Mass, :Mass => :SpecificVolume }
+    rules.multiply =  { :Portion => :Volume, :Concentration => :SubstanceAmount, :MassDensity => :Mass }
 
     # Converts the object to barrels.
     # @return [Volume] the equivalent instance in barrels

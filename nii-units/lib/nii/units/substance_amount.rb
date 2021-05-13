@@ -20,8 +20,8 @@ module Nii::Units
       'mole'       => { factor: CONSTANTS[:item_per_mole], systems: ["metric", "si"] },
       base_unit    => { factor: 1 }}
     self.aliases   =  {}
-    rules.divide   =  { Portion => SubstanceAmount, Concentration => Volume, Volume => Concentration }
-    rules.multiply =  { Portion => SubstanceAmount }
+    rules.divide   =  { :Portion => :SubstanceAmount, :Concentration => :Volume, :Volume => :Concentration }
+    rules.multiply =  { :Portion => :SubstanceAmount }
 
     # Converts the object to item.
     # @return [SubstanceAmount] the equivalent instance in item

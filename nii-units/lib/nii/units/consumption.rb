@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'cubic-meter-per-meter'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => Consumption }
-    rules.multiply = { Length => Volume, Portion => Consumption }
+    rules.divide   = { :Portion => :Consumption }
+    rules.multiply = { Length => Volume, :Portion => :Consumption }
 
     # @return [Consumption] self
     def to_consumption = self

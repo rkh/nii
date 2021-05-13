@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'kilogram-square-meter-per-square-second-square-ampere'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => ElectricInductance, ElectricResistance => Duration, Duration => ElectricResistance }
-    rules.multiply = { Portion => ElectricInductance }
+    rules.divide   = { :Portion => :ElectricInductance, :ElectricResistance => :Duration, :Duration => :ElectricResistance }
+    rules.multiply = { :Portion => :ElectricInductance }
 
     # @return [ElectricInductance] self
     def to_electric_inductance = self

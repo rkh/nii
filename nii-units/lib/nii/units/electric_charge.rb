@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'second-ampere'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => ElectricCharge, ElectricCurrent => Duration, Duration => ElectricCurrent }
-    rules.multiply = { Portion => ElectricCharge }
+    rules.divide   = { :Portion => :ElectricCharge, :ElectricCurrent => :Duration, :Duration => :ElectricCurrent }
+    rules.multiply = { :Portion => :ElectricCharge }
 
     # Converts the object to second-ampere.
     # @return [ElectricCharge] the equivalent instance in second-ampere

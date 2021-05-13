@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'kilogram-square-meter-per-square-second-ampere'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => MagneticFlux }
-    rules.multiply = { Portion => MagneticFlux }
+    rules.divide   = { :Portion => :MagneticFlux }
+    rules.multiply = { :Portion => :MagneticFlux }
 
     # @return [MagneticFlux] self
     def to_magnetic_flux = self

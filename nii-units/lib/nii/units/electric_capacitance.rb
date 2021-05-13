@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'pow4-second-square-ampere-per-kilogram-square-meter'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => ElectricCapacitance }
-    rules.multiply = { Portion => ElectricCapacitance }
+    rules.divide   = { :Portion => :ElectricCapacitance }
+    rules.multiply = { :Portion => :ElectricCapacitance }
 
     # @return [ElectricCapacitance] self
     def to_electric_capacitance = self

@@ -15,8 +15,8 @@ module Nii::Units
     self.base_unit = 'item-per-cubic-meter'
     self.units     = { base_unit => { factor: 1 }}
     self.aliases   = {}
-    rules.divide   = { Portion => Concentration }
-    rules.multiply = { Portion => Concentration, Volume => SubstanceAmount }
+    rules.divide   = { :Portion => :Concentration }
+    rules.multiply = { :Portion => :Concentration, :Volume => :SubstanceAmount }
 
     # Converts the object to item-per-cubic-meter.
     # @return [Concentration] the equivalent instance in item-per-cubic-meter

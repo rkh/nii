@@ -5,7 +5,6 @@ module Nii::Formats
   module Messages
     autoload :ARB,      'nii/formats/messages/arb'
     autoload :Flexible, 'nii/formats/messages/flexible'
-    autoload :Detect,   'nii/formats/messages/detect'
     autoload :I18n,     'nii/formats/messages/i18n'
     autoload :ICU,      'nii/formats/messages/icu'
     autoload :Plain,    'nii/formats/messages/plain'
