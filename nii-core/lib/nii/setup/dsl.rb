@@ -38,7 +38,7 @@ module Nii::Setup
           return unless block
           ::Kernel.raise ::Nii::Errors::SetupError, "already ran setup for #{application.inspect}"
         end
-        @object.subsetups[application] = ::Nii::Setup.setup(application) do |setup|
+        @object.subsetups[application] = ::Nii::Setup.new(application) do |setup|
           ::Nii::Setup::DSL.run(setup, :ignore,   &@block)
           ::Nii::Setup::DSL.run(setup, :complain, &block)
         end

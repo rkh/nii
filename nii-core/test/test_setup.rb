@@ -16,6 +16,39 @@ class TestSetup < Minitest::Test
     assert_equal 'en-US', config.available_locales.to_s
   end
 
+  def test_block_argument
+    configure do |config|
+      assert_instance_of TestSetup, self
+      config.available_locales = ['en', 'fr']
+    end
+
+    assert_equal 'en, fr', config.available_locales.to_s
+  end
+
+  def test_nested_setups
+    example = Class.new { include Nii::Helpers }
+
+    configure do
+      available_locales 'ar', 'he'
+      setup(example) { fallback_locale 'en' }
+    end
+
+    assert_nil config.fallback_locales
+    assert_equal ['en'],   Nii::Config[example].fallback_locales
+    assert_equal 'ar, he', Nii::Config[example].available_locales.to_s
+
+    assert_raises do
+      configure { setup(example) { setup(example) { } } }
+    end
+
+    assert_raises do
+      configure do
+        setup(example) { }
+        setup(example) { }
+      end
+    end
+  end
+
   def test_eager_load
     Nii::Setup.new.eager_load :en unless ENV['FAST_TEST']
   end
