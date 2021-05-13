@@ -28,6 +28,10 @@ module Nii::Parser
       def sexp_args
         [@expression.to_sexp, *super]
       end
+
+      def compile(bundle, config)
+        Nii::Template::Select.new(bundle, expression.compile(bundle, config), children.map { _1.compile(bundle, config)})
+      end
     end
   end
 end

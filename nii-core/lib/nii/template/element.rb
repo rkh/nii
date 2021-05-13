@@ -9,9 +9,13 @@ module Nii::Template
       @bundle  = bundle
     end
 
-    def render(context,  variables, &block) = context.format(resolve(context, variables, &block))
-    def resolve(context, variables, &block) = payload
-    def to_nii_template                     = self
-    def inspect                             = "#<#{self.class.inspect}:#{payload.inspect}>"
+    def resolve(context, variables, &block)
+      return payload unless payload.is_a? Element
+      payload.resolve(context, variables, &block)
+    end
+
+    def render(context, variables, &block) = context.format(resolve(context, variables, &block))
+    def to_nii_template = self
+    def inspect = "#<#{self.class.inspect}:#{payload.inspect}>"
   end
 end

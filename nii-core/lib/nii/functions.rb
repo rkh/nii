@@ -136,7 +136,7 @@ module Nii
     #
     # @param value [Numeric, String] Either a number or a string that can be parsed as a number.
     # @option (see Nii::Formatters::Numeric#format)
-    def number(value, **options) = format(::Nii::Parser.number(value), **options)
+    def number(value, **options) = @context.localize(::Nii::Parser.number(value), **options)
 
     # Convenience method for adjusting a number by an offset. Useful for plural category selection
     # where the base count needs to be adjusted.

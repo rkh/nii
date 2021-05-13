@@ -28,15 +28,6 @@ module Nii::Formatters::Nii
     end
   end
 
-  module Localized
-    extend self
-    # @see Nii::Context#format
-    # @!scope module
-    def format(context, value, **options)
-      raise NotImplementedError
-    end
-  end
-
   module NumberingSystem
     extend self
     # @see Nii::Context#format

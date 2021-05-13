@@ -15,12 +15,12 @@ module Nii
       @options = options
     end
 
-    def format(**options) = @context.format(@object, **@options.merge(options))
+    def format(**options, &block) = @context.format(@object, **@options.merge(options), &block)
     alias_method :to_s, :format
 
     def localize(context = nil, **options)
       context ||= @context
-      options   = @options.merge(options)
+      options   = options.any? ? @options.merge(options) : @options
 
       return self if context == @context and options == @options
       self.class.new(@object, context, **options)
@@ -28,19 +28,12 @@ module Nii
 
     alias_method :nii_localize, :localize
 
+    # @api internal
+    def format_options = @options
+
     private
 
-    def __localize__?(method, value)
-      return false if method.start_with? '_'
-      context.localize? value
-    end
-
     def respond_to_missing?(method, include_private = false) = @object.respond_to?(method)
-
-    def method_missing(method, ...)
-      result = @object.public_send(method, ...)
-      result = @context.localize(result) if __localize__? method, result
-      result
-    end
+    def method_missing(...) = @object.public_send(...)
   end
 end

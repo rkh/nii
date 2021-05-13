@@ -12,5 +12,6 @@ module Nii
     autoload :Select,             'nii/template/select'
     autoload :TermReference,      'nii/template/term_reference'
     autoload :Variable,           'nii/template/variable'
+    autoload :Variant,            'nii/template/variant'
   end
 end

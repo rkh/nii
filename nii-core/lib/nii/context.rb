@@ -577,6 +577,8 @@ module Nii
     #   @note    (see Nii::Formatters::TZInfo::Timezone.format)
     #   @see     Nii::Formatters::TZInfo::Timezone
     def format(value = scope, **options, &block)
+      return value.format(**options, &block) if value.is_a? Localized
+
       escape_html        = options[:escape_html]
       bidi               = options[:bidi]
       escape_html        = options[:escape_html] = escape_html?   if escape_html.nil?

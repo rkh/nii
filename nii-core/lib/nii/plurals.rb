@@ -29,8 +29,8 @@ module Nii
 
     # @param type [Symbol, #to_sym] Plural category type (+cardinal+ or +ordinal+).
     # @return [Array<Symbol>] List of categories for the category type.
-    def categories(type = :cardinal)
-      @categories.fetch(type.to_sym) { [:other] }
+    def categories(type = nil)
+      @categories.fetch(type&.to_sym || :cardinal) { [:other] }
     end
 
     # Classifies a number or range of numbers. Number can be a String representation as well, which allows the
@@ -44,16 +44,23 @@ module Nii
     # @param (see #categories)
     # @param number [String, Numeric, Range, Symbol]
     # @return [Symbol] Plural category for the given number.
-    def classify(type = :cardinal, number)
+    def classify(type = nil, number, complain: true)
+      if number.is_a? Nii::Localized
+        type ||= number.format_options[:type]
+        number = number.format
+      end
+
+      type ||= :cardinal
+
       case number
       when Range   then range(type, number.begin, number.end)
       when Numeric then classify(type, Utils.string(number))
       when NUMBER  then @categories.include?(type.to_sym) ? send("_#{type}", $1) : :other
-      when String  then raise ArgumentError, "argument must be a decimal number in latin script"
+      when String  then raise ArgumentError, "argument must be a decimal number in latin script" if complain
       when Symbol  then categories(type).include?(number) ? number : :other
       else
-        raise ArgumentError, "cannot classify #{number.class}" unless number.respond_to? :count
-        classify(type, number.count)
+        return classify(type, number.count) if number.respond_to? :count
+        raise ArgumentError, "cannot classify #{number.class}" if complain
       end
     end
     alias_method :call, :classify
