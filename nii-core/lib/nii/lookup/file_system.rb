@@ -23,11 +23,22 @@ module Nii::Lookup
   #   context = Nii::Context.new('en') { |c| c.lookup = MyLookup.new(path: './locales') }
   #   puts context.render(:hello, namespace: :world)
   class FileSystem < Common
+    # @private
+    def self.setup_class = Nii::Setup::Lookup::FileSystem
+
     attr_reader :load_path, :formats
 
     # @private
     def inspect
       "#<#{self.class}:#{load_path.to_a.inspect}>"
+    end
+
+    # Adds a path to the message lookup.
+    # @param (see Nii::LoadPath#<<)
+    # @return self
+    def <<(source)
+      load_path << source
+      self
     end
 
     private
