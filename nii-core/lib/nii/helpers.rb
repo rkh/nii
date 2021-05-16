@@ -2,6 +2,9 @@
 
 module Nii
   module Helpers
+    autoload :Languages,   'nii/helpers/languages'
+    autoload :Territories, 'nii/helpers/territories'
+
     # @example
     #   class MyClass
     #     # use Nii::Helpers but reuse the shared context from the nii-global gem

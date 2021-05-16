@@ -2,6 +2,8 @@
 
 module Nii
   class Context
+    include Helpers::Territories, Helpers::Languages
+
     # @see #localize?
     LOCALIZABLE         = [Symbol, Array, Hash, Set]
     IMPLICIT_CONVERSION = { to_hash: Hash, to_ary: Array, to_str: String, to_int: Numeric }

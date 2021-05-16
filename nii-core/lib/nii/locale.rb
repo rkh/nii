@@ -74,6 +74,8 @@ module Nii
   # @see https://tools.ietf.org/html/bcp47 [BCP 47] IETF Best Current Practice #47: Tags for Identifying Languages
   # @see http://www.unicode.org/reports/tr35/#Identifiers [UTS 35] Unicode Technical Standard #35: UNICODE LOCALE DATA MARKUP LANGUAGE (LDML)
   class Locale
+    include Helpers::Territories, Helpers::Languages
+
     # @!attribute [rw] language
     #   Code identifying the language. Consist of a two to eight lower case letters. The only four letter value permitted is "root".
     #
