@@ -24,6 +24,7 @@ group :test do
   gem 'minitest', '~> 5.14'
   gem 'minitest-fail-fast'
   gem 'simplecov'
+  gem 'money'
 end
 
 group :benchmark do

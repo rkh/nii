@@ -515,6 +515,20 @@ module Nii
     # @return [ActiveSupport::Timezone]
     def to_active_support = ActiveSupport::TimeZone[REVERSE_MAPPING.fetch(name, name)] if defined? ActiveSupport::TimeZone
 
+    # Generates a locale representation for the currency, with no timezone.
+    #
+    # This means that most methods that expect a locale as an argument will happily accept
+    # a timezone instead.
+    #
+    # @example
+    #   Nii::Timezone["Europe/Berlin"].to_nii_locale # => #<Nii::Locale:und-u-tz-deber>
+    #
+    #   locale = Nii::Locale.parse "en-US"
+    #   locale & Nii::Timezone["America/New York"] # => #<Nii::Locale:en-US-u-tz-usnyc>
+    #
+    # @return [Nii::Locale] Locale representation of the timezone.
+    def to_nii_locale = @locale ||= Nii::Locale.new(timezone: code)
+
     # @return [self]
     def to_nii_timezone = self
 

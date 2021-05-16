@@ -123,4 +123,7 @@ class TestNumericFormatter < Minitest::Test
     assert_equal '85%',  format(:en, 0.853, style: :percent)
     assert_equal '85 %', format(:de, 0.853, style: :percent)
   end
+
+  def test_style_currency
+  end
 end

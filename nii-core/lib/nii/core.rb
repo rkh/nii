@@ -20,6 +20,7 @@ module Nii
   autoload :Cache,              'nii/cache'
   autoload :Config,             'nii/config'
   autoload :Context,            'nii/context'
+  autoload :Currency,           'nii/currency'
   autoload :Data,               'nii/data'
   autoload :Date,               'nii/date'
   autoload :Errors,             'nii/errors'
@@ -90,7 +91,7 @@ module Nii
   #   Nii.setup MyApp do
   #     available_locales "en", "fr"
   #   end
-  def self.setup(application = nil, &block) = Setup.new(application, &block)
+  def self.setup(...) = Setup.new(...)
   class << self
     alias_method :Setup, :setup
   end

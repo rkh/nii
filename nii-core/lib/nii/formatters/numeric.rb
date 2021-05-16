@@ -193,7 +193,7 @@ module Nii::Formatters
     end
     
     def format_currency(numbers, value, **options)
-      raise ArgumentError, 'missing option currency for "currency" style' unless currency = options[:currency]
+      options[:currency]         ||= context.currency
       options[:numbering_system] ||= 'finance'
       raise NotImplementedError
     end
