@@ -60,6 +60,8 @@ module Nii
       LocalePreference.new(other, locales.reject { |l| l.subset_of? other })
     end
 
+    def deconstruct = to_a
+
     def +(other) = LocalePreference.new(self, other)
     def to_s = @to_s ||= locales.join(', ').freeze
 

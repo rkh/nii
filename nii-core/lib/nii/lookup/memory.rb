@@ -302,7 +302,7 @@ module Nii::Lookup
     # @api internal
     # Compiles messages from a given hash (JSON logic but without parsing it as JSON first).
     class HashCompiler < Nii::Formats::JSON
-      def initialize(format) = super(messages: format)
+      def initialize(format) = super(messages: format, structure: :simple)
       def format_config      = config
       def parse(hash)        = hash.transform_keys(&:to_s)
     end

@@ -3,6 +3,7 @@
 module Nii::Template
   class Variable < Element
     attr_reader :default
+    def deconstruct = [payload, default]
 
     def initialize(bundle, payload, default = Nii::UNDEFINED)
       @default = default
@@ -20,5 +21,9 @@ module Nii::Template
     end
 
     alias_method :value, :resolve
+    alias_method :name, :payload
+
+    private
+    def each_child(&block) = nil
   end
 end

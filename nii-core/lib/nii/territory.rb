@@ -244,24 +244,29 @@ module Nii
     def currency(...) = currencies(...).first
 
     # @overload currency?(currency, include_previous = false)
-    #   @param currency [String, Symbol, Nii::Currency] The currency or currency symbol.
+    #   @param currency [String, Symbol, Nii::Currency, Money::Currency, #to_s]
+    #     the currency or currency symbol. Also accepts currency objects from the money gem.
     #   @param include_previous [true, false] Whether or not to include past currencies.
     #
     # @overload currency?(currency, date)
-    #   @param currency [String, Symbol, Nii::Currency] The currency or currency symbol.
+    #   @param currency [String, Symbol, Nii::Currency, Money::Currency, #to_s]
+    #     the currency or currency symbol. Also accepts currency objects from the money gem.
     #   @param date [Date, #to_date, String, Integer, nil] Exact date or year.
     #
     # @overload currency?(currency, date_range)
-    #   @param currency [String, Symbol, Nii::Currency] The currency or currency symbol.
+    #   @param currency [String, Symbol, Nii::Currency, Money::Currency, #to_s]
+    #     the currency or currency symbol. Also accepts currency objects from the money gem.
     #   @param date_range [Range] A range of dates or years.
     #
     # @overload currency?(currency, after, before)
-    #   @param currency [String, Symbol, Nii::Currency] The currency or currency symbol.
+    #   @param currency [String, Symbol, Nii::Currency, Money::Currency, #to_s]
+    #     the currency or currency symbol. Also accepts currency objects from the money gem.
     #   @param after  [Date, #to_date, String, Integer, nil]
     #   @param before [Date, #to_date, String, Integer, nil]
     #
     # @overload currency?(currency, after: nil, before: nil)
-    #   @param currency [String, Symbol, Nii::Currency] The currency or currency symbol.
+    #   @param currency [String, Symbol, Nii::Currency, Money::Currency, #to_s]
+    #     the currency or currency symbol. Also accepts currency objects from the money gem.
     #   @param after  [Date, #to_date, String, Integer, nil]
     #   @param before [Date, #to_date, String, Integer, nil]
     #
@@ -304,6 +309,24 @@ module Nii
     def territories = get(:contains) { |codes| Array(codes).map { |c| Territory.new(c, @data) }} || []
     alias_method :children,  :territories
     alias_method :divisions, :territories
+
+    def deconstruct = [code]
+
+    def deconstruct_keys(keys)
+      @deconstruct_keys ||= {
+        code:               code,
+        currencies:         currencies,
+        currency:           currency,
+        known:              known?,
+        measurement_system: measurement_system,
+        paper_size:         paper_size,
+        temperature:        temperature,
+        parents:            parents,
+        territories:        territories,
+        children:           children,
+        divisions:          divisions
+      }.freeze
+    end
 
     # Generates a locale representation for the territory, with no language.
     #

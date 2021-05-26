@@ -26,9 +26,9 @@ module Nii::Lookup
     attr_reader :load_path, :formats
 
     # @private
-    def inspect
-      "#<#{self.class}:#{load_path.to_a.inspect}>"
-    end
+    def inspect = "#<#{self.class}:#{load_path.to_a.inspect}>"
+
+    def deconstruct_keys(keys) = super.merge(load_path: load_path, formats: formats)
 
     private
 

@@ -11,7 +11,7 @@ module Nii::Calendar
     private_constant :WEEK_DAYS
 
     # @api internal
-    def self.default_type = name[/[^:]+$/].downcase
+    def self.default_type = Nii::Utils.type(self).name
 
     # @api internal
     def self.supports_type?(type) = self != Generic && type == default_type
@@ -39,7 +39,7 @@ module Nii::Calendar
     # @return [Nii::Date] todays day converted to self as calendar system
     def today = Nii::Date.new(self, ::Date.today)
 
-    # Converts a date  from a source calendar (usually Georgian, but might be Julian for Ruby's Date objects, and any supported
+    # Converts a date from a source calendar (usually Georgian, but might be Julian for Ruby's Date objects, and any supported
     # calendar for Nii's {Nii::Date} objects) to self.
     #
     # @overload convert(date)
@@ -196,6 +196,8 @@ module Nii::Calendar
 
     # @api internal
     def format(date) = '%d-%02d-%02d' % [ year(date), month(date), day(date) ]
+    
+    def deconstruct = [type]
 
     # @return [self]
     def to_nii_calendar

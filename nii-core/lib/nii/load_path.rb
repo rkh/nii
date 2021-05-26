@@ -47,6 +47,9 @@ module Nii
     # Converts the path list into an array.
     # @return [Array<Pathname>]
     def to_a = @paths.dup
+
+    # @return [Array<String>]
+    def deconstruct = @paths.map(&:to_s)
   
     # @param paths [Array<String, Pathname>] List of paths.
     # @yield [path] Callback for when a path is added.

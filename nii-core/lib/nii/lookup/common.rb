@@ -7,6 +7,9 @@ module Nii::Lookup
   #
   # @see Nii::Lookup::Default
   class Common
+    # @api internal
+    def self.type = Nii::Utils.type(self)
+
     # @return [Nii::Config]
     attr_reader :config
 
@@ -66,6 +69,8 @@ module Nii::Lookup
         reset!
       end
     end
+
+    def deconstruct_keys(keys) = { type: self.class.type, available_locales: available_locales, config: config }
 
     # @return [self]
     def to_nii_lookup

@@ -4,7 +4,7 @@ msgid "key"
 msgstr "value"
 
 msgid "interpolated"
-msgstr "Hi %{name}s!"
+msgstr "Hi %{name}!"
 
 msgid "positional"
 msgstr "%s!"

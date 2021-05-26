@@ -130,6 +130,12 @@ module Nii::Units
     end
 
     # @api internal
+    def self.normalize_unit(unit) = aliases.fetch(unit&.to_s) { unit&.to_s&.downcase&.tr('_', '-') }
+
+    # @return [true, false]
+    def self.known_unit?(unit) = units.include?(normalize_unit(unit))
+
+    # @api internal
     def self._load(data)
       amount, unit = data.split(':')
       new Rational(amount), unit
@@ -207,7 +213,7 @@ module Nii::Units
 
       @base_unit = self.class.base_unit
       @rules     = self.class.rules.resolve
-      @unit      = self.class.aliases.fetch(unit&.to_s) { unit&.to_s&.downcase&.tr('_', '-') || @base_unit }
+      @unit      = self.class.normalize_unit(unit) || @base_unit
       unit_info  = self.class.units[@unit].to_h
       @systems   = []
       @offset    = 0r
@@ -437,6 +443,18 @@ module Nii::Units
       end
     end
 
+    def deconstruct = [amount, unit]
+
+    def deconstruct_keys(keys)
+      keys ||= %i[amount unit]
+      keys.inject({}) do |hash, key|
+        if    key =~ /^in_(.+)$/ then hash.merge! key => self.in($1).amount
+        elsif respond_to? key    then hash.merge! key => public_send(key)
+        else  hash
+        end
+      end
+    end
+
     # @return [BigDecimal] {#base_amount} converted into an BigDecimal
     def to_d = base_amount.to_d
 
@@ -451,6 +469,7 @@ module Nii::Units
 
     # @return [String]
     def to_s
+      return "#{to_num} #{unit}" unless symbol
       symbol =~ /^[A-z]/ ? "#{to_num} #{symbol}" : "#{to_num}#{symbol}"
     end
 

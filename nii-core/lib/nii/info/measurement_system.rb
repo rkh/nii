@@ -24,42 +24,34 @@ module Nii::Info
       value
     end
 
-    def paper_size
-      self[:paper_size]
-    end
+    def paper_size = self[:paper_size]
 
-    def temperature
-      self[:temperature]
-    end
+    def temperature = self[:temperature]
 
     def metric?(type = nil)
       expected = type&.to_sym == :paper_size ? 'A4' : 'metric'
       self[type] == expected
     end
 
-    def imperial?(type = nil)
-      self[type] == 'UK'
-    end
+    def imperial?(type = nil) = self[type] == 'UK'
 
     def us_customary?(type = nil)
       expected = type&.to_sym == :paper_size ? 'US-Letter' : 'US'
       self[type] == expected
     end
 
-    def to_s
-      self[:general]
-    end
+    def deconstruct = [to_s]
 
-    def to_sym
-      to_s.to_sym
-    end
+    def deconstruct_keys(keys) = to_h
+
+    def to_s = self[:general]
+
+    def to_sym = to_s.to_sym
 
     def to_h
       { general: self[:general], temperature: self[:temperature], paper_size: self[:paper_size] }
     end
 
-    def inspect
-      "#<#{self.class}:#{to_s}>"
-    end
+    def inspect = "#<#{self.class}:#{to_s}>"
   end
 end

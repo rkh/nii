@@ -9,26 +9,22 @@ module Nii::NumberingSystem
       setup(**options)
     end
 
-    def default_symbols
-      symbols(@default_locale, code)
-    end
+    def default_symbols = symbols(@default_locale, code)
 
     # @see Formatters::Numeric#format
     # @see Info::Numbers.format_rules
     def format(value, rules, **options) = format_value(value, rules, **options)
 
-    def to_nii_number_system
-      self
-    end
+    def to_nii_number_system = self
 
-    def decimal?
-      raise NotImplementedError, 'subclass responsibility'
-    end
+    def deconstruct = [code]
+
+    def deconstruct_keys(keys) = { code: code, decimal: decimal?, default_locale: Nii::Locale.parse(default_locale) }
+
+    def decimal? = raise(NotImplementedError, 'subclass responsibility')
 
     # @private
-    def inspect
-      "#<#{self.class.inspect}:#{code.inspect}>"
-    end
+    def inspect = "#<#{self.class.inspect}:#{code.inspect}>"
 
     private
 

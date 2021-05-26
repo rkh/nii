@@ -213,12 +213,13 @@ module Nii
     CACHE          = Cache.new
     KEY_ALIASES    = { territory: :region, calendar: :calendar_algorithm }
     AVAILABLE_KEYS = [
-      :language, :region, :script, :variants,
+      :language, :script, :region, :variants,
       *Nii::Parser::Locale::U_FIELDS.keys,
       *Nii::Parser::Locale::X_FIELDS.keys
     ]
     KEY_ALIASES.merge! Nii::Parser::Locale::U_TAGS.transform_keys(&:to_sym)
-    private_constant :AVAILABLE_KEYS, :KEY_ALIASES, :CACHE
+    ALL_KEYS         = AVAILABLE_KEYS + KEY_ALIASES.keys
+    private_constant :AVAILABLE_KEYS, :KEY_ALIASES, :ALL_KEYS, :CACHE
 
     # @example With options
     #   Nii::Locale.new(language: 'en', region: 'US') # => #<Nii::Locale:en-US>
@@ -265,6 +266,7 @@ module Nii
     # @return [Nii::Locale, nil] new locale instance
     # @raise [Nii::Errors::ParseError] if the code is invalid and complain is +true+
     def self.new(code = nil, complain: true, **options)
+      return new(complain: complain, **code, **options) if code.is_a? Hash
       return code.to_nii_locale.with(**options) if code.respond_to? :to_nii_locale
 
       prototype = CACHE.fetch(code, options) do
@@ -446,20 +448,34 @@ module Nii
       end
     end
 
-    # @return [self]
-    def to_nii_locale
-      self
+    def deconstruct = [code]
+
+    def deconstruct_keys(keys)
+      keys = keys ? keys & ALL_KEYS : ALL_KEYS
+      keys.inject({}) { _1.merge! _2 => self[_2] }
     end
 
-    # @private
-    def inspect
-      "#<#{self.class.inspect}:#{code}>"
+    # Turns the Locale into a Hash, with empty fields ommitted.
+    # All fields are included. It is possible to hand such a Hash to {Locale.new} to turn it back into a Locale.
+    #
+    # @return [Hash] Hash representation of the locale.
+    def to_h
+      return @to_h if defined? @to_h and @to_h
+      hash = AVAILABLE_KEYS.map { [_1, self[_1]] }.to_h.compact
+      hash[:variants].empty? ? hash.except(:variants) : hash
     end
+
+    # @return [self]
+    def to_nii_locale = self
+
+    # @private
+    def inspect = "#<#{self.class.inspect}:#{code}>"
 
     # @private
     def freeze
       return if frozen?
       @lock = Utils::DummyLock
+      @to_h = to_h.freeze
 
       # populate lazy methods
       has_extensions?
@@ -474,10 +490,10 @@ module Nii
     private
 
     def respond_to_missing?(method, private = false)
-      case method.to_sym
-      when *AVAILABLE_KEYS, *KEY_ALIASES.keys then true
-      when /^(.+)=$/ then respond_to_missing? $1
-      else false
+      if method =~ /^(.+)=$/
+        respond_to_missing? $1
+      else
+        ALL_KEYS.include? method.to_sym
       end
     end
 

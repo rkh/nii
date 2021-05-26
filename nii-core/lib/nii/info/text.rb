@@ -18,6 +18,8 @@ module Nii::Info
     }
     private_constant :BIDI
 
+    def deconstruct_keys = { character_order: character_order, line_order: line_order }
+
     # Language/Script dependent character order.
     #
     # @note

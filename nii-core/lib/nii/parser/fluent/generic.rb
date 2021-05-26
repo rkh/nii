@@ -75,7 +75,7 @@ module Nii::Parser
           end
         end
 
-        [ self.class.name[/[^:]+$/].downcase.to_sym, *args ]
+        [ Nii::Utils.type(self.class), *args ]
       end
 
       def sexp_args

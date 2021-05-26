@@ -8,9 +8,7 @@ module Nii::Template
     end
 
     def value(context, variables = nil)
-      message = context.find_message(name, namespace: bundle.namespace)
-      raise "could not find message #{name}" unless message # todo
-      message
+      context.find_message(name, namespace: bundle.namespace) || context.unknown_message(name)
     end
   end
 end
