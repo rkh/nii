@@ -1169,7 +1169,7 @@ module Nii::Helpers
     def mossi? = _nii_locale&.subset_of?('mos')
 
     # @return [true, false] whether or not the content is in multiple languages.
-    def multiple_languages? = _nii_locale&.subset_of?('mul')
+    def multiple_languages? = _nii_locale&.language == 'mul'
 
     # @return [true, false] whether or not the language is Mundang.
     def mundang? = _nii_locale&.subset_of?('mua')
