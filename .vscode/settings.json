@@ -1,6 +1,7 @@
 {
   "files.exclude": {
     "**/.yardoc": true,
+    "*/doc": true,
     "nii-*/data": true,
     "coverage": true,
     "Gemfile.lock": true,
