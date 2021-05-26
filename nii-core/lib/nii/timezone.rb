@@ -419,13 +419,14 @@ module Nii
     #   @param hour   [Integer] 0 to 23
     #   @param minute [Integer] 0 to 59
     #
-    # @return [Time] Time object with #zone returning this Nii:Timezone
+    # @return [Time] Time object with #zone returning this Nii::Timezone
     def local(*args)
       case args
-      in []           then now
-      in [Time]       then args.first.localtime(self)
-      in [Integer, *] then Time.new(*args.values_at(*0..5), self)
-      else raise ArgumentError, "#{args.first.class.inspect} values are not supported"
+      in [              ]                then now
+      in [ Time => time ]                then time.localtime(self)
+      in [ Integer, *   ]                then Time.new(*args.values_at(*0..5), self)
+      in [ t ] if t.respond_to? :to_time then t.to_time.localtime(self)
+      in [ arg, * ]                      then raise ArgumentError, "#{arg.class.inspect} values are not supported"
       end
     end
 

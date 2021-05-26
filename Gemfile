@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 path '.' do
   gem 'nii'
   gem 'nii-core'
+  gem 'nii-cli'
   gem 'nii-extra-locales'
   gem 'nii-global'
   gem 'nii-historic'

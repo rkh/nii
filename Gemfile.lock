@@ -15,6 +15,9 @@ PATH
       nii-xml (= 0.0.0)
     nii-calendars (0.0.0)
       nii-core (= 0.0.0)
+    nii-cli (0.0.0)
+      dry-cli (~> 0.7)
+      nii-core (= 0.0.0)
     nii-core (0.0.0)
       concurrent-ruby (~> 1.1)
       nii-rbnf (= 0.0.0)
@@ -80,6 +83,7 @@ GEM
       concurrent-ruby (= 1.1.8)
     crass (1.0.6)
     docile (1.3.5)
+    dry-cli (0.7.0)
     erubi (1.10.0)
     fast_gettext (2.0.3)
     gettext (3.3.7)
@@ -172,6 +176,7 @@ DEPENDENCIES
   money
   nii!
   nii-cldr!
+  nii-cli!
   nii-core!
   nii-extra-locales!
   nii-global!

@@ -13,5 +13,6 @@ module Nii
     UnknownMessage    = Class.new(MessageError)
     UnknownVariable   = Class.new(MessageError)
     UnknownFunction   = Class.new(MessageError)
+    UnknownAttribute  = Class.new(MessageError)
   end
 end

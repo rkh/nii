@@ -4,10 +4,11 @@ module Nii::Formats
   class PO
     # @api internal
     FORMATS = {
-      'c'       => Messages::Ruby,
       'default' => Messages::Ruby,
+      'c'       => Messages::Ruby,
       'ruby'    => Messages::Ruby,
     }
+    private_constant :FORMATS
 
     # @api internal
     attr_reader :config

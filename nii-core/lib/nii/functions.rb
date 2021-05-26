@@ -49,8 +49,8 @@ module Nii
     # @see Nii::Info::Text#bidi
     def bidi(...) = @context.text.bidi(...)
 
-    # Capitalizes a string. Handy for section/page titles or first words of a sentence.
     # @todo Better support for different capitalization rules in various languages and scripts.
+    # Capitalizes a string. Handy for section/page titles or first words of a sentence.
     #
     #   example = Welcome to { CAPITALIZE($title) }!
     #

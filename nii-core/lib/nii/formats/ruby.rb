@@ -4,6 +4,7 @@ module Nii::Formats
   class Ruby < JSON
     # @api internal
     EXTENSIONS = %w[] # disabled by default
+    FORMATS    = { default: JSON::FORMATS[:i18n] }
 
     private
     def format_config = config.ruby

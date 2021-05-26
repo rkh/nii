@@ -91,6 +91,7 @@ For the time being, all Nii libraries and assets are managed in a mono repositor
 * The Nii Ruby libraries:
   * [`nii`](nii) – Meta gem for nii-core, nii-units, nii-calendar, and nii-xml.
   * [`nii-core`](nii-core) – The main library.
+  * [`nii-cli`](nii-cli) – A Nii command line tool.
   * [`nii-calendars`](nii-calendars) – Support for calendar systems beyond Gregorian that are included in the CLDR.
   * [`nii-extra-locales`](nii-extra-locales) – Data for less common locales (locales not designated "modern" by the Unicode Consortium).
   * [`nii-global`](nii-global) – A global/thread state implementation for Nii to offer an API similar to Ruby I18n.

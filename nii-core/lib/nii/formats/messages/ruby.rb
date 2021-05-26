@@ -3,10 +3,30 @@
 module Nii::Formats::Messages
   class Ruby
     PATTERN = /%(?:<(.+)>|{(.+)}|([^<{]))/
+    SIMPLE  = /%\{\s*([a-z]\w*)\s*\}/
+    COMPLEX = /(?!#{SIMPLE})#{PATTERN}/
 
     def self.compile(bundle, source)
-      return Plain.compile(bundle, source) unless instance = new(source) and instance.type
-      Nii::Template::Lambda.new(bundle) { |c, v, &b| source % instance.payload(c, v, &b) }
+      if source =~ COMPLEX
+        instance    = new(source)
+        node        = Nii::Template::Lambda.new(bundle) { |c, v, &b| source % instance.payload(c, v, &b) }
+        count       = -1
+        node.fluent = source.gsub(PATTERN) { "{ $#{$1 || $2 || "v#{count += 1}"} }" }
+        node
+      elsif source =~ SIMPLE
+        scanner = StringScanner.new(source)
+        payload = []
+        last    = 0
+        while scanner.scan_until(SIMPLE)
+          payload << Nii::Template::Element.new(bundle, scanner.pre_match[last..-1])
+          payload << Nii::Template::Variable.new(bundle, scanner[1])
+          last = scanner.pos
+        end
+        payload << Nii::Template::Element.new(bundle, scanner.rest)
+        Nii::Template::Concat.new(bundle, payload)
+      else
+        Plain.compile(bundle, source)
+      end
     end
 
     attr_reader :type, :keys

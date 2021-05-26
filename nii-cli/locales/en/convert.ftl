@@ -1,0 +1,9 @@
+description      = Converts a localization file from one format to another
+format           = File structure to assumed for {$name} input files
+input_file       = File to read messages from. Uses STDIN if omitted.
+output_file      = File to write messages to. Uses STDOUT if omitted.
+input_format     = Format of the input file (default based on file extension)
+output_format    = Format of the output file (default based on file extension)
+no_input         = No input file give, reading from STDIN.
+no_input_format  = No input format specified.
+no_output_format = No output format specified.

@@ -80,7 +80,6 @@ module Nii
     private
 
     def compile_rules(type, rules)
-      verbose_was = $VERBOSE
       source      = String.new
       categories  = @categories[type] = []
 
@@ -90,8 +89,7 @@ module Nii
         source << "return #{key.inspect} if #{Parser.plural(rule)}\n" unless key == :other
       end
 
-      $VERBOSE = false
-      instance_eval <<-RUBY
+      instance_eval <<-RUBY, __FILE__, __LINE__
         # frozen_string_literal: true
         class << self
           private def _#{type}(number)
@@ -117,8 +115,6 @@ module Nii
           end
         end
       RUBY
-    ensure
-      $VERBOSE = verbose_was
     end
   end
 end

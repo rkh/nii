@@ -4,8 +4,8 @@ module Nii::Formats
   class JSON
     # @api internal
     FORMATS = {
-      arb:     [ :arb,    :arb      ],
       default: [ :simple, :flexible ],
+      arb:     [ :arb,    :arb      ],
       i18n:    [ :i18n,   :i18n     ],
       r18n:    [ :r18n,   :r18n     ],
       simple:  [ :simple, :plain    ],

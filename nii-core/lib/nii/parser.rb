@@ -12,17 +12,20 @@ module Nii
     autoload :Number,     'nii/parser/number'
     autoload :Properties, 'nii/parser/properties'
     autoload :Plural,     'nii/parser/plural'
+    autoload :UnicodeSet, 'nii/parser/unicode_set'
     autoload :YAML,       'nii/parser/yaml'
 
-    def self.accept(source,      **options) = Accept     .parse(source, **options)
-    def self.fluent(source,      **options) = Fluent     .parse(source, **options)
-    def self.json(source,        **options) = JSON       .parse(source, **options)
-    def self.gettext(source,     **options) = Gettext    .parse(source, **options)
-    def self.locale(source,      **options) = Locale     .parse(source, **options)
-    def self.message(source,     **options) = Message    .parse(source, **options)
-    def self.number(source,      **options) = Number     .parse(source, **options)
-    def self.properties(source,  **options) = Properties .parse(source, **options)
-    def self.plural(source,      **options) = Plural     .parse(source, **options)
-    def self.yaml(source,        **options) = YAML       .parse(source, **options)
+    extend self
+    def accept(...)      = Accept.parse(...)
+    def fluent(...)      = Fluent.parse(...)
+    def json(...)        = JSON.parse(...)
+    def gettext(...)     = Gettext.parse(...)
+    def locale(...)      = Locale.parse(...)
+    def message(...)     = Message.parse(...)
+    def number(...)      = Number.parse(...)
+    def properties(...)  = Properties.parse(...)
+    def plural(...)      = Plural.parse(...)
+    def unicode_set(...) = UnicodeSet.parse(...)
+    def yaml(...)        = YAML.parse(...)
   end
 end

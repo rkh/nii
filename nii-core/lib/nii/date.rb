@@ -151,6 +151,37 @@ module Nii
       !!@leap_day
     end
 
+    def deconstruct_keys(keys)
+      @deconstructed ||= to_h.merge({
+        calendar:   @calendar,
+        jd:         @jd,
+        leap_year:  options[:leap_year],
+        leap_month: options[:leap_month],
+        leap_day:   options[:leap_day],
+      }).freeze
+    end
+
+    # @api internal
+    def freeze
+      deconstruct_keys(nil)
+      super
+    end
+
+    def to_h
+      @to_h ||= {
+        era:          era,
+        year:         year,
+        quarter:      quarter,
+        month:        month,
+        week:         week,
+        day:          day,
+        day_of_year:  day_of_year,
+        week_day:     week_day,
+        cycle:        cycle,
+        year_of_week: year_of_week,
+      }.freeze
+    end
+
     # @return [self]
     def to_nii_date
       self

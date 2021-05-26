@@ -25,6 +25,23 @@ module Nii
       store[message]
     end
 
+    def compiler(target, **options)
+      if target.is_a? Symbol or target.is_a? String
+        normalized = Utils.string(target).tr('-_', '').downcase
+        constant   = Nii::Compiler.constants.detect { |c| c.name.downcase == normalized }
+        raise Nii::CompileError, "#{target.inspect} not supported as compilation target" if constant.nil?
+        target = Nii::Compiler.const_get(constant, false)
+      end
+      target = target.new(**options) if target.respond_to?(:new)
+      target
+    end
+
+    def compile_to(target, **options)
+      compiler = compiler(target, **options)
+      all.each { compiler.compile(find(_1)) }
+      compiler.result
+    end
+
     def all(type: :message) = @messages.fetch(type) { return [] }.keys
     alias_method :messages, :all
   end

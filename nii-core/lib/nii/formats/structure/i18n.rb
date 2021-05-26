@@ -13,7 +13,7 @@ module Nii::Formats::Structure
     def self.detect?(bundle, content, message_format)
       return false if content.keys.size != 1
       locale = Nii::Locale.parse(content.keys.first)
-      locale.superset_of? bundle.locale
+      !!locale.language
     rescue Nii::Errors::ParseError
       false
     end
@@ -29,7 +29,7 @@ module Nii::Formats::Structure
     # @api internal
     def load(content)
       content.each do |locale, value|
-        process(value) if bundle.locale.subset_of? locale
+        process(value) if bundle.locale.multiple_languages? or bundle.locale.subset_of? locale
       end
     end
 

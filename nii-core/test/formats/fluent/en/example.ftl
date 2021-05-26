@@ -36,3 +36,11 @@ your-rank = { NUMBER($pos, type: "ordinal") ->
    [few] You finished {$pos}rd
   *[other] You finished {$pos}th
 }
+
+
+with-count =
+  { $count ->
+    [0]     zero
+    [one]   one
+   *[other] many
+  }

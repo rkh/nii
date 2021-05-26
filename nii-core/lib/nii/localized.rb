@@ -9,27 +9,46 @@ module Nii
       end
     end
 
-    def initialize(object, context, **options)
-      @object  = object
-      @context = Context.new(context)
-      @options = options
+    # @api internal
+    attr_accessor :_localized
+
+    # @api internal
+    def initialize(object, context, localized = nil, **options)
+      @object    = object
+      @context   = context
+      @localized = localized
+      @options   = options
     end
 
-    def format(**options, &block) = @context.format(@object, **@options.merge(options), &block)
+    def format(**options, &block) = @localized || @context.format(@object, **@options.merge(options), &block)
     alias_method :to_s, :format
 
     def localize(context = nil, **options)
-      context ||= @context
-      options   = options.any? ? @options.merge(options) : @options
+      context = context ? Context.new(context) : @context
+      options = options.any? ? @options.merge(options) : @options
 
       return self if context == @context and options == @options
-      self.class.new(@object, context, **options)
+      self.class.new(@object, context, @localized, **options)
     end
 
     alias_method :nii_localize, :localize
 
     # @api internal
     def format_options = @options
+    
+    # @api internal
+    def nii_attribute?(name)
+      return @object.respond_to?(name)   unless @object.is_a? Hash
+      return nii_attribute?(name.to_sym) unless name.is_a? Symbol
+      @object.include? name or @object.include? name.name
+    end
+    
+    # @api internal
+    def nii_attribute(name)
+      return @object.public_send(name)  unless @object.is_a? Hash
+      return nii_attribute(name.to_sym) unless name.is_a? Symbol
+      @object.fetch(name) { @object.fetch(name.name) }
+    end
 
     private
 

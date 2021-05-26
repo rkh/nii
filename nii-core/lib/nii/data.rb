@@ -39,6 +39,7 @@ module Nii
       @buckets           = BUCKETS.map { |b| [b, Concurrent::Map.new] }.to_h
       @lock              = Concurrent::ReadWriteLock.new
       @cache             = Concurrent::Map.new
+      @json_cache        = Concurrent::Map.new
       load_path.append(paths)
     end
 
@@ -175,10 +176,11 @@ module Nii
 
     # @api internal
     # @return [Hash, String]
-    def timezone_data(*keys)
-      @timezone_data ||= @load_path.json(:timezones)&.except('@path')
-      keys.any? ? @timezone_data.dig(*keys.map { |k| Utils.string(k) }) : @timezone_data
-    end
+    def timezone_data(...) = json(:timezones, ...)
+
+    # @api internal
+    # @return [Hash, String]
+    def currency_data(...) = json(:currencies, ...)
 
     # @private
     def inspect
@@ -186,6 +188,11 @@ module Nii
     end
 
     private
+
+    def json(file, *keys)
+      data = @json_cache.fetch_or_store(file) { @load_path.json(file)&.except('@path') }
+      keys.any? ? data.dig(*keys.map { |k| Utils.string(k) }) : data
+    end
 
     # @see #locale_data
     def get_bucket(locale, bucket_name, resolve_alias: true)
