@@ -135,12 +135,12 @@ module Nii::Formatters
       options[:round] = context.config.rounding_mode || :halfeven if options[:round] == true
 
       case options[:style]&.to_s || 'default'
-      when 'default'    then format_default(numbers,  value, **options)
-      when 'decimal'    then format_decimal(numbers,  value, **options)
-      when 'currency'   then format_currency(numbers, value, **options)
-      when 'percent'    then format_percent(numbers,  value, **options)
-      when 'unit'       then format_unit(numbers,     value, **options)
-      else raise ArgumentError, "unsupported style: #{unit}"
+      when 'default'    then format_default   numbers, value, **options
+      when 'decimal'    then format_decimal   numbers, value, **options
+      when 'currency'   then format_currency  numbers, value, **options
+      when 'percent'    then format_percent   numbers, value, **options
+      when 'unit'       then format_unit      numbers, value, **options
+      else raise ArgumentError, "unsupported style: #{options[:style].inspect}"
       end
     end
 
@@ -192,10 +192,27 @@ module Nii::Formatters
       format_number(:decimal, numbers, value, numbering_system: system, **options)
     end
     
-    def format_currency(numbers, value, **options)
-      options[:currency]         ||= context.currency
-      options[:numbering_system] ||= 'finance'
-      raise NotImplementedError
+    def format_currency(numbers, value, currency: nil, currency_symbol: nil, currency_name: nil, currency_display: nil, **options)
+      # system            = options[:numbering_system] ||= 'finance'
+      # formatted         = format_number(:currency, numbers, value, **options)
+      # spacing           = numbers.format_rules(:currency, :currency_spacing, system: system) || {}
+      currency         = numbers.currency(currency)
+      currency_display = currency_display.name if currency_display.is_a? Symbol
+
+      case currency_display ||= :symbol
+      when :symbol, :narrow
+        case currency_symbol ||= currency_display
+        in Symbol                                then symbol = currency.symbol(style: currency_symbol, locale: data_locale)
+        in Hash if symbol[currency_display]      then symbol = currency_symbol[currency_display]
+        in Hash if symbol[currency_display.name] then symbol = currency_symbol[currency_display.name]
+        in Hash if symbol[:default]              then symbol = currency_symbol[:default]
+        in Hash if symbol['default']             then symbol = currency_symbol['default']
+        else                                          symbol = currency.symbol(locale: data_locale)
+        end
+      when :code, :name
+      else
+        raise ArgumentError, "unsupported currency display: #{currency_display.inspect}"
+      end
     end
     
     def format_percent(numbers, value, **options)

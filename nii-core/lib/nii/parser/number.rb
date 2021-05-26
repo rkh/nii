@@ -6,7 +6,7 @@ module Nii::Parser
 
     def parse(source)
       return source if source.is_a? Numeric
-      value   = Rational(source)
+      value   = Rational(Nii::Utils.string(source))
       integer = value.to_i
       integer == value ? integer : value
     end

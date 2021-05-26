@@ -10,7 +10,7 @@ module Nii
     private_constant :LOCALIZABLE, :IMPLICIT_CONVERSION
 
     # @overload new(context)
-    #   @param context [#to_nii_context]
+    #   @param context [#to_nii_context, Nii::Context, Nii::Helpers]
     #   @return [Nii::Context] the result of calling {#to_nii_context} on the passed argument
     #
     # @overload new(*locale_preference, *config)
@@ -91,9 +91,12 @@ module Nii
     #   You can therefore use a block to only adjust a newly created context. This is helpful for writing
     #   methods that accept a {Locale}, {LocalePreference}, or {Context} as argument.
     def self.new(*arguments)
-      return super unless arguments.size == 1
-      return super unless arguments.first.respond_to? :to_nii_context
-      arguments.first.to_nii_context
+      case arguments
+      in [ Context => argument ]              then argument
+      in [ Helpers => argument ]              then argument.nii
+      in [a] if a.respond_to? :to_nii_context then a.to_nii_context
+      else super
+      end
     end
 
     # The client's locale preference.
@@ -376,6 +379,11 @@ module Nii
       end
     end
 
+    # @overload has_message?(message, **options)
+    #   @return [true, false] Whether or not a message is available.
+    def has_message?(...) = !!find_message(...)
+    alias_method :message?, :has_message?
+
     # Finds a message object for a given message key.
     #
     # @param message [String, Symbol, #to_nii_template]
@@ -430,7 +438,6 @@ module Nii
     # @return [String, default]
     def render(message, variables = nil, default: Nii::UNDEFINED, scope: self.scope, use_fallback: true, **options, &block)
       return scope(scope).render(message, variables, default: default, use_fallback: use_fallback, **options, &block) if scope != self.scope
-
       @render_cache ||= Nii::Cache.new
       @render_cache.fetch(message, variables, options) do
         context, template = with_fallbacks(use_fallback: use_fallback, include_context: true) do |c|
@@ -472,8 +479,10 @@ module Nii
     #
     #   @raise [ArgumentError] Raised if an option has an unsupported value.
     #   @return [String, Nii::HTMLString] Localized object representation.
+    #   @see #localize
 
-    # @note If you want to implement a custom formatter, you only need to implement
+    # @note
+    #   If you want to implement a custom formatter, you only need to implement
     #   +format(context, value, **options)+, which is expected to return a string. All options are handed
     #   on exactly as they are passed to Context#format, except for +escape_html+, which is ommitted.
     #
@@ -610,21 +619,19 @@ module Nii
     #
     # This allows, amongst other things, for object oriented model translation, as well as reformatting
     # of already formatted values. The resulting object will still respond to the same methods as the
-    # original object, but wrap most return values in localized objects as well.
+    # original object, but retain formatting options.
     #
     # Calling +to_s+ or +format+ on the localized object will call {#format}.
+    # Might return the object itself if it cannot be localized.
     #
-    # Might return the object itself if it cannot be localized, or a modified version of the object with
-    # localized values, if the object is some form of a collection ()
-    #
-    # @return [Nii::Localized, Object, Hash{Object => Nii::Localized, Object}, Array<Nii::Localized, Object>]
+    # @return [Nii::Localized, Object]
     def localize(value, **options)
       return value.nii_localize(self, **options) if value.respond_to? :nii_localize
       case value = prepare_format(value)
-      when Hash  then value.transform_values { |v| localize(v, **options) }
-      when Array then value.map { |v| localize(v, **options) }
-      when Set   then value.dup.map! { |v| localize(v, **options) }
-      else localize?(value) ? Nii::Localized.new(value, self, **options) : value
+      when Hash  then Localized.new(value.transform_values { |v| localize(v, **options) })
+      when Array then Localized.new(value.map { |v| localize(v, **options) })
+      when Set   then Localized.new(value.dup.map! { |v| localize(v, **options) })
+      else localize?(value) ? Localized.new(value, self, **options) : value
       end
     end
 
@@ -642,16 +649,15 @@ module Nii
     # Partially or fully formats a variable based on a given block or pre-registered formatter.
     # @api internal
     def format_variable!(variable, value, &block)
-      if block ||= @variable_formatters[variable] || @variable_formatters[nil]
-        case result = block.arity == 1 ? block.call(value) : block.call(variable, value)
-        when nil    # do nothing
-        when false  then return nil
-        when String then return value
-        else value = result
-        end
+      block ||= @variable_formatters[variable] || @variable_formatters[nil]
+      result = block.arity == 1 ? block.call(value) : block.call(variable, value) if block
+      
+      case result
+      when Localized then result
+      when true, nil then value
+      when false     then nil
+      else Localized.new(value, self, format(result))
       end
-
-      format(value)
     end
 
     # Sets up a rendering callback for a variable.
@@ -713,7 +719,7 @@ module Nii
     # @return [self]
     def format_variable(variable = nil, **options, &block)
       variable = normalize_variable_name(variable)
-      block  ||= proc { |value| format(value, **options) }
+      block  ||= proc { |value| localize(value, **options) }
       @variable_formatters[variable] = block
       self
     end
@@ -765,10 +771,10 @@ module Nii
     # @see Nii::Template::Attribute
     # @api internal
     def get_attribute(object, attribute)
-      case object
-      when Nii::Message then object.attributes.fetch(attribute.to_sym)
-      else raise ArgumentError, "cannot retrieve attributes from #{object.inspect}"
-      end
+      attribute = attribute.to_sym
+      object    = localize(object) unless object.respond_to? :nii_attribute?
+      return object.nii_attribute(attribute) if object.nii_attribute? attribute
+      raise Errors::UnknownAttribute, "unknown attribute"
     end
 
     # @todo better implementation
@@ -788,6 +794,12 @@ module Nii
     def territory(force = true)
       return unless force or locale
       @territory ||= Territory.new(locale_config.territory || locale(force).territory || data_locale.territory, locale_config)
+    end
+
+    # @param force [true, false] behaves like the +force+ parameter for {#locale}.
+    def currency(force = true)
+      return unless force or locale
+      @currency ||= Currency.new(locale_config.currency || territory.currency, locale_config)
     end
 
     # Indicates whether or not the locale has been set explicitely (and thus whether locale negotiation has been skipped).
@@ -914,6 +926,21 @@ module Nii
       end
     end
 
+    DECONSTRUCT_KEYS = %i[
+      available_locales config currency data_locale fallback locale locale_config locale_preference
+      lookup measurement_system scope text timezone variables
+    ].freeze
+
+    def deconstruct = [locale]
+
+    def deconstruct_keys(keys)
+      keys = keys ? keys & DECONSTRUCT_KEYS : DECONSTRUCT_KEYS
+      keys.inject({}) { _1.merge! _2 => public_send(_2) }.transform_values do |value|
+        next value unless value.is_a? Hash
+        value.transform_values { _1.to_sym }
+      end
+    end
+
     # @return [self]
     def to_nii_context = self
 
@@ -998,6 +1025,7 @@ module Nii
       @data_locale   = nil
       @locale_config = nil
       @timezone      = nil
+      @currency      = nil
       @info          = {}
     end
 

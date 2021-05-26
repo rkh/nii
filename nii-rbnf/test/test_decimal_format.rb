@@ -59,12 +59,6 @@ class TestDecimalFormat < Minitest::Test
     assert_equal '1,500.0‰', Nii::DecimalFormat['#,##0.0‰'].format(1.5)
   end
 
-  def test_currency
-    assert_equal 'CHF 100', Nii::DecimalFormat['¤ #0'].format(100, 'CHF')
-    assert_equal ' 100', Nii::DecimalFormat['¤ #0'].format(100)
-    assert_equal '100 CHF', Nii::DecimalFormat['#0 ¤'].format(100, 'CHF')
-  end
-
   def test_sign
     assert_equal '-1', Nii::DecimalFormat['0'].format(-1)
     assert_equal '0',  Nii::DecimalFormat['0'].format(0)

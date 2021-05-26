@@ -57,6 +57,11 @@ module Nii::Info
       end
     end
 
+    def currency(code = nil)
+      return code.to_nii_currency if code.respond_to? :to_nii_currency
+      code ? Nii::Currency[code] : context.currency
+    end
+
     private
 
     def get(system, key, *keys)

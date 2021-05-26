@@ -70,7 +70,6 @@ module Nii
       @factor          = 1
       @factor          = 100  if match[:special_prefix] == '%' or match[:special_suffix] == '%'
       @factor          = 1000 if match[:special_prefix] == '‰' or match[:special_suffix] == '‰'
-      @use_currency    = match[:special_prefix] == '¤' || match[:special_suffix] == '¤'
       if sig_digits = match[:sig_digits]
         @primary_size   = 0
         @secondary_size = 0
@@ -91,18 +90,12 @@ module Nii
     # Converts the diven number into a string.
     #
     # @param number [Numeric] number to format
-    # @param currency [String, nil] currency symbol to use (will replace the placeholder ¤)
     # @return [String]
-    def format(number, currency = nil, digits: nil, display_sign: nil, min_integers: nil, min_precision: nil, max_precision: nil, **)
+    def format(number, digits: nil, display_sign: nil, min_integers: nil, min_precision: nil, max_precision: nil, **)
       number         = number * @factor
       negative       = number < 0
       number         = -number if negative
       prefix, suffix = affixes(display_sign, negative, number == 0)
-
-      if @use_currency
-        prefix = prefix.sub('¤', currency.to_s)
-        suffix = suffix.sub('¤', currency.to_s)
-      end
     
       number   = number.round(max_precision || @max_precision)
       integer  = number.to_i

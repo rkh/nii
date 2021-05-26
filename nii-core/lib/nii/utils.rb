@@ -10,6 +10,18 @@ module Nii
       def with_write_lock = yield
     end
 
+    module WarningFilter
+      PATH_FILTER = %r{lib/nii/\S+\.rb:\d+: warning: (.+)$}
+      IGNORE      = []
+      private_constant :PATH_FILTER, :IGNORE
+
+      def self.ignore?(message) = message =~ PATH_FILTER && ignore.any? { $1.include? _1 }
+      def self.ignore(*values)  = values.any? ? IGNORE.concat(values).uniq! : IGNORE
+      def warn(message, **)     = WarningFilter.ignore?(message) || super
+
+      Warning.extend(self)
+    end
+
     INTEGERS   = 1.to_s.frozen? ? [] : (0..1000).map { |i| i.to_s.freeze }
     IS_UNICODE = { Encoding::GB18030 => true, Encoding::ASCII => true }
     private_constant :IS_UNICODE, :INTEGERS
@@ -35,6 +47,12 @@ module Nii
       object.freeze
     end
 
+    def type(klass)
+      return unless klass.respond_to? :name and name = klass.name
+      @type       ||= {}
+      @type[name] ||= name[/[^:]+$/].split(/(?<=[a-z])(?=[A-Z])/).join('_').downcase.to_sym
+    end
+
     # Recursively merges two Hashes. Mainly used for Ruby I18n compatibility, which heavily relies on deep merging.
     def deep_merge(first, second)
       return first if second.nil?
@@ -53,6 +71,15 @@ module Nii
       when Pathname then value.instance_variable_get(:@path).freeze
       else value.to_s
       end
+    end
+
+    # Converts a value into a symbol, even if it doesn't implement #to_sym.
+    # @param value [#to_sym, #to_s]
+    # @return [Symbol]
+    def symbol(value)
+      return value if value.is_a? Symbol
+      value = string(value) unless value.respond_to? :to_sym
+      value.to_sym
     end
 
     # @!method class_name(mod)

@@ -10,7 +10,6 @@ require 'zlib'
 
 # Gem Dependencies
 require 'concurrent'
-require 'nii/rbnf'
 require 'tzinfo'
 
 # Namespace for all Nii objects.
@@ -23,6 +22,7 @@ module Nii
   autoload :Currency,           'nii/currency'
   autoload :Data,               'nii/data'
   autoload :Date,               'nii/date'
+  autoload :DecimalFormat,      'nii/decimal_format'
   autoload :Errors,             'nii/errors'
   autoload :Formats,            'nii/formats'
   autoload :Formatters,         'nii/formatters'
@@ -41,6 +41,7 @@ module Nii
   autoload :Parser,             'nii/parser'
   autoload :Plurals,            'nii/plurals'
   autoload :RackEnv,            'nii/rack_env'
+  autoload :RBNF,               'nii/rbnf'
   autoload :Setup,              'nii/setup'
   autoload :Template,           'nii/template'
   autoload :Territory,          'nii/territory'
@@ -65,12 +66,22 @@ module Nii
   # @see Nii::Message#compile
   # @api internal
   module Compiler
-    autoload :Fluent, 'nii/compiler/fluent'
+    autoload :Fluent,    'nii/compiler/fluent'
+    autoload :I18n,      'nii/compiler/i18n'
+    autoload :Variables, 'nii/compiler/variables'
   end
 
   # Placeholder for methods that need to differentiate a default argument value from an explicit nil.
   # @api internal
   UNDEFINED = Object.new
+
+  # @api internal
+  def UNDEFINED.inspect = 'Nii::UNDEFINED'
+
+  # Silence some expected warnings (this will only impact warnings triggered from files inside lib/nii).
+  Utils::WarningFilter.ignore 'assigned but unused variable', 'unused literal' # from generated code (mainly plurals)
+  Utils::WarningFilter.ignore 'character class has duplicated range'           # Mapping for EBNF grammers to Regexp
+  Utils::WarningFilter.ignore 'duplicated and overwritten on line'             # Generated units code (todo: fix this)
 
   # Reusable instance of {Nii::Data}, already configured to load CLRD locale information.
   # Any {Nii::Context} will pick this up unless an alternative is provided.

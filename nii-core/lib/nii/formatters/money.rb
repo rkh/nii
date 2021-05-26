@@ -33,10 +33,25 @@ module Nii::Formatters
     def format(context, value, **options)
       if currency = options[:currency]
         value = value.to_money(currency) if value.respond_to? :to_money
-      else
+      elsif money.respond_to? :currency
         currency ||= money.currency
-        currency  &= currency.iso_code if currency.respond_to? :iso_code
-        currency  &= Nii::Utils.string(currency)
+      end
+
+      if currency.respond_to? :to_nii_currency
+        currency = currency.to_nii_currency
+      elsif currency
+        symbol    = currency.symbol                                if currency.respond_to? :symbol
+        alternate = currency.disambiguate_symbol                   if currency.respond_to? :disambiguate_symbol
+        symbol    = { 'default' => alternate, 'narrow' => symbol } if alternate
+        name      = currency.name                                  if currency.respond_to? :name
+        currency  = currency.iso_code                              if currency.respond_to? :iso_code
+        currency  = Nii::Currency[currency]
+      end
+
+      if currency
+        options[:currency]        = currency
+        options[:currency_symbol] = symbol if currency.symbol(context) == currency.code
+        options[:currency_name]   = name   if currency.name(context)   == currency.code
       end
   
       amount = value.to_r if value.respond_to? :to_r
