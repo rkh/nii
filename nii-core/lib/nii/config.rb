@@ -69,7 +69,7 @@ module Nii
       @options = config.to_h.transform_keys(&:to_sym).transform_values do |value|
         next value unless value.is_a? Hash and value.keys.all? { |k| k.is_a? Symbol}
         Nii::Config.new(value)
-      end
+      end.freeze
     end
 
     # @api internal
@@ -103,6 +103,8 @@ module Nii
       value &&= value.dig(*keys) if keys.any?
       value
     end
+
+    def deconstruct_keys(keys) = @options
 
     # Mimics Hash#except.
     # @param keys [Array<Symbol>] keys to exclude
