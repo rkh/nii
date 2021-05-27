@@ -515,7 +515,7 @@ module Nii
     #   in Nii::Locale(/^de/) then "German!"
     #   ebd
     #
-    # @retrun [Array<String>] An array containing the {#code}.
+    # @return [Array<String>] An array containing the {#code}.
     def deconstruct = [code]
 
     # Used by pattern matching with keywords.

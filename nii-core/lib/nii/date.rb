@@ -161,7 +161,7 @@ module Nii
     #     puts "Chinese leap year!"
     #   end
     #
-    # @param [nil, Array<Symbol>]
+    # @param keys [nil, Array<Symbol>]
     # @return [Hash]
     def deconstruct_keys(keys)
       @deconstructed ||= to_h.merge({

@@ -29,17 +29,16 @@ module Nii
       template.render(context.to_nii_context, variables, &block)
     end
 
-    # @overload compiler_to(target, **options)
+    # @overload compile_to(target, **options)
+    #   Compiles the message object into the given format.
     #
-    # Compiles the message object into the given format.
+    #   @example
+    #     message = context.find_message "hello-world"
+    #     puts message.compile_to(:fluent)
     #
-    # @example
-    #   message = context.find_message "hello-world"
-    #   puts message.compile_to(:fluent)
-    #
-    # @param target [String, Symbol, #compile] Compilation target (example: +fluent+, +xliff+)
-    # @raise [Nii::CompileError]
-    # @return [String]
+    #   @param target [String, Symbol, #compile] Compilation target (example: +fluent+, +xliff+)
+    #   @raise [Nii::CompileError]
+    #   @return [String]
     def compile_to(...) = template.bundle.compiler(...).compile(self)
 
     # @param include_attributes [true, false] Whether or not to include variables used in message attributes.

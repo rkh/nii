@@ -115,7 +115,7 @@ module Nii
       locales.any? { |l| l.combinable? other }
     end
 
-    # @param [Nii::LocalePreference, Nii::Locale]
+    # @param other [Nii::LocalePreference, Nii::Locale]
     # @return [Nii::LocalePreference]
     # @see Nii:Locale#&
     def &(other)
@@ -123,7 +123,7 @@ module Nii
       LocalePreference.new(locales)
     end
 
-    # @param [Nii::LocalePreference, Nii::Locale]
+    # @param other [Nii::LocalePreference, Nii::Locale]
     # @return [Nii::LocalePreference]
     # @see Nii:Locale#|
     def |(other)
@@ -133,7 +133,7 @@ module Nii
 
     # Creates a new locale preference containing locales from both preference lists.
     #
-    # @param [Nii::LocalePreference, Nii::Locale]
+    # @param other [Nii::LocalePreference, Nii::Locale]
     # @return [Nii::LocalePreference]
     def +(other) = LocalePreference.new(self, other)
 
