@@ -4,7 +4,7 @@ module Nii::Lookup
   class Cascade < Common
     # @return [Nii::Lookup::Common] list of backends
     attr_reader :backends
-    alias_method :backends
+    alias_method :deconstruct, :backends
 
     # @note Cascade also supports pattern matching on {#backends}.
     # (see Nii::Lookup::Common#deconstruct_keys)
