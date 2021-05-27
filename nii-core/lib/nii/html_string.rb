@@ -19,7 +19,7 @@ module Nii
 
     # @return [true]
     def html_safe? = true
-    
+
     # @return [self]
     def to_s = self
     alias_method :html_safe, :to_s
