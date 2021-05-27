@@ -25,7 +25,7 @@ module Nii
       raise TypeError, "cannot dump #{self.inspect}"
     end
 
-      # @return [Nii::LoadPath]
+    # @return [Nii::LoadPath]
     attr_reader :load_path
 
     # @param paths [Array<String>]

@@ -192,7 +192,7 @@ module Nii::Calendar
     # @param date [::Date, Nii::Date, #to_nii_date, #to_date] date in question
     # @return [Integer] the calendar's week number for a given date
     # @see Nii::Date#week
-    def week(date) = date(date).week
+    def week(date) = date(date).cweek
 
     # @api internal
     def format(date) = '%d-%02d-%02d' % [ year(date), month(date), day(date) ]

@@ -56,6 +56,7 @@ module Nii
   end
 
   # Namespace for numbering systems.
+  # @api internal
   module NumberingSystem
     autoload :Algorithmic, 'nii/numbering_system/algorithmic'
     autoload :Generic,     'nii/numbering_system/generic'

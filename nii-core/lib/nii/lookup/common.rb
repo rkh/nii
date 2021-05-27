@@ -13,6 +13,7 @@ module Nii::Lookup
     # @return [Nii::Config]
     attr_reader :config
 
+    # @param config [#to_nii_config, #to_h]
     def initialize(config)
       @config            = Nii::Config.new(config)
       @config            = Nii::Config.new(config.lookup) if @config.lookup
@@ -36,30 +37,32 @@ module Nii::Lookup
     # @return [Nii::LocalePreference]
     def available_locales(cache = !config.reload_templates?)
       return @lock.with_read_lock { @available_locales ||= available_locales(false) } if cache
-      Nii::LocalePreference.new(config.locale || scan_locales.compact.map(&:to_s))
+      Nii::LocalePreference.new(config.locale || scan_locales.compact.map(&:to_s).uniq)
     end
 
+    # @api internal
     def matches?(locale, namespace, message)
       matches_locale?(locale) and matches_namespace?(namespace) and matches_message?(message)
     end
 
+    # @api internal
     def matches_locale?(locale)
       available_locales.locales.include? locale
     end
 
+    # @api internal
     def matches_namespace?(namespace)
       return true unless prefix = normalize_namespace(config.namespace)
       namespace == prefix or namespace.start_with? "#{prefix}/"
     end
 
+    # @api internal
     def matches_message?(message)
       true
     end
 
     # @return [Nii::Namespace]
-    def namespace(name)
-      Nii::Namespace.new(self, name)
-    end
+    def namespace(name) = Nii::Namespace.new(self, name)
 
     # @return [void]
     def reset

@@ -420,7 +420,7 @@ module Nii
     # @param message [String, Symbol, #to_nii_template]
     #   the message to render.
     #
-    # @param variables [Hash]
+    # @param variables [Hash, Array]
     #   variables to pass to the message template for rendering, will be merged into {#variables}.
     #
     # @param default [Object]

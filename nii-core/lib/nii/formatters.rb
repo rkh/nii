@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module Nii
+  # Namespace for object formatters. These are picked up by {Nii::Context#format} (and thus also by
+  # {Nii::Context#localize}/{Nii::Helpers#localize}) for turning an object into a localized String.
   module Formatters
     autoload :ActiveSupport, 'nii/formatters/active_support'
     autoload :Array,         'nii/formatters/array'
@@ -14,7 +16,11 @@ module Nii
     autoload :Time,          'nii/formatters/time'
     autoload :TZInfo,        'nii/formatters/tzinfo'
 
-    Set   = Array
+    # Formats Set instances.
+    # @see Nii::Formatters::Array
+    Set = Array
+
+    # Shorthand for Nii::Utils (reduces conflict with Nii::Formatters::Nii).
     Utils = ::Nii::Utils
     private_constant :Utils
 

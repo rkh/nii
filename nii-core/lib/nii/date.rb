@@ -151,13 +151,25 @@ module Nii
       !!@leap_day
     end
 
+    # Allows pattern matching against Nii::Dates.
+    # The following fields can be mached against: era, year, quarter, month, week, day
+    # day_of_year, week_day, cycle, year_of_week, calendar, jd, leap_year, leap_month,
+    # leap_day.
+    #
+    # @example
+    #   if date in Nii::Date(calendar: chinese, leap_year: true)
+    #     puts "Chinese leap year!"
+    #   end
+    #
+    # @param [nil, Array<Symbol>]
+    # @return [Hash]
     def deconstruct_keys(keys)
       @deconstructed ||= to_h.merge({
-        calendar:   @calendar,
+        calendar:   @calendar.type,
         jd:         @jd,
-        leap_year:  options[:leap_year],
-        leap_month: options[:leap_month],
-        leap_day:   options[:leap_day],
+        leap_year:  leap_year?,
+        leap_month: leap_month?,
+        leap_day:   leap_day?,
       }).freeze
     end
 
@@ -167,13 +179,15 @@ module Nii
       super
     end
 
+    # Turns a date into a Hash.
+    # @return [Hash]
     def to_h
       @to_h ||= {
-        era:          era,
+        # era:          era, # todo
         year:         year,
         quarter:      quarter,
         month:        month,
-        week:         week,
+        cweek:        week,
         day:          day,
         day_of_year:  day_of_year,
         week_day:     week_day,

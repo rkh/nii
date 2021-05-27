@@ -1,6 +1,21 @@
 # frozen_string_literal: true
 
 module Nii
+  # Mixin to add {#translate} and {#localize} helper methods to any Ruby object.
+  #
+  # @example
+  #   class MyApp
+  #     include Nii::Helpers
+  #     attr_accessor :locale
+  #     def render = t(:content)
+  #   end
+  #
+  #   Nii.setup(MyApp) { lookup 'config/locales'}
+  #
+  #   app = MyApp.new
+  #   app.locale = :en
+  #
+  #   app.render # looks up "content" message in config/locales/en
   module Helpers
     autoload :Languages,   'nii/helpers/languages'
     autoload :Territories, 'nii/helpers/territories'
@@ -49,6 +64,20 @@ module Nii
       @nii = value.respond_to?(:to_nii_context) ? value : Context.new(value, _nii_config) 
     end
 
+    # Translates a message base on the message id.
+    #
+    # Missing messages will be delegated to a #translate super method if available, so it can overload
+    # a translate method defined by Ruby I18n or Rails (making it easier to use Nii::Helpers for a Rails
+    # controller).
+    # 
+    # @param message [String, Symbol, #to_nii_template]
+    #   the message to render
+    #
+    # @param variables [Hash, Array]
+    #   variables to pass to the message template for rendering, will be merged into {Nii::Context#variables}
+    #
+    # @param options [Hash{Symbol => Object}]
+    #   will be passed to {Nii::Context#render}
     def translate(message, variables = nil, **options)
       return nii.format(message, **options) unless message.is_a? Symbol or message.is_a? String
       default = options.fetch(:default, UNDEFINED)
@@ -57,6 +86,14 @@ module Nii
     end
     alias_method :t, :translate
 
+    # Localizes an object.
+    #
+    # If the arguments passed look like they are meant for Ruby I18n, and a super method #localize is defined,
+    # it will call this method instead, thus playing nice with Rails controllers and views.
+    #
+    # Takes the same arguments as {Nii::Context#localize} and {Nii::Context#format}.
+    #
+    # @return [Object, Nii::Localized]
     def localize(object, **options)
       return super if defined? super and options[:format] and object.respond_to? :strftime
       nii.localize(object, **options)

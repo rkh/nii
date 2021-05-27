@@ -35,12 +35,12 @@ module Nii
     #
     # @example
     #   message = context.find_message "hello-world"
-    #   puts message.compile_to :fluent
+    #   puts message.compile_to(:fluent)
     #
     # @param target [String, Symbol, #compile] Compilation target (example: +fluent+, +xliff+)
     # @raise [Nii::CompileError]
     # @return [String]
-    def compile_to(...) = bundle.compiler(...).compile(self)
+    def compile_to(...) = template.bundle.compiler(...).compile(self)
 
     # @param include_attributes [true, false] Whether or not to include variables used in message attributes.
     # @return [Array<String>] list of variables used in the message.

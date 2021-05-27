@@ -25,11 +25,25 @@ module Nii
     autoload :TXT,       'nii/formats/txt'
     autoload :YAML,      'nii/formats/yaml'
 
-
-    def self.available
-      @available ||= constants.map { const_get(_1) }.select { _1.respond_to? :new }
+    # @api internal
+    def self.autoload(...)
+      @available, @extensions = nil, nil
+      super
     end
 
+    # List of all available formats.
+    # @return [Array<#new>]
+    def self.available
+      @available ||= constants.map { const_get(_1) }.select { _1.respond_to? :new }.freeze
+    end
+
+    # Hash mapping default extensions to formatters.
+    #
+    # @example
+    #   Nii::Formats.extensions['yml'] # => Nii::Formats::YAML
+    #
+    # @note Formats disabled by default (like {Nii::Formats::Ruby}) are not included.
+    # @return [Hash{String => #new}]
     def self.extensions
       @extensions ||= available.inject({}) do |all, implementation|
         extensions   = implementation.const_get(:EXTENSIONS) if implementation.const_defined? :EXTENSIONS, false
@@ -39,8 +53,10 @@ module Nii
       end
     end
 
+    # @param config [Nii::Config, #to_nii_config, Hash, nil]
     # @return [Hash{String => Object}] maps file extensions to the corresponding format compiler
-    def self.all(config = {})
+    # @todo Add ability to override extensions via configuration.
+    def self.all(config = nil)
       config = Config.new(config)
       extensions.transform_values { |f| f.new(config) }
     end

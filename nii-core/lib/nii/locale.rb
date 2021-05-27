@@ -218,7 +218,7 @@ module Nii
       *Nii::Parser::Locale::X_FIELDS.keys
     ]
     KEY_ALIASES.merge! Nii::Parser::Locale::U_TAGS.transform_keys(&:to_sym)
-    ALL_KEYS         = AVAILABLE_KEYS + KEY_ALIASES.keys
+    ALL_KEYS = AVAILABLE_KEYS + KEY_ALIASES.keys
     private_constant :AVAILABLE_KEYS, :KEY_ALIASES, :ALL_KEYS, :CACHE
 
     # @example With options
@@ -376,6 +376,13 @@ module Nii
       end
     end
 
+    # LDML compatible lookup chain (used for CLDR data lookup).
+    #
+    # @example
+    #   locale = Nii::Locale.parse "de-DE"
+    #   locale.lookup # => [#<Nii::Locale:de-DE>, #<Nii::Locale:de>, #<Nii::Locale:und>]
+    #
+    # @return [Array<Nii::Locale>]
     def lookup
       @lock.with_read_lock do
         recalculate unless @options[:lookup]
@@ -393,11 +400,27 @@ module Nii
 
     alias_method :to_s, :code
 
+    # @example
+    #   Nii::Locale.parse("de-DE").subset_of? "de" # => true
+    #   Nii::Locale.parse("de").subset_of? "de-DE" # => false
+    #   Nii::Locale.parse("de").subset_of? "de"    # => true
+    #   Nii::Locale.parse("en").subset_of? "de"    # => false
+    #
+    # @param other [Nii::Locale, Nii::LocalePreference, String, Symbol, #to_nii_locale]
+    # @return [true, false] whether or not the locale is a subset of the argument.
     def subset_of?(other)
       other = Locale.parse(other, complain: true) unless other.respond_to? :superset_of?
       other.superset_of? self
     end
 
+    # @example
+    #   Nii::Locale.parse("de-DE").superset_of? "de" # => false
+    #   Nii::Locale.parse("de").superset_of? "de-DE" # => true
+    #   Nii::Locale.parse("de").superset_of? "de"    # => true
+    #   Nii::Locale.parse("en").superset_of? "de"    # => false
+    #
+    # @param other [Nii::Locale, Nii::LocalePreference, String, Symbol, #to_nii_locale]
+    # @return [true, false] whether or not the locale is a superset of the argument.
     def superset_of?(other)
       return other.subset_of?(self) if other.is_a? LocalePreference
       other = Locale.parse(other) unless other.is_a? Locale
@@ -406,6 +429,12 @@ module Nii
       AVAILABLE_KEYS.all? { |key| self[key, true].nil? or self[key] == other[key] }
     end
 
+    # @param other [Nii::Locale, Nii::LocalePreference, String, Symbol, #to_nii_locale]
+    #
+    # @return [true, false]
+    #   whether or not there is any overlap between the locale and the given argument
+    #
+    # @note If this method returns false, the result of calling +locale & other+ will be an empty preference.
     def combinable?(other)
       return other.combinable? self if other.is_a? LocalePreference
       other = Locale.parse(other) unless other.is_a? Locale
@@ -413,11 +442,31 @@ module Nii
       AVAILABLE_KEYS.all? { |key| self[key, true].nil? or other[key, true].nil? or self[key] == other[key] }
     end
 
-    def ===(other)  = other.is_a?(Locale) && superset_of?(other)
-    def ==(other)   = other.is_a?(Locale) && other.code == code
-    def eql?(other) = self == other
-    def hash        = code.hash
+    # @example
+    #   case Nii::Locale.parse "de-DE"
+    #   when Nii::Locale.parse "de" then "match"
+    #   end
+    #   # => "match"
+    #
+    # @return [true, false] whether or not +other+ is a locale which is a subset of this locale
+    def ===(other) = other.is_a?(Locale) && superset_of?(other)
+    
+    # @return [true, false] whether or not other is a locale with the same code
+    def ==(other) = other.is_a?(Locale) && other.code == code
+    alias_method :eql?, :==
+    
+    # @api internal
+    def hash = code.hash
 
+    # Combines two locales or a locale and a {Nii::LocalePreference}.
+    # In set theory terms, it creates the intersection of both locales.
+    #
+    # @example
+    #   Nii::Locale.parse('de') & Nii::Locale.new(region: 'at')
+    #   # => #<Nii::Locale:de-AT>
+    #
+    # @param other [Nii::Locale, Nii::LocalePreference, String, Symbol, #to_nii_locale]
+    # @return [Nii::Locale, Nii::LocalePreference]
     def &(other)
       return other & self if other.is_a? LocalePreference
       return other if superset_of? other
@@ -434,6 +483,17 @@ module Nii
       with(**options)
     end
 
+    # Returns a locale or locale preferences that matches both locales.
+    # In set theory terms, it creates the union of both locales.
+    #
+    # @example
+    #   Nii::Locale.parse("de") | Nii::Locale.parse("en")
+    #   # => => #<Nii::LocalePreference:[#<Nii::Locale:de>, #<Nii::Locale:en>]>
+    #
+    #   Nii::Locale.parse("de") | Nii::Locale.parse("de-AT")
+    #   # => #<Nii::Locale:de>
+    #
+    # @return [Nii::Locale, Nii::LocalePreference]
     def |(other)
       return self  if superset_of? other
       return other if subset_of?   other
@@ -448,8 +508,27 @@ module Nii
       end
     end
 
+    # Used by pattern matching without keywords.
+    #
+    # @example
+    #   case Nii::Locale.parse "de-DE"
+    #   in Nii::Locale(/^de/) then "German!"
+    #   ebd
+    #
+    # @retrun [Array<String>] An array containing the {#code}.
     def deconstruct = [code]
 
+    # Used by pattern matching with keywords.
+    # Available keywords: ca, calendar, calendar_algorithm, cf, co, collation, cu, currency, currency_format, em,
+    #   emoji_representation, first_day_of_week, formality, fw, hc, hour_cycle, language, measurement_system, ms, nu,
+    #   numbering_system, region, region_override, rg, script, sd, subdivision, territory, timezone, tz, variants
+    #
+    # @example
+    #   case Nii::Locale.parse "de-DE"
+    #   in Nii::Locale(language: lang, region: "DE") then "#{lang} as spoken in Germany"
+    #   end
+    #
+    # @param keys [Array<Symbol>, nil]
     def deconstruct_keys(keys)
       keys = keys ? keys & ALL_KEYS : ALL_KEYS
       keys.inject({}) { _1.merge! _2 => self[_2] }
