@@ -113,7 +113,7 @@ module Nii::Compiler
     end
 
     def rename_invalid(name, prefix)
-      name = name.gsub /[^a-zA-Z0-9_-]/, '-'
+      name = name.gsub(/[^a-zA-Z0-9_-]/, '-')
       name = prefix + name unless name =~ /^[a-zA-Z]/
       name
     end
