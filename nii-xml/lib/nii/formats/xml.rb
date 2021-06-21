@@ -2,17 +2,10 @@
 
 module Nii::Formats
   class XML
-    def initialize(config)
-      @config = config
-    end
-
-    def single_message?
-      false
-    end
-
-    def compile(bundle, source)
-      document = Nokogiri::XML(source)
-      raise NotImplementedError
-    end
+    EXTENSIONS                  = %w[xml]
+    def initialize(config)      = @config = config
+    def single_message?         = false
+    def compile(bundle, source) = base_format.load(source).compile(bundle)
+    def base_format             = Nii::XML::Document
   end
 end
