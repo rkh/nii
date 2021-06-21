@@ -2,13 +2,14 @@
 
 module Nii::Lookup
   class I18n < FileSystem
+    Nii::Lookup[:i18n] = self
+
     FORMATS = {
       "rb"   => Nii::Formats::Ruby.new(format: :i18n),
       "json" => Nii::Formats::JSON.new(format: :i18n),
       "yaml" => Nii::Formats::YAML.new(format: :i18n),
       "yml"  => Nii::Formats::YAML.new(format: :i18n)
     }
-    Nii::Lookup[:i18n] = self
 
     separators = %w[. _ -]
     SEP_REGEXP = Regexp.union(separators)

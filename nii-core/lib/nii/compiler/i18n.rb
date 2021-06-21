@@ -14,7 +14,7 @@ module Nii::Compiler
     end
 
     def compile(message)
-      locale  = message.template.bundle.locale
+      locale  = message.locale
       name    = @name || message.name
       payload = { locale.to_s => { name => convert(message.template, true) }}
       @result = Nii::Utils.deep_merge(@result, payload)

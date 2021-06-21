@@ -83,8 +83,8 @@ module Nii
     # Checks if the territory or any of its (transitive) divisions matches the given argument.
     #
     # @example
-    #   Nii::Territory[:EU].inlcude? :US # => false
-    #   Nii::Territory[:EU].inlcude? :DE # => false
+    #   Nii::Territory[:EU].include? :US # => false
+    #   Nii::Territory[:EU].include? :DE # => false
     #
     # @param territory [Nii::Territory, String, Symbol, Integer, #to_nii_territory]
     # @return [true, false] Whether or not one territory is within another.

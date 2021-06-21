@@ -12,15 +12,19 @@ module Nii::Parser::YAML
 
     def self.new(object)
       case object
-      when *NO_TAGS then object
-      when ::Array  then Array.new(object)
-      when ::Hash   then Hash.new.merge! object
-      when ::String then String.new(object)
-      else Object.new(object)
+      when *NO_TAGS then return object
+      when ::Array  then result = Array.new(object)
+      when ::Hash   then result = Hash.new.merge! object
+      when ::String then result = String.new(object)
+      else               result = Object.new(object)
       end
+
+      result.untagged = object
+      result
     end
 
     attr_reader :yaml_tag, :yaml_tags, :nested_yaml_tags
+    attr_accessor :untagged
 
     def yaml_tag?         = !!yaml_tag
     def yaml_tags?        = yaml_tags.any?

@@ -64,6 +64,7 @@ module Nii
     # @param value [#to_s]
     # @return [String]
     def string(value)
+      value = value.untagged if value.is_a? Parser::YAML::Tagged
       case value
       when Symbol   then value.name
       when String   then value

@@ -46,31 +46,29 @@ module Nii::Lookup
     end
 
     # @api internal
-    def matches_locale?(locale)
-      available_locales.locales.include? locale
-    end
+    def matches_locale?(locale) = available_locales.locales.include?(locale)
 
     # @api internal
     def matches_namespace?(namespace)
       return true unless prefix = normalize_namespace(config.namespace)
+      namespace = normalize_namespace(namespace)
       namespace == prefix or namespace.start_with? "#{prefix}/"
     end
 
     # @api internal
-    def matches_message?(message)
-      true
-    end
+    def matches_message?(message) = true
 
-    # @return [Nii::Namespace]
-    def namespace(name) = Nii::Namespace.new(self, name)
-
-    # @return [void]
+    # Resets all cached and aggregated data (locales, file storage, etc).
+    # This is a full reset. For development it is faster to enabled the reload_templates option.
+    #
+    # @return [self]
     def reset
       @lock.with_write_lock do
         @namespaces.clear
         @available_locales = nil
         reset!
       end
+      self
     end
 
     def deconstruct_keys(keys) = { type: self.class.type, available_locales: available_locales, config: config }

@@ -129,6 +129,8 @@ module Nii
       recursive.call(@options)
     end
 
+    alias_method :to_hash, :to_h
+
     # @return [self]
     def to_nii_config
       self
@@ -153,6 +155,16 @@ module Nii
     # @!method [](key)
     #   Hash like access to configuration options.
     alias_method :[], :public_send
+
+    # @overload slice(*keys)
+    #   Hash#slice for Config objects.
+    #   @return [Nii::Config]
+    def slice(...) = Config.new(@options.slice(...))
+
+    # @overload except(*keys)
+    #   Hash#except for Config objects.
+    #   @return [Nii::Config]
+    def except(...) = Config.new(@options.except(...))
 
     # @api internal
     def hash = @options.hash

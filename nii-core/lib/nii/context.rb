@@ -9,6 +9,12 @@ module Nii
     IMPLICIT_CONVERSION = { to_hash: Hash, to_ary: Array, to_str: String, to_int: Numeric }
     private_constant :LOCALIZABLE, :IMPLICIT_CONVERSION
 
+    # Keys available for pattern matching.
+    DECONSTRUCT_KEYS = %i[
+      available_locales config currency data_locale fallback locale locale_config locale_preference
+      lookup measurement_system scope text timezone variables
+    ].freeze
+
     # @overload new(context)
     #   @param context [#to_nii_context, Nii::Context, Nii::Helpers]
     #   @return [Nii::Context] the result of calling {#to_nii_context} on the passed argument
@@ -489,7 +495,7 @@ module Nii
     # Unknown options will be ignored. Available options depend on the chosen formatter.
     # Generates a localized string representing the given object.
     #
-    # @overload format(object = self.scope, **options)
+    # @overload format(object = scope, **options)
     #   Finds the appropriate formatter by looking for the following for the object's class, in order:
     #   * An entry in +config.formatters+.
     #   * The return value of calling +to_nii_formatter+ on the class (if it implements this method).
@@ -501,7 +507,7 @@ module Nii
     #   @param object [Object]
     #   @macro format
     #
-    # @overload format(date = self.scope, **options)
+    # @overload format(date = scope, **options)
     #   Formats a date.
     #
     #   @param   date [::Date, Nii::Date]
@@ -511,7 +517,7 @@ module Nii
     #   @note    (see Nii::Formatters::Date.format)
     #   @see     Nii::Formatters::Date
     #
-    # @overload format(list = self.scope, **options)
+    # @overload format(list = scope, **options)
     #   Formats a list of objects.
     #
     #   The given options will also be used to format each
@@ -524,7 +530,7 @@ module Nii
     #   @note    (see Nii::Formatters::Array.format)
     #   @see     Nii::Formatters::Array
     #
-    # @overload format(hash = self.scope, **options)
+    # @overload format(hash = scope, **options)
     #   Formats a key-value mapping.
     #
     #   The given options will also be used to format each
@@ -538,7 +544,7 @@ module Nii
     #   @note    (see Nii::Formatters::Hash.format)
     #   @see     Nii::Formatters::Hash
     #
-    # @overload format(money = self.scope, **options)
+    # @overload format(money = scope, **options)
     #   Formats a money object.
     #
     #   @param   money   [Money]
@@ -548,7 +554,7 @@ module Nii
     #   @return  [String, Nii::HTMLString] localized object representation
     #   @see     Nii::Formatters::Money
     #
-    # @overload format(number = self.scope, **options)
+    # @overload format(number = scope, **options)
     #   Formats a number.
     #
     #   @param   number [Numeric]
@@ -558,7 +564,7 @@ module Nii
     #   @note    (see Nii::Formatters::Numeric.format)
     #   @see     Nii::Formatters::Numeric
     #
-    # @overload format(string = self.scope, **options)
+    # @overload format(string = scope, **options)
     #   Formats a string.
     #
     #   @param   string [String, Nii::HTMLString, ActiveSupport::SafeBuffer]
@@ -568,7 +574,7 @@ module Nii
     #   @note    (see Nii::Formatters::String.format)
     #   @see     Nii::Formatters::String
     #
-    # @overload format(time = self.scope, **options)
+    # @overload format(time = scope, **options)
     #   Formats a time.
     #
     #   @param   time [Time, ActiveSupport::TimeWithZone]
@@ -578,7 +584,7 @@ module Nii
     #   @note    (see Nii::Formatters::Time.format)
     #   @see     Nii::Formatters::Time
     #
-    # @overload format(timezone = self.scope, **options)
+    # @overload format(timezone = scope, **options)
     #   Formats a timezone.
     #
     #   @param   timezone [TZInfo::Timezone, ActiveSupport::Timezone]
@@ -797,16 +803,22 @@ module Nii
     end
 
     # @param force [true, false] behaves like the +force+ parameter for {#locale}.
+    # @return [Nii::Currency, nil]
     def currency(force = true)
-      return unless force or locale
-      @currency ||= Currency.new(locale_config.currency || territory.currency, locale_config)
+      return unless locale(force)
+      @currency ||= begin
+        code = locale_config.currency || territory.currency
+        Currency.new(code, locale_config) if code
+      end
     end
+
+    # @param (see #currency)
+    # @return [true, false]
+    def currency?(force = true) = !!currency(force)
 
     # Indicates whether or not the locale has been set explicitely (and thus whether locale negotiation has been skipped).
     # @return [true, false]
-    def explicit_locale?
-      @explicit_locale
-    end
+    def explicit_locale? = @explicit_locale
 
     # Fallback locales to use for resolving messages that don't exist for the current locales.
     #
@@ -926,13 +938,24 @@ module Nii
       end
     end
 
-    DECONSTRUCT_KEYS = %i[
-      available_locales config currency data_locale fallback locale locale_config locale_preference
-      lookup measurement_system scope text timezone variables
-    ].freeze
-
+    # Allows pattern matching based on locale.
+    #
+    # @example
+    #   context = Nii::Context.new :en
+    #
+    #   context in Nii::Context(Nii::Locale(/^en/)) # => true
+    #   context in Nii::Context({language: 'en'})   # => true
+    #
+    # @return [Array<Nii::Locale>]
     def deconstruct = [locale]
 
+    # Allows pattern matching on various attributes (see {DECONSTRUCT_KEYS} for the full list).
+    #
+    # @example
+    #   context = Nii::Context.new "en-US"
+    #   context in Nii::Context(currency: Nii::Currency("USD")) # => true
+    #
+    # @return [Hash]
     def deconstruct_keys(keys)
       keys = keys ? keys & DECONSTRUCT_KEYS : DECONSTRUCT_KEYS
       keys.inject({}) { _1.merge! _2 => public_send(_2) }.transform_values do |value|

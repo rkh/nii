@@ -78,6 +78,7 @@ module Nii
 
       # @return [String]
       attr_reader :name
+      alias_method :to_s, :name
 
       # @api internal
       def initialize(name, config = nil)
@@ -105,10 +106,11 @@ module Nii
       def inspect = "#<#{self.class.inspect}:#{name.inspect}>"
     end
 
-    RAILS_MAPPING   = defined?(ActiveSupport::TimeZone) ? ActiveSupport::TimeZone::MAPPING : {}
-    REVERSE_MAPPING = RAILS_MAPPING.invert
-    HEADER_DRAFT    = /\A(?:[^;]*;){2}(.*)\Z/m
-    private_constant :REVERSE_MAPPING, :RAILS_MAPPING, :HEADER_DRAFT
+    RAILS_MAPPING     = defined?(ActiveSupport::TimeZone) ? ActiveSupport::TimeZone::MAPPING : {}
+    REVERSE_MAPPING   = RAILS_MAPPING.invert
+    HEADER_DRAFT      = /\A(?:[^;]*;){2}(.*)\Z/m
+    ANYWHERE_ON_EARTH = /^(?:aoe|anywhere|anywhere[ _]on[ _]earth)$/i
+    private_constant :REVERSE_MAPPING, :RAILS_MAPPING, :HEADER_DRAFT, :ANYWHERE_ON_EARTH
 
     include Comparable
     extend Forwardable
@@ -275,6 +277,7 @@ module Nii
       when -14..-1             then code_for("Etc/GMT#{identifier}",     territory, config, aliases)
       when Symbol              then code_for(identifier.name,            territory, config, aliases)
       when Time                then code_for(identifier.zone,            territory, config, aliases)
+      when ANYWHERE_ON_EARTH   then code_for('Etc/GMT+12',               territory, config, aliases)
       when Hash                then identifier.fetch(territory) { identifier.fetch(Territory::WORLD_CODE) }
       when String
         identifier[HEADER_DRAFT, 1]&.split(',')&.each do |name|
@@ -490,6 +493,33 @@ module Nii
       return false if     other.is_a? String or other.is_a? Symbol
       return false unless code = Nii::Timezone.code_for(other, nil, @config, complain: false)
       code == @code or Nii::Timezonew.new(code, nil, @config).meta_zone == meta_zone
+    end
+
+    # Allows pattern matching on the IANA code.
+    #
+    # @example
+    #   tz = Nii::Timezone["frpar"]
+    #   tz in Nii::Timezone(/^Europe/) # => true
+    #
+    # @return [Array<String>] one element array including the IANA code.
+    def deconstruct = [name]
+
+    # Allows pattern matching on +bcp47+, +code+, +iana+, +name+, and +meta_zone+.
+    # All values are strings (thus you can string match directly on +meta_zone+).
+    #
+    # @example
+    #   case tz = Nii::Timezone["Europe/Paris"]
+    #   in Nii::Timezone(meta_zone: "Europe_Central", name: name)
+    #     puts "#{name} is part of the Central European Time."
+    #   end
+    #
+    # @param keys [nil, Array<Symbol>]
+    # @return [Hash{Symbol: String}]
+    def deconstruct_keys(keys)
+      @deconstruct_keys ||= {
+        bcp47: code, code: code, iana: to_iana,
+        name: to_iana, meta_zone: meta_zone
+      }.transform_values { _1&.to_s }.freeze
     end
 
     # @note

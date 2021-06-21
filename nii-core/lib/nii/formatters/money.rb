@@ -33,25 +33,30 @@ module Nii::Formatters
     def format(context, value, **options)
       if currency = options[:currency]
         value = value.to_money(currency) if value.respond_to? :to_money
-      elsif money.respond_to? :currency
-        currency ||= money.currency
+      elsif value.respond_to? :currency
+        currency ||= value.currency
       end
 
       if currency.respond_to? :to_nii_currency
         currency = currency.to_nii_currency
-      elsif currency
+      elsif external = currency
         symbol    = currency.symbol                                if currency.respond_to? :symbol
         alternate = currency.disambiguate_symbol                   if currency.respond_to? :disambiguate_symbol
         symbol    = { 'default' => alternate, 'narrow' => symbol } if alternate
         name      = currency.name                                  if currency.respond_to? :name
         currency  = currency.iso_code                              if currency.respond_to? :iso_code
-        currency  = Nii::Currency[currency]
+        currency  = context.numbers.currency(currency)
       end
 
       if currency
         options[:currency]        = currency
         options[:currency_symbol] = symbol if currency.symbol(context) == currency.code
         options[:currency_name]   = name   if currency.name(context)   == currency.code
+
+        if external and not currency.known?
+          options[:max_precision]      ||= external.exponent              if external.respond_to? :exponent
+          options[:rounding_increment] ||= external.smallest_denomination if external.respond_to? :smallest_denomination
+        end
       end
   
       amount = value.to_r if value.respond_to? :to_r
@@ -60,7 +65,7 @@ module Nii::Formatters
       amount = value.to_i if amount.nil? and value.respond_to? :to_i
       amount = (amount || value).to_r
   
-      context.format(value.to_f, style: 'currency', **options)
+      context.format(amount, style: 'currency', **options)
     end
   end
 end

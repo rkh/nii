@@ -10,6 +10,8 @@ module Nii::Formatters
     #   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat
     #   Intl.NumberFormat() constructor
     ECMA_OPTIONS = {
+      currencyDisplay:          :currency_display,
+      currencySign:             :currency_sign,
       numberingSystem:          :numbering_system,
       signDisplay:              :display_sign,
       useGrouping:              :use_grouping,
@@ -19,7 +21,7 @@ module Nii::Formatters
     }
     private_constant :ECMA_OPTIONS
 
-    # compactDisplay, currency, currencySign, currencyDisplay, unit, unitDisplay, notation, minimumSignificantDigits, maximumSignificantDigits
+    # compactDisplay, unit, unitDisplay, notation, minimumSignificantDigits, maximumSignificantDigits
 
     extend self
 
@@ -37,6 +39,40 @@ module Nii::Formatters
     #   Multiple options have aliases. Which option is picked if both the proper option and its alias are passed is undefined behavior
     #   (with the current implementation, this is order depended, with later options overriding earlier options).
     #
+    # @option options [true, false] cash (false)
+    #   When currency formatting is used, treat the amount as cash amount. This may impact rounding behavior and decimal point usage,
+    #   depending on the currency and locale. If this option is provided, the +style+ option will default to +currency+.
+    #
+    # @option options [String, Symbol, Nii::Currency] currency
+    #   The currency to use when using currency style formatting. If this option is provided, the +style+ option will default
+    #   to +currency+. You can provide a three letter ISO/CLDR code (+USD+, +EUR+), or a {Nii::Currency} instance.
+    #   If this option isn't provided, but currency formatting is used, it will default to {Nii::Context#currency}.
+    #   This options is case-insensitive.
+    #
+    #   This option is compatible with the ECMAScript +currency+ option.
+    #
+    # @option options [String, Symbol] currency_display (:symbol)
+    #   How to display the currency in currency formatting. Possible values are:
+    #   * +symbol+: use a localized currency symbol such as $ or US$ (depending on locale).
+    #   * +narrow+: use a narrow format symbol ("$100" rather than "US$100", depending on locale).
+    #   * +code+: use the ISO currency code ("USD")
+    #   * +name+: use the currency name, such as "dollar" (depending on locale).
+    #
+    #   This option is compatible with the ECMAScript +currencyDisplay+ option, which it supports as an alias,
+    #   and also accepts +narrowSign+ instead of +narrow+.
+    #
+    # @option options [String, Symbol] currency_sign (:standard)
+    #   In many locales, accounting format means to wrap the number with parentheses instead of appending a minus sign.
+    #   You can enable this formatting by setting the +currency_sign+ option to +accounting+.
+    #
+    #   This option is compatible with the ECMAScript +currencySign+ option, which it supports as an alias.
+    #
+    # @option options [String, nil] currency_symbol (nil)
+    #   Overrides the currency symbol used for currency formatting (when +currency_display+ is set to +symbol+ or +narrow+).
+    #
+    # @option options [String, nil] currency_name (nil)
+    #   Overrides the currency name used for currency formatting (when +currency_display+ is set to +name+).
+    #
     # @option options [String, Symbol] display_sign (auto)
     #   Whether or not to display a plus or minus sign before the number (actual sign and position may depend on other factors, like the
     #   numbering system used, as well as region or language based preferences).
@@ -47,7 +83,7 @@ module Nii::Formatters
     #   * +always+ – always display sign.
     #   * +except_zero+ – display sign for positive and negative numbers, but not zero.
     #
-    #   This option is compatible with the ECMAScript +signDisplay+, which it accepts as an alias (in which case +except_zero+ will be
+    #   This option is compatible with the ECMAScript +signDisplay+ option, which it accepts as an alias (in which case +except_zero+ will be
     #   +exceptZero+).
     #
     # @option options [Integer] max_precision
@@ -109,13 +145,19 @@ module Nii::Formatters
     #
     #   This option is compatible with ICU, IEEE 754, and Java 7 rounding modes.
     #
-    # @option options [String, Symbol] style ("default")
+    # @option options [Integer] rounding_increment (1)
+    #   The multiple of +max_precision+ to round the value to.
+    #   Setting +precision+ to 2 and +rounding_increment+ to 5 will round the value to a multiple of 0.05.
+    #
+    # @option options [String, Symbol] style
     #   Style to use for number formatting:
     #   * +"default"+ for plain number formatting using the current numbering system, even if it isn't decimal based.
     #   * +"decimal"+ for plain number formatting using a decimal system (either the current numbering system or latn).
     #   * +"currency"+ for currency formatting.
     #   * +"percent"+ for percent formatting.
     #   * +"unit"+ for unit formatting.
+    #
+    #   If not provided +"default"+, +"currency"+, or +"unit"+ will be used depending on other options.
     #
     #   This option is compatible with the ECMAScript +style+ option, except for its +"default"+ behavior (ECMAScript
     #   does not have this option and defaults to +"decimal"+).
@@ -129,12 +171,17 @@ module Nii::Formatters
       normalize_options(options)
       numbers = context.numbers
 
-      options[:min_precision] ||= options[:precision]
-      options[:max_precision] ||= options[:precision]
-      options[:round] = true if options[:max_precision] and options[:round].nil?
-      options[:round] = context.config.rounding_mode || :halfeven if options[:round] == true
+      if precision = options[:precision]
+        options[:min_precision] ||= precision
+        options[:max_precision] ||= precision
+      end
 
-      case options[:style]&.to_s || 'default'
+      options[:round]   = true if options[:max_precision] and options[:round].nil?
+      options[:round]   = context.config.rounding_mode || :halfeven if options[:round] == true
+      options[:style] ||= 'unit'     if options[:unit]
+      options[:style] ||= 'currency' if options[:currency] or options[:cash]
+
+      case Utils.string(options[:style] || 'default')
       when 'default'    then format_default   numbers, value, **options
       when 'decimal'    then format_decimal   numbers, value, **options
       when 'currency'   then format_currency  numbers, value, **options
@@ -146,22 +193,26 @@ module Nii::Formatters
 
     private
 
-    def round(value, mode, precision)
+    def round(value, mode, precision, increment = nil)
       return value unless mode
+      increment   = nil if mode == :unnecessary
+      increment &&= increment > 0 ? increment.to_r : nil
+      value /= increment.to_r if increment
+
       case mode.to_sym.downcase
-      when :ceiling, :ceil then value.ceil(precision)
-      when :floor          then value.floor(precision)
-      when :down           then value.positive? ? value.floor(precision) : value.ceil(precision)
-      when :up             then value.negative? ? value.floor(precision) : value.ceil(precision)
-      when :even           then value.negative? ^ value.to_i.even? ? value.floor(precision) : value.ceil(precision)
-      when :odd            then value.negative? ^ value.to_i.odd?  ? value.floor(precision) : value.ceil(precision)
-      when :halfceiling    then value % 1 == 0.5 ? round(value, :ceiling, precision) : value.round(precision)
-      when :halffloor      then value % 1 == 0.5 ? round(value, :floor,   precision) : value.round(precision)
-      when :halfdown       then value % 1 == 0.5 ? round(value, :down,    precision) : value.round(precision)
-      when :halfup         then value % 1 == 0.5 ? round(value, :up,      precision) : value.round(precision)
-      when :halfeven       then value % 1 == 0.5 ? round(value, :even,    precision) : value.round(precision)
-      when :halfodd        then value % 1 == 0.5 ? round(value, :odd,     precision) : value.round(precision)
-      when /_|-/           then round(value, mode.to_s.tr('-_', ''), precision)
+      when :ceiling, :ceil then value = value.ceil(precision)
+      when :floor          then value = value.floor(precision)
+      when :down           then value = value.positive? ? value.floor(precision) : value.ceil(precision)
+      when :up             then value = value.negative? ? value.floor(precision) : value.ceil(precision)
+      when :even           then value = value.negative? ^ value.to_i.even? ? value.floor(precision) : value.ceil(precision)
+      when :odd            then value = value.negative? ^ value.to_i.odd?  ? value.floor(precision) : value.ceil(precision)
+      when :halfceiling    then value = value % 1 == 0.5 ? round(value, :ceiling, precision) : value.round(precision)
+      when :halffloor      then value = value % 1 == 0.5 ? round(value, :floor,   precision) : value.round(precision)
+      when :halfdown       then value = value % 1 == 0.5 ? round(value, :down,    precision) : value.round(precision)
+      when :halfup         then value = value % 1 == 0.5 ? round(value, :up,      precision) : value.round(precision)
+      when :halfeven       then value = value % 1 == 0.5 ? round(value, :even,    precision) : value.round(precision)
+      when :halfodd        then value = value % 1 == 0.5 ? round(value, :odd,     precision) : value.round(precision)
+      when /_|-/           then value = round(value, mode.to_s.tr('-_', ''), precision)
       when :unnecessary
         rounded = value.round(precision)
         return rounded if rounded == value
@@ -169,14 +220,17 @@ module Nii::Formatters
       else
         raise ArgumentError, "unsupported rounding mode #{mode}"
       end
+
+      increment ? value * increment : value
     end
 
-    def format_number(type, numbers, value, default_precision: 0, **options)
+    def format_number(type, numbers, value, default_precision: 0, subtype: nil, rounding_increment: nil, **options)
       system  = numbers.system(options[:numbering_system])
       symbols = numbers.symbols(system)
       symbols = symbols.merge('group' => '') if options[:use_grouping] == false
-      rules   = numbers.format_rules(type, system: system)
-      value   = round(value, options[:round], options[:max_precision] || default_precision)
+      rules   = numbers.format_rules(type, subtype, system: system) if subtype
+      rules ||= numbers.format_rules(type, system: system)
+      value   = round(value, options[:round], options[:max_precision] || default_precision, rounding_increment)
       system.format(value, rules, symbols: symbols, **options)
     end
     
@@ -192,24 +246,50 @@ module Nii::Formatters
       format_number(:decimal, numbers, value, numbering_system: system, **options)
     end
     
-    def format_currency(numbers, value, currency: nil, currency_symbol: nil, currency_name: nil, currency_display: nil, **options)
-      # system            = options[:numbering_system] ||= 'finance'
-      # formatted         = format_number(:currency, numbers, value, **options)
-      # spacing           = numbers.format_rules(:currency, :currency_spacing, system: system) || {}
-      currency         = numbers.currency(currency)
-      currency_display = currency_display.name if currency_display.is_a? Symbol
+    def format_currency(numbers, value, cash: false, currency: nil, currency_symbol: nil, currency_name: nil, currency_display: nil, currency_sign: nil, **options)
+      return format_decimal(numbers, value, min_precision: 2, max_precision: 2, **options) unless currency = numbers.currency(currency)
+      currency_display               = Utils.symbol(currency_display) if currency_display
+      data_locale                    = numbers.context.data_locale
+      options[:default_precision]  ||= cash ? currency.cash_digits   : currency.digits
+      options[:rounding_increment] ||= cash ? currency.cash_rounding : currency.rounding
+      options[:min_precision]      ||= cash && value == value.round ? 0 : options[:default_precision]
 
       case currency_display ||= :symbol
       when :symbol, :narrow
+        options[:min_precision]    ||= options[:default_precision]
+        options[:numbering_system] ||= 'finance'
+
         case currency_symbol ||= currency_display
-        in Symbol                                then symbol = currency.symbol(style: currency_symbol, locale: data_locale)
-        in Hash if symbol[currency_display]      then symbol = currency_symbol[currency_display]
-        in Hash if symbol[currency_display.name] then symbol = currency_symbol[currency_display.name]
-        in Hash if symbol[:default]              then symbol = currency_symbol[:default]
-        in Hash if symbol['default']             then symbol = currency_symbol['default']
-        else                                          symbol = currency.symbol(locale: data_locale)
+        in ::String                                then symbol = currency_symbol
+        in ::Symbol                                then symbol = currency.symbol(style: currency_symbol, locale: data_locale)
+        in ::Hash if symbol[currency_display]      then symbol = currency_symbol[currency_display]
+        in ::Hash if symbol[currency_display.name] then symbol = currency_symbol[currency_display.name]
+        in ::Hash if symbol[:default]              then symbol = currency_symbol[:default]
+        in ::Hash if symbol['default']             then symbol = currency_symbol['default']
+        else                                            symbol = currency.symbol(locale: data_locale)
+        end
+
+        format_number(:currency, numbers, value, subtype: currency_sign, **options).sub(/(.)?¤(.)?/) do
+          before, after    = $1, $2
+          currency_spacing = numbers.format_rules(:currency, :currency_spacing)
+          if insert = space_currency(currency_spacing['before_currency'], before, symbol[0])
+            symbol = "#{insert}#{symbol}"
+          end
+          if insert = space_currency(currency_spacing['after_currency'], after, symbol[-1])
+            symbol = "#{symbol}#{insert}"
+          end
+          "#{before}#{symbol}#{after}"
         end
       when :code, :name
+        value           = format_number(:decimal, numbers, value, **options)
+        category        = numbers.plural_category(value).name
+        unit_pattern    = numbers.format_rules :currency, :unit_pattern
+        unit_pattern    = unit_pattern.fetch(category, unit_pattern.fetch('other'))
+        currency_name   = currency.code if currency_display == :code
+        currency_name ||= currency.display_name(locale: data_locale, style: category)
+
+        # todo: support short, spellout, etc
+        unit_pattern.sub('{0}', value).sub('{1}', currency_name)
       else
         raise ArgumentError, "unsupported currency display: #{currency_display.inspect}"
       end
@@ -223,10 +303,16 @@ module Nii::Formatters
       raise NotImplementedError
     end
 
+    def space_currency(rule, surrounding, currency)
+      return unless rule
+      return unless ::Nii::Parser.unicode_set(rule['currency_match'])    =~ currency
+      return unless ::Nii::Parser.unicode_set(rule['surrounding_match']) =~ surrounding
+      rule['insert_between']
+    end
+
     def normalize_options(options)
       options.transform_keys! ECMA_OPTIONS
       options.transform_values! { |v| Symbol === v ? v.name : v }
-      options[:currency]         &&= options[:currency].upcase
       options[:currency_display]   = 'narrow'      if options[:currency_display] == 'narrowSymbol'
       options[:display_sign]       = 'except_zero' if options[:display_sign]     == 'exceptZero'
       options[:numbering_system] ||= options.delete(:numbers)

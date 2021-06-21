@@ -53,6 +53,9 @@ module Nii
       @code, @data, @attributes = code, data, {}
     end
 
+    # @return [true false] whether the currency is part of the CLDR or not
+    def known? = self.class.all(@data).include?(self)
+
     # @!attribute [r] territories
     # @return [Array<Nii::Territory>] List of territories using the currency.
     def current_territories = get(:territories) { Array(_1).map { |code| Territory.new(code, @data) } }
@@ -98,7 +101,9 @@ module Nii
     # @overload display_name(context = nil, locale: nil, style: :default)
     # (see #get_display)
     def display_name(...) = get_display(:display_name, ...)
-    
+    alias_method :name, :display_name
+
+    # Allows pattern matching on the currency code.
     def deconstruct = [code]
 
     # @return [self]

@@ -286,6 +286,10 @@ module Nii
       CACHE.fetch(code, {}) { new(code, complain: complain).freeze }
     end
 
+    class << self
+      alias_method :[], :parse
+    end
+
     # Short-hand for the root locale (with no language, script, etc set).
     # @return [Nii::Locale]
     def self.root = parse('root')
@@ -388,6 +392,11 @@ module Nii
         recalculate unless @options[:lookup]
         @lookup ||= @options[:lookup].map { |code| self.class.new(code) }.uniq
       end
+    end
+
+    # (see Nii::Lookup::Common#available_locales)
+    def available_locales(cache = true)
+      @available_locales ||= Nii::LocalePreference.new(config.locale || config.available_locales || 'und')
     end
 
     # @return [String] BCP 47 extended locale code

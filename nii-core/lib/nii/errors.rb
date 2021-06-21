@@ -9,6 +9,7 @@ module Nii
     ConversionError   = Class.new(StandardError)
     UnknownLocale     = Class.new(ArgumentError)
     UnknownTimezone   = Class.new(UnknownLocale)
+    UnsupportedLocale = Class.new(UnknownLocale)
     MessageError      = Class.new(StandardError)
     UnknownMessage    = Class.new(MessageError)
     UnknownVariable   = Class.new(MessageError)

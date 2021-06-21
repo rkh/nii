@@ -15,8 +15,9 @@ module Nii
       @messages  = Concurrent::Map.new
     end
 
-    def add(message, type: :message)
-      store = @messages.fetch_or_store(type) { Concurrent::Map.new }
+    def add(message, type: :message, source: nil, **)
+      store               = @messages.fetch_or_store(type) { Concurrent::Map.new }
+      message.source    ||= source
       store[message.name] = message
     end
 
@@ -29,10 +30,10 @@ module Nii
       if target.is_a? Symbol or target.is_a? String
         normalized = Utils.string(target).tr('-_', '').downcase
         constant   = Nii::Compiler.constants.detect { |c| c.name.downcase == normalized }
-        raise Nii::CompileError, "#{target.inspect} not supported as compilation target" if constant.nil?
+        raise Nii::Errors::CompileError, "#{target.inspect} not supported as compilation target" if constant.nil?
         target = Nii::Compiler.const_get(constant, false)
       end
-      target = target.new(**options) if target.respond_to?(:new)
+      target = target.new(bundle: self, **options) if target.respond_to?(:new)
       target
     end
 

@@ -22,6 +22,7 @@ module Nii
 
     # @api internal
     def self.[](key, locale = nil)
+      return unless key =~ /^[a-z][_a-z]+$/
       locale &&= Locale.parse(locale).language&.upcase
       key      = key.name if key.is_a? Symbol
       @cache ||= {}
