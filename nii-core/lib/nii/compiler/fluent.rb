@@ -30,14 +30,7 @@ module Nii::Compiler
       result
     end
 
-    private
-
-    def indent(source, spacing = 0)
-      return source unless source.include? "\n"
-      source = source.split("\n").map { "  #{' '*spacing}#{_1}\n" }.join
-      "\n#{source}\n"
-    end
-
+    # @api internal
     def source(node, placeable: false, size: 0)
       case node
       in String                                        then string(placeable, node)
@@ -51,6 +44,14 @@ module Nii::Compiler
       in Element[payload]                              then source(payload, placeable: placeable)
       else raise Nii::Errors::CompileError, "cannot compile #{node.class} to Fluent"
       end
+    end
+
+    private
+
+    def indent(source, spacing = 0)
+      return source unless source.include? "\n"
+      source = source.split("\n").map { "  #{' '*spacing}#{_1}\n" }.join
+      "\n#{source}\n"
     end
 
     def compile_variants(variants)

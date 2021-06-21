@@ -20,7 +20,7 @@ module Nii::Formats
     def single_message? = false
 
     # @api internal
-    def compile(bundle, source)
+    def compile(bundle, source, **options)
       Nii::Parser.gettext(source).each do |message|
         flags, msgid, msgstr, msgid_plural = [], nil, nil, nil
 
@@ -43,7 +43,7 @@ module Nii::Formats
         raise NotImplementedError, 'missing msgstr' unless msgstr.is_a? String
 
         template = message_format.compile(bundle, msgstr)
-        bundle.add Nii::Message.new(msgid, template)
+        bundle.add(Nii::Message.new(msgid, template), **options)
       end
     end
 

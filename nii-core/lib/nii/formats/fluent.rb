@@ -12,7 +12,11 @@ module Nii::Formats
     def initialize(config)= @config = config
 
     # @api internal
-    def compile(bundle, source) = Nii::Parser.fluent(source).compile(bundle, config)
+    def compile(bundle, source, **options)
+      parsed = Nii::Parser.fluent(source)
+      config = @config.merge(bundle_options: options)
+      parsed.compile(bundle, config)
+    end
 
     # @api internal
     def single_message? = false

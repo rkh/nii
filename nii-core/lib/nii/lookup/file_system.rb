@@ -63,9 +63,10 @@ module Nii::Lookup
       FileCache.new(load_path, pattern, files: config.files) do |files|
         bundle = Nii::Bundle.new(locale, namespace)
         files.each do |file|
-          ext     = file.extname[1..-1]
-          format  = formats.fetch(ext) { raise Nii::Errors::ParseError, "unknown format: #{ext.inspect}" }
-          options = format.single_message? ? { name: file.basename(file.extname).to_s } : {}
+          ext              = file.extname[1..-1]
+          format           = formats.fetch(ext) { raise Nii::Errors::ParseError, "unknown format: #{ext.inspect}" }
+          options          = format.single_message? ? { name: file.basename(file.extname).to_s } : {}
+          options[:source] = file
           format.compile(bundle, file.read, **options)
         end
         bundle

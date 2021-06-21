@@ -9,7 +9,10 @@ module Nii::Formats
     def initialize(config = nil) = @config = Nii::Config.new(config)
     
     # @api internal
-    def compile(bundle, source, name:) = bundle.add(Nii::Message.new(name, compile_template(bundle, source)))
+    def compile(bundle, source, name:, **options)
+      message = Nii::Message.new(name, compile_template(bundle, source))
+      bundle.add(message, **options)
+    end
 
     # @api internal
     def compile_template(bundle, source) = Nii::Template::Element.new(bundle, source)

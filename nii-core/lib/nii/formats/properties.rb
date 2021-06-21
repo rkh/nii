@@ -13,11 +13,11 @@ module Nii::Formats
     end
 
     # @api internal
-    def compile(bundle, source)
+    def compile(bundle, source, **options)
       Nii::Parser.properties(source).each do |key, value|
         template = message_format.compile(bundle, value)
         message  = Nii::Message.new(key, template)
-        bundle.add(message)
+        bundle.add(message, **options)
       end
     end
   end

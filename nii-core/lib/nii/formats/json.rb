@@ -40,7 +40,7 @@ module Nii::Formats
     end
 
     # @api internal
-    def compile(bundle, source)
+    def compile(bundle, source, **options)
       content = parse(source)
 
       if detect_format?
@@ -52,7 +52,7 @@ module Nii::Formats
       structure.process(content, bundle: bundle, message_format: message_format) do |key, message, **attributes|
         attributes.transform_values! { |value| compile_value(message_format, bundle, value) }
         message = Nii::Message.new(key, compile_value(message_format, bundle, message), **attributes)
-        bundle.add(message)
+        bundle.add(message, **options)
       end
     end
 

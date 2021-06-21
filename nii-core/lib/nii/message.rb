@@ -11,6 +11,13 @@ module Nii
     #   right before the message.
     attr_accessor :description
 
+    # @return [#to_s, nil] source description (like file path or database table)
+    # @note
+    #   Whether this property is set as well as the exact type depend on the lookup implementation that retrieved the message.
+    #   For lookup implementations based on {Nii::Lookup::FileSystem}, the value will be a {Nii::LoadPath::Pathname}.
+    # @see #source_description
+    attr_accessor :source
+
     # @api internal
     attr_reader :attributes
 
@@ -23,10 +30,28 @@ module Nii
       @name, @template, @attributes = name, template, attributes
     end
 
+    # @api internal
+    def bundle = template.bundle
+    
+    # @!attribute [r] locale
+    # @return [Nii::Locale]
+    def locale = bundle.locale
+    
+    # @!attribute [r] namespace
+    # @return [String]
+    def namespace = bundle.namespace
+
     # @see Nii::Context#render
     def render(context, variables, &block)
       context = Context.new(context) unless context.respond_to? :to_nii_context
       template.render(context.to_nii_context, variables, &block)
+    end
+
+    # @return [String, nil] {#source} described as a string
+    def source_description
+      return unless source = self.source
+      source = source.relative_path if source.is_a? Nii::LoadPath::Pathname
+      Nii::Utils.string(source)
     end
 
     # @overload compile_to(target, **options)
@@ -72,6 +97,9 @@ module Nii
     
     # @api internal
     def nii_attribute(name) = attributes.fetch(name.to_sym)
+    
+    # @return [String]
+    def to_s = template.to_s
 
     # @private
     def inspect = "#<#{self.class.inspect}:#{name}>"

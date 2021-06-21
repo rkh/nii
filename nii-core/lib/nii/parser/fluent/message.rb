@@ -28,7 +28,7 @@ module Nii::Parser
         attributes = {}
 
         children.each { |child| attributes[child.key.to_sym] = child.compile(bundle, config) }
-        bundle.add(Nii::Message.new(key, template, **attributes), type: message_type)
+        bundle.add(Nii::Message.new(key, template, **attributes), type: message_type, **config.bundle_options.to_h)
       end
     end
   end

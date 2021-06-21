@@ -44,8 +44,9 @@ module Nii::CLI
         config = { key => { format: option } }
       end
 
+      path   = input_file || "input.#{input_format}"
       format = format.new Nii::Config.new(config)
-      format.compile(bundle, content)
+      format.compile(bundle, content, source: path)
 
       output_format ||= output_format(output_file)
       output = bundle.compile_to(output_format, **output_options(output_format, output_file))
