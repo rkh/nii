@@ -14,6 +14,43 @@ module Nii
   #
   #   load_path << "config/locale"
   class LoadPath
+    # Pathname subclass that keeps track of the base directory it's relative to.
+    #
+    # @example
+    #   load_path = Nii::LoadPath.new "/etc/example", "~/example"
+    #   file      = load_path.glob("*/*.yml").first # would find /etc/example/foo/bar.yml
+    #
+    #   file.to_s               # => "/etc/example/foo/bar.yml"
+    #   file.base_path.to_s     # => "/etc/example"
+    #   file.relative_path.to_s # => "foo/bar.yml"
+    class Pathname < ::Pathname
+      # @return [Pathname, nil] base path (usually corresponds to a load path entry)
+      attr_reader :base_path
+
+      # @return [Pathname, self] path relative to the base path (if present)
+      attr_reader :relative_path
+
+      # @api internal
+      def initialize(path, base_path = nil)
+        super(path)
+        @base_path     = ::Pathname.new(base_path) if base_path
+        @relative_path = base_path ? relative_path_from(base_path) : self
+      end
+
+      # Same as ::Pathname#glob, but results are converted to LoadPath::Pathname instances.
+      def glob(*args)
+        return super(*args) { yield subpath(_1) } if block_given?
+        super(*args).map { subpath(_1) }
+      end
+
+      # Same as ::Pathname#join, but results are converted to LoadPath::Pathname instances.
+      def join(*args) = args.empty? ? self : subpath(super)
+
+      private
+
+      def subpath(path) = self.class.new(path, base_path || self)
+    end
+
     # Adds the given path to the end of the list.
     # @param path [String, Pathname]
     # @return [self]
