@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'nii/core'
+require 'nii/xml'
 require 'dry/cli'
 
 module Nii::CLI
