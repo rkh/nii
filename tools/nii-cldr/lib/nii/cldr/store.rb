@@ -8,7 +8,7 @@ module Nii::CLDR
 
     def initialize(repository, group, directory, name)
       @repository, @group, @directory, @name = repository, group, directory, name
-      @data, @optional_data = {}, { :@path => path }
+      @data, @optional_data, @drop = {}, { :@path => path }, {}
       direct_parent # populate now
     end
 
@@ -24,24 +24,19 @@ module Nii::CLDR
       return false if @clean ||= false
       return unless direct_parent
       direct_parent.clean
-      @data  = clean_hash(data, direct_parent.full_data)
+      @data  = clean_hash(data, direct_parent.data)
       @clean = true
     end
 
     def clean_hash(input, compare)
       return input unless input.is_a? Hash and compare.is_a? Hash
       return {} if input == compare
+
       input.map do |key, value|
         next nil if compare_value = compare[key] and value == compare_value
         value = clean_hash(value, compare_value) if value.is_a? Hash and compare_value.is_a? Hash
         [key, value] unless value == {}
       end.compact.to_h
-    end
-
-    def full_data
-      return data unless parent
-      merge = -> (_, old, new) { new.is_a?(Hash) && old.is_a?(Hash) ? old.merge(new, &merge) : new || old }
-      parent.full_data.merge(data, &merge)
     end
 
     def direct_parent
