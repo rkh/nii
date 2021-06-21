@@ -40,19 +40,20 @@ module Nii::Formatters
     # @example Various :as options
     #   context = Nii::Context.new :de
     #
-    #   context.format "chinese",  as: :calendar                 # => "Chinesischer Kalender"
-    #   context.format "standard", as: :collation                # => "Standard-Sortierung"
-    #   context.format "USD",      as: :currency                 # => "US-Dollar"
-    #   context.format "currency", as: :key                      # => "Währung"
-    #   context.format "fr",       as: :language                 # => "Französisch"
-    #   context.format "metric",   as: :measurement_system       # => "metrisches System"
-    #   context.format "1530",     as: :number                   # => "1.530"
-    #   context.format "arab",     as: :numbering_system         # => "Arabisch-indische Ziffern"
-    #   context.format "US",       as: :territory                # => "Vereinigte Staaten"
-    #   context.format "US",       as: :territory, style: :short # => "USA"
-    #   context.format "Hebr",     as: :script                   # => "Hebräisch"
-    #   context.format "inch",     as: :unit                     # => "Zoll"
-    #   context.format "1996",     as: :variant                  # => "Neue deutsche Rechtschreibung"
+    #   context.format "chinese",    as: :calendar                 # => "Chinesischer Kalender"
+    #   context.format "standard",   as: :collation                # => "Standard-Sortierung"
+    #   context.format "USD",        as: :currency                 # => "US-Dollar"
+    #   context.format "afternoon2", as: :day_period               # => "Nachmittag"
+    #   context.format "currency",   as: :key                      # => "Währung"
+    #   context.format "fr",         as: :language                 # => "Französisch"
+    #   context.format "metric",     as: :measurement_system       # => "metrisches System"
+    #   context.format "1530",       as: :number                   # => "1.530"
+    #   context.format "arab",       as: :numbering_system         # => "Arabisch-indische Ziffern"
+    #   context.format "US",         as: :territory                # => "Vereinigte Staaten"
+    #   context.format "US",         as: :territory, style: :short # => "USA"
+    #   context.format "Hebr",       as: :script                   # => "Hebräisch"
+    #   context.format "inch",       as: :unit                     # => "Zoll"
+    #   context.format "1996",       as: :variant                  # => "Neue deutsche Rechtschreibung"
     #
     # @param context [Nii::Context]
     #   Localization context to use for formatting.
@@ -66,6 +67,7 @@ module Nii::Formatters
     #   * +calendar+ – interpret string as CLDR calendar identifier. Case-insensitive.
     #   * +collcation+ – interpret string as CLDR collation identifier. Case-insensitive.
     #   * +currency+ – interpret string as currency code. Case-insensitive.
+    #   * +day_period+ – interpret string as day period.
     #   * +key+ – interpret string as CLDR field identifier. Case-insensitive.
     #   * +language+ – interpret the string as a language code. Case-insensitive.
     #   * +measurement_system+ – interpret string as measurement system identifier. Case-insensitive.
@@ -113,6 +115,31 @@ module Nii::Formatters
         next context.locale_data(:names, :currencies, key, :symbol) if style == :short or style == :symbol
         context.locale_data(:names, :currencies, key, :display_name, style)
       end
+    end
+
+    # Formats a string as a day period, where the given string is a day period identifier (like "afternoon1" or "pm").
+    # @overload format(context, value, as: :day_period, **options)
+    #
+    # @option options [String, Symbol] display ("stand-alone")
+    #   * +stand-alone+: Day period used as a stand-alone noun ("afternoon").
+    #   * +format+: Day period used to in a sentence or to format a time ("in the afternoon").
+    #
+    # @option options [String, Symbol] style ("wide")
+    #   Formatting style (+wide+, +narrow+, or +abbreviated+).
+    #
+    # @option options [true, false] variant (false)
+    #   Whether to use an alternative variant if available ("AM" vs "am" for English).
+    #
+    # @!scope module
+    def format_as_day_period(context, value, **options)
+      display = Utils.string(options[:display] || 'stand-alone')
+      style   = Utils.string(options[:style]   || 'wide')
+      result  = context.locale_data(:info, :calendars, :generic, :day_periods)
+      result  = result[display] || result.fetch('stand-alone')
+      result  = result[style]   || result.fetch('wide')
+      result  = result[value]
+      result  = options[:variant] ? result[:variant] || result[:default] : result[:default] if result.is_a? Hash
+      result || value
     end
 
     # Formats a string as a CLDR field key.

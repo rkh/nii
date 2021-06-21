@@ -25,6 +25,11 @@ module Nii::Info
       get(system, "#{type}_formats", format)
     end
 
+    # @overload classify(type = nil, number, complain: true)
+    #   @param (see Nii::Plurals#classify)
+    #   @return (see Nii::Plurals#classify)
+    def plural_category(...) = context.grammar.plurals.classify(...)
+
     # def misc_patterns(*keys, system: nil)
     #   get(system, :misc_patterns, *keys)
     # end
@@ -67,7 +72,7 @@ module Nii::Info
     def get(system, key, *keys)
       keys.compact!
       result = locale_info(:numbers, key, system(system).code)
-      result = result.dig(*keys.map(&:to_s)) if keys.any? and result
+      result = result.dig(*keys.map { Nii::Utils.string(_1) }) if keys.any? and result
       result
     end
   end

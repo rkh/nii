@@ -137,10 +137,10 @@ module Nii
 
     def fraction(number, min_precision, max_precision)
       return if max_precision < 1
-      return unless fraction = number.to_f.to_s[/\.\d+$/]
-      return unless min_precision > 0 or fraction != '.0'
-      fraction += '0' while fraction.size - 1 < min_precision
-      fraction
+      return unless fraction = sprintf("%.#{max_precision}f", number)[/\.\d+$/]
+      return unless min_precision > 0 or fraction =~ /[1-9]/
+      return fraction if min_precision >= max_precision
+      fraction[/(\.\d{#{min_precision}}(?:\d*[1-9])?)0*$/, 1]
     end
 
     def affixes(sign, negative = false, zero = false)

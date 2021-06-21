@@ -87,7 +87,7 @@ module Nii
         keys.unshift('calendars')
       end
 
-      get_bucket(locale, bucket, resolve_alias: resolve_alias).dig(*keys)
+      get_bucket(locale, bucket, resolve_alias: resolve_alias)&.dig(*keys)
     end
 
     # @return [true, false] whether or not the given territory is available in the data set
