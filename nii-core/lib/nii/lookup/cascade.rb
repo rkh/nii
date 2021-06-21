@@ -2,6 +2,11 @@
 
 module Nii::Lookup
   class Cascade < Common
+    Nii::Lookup[:cascade] = self
+
+    # @private
+    def self.setup_class = Nii::Setup::Lookup::Cascade
+
     # @return [Nii::Lookup::Common] list of backends
     attr_reader :backends
     alias_method :deconstruct, :backends

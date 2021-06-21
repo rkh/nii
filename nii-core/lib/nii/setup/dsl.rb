@@ -38,7 +38,7 @@ module Nii::Setup
           return unless block
           ::Kernel.raise ::Nii::Errors::SetupError, "already ran setup for #{application.inspect}"
         end
-        @object.subsetups[application] = ::Nii::Setup.new(application) do |setup|
+        @object.subsetups[application] = ::Nii::Setup.new(application, nested: true) do |setup|
           ::Nii::Setup::DSL.run(setup, :ignore,   &@block)
           ::Nii::Setup::DSL.run(setup, :complain, &block)
         end
@@ -50,6 +50,7 @@ module Nii::Setup
     private
 
     def method_missing(method, *arguments, &block)
+      return super if method.start_with? '_' or method == :initialize
       if arguments.any?
         if method.end_with? '='
           setter, getter = method, method[0..-2]
@@ -61,7 +62,13 @@ module Nii::Setup
       else
         result = @object.public_send(method)
       end
-      ::Nii::Setup::DSL.run(result, :complain, &block) if block
+      if block
+        if result.respond_to? :__dsl__
+          result.__dsl__(&block)
+        else
+          ::Nii::Setup::DSL.run(result, :complain, &block)
+        end
+      end
       result
     end
   end

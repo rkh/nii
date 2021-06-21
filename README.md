@@ -32,9 +32,14 @@ hello-user = Hello {$name}!
 ``` ruby
 require "nii"
 
-# Create a localization context for American English,
-# with locale data from locales directory, set "hello" as the default namespace
-context = Nii::Context.new "en-US", Nii["locales"], namespace: "hello"
+# Create a Nii configuration
+config = Nii.setup do
+  lookup "./locales"
+  default_namespace "hello"
+end
+
+# Create a localization context (usually per request)
+context = Nii::Context.new "en-US", config
 
 # render "hello-world" from locales/en/hello.ftl
 context.render "hello-world" # => "Hello World!"
@@ -59,8 +64,6 @@ You may also want to install one or more of the following optional dependencies:
 * **tomlrb** – Recommended if you want to use [TOML files](https://toml.io/en/) for localizations. A use case would be to share localizations with [go-i18n](https://github.com/nicksnyder/go-i18n).
 
 ## Etymology
-
-<!-- keep in sync with web/source/glossary/nii.html.md --->
 
 The word "Nii" is:
 * The name of a language spoken by between 10,000 and 25,000 people in the highlands of Papua New Guinea.

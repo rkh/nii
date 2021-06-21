@@ -14,8 +14,8 @@ module Nii::Setup
     end
 
     # @api internal
-    def self.setup(application, &block)
-      instance = new(application)
+    def self.setup(application, **options, &block)
+      instance = new(application, **options)
       DSL.run(instance, &block)
       finalized = Finalized.new(instance)
       instance.finalize(finalized)
@@ -23,14 +23,17 @@ module Nii::Setup
     end
 
     # @api internal
-    def initialize(application)
+    def initialize(application, nested: false, **options)
       unless self.class.for? application
         application = application.class unless application.is_a? Module
         raise ArgumentError, "cannot run #{self.class.inspect} for #{application.inspect}"
       end
+      @nested           = true
       @application      = application
       @implicit_locales = []
       @subsetups        = {}
+      @lookup           = Lookup::Cascade.new
+      options.each { |k, v| instance.public_send(k, v) }
       super()
     end
 
@@ -66,6 +69,8 @@ module Nii::Setup
 
     alias_method :locales, :available_locales
 
+    def lookup(*args, **options) = Lookup.prepare(*args, **options) { @lookup << _1 }
+
     # @api internal
     def finalize(finalized)
     end
@@ -86,6 +91,7 @@ module Nii::Setup
 
     def prepare_config
       @config[:available_locales] ||= Nii::LocalePreference.new(implicit_locales) if implicit_locales.any?
+      @config[:lookup] = @lookup._build(@config) if @lookup.any?
     end
   end
 end

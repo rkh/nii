@@ -119,6 +119,7 @@ module Nii
     # @return [Nii::LocalePreference]
     # @see Nii:Locale#&
     def &(other)
+      return self if other.nil?
       locales = self.locales.map { |l| l & other if l.combinable? other }.compact
       LocalePreference.new(locales)
     end
@@ -127,7 +128,7 @@ module Nii
     # @return [Nii::LocalePreference]
     # @see Nii:Locale#|
     def |(other)
-      return self if locales.include? other
+      return self if other.nil? or locales.include? other
       LocalePreference.new(other, locales.reject { |l| l.subset_of? other })
     end
 

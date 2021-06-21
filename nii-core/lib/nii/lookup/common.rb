@@ -10,6 +10,9 @@ module Nii::Lookup
     # @api internal
     def self.type = Nii::Utils.type(self)
 
+    # @private
+    def self.setup_class = Nii::Setup::Lookup::Common
+
     # @return [Nii::Config]
     attr_reader :config
 
@@ -37,7 +40,7 @@ module Nii::Lookup
     # @return [Nii::LocalePreference]
     def available_locales(cache = !config.reload_templates?)
       return @lock.with_read_lock { @available_locales ||= available_locales(false) } if cache
-      Nii::LocalePreference.new(config.locale || scan_locales.compact.map(&:to_s).uniq)
+      Nii::LocalePreference.new(config.locale || scan_locales.compact.map(&:to_s).uniq) & config.available_locales
     end
 
     # @api internal
@@ -77,6 +80,10 @@ module Nii::Lookup
     def to_nii_lookup
       self
     end
+
+    # @raise [NotImplementedError]
+    # @return self
+    def <<(source) = raise(NotImplementedError, "#{self.class} does not support adding sources")
 
     private
 

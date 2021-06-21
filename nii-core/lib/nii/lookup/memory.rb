@@ -16,6 +16,9 @@ module Nii::Lookup
   class Memory < Common
     Nii::Lookup[:memory] = self
 
+    # @private
+    def self.setup_class = Nii::Setup::Lookup::Memory
+
     # DSL object used by the block passed to {Memory#initialize}.
     class DSL
       # @api internal

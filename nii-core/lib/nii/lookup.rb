@@ -5,6 +5,7 @@ module Nii
     # @api internal
     LOADERS = {}
 
+    autoload :Cascade,    'nii/lookup/cascade'
     autoload :Common,     'nii/lookup/common'
     autoload :Default,    'nii/lookup/default'
     autoload :FileCache,  'nii/lookup/file_cache'
@@ -14,7 +15,7 @@ module Nii
 
     def self.[](key)
       require "nii/lookup/#{key}" unless LOADERS.include? key
-      LOADERS.fetch(key)
+      LOADERS.fetch(key.to_sym)
     end
 
     def self.[]=(key, value)
