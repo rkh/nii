@@ -18,6 +18,7 @@ PATH
     nii-cli (0.0.0)
       dry-cli (~> 0.7)
       nii-core (= 0.0.0)
+      nii-xml (= 0.0.0)
     nii-core (0.0.0)
       concurrent-ruby (~> 1.1)
       nii-rbnf (= 0.0.0)
@@ -39,6 +40,9 @@ PATH
     nii-slim (0.0.0)
       nii-core (= 0.0.0)
       slim (~> 4.1)
+    nii-sql (0.0.0)
+      nii-core (= 0.0.0)
+      sequel
     nii-units (0.0.0)
     nii-xml (0.0.0)
       nii-core (= 0.0.0)
@@ -134,6 +138,7 @@ GEM
       thor (~> 1.0)
     rake (13.0.3)
     ruby2_keywords (0.0.4)
+    sequel (5.45.0)
     simplecov (0.21.2)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -185,6 +190,7 @@ DEPENDENCIES
   nii-rbnf!
   nii-sinatra!
   nii-slim!
+  nii-sql!
   nii-units!
   nii-xml!
   profile

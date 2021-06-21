@@ -11,6 +11,7 @@ path '.' do
   gem 'nii-rbnf'
   gem 'nii-slim'
   gem 'nii-sinatra'
+  gem 'nii-sql'
   gem 'nii-units'
   gem 'nii-xml'
 end
