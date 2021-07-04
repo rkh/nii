@@ -18,10 +18,9 @@ nii.format Nii::Territory["GH"]              # => "Ghana nutome"
 nii.format ["de", "fr", "it"], as: :language # => "Germaniagbe, Fransegbe, kple Italiagbe"
 
 # Spelling out numbers
-nii.numbers.spellout 1              # => "ɖeka"
 nii.numbers.spellout 115            # => "alafa ɖeka kple wuiatɔ̃"
+nii.numbers.spellout 1              # => "ɖeka"
 nii.numbers.spellout 2020, :year    # => "akpe eve kple blaeve"
-nii.numbers.spellout 1,    :ordinal # => "gbãtɔ"
 nii.numbers.spellout 115,  :ordinal # => "alafa ɖeka kple wuiatɔ̃lia"
 ```
 

@@ -18,10 +18,9 @@ nii.format Nii::Territory["PE"]              # => "Perú"
 nii.format ["de", "fr", "it"], as: :language # => "Aleman Simi, Frances Simi, Italiano Simi"
 
 # Spelling out numbers
-nii.numbers.spellout 1              # => "huk"
 nii.numbers.spellout 115            # => "huk pachak chunka phisqa-yuq"
+nii.numbers.spellout 1              # => "huk"
 nii.numbers.spellout 2020, :year    # => "iskay waranqa iskay chunka"
-nii.numbers.spellout 1,    :ordinal # => "huk-ñiqin"
 nii.numbers.spellout 115,  :ordinal # => "huk pachak chunka phisqa-yuq-ñiqin"
 ```
 

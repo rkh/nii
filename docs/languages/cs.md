@@ -19,8 +19,8 @@ nii.format Nii::Territory["CZ"]              # => "Česko"
 nii.format ["de", "fr", "it"], as: :language # => "němčina, francouzština a italština"
 
 # Spelling out numbers
-nii.numbers.spellout 1               # => "jeden"
 nii.numbers.spellout 115             # => "sto patnáct"
+nii.numbers.spellout 1               # => "jeden"
 nii.numbers.spellout 2020, :year     # => "dvě tisíce dvacet"
 nii.numbers.spellout 1,    :neuter   # => "jedno"
 nii.numbers.spellout 1,    :feminine # => "jedna"

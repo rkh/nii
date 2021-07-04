@@ -20,12 +20,10 @@ nii.format Nii::Territory["IN"]              # => "भारत"
 nii.format ["de", "fr", "it"], as: :language # => "जर्मन, फ़्रेंच, और इतालवी"
 
 # Spelling out numbers
-nii.numbers.spellout 1                          # => "एक"
 nii.numbers.spellout 115                        # => "एक सौ पन्द्रह"
+nii.numbers.spellout 1                          # => "एक"
 nii.numbers.spellout 2020, :year                # => "दो हज़ार बीस"
-nii.numbers.spellout 1,    :ordinal, :masculine # => "पहला"
 nii.numbers.spellout 115,  :ordinal, :masculine # => "एक सौ पन्द्रहवाँ"
-nii.numbers.spellout 1,    :ordinal, :feminine  # => "पहली"
 nii.numbers.spellout 115,  :ordinal, :feminine  # => "एक सौ पन्द्रहवी"
 ```
 

@@ -19,10 +19,9 @@ nii.format Nii::Territory["TH"]              # => "ไทย"
 nii.format ["de", "fr", "it"], as: :language # => "เยอรมัน ฝรั่งเศส และอิตาลี"
 
 # Spelling out numbers
-nii.numbers.spellout 1              # => "หนึ่ง"
 nii.numbers.spellout 115            # => "หนึ่ง​ร้อย​สิบ​ห้า"
+nii.numbers.spellout 1              # => "หนึ่ง"
 nii.numbers.spellout 2020, :year    # => "สอง​พัน​ยี่​สิบ"
-nii.numbers.spellout 1,    :ordinal # => "ที่​หนึ่ง"
 nii.numbers.spellout 115,  :ordinal # => "ที่​หนึ่ง​ร้อย​สิบ​ห้า"
 ```
 

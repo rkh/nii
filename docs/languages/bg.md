@@ -19,8 +19,8 @@ nii.format Nii::Territory["BG"]              # => "България"
 nii.format ["de", "fr", "it"], as: :language # => "немски, френски и италиански"
 
 # Spelling out numbers
-nii.numbers.spellout 1                # => "едно"
 nii.numbers.spellout 115              # => "сто петнадесет"
+nii.numbers.spellout 1                # => "едно"
 nii.numbers.spellout 2020, :year      # => "две хиляди двадесет"
 nii.numbers.spellout 1,    :masculine # => "един"
 ```

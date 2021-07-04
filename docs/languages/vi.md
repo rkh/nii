@@ -19,10 +19,9 @@ nii.format Nii::Territory["VN"]              # => "Việt Nam"
 nii.format ["de", "fr", "it"], as: :language # => "Tiếng Đức, Tiếng Pháp và Tiếng Italy"
 
 # Spelling out numbers
-nii.numbers.spellout 1              # => "một"
 nii.numbers.spellout 115            # => "một trăm mười lăm"
+nii.numbers.spellout 1              # => "một"
 nii.numbers.spellout 2020, :year    # => "hai nghìn không trăm hai mươi"
-nii.numbers.spellout 1,    :ordinal # => "thứ nhất"
 nii.numbers.spellout 115,  :ordinal # => "thứ một trăm mười lăm"
 ```
 

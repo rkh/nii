@@ -19,8 +19,8 @@ nii.format Nii::Territory["AL"]              # => "Shqipëri"
 nii.format ["de", "fr", "it"], as: :language # => "gjermanisht, frëngjisht dhe italisht"
 
 # Spelling out numbers
-nii.numbers.spellout 1           # => "një"
 nii.numbers.spellout 115         # => "njëqind e pesëmbëdhjetë"
+nii.numbers.spellout 1           # => "një"
 nii.numbers.spellout 2020, :year # => "dy mijë e njëzet"
 ```
 

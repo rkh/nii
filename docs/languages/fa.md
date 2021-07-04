@@ -19,8 +19,8 @@ nii.format Nii::Territory["IR"]              # => "ایران"
 nii.format ["de", "fr", "it"], as: :language # => "آلمانی،‏ فرانسوی، و ایتالیایی"
 
 # Spelling out numbers
-nii.numbers.spellout 1           # => "یک"
 nii.numbers.spellout 115         # => "صد و پانزده"
+nii.numbers.spellout 1           # => "یک"
 nii.numbers.spellout 2020, :year # => "دو هزار و بیست"
 ```
 

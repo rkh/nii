@@ -20,13 +20,11 @@ nii.format Nii::Territory["HK"]              # => "中華人民共和國香港�
 nii.format ["de", "fr", "it"], as: :language # => "德文、法文同義大利文"
 
 # Spelling out numbers
-nii.numbers.spellout 1                # => "一"
 nii.numbers.spellout 115              # => "一百一十五"
+nii.numbers.spellout 1                # => "一"
 nii.numbers.spellout 2020             # => "二千零二十"
 nii.numbers.spellout 2020, :year      # => "二二零"
-nii.numbers.spellout 1,    :financial # => "壹"
 nii.numbers.spellout 115,  :financial # => "壹佰壹拾伍"
-nii.numbers.spellout 1,    :ordinal   # => "第一"
 nii.numbers.spellout 115,  :ordinal   # => "第一百一十五"
 ```
 

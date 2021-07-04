@@ -12,7 +12,7 @@ module Docs
       def spellout_examples
         @spellout_examples ||= begin
           nii   = Nii::Context.new(language)
-          base  = [1, 115]
+          base  = [115, 1]
           year  = 2020  
           lines = base.map { ["nii.numbers.spellout #{_1}", nii.numbers.spellout(_1)] }
 
@@ -30,11 +30,12 @@ module Docs
             end
             values.each do |value|
               result = nii.numbers.spellout(value, *keys)
-              if keys == [:year] or result != nii.numbers.spellout(value)
+              if keys == [:year] or result != nii.numbers.spellout(value, *keys[0..-2])
                 lines << [
                   "nii.numbers.spellout #{"#{value},".ljust(5)} #{keys.map(&:inspect).join(', ')}",
                   nii.numbers.spellout(value, *keys)
                 ]
+                break
               end
             end
           end

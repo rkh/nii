@@ -19,12 +19,11 @@ nii.format Nii::Territory["RS"]              # => "Srbija"
 nii.format ["de", "fr", "it"], as: :language # => "nemački, francuski i italijanski"
 
 # Spelling out numbers
-nii.numbers.spellout 1               # => "jedan"
 nii.numbers.spellout 115             # => "sto petnaest"
+nii.numbers.spellout 1               # => "jedan"
 nii.numbers.spellout 2020, :year     # => "dve hiljada dvadeset"
 nii.numbers.spellout 1,    :neuter   # => "jedno"
 nii.numbers.spellout 1,    :feminine # => "jedna"
-nii.numbers.spellout 1,    :ordinal  # => "prvi"
 nii.numbers.spellout 115,  :ordinal  # => "sto petnaesti"
 ```
 

@@ -19,10 +19,9 @@ nii.format Nii::Territory["ID"]              # => "Indonesia"
 nii.format ["de", "fr", "it"], as: :language # => "Jerman, Prancis, dan Italia"
 
 # Spelling out numbers
-nii.numbers.spellout 1              # => "satu"
 nii.numbers.spellout 115            # => "seratus lima belas"
+nii.numbers.spellout 1              # => "satu"
 nii.numbers.spellout 2020, :year    # => "dua ribu dua puluh"
-nii.numbers.spellout 1,    :ordinal # => "kesatu"
 nii.numbers.spellout 115,  :ordinal # => "keseratus lima belas"
 ```
 

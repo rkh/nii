@@ -20,11 +20,10 @@ nii.format Nii::Territory["KG"]              # => "Кыргызстан"
 nii.format ["de", "fr", "it"], as: :language # => "немисче, французча жана италиянча"
 
 # Spelling out numbers
-nii.numbers.spellout 1              # => "бир"
 nii.numbers.spellout 115            # => "бир жүз он беш"
+nii.numbers.spellout 1              # => "бир"
 nii.numbers.spellout 2020, :year    # => "эки миң жыйырма"
 nii.numbers.spellout 115,  :verbose # => "бир жүз жана он беш"
-nii.numbers.spellout 1,    :ordinal # => "биринчи"
 nii.numbers.spellout 115,  :ordinal # => "бир жүз он бешинчи"
 ```
 

@@ -19,15 +19,12 @@ nii.format Nii::Territory["JP"]              # => "日本"
 nii.format ["de", "fr", "it"], as: :language # => "ドイツ語、フランス語、イタリア語"
 
 # Spelling out numbers
-nii.numbers.spellout 1                  # => "一"
-nii.numbers.spellout 115                # => "百十五"
-nii.numbers.spellout 2020               # => "二千二十"
-nii.numbers.spellout 1,    :year, :latn # => "元"
-nii.numbers.spellout 2020, :year        # => "二二〇"
-nii.numbers.spellout 1,    :financial   # => "壱"
-nii.numbers.spellout 115,  :financial   # => "壱百拾伍"
-nii.numbers.spellout 1,    :ordinal     # => "第一"
-nii.numbers.spellout 115,  :ordinal     # => "第百十五"
+nii.numbers.spellout 115              # => "百十五"
+nii.numbers.spellout 1                # => "一"
+nii.numbers.spellout 2020             # => "二千二十"
+nii.numbers.spellout 2020, :year      # => "二二〇"
+nii.numbers.spellout 115,  :financial # => "壱百拾伍"
+nii.numbers.spellout 115,  :ordinal   # => "第百十五"
 ```
 
 

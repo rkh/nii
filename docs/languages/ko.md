@@ -19,20 +19,15 @@ nii.format Nii::Territory["KR"]              # => "대한민국"
 nii.format ["de", "fr", "it"], as: :language # => "독일어, 프랑스어 및 이탈리아어"
 
 # Spelling out numbers
-nii.numbers.spellout 1                                   # => "일"
 nii.numbers.spellout 115                                 # => "백십오"
+nii.numbers.spellout 1                                   # => "일"
 nii.numbers.spellout 2020, :year                         # => "이천이십"
-nii.numbers.spellout 1,    :native, :attributive         # => "한"
 nii.numbers.spellout 115,  :native, :attributive         # => "백열다섯"
 nii.numbers.spellout 1,    :native                       # => "하나"
 nii.numbers.spellout 115,  :financial                    # => "일백일십오"
-nii.numbers.spellout 1,    :ordinal, :sinokorean, :count # => "첫 번째"
 nii.numbers.spellout 115,  :ordinal, :sinokorean, :count # => "백십오 번째"
-nii.numbers.spellout 1,    :ordinal, :native, :count     # => "첫 번째"
 nii.numbers.spellout 115,  :ordinal, :native, :count     # => "백열다섯 번째"
-nii.numbers.spellout 1,    :ordinal, :sinokorean         # => "첫째"
 nii.numbers.spellout 115,  :ordinal, :sinokorean         # => "백십오째"
-nii.numbers.spellout 1,    :ordinal, :native             # => "첫째"
 nii.numbers.spellout 115,  :ordinal, :native             # => "백열다섯째"
 ```
 

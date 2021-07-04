@@ -19,16 +19,13 @@ nii.format Nii::Territory["GR"]              # => "Ελλάδα"
 nii.format ["de", "fr", "it"], as: :language # => "Γερμανικά, Γαλλικά και Ιταλικά"
 
 # Spelling out numbers
-nii.numbers.spellout 1                          # => "ένα"
 nii.numbers.spellout 115                        # => "εκατόν δεκα­πέντε"
+nii.numbers.spellout 1                          # => "ένα"
 nii.numbers.spellout 2020, :year                # => "δύο χίλιάδες είκοσι"
 nii.numbers.spellout 1,    :masculine           # => "ένας"
 nii.numbers.spellout 1,    :feminine            # => "μία"
-nii.numbers.spellout 1,    :ordinal, :masculine # => "πρώτος"
 nii.numbers.spellout 115,  :ordinal, :masculine # => "εκατοστός δέκατος πέμπτος"
-nii.numbers.spellout 1,    :ordinal, :feminine  # => "πρώτη"
 nii.numbers.spellout 115,  :ordinal, :feminine  # => "εκατοστή δέκατη πέμπτη"
-nii.numbers.spellout 1,    :ordinal, :neuter    # => "πρώτο"
 nii.numbers.spellout 115,  :ordinal, :neuter    # => "εκατοστό δέκατο πέμπτο"
 ```
 

@@ -20,10 +20,9 @@ nii.format Nii::Territory["AZ"]              # => "Azərbaycan"
 nii.format ["de", "fr", "it"], as: :language # => "alman, fransız və italyan"
 
 # Spelling out numbers
-nii.numbers.spellout 1              # => "bir"
 nii.numbers.spellout 115            # => "bir yüz on beş"
+nii.numbers.spellout 1              # => "bir"
 nii.numbers.spellout 2020, :year    # => "iki min iyirmi"
-nii.numbers.spellout 1,    :ordinal # => "birinci"
 nii.numbers.spellout 115,  :ordinal # => "bir yüz on beşinci"
 ```
 

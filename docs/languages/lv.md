@@ -19,8 +19,8 @@ nii.format Nii::Territory["LV"]              # => "Latvija"
 nii.format ["de", "fr", "it"], as: :language # => "vācu, franču un itāļu"
 
 # Spelling out numbers
-nii.numbers.spellout 1               # => "viens"
 nii.numbers.spellout 115             # => "simt piecpadsmit"
+nii.numbers.spellout 1               # => "viens"
 nii.numbers.spellout 2020, :year     # => "divtūkstoš divdesmit"
 nii.numbers.spellout 1,    :feminine # => "viena"
 ```
