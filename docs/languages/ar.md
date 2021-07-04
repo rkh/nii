@@ -17,6 +17,16 @@ nii = Nii::Context.new "ar" # => #<Nii::Context:ar-001>
 nii.format 9.99, currency: "USD"             # => "٩٫٩٩ US$"
 nii.format Nii::Territory["001"]             # => "العالم"
 nii.format ["de", "fr", "it"], as: :language # => "الألمانية والفرنسية والإيطالية"
+
+# Spelling out numbers
+nii.numbers.spellout 1                          # => "واحد"
+nii.numbers.spellout 115                        # => "مائة و خمسة عشر"
+nii.numbers.spellout 2020, :year                # => "ألفين و عشرون"
+nii.numbers.spellout 1,    :feminine            # => "واحدة"
+nii.numbers.spellout 1,    :ordinal, :feminine  # => "الأولى"
+nii.numbers.spellout 115,  :ordinal, :feminine  # => "المائة و خمسة عشر"
+nii.numbers.spellout 1,    :ordinal, :masculine # => "الأول"
+nii.numbers.spellout 115,  :ordinal, :masculine # => "المائة و خمسة عشر"
 ```
 
 

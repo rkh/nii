@@ -17,6 +17,12 @@ nii = Nii::Context.new "et" # => #<Nii::Context:et-EE>
 nii.format 9.99, style: :currency            # => "9,99 €"
 nii.format Nii::Territory["EE"]              # => "Eesti"
 nii.format ["de", "fr", "it"], as: :language # => "saksa, prantsuse ja itaalia"
+
+# Spelling out numbers
+nii.numbers.spellout 1           # => "üks"
+nii.numbers.spellout 115         # => "ükssada viisteist"
+nii.numbers.spellout 2020        # => "kaks tuhat kakskümmend"
+nii.numbers.spellout 2020, :year # => "kakskümmend sada kakskümmend"
 ```
 
 

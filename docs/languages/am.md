@@ -17,6 +17,14 @@ nii = Nii::Context.new "am" # => #<Nii::Context:am-ET>
 nii.format 9.99, style: :currency            # => "ብር 9.99"
 nii.format Nii::Territory["ET"]              # => "ኢትዮጵያ"
 nii.format ["de", "fr", "it"], as: :language # => "ጀርመን፣ ፈረንሳይኛ, እና ጣሊያንኛ"
+
+# Spelling out numbers
+nii.numbers.spellout 1              # => "አንድ"
+nii.numbers.spellout 115            # => "መቶ አስር አምስት"
+nii.numbers.spellout 2020           # => "ሁለት ሺ ሁለት አስር"
+nii.numbers.spellout 2020, :year    # => "ሁለት አስር መቶ ሁለት አስር"
+nii.numbers.spellout 1,    :ordinal # => "አንድኛ"
+nii.numbers.spellout 115,  :ordinal # => "መቶ አስር አምስትኛ"
 ```
 
 

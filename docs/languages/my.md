@@ -17,6 +17,12 @@ nii = Nii::Context.new "my" # => #<Nii::Context:my-MM>
 nii.format 9.99, style: :currency            # => "၉.၉၉ K"
 nii.format Nii::Territory["MM"]              # => "မြန်မာ"
 nii.format ["de", "fr", "it"], as: :language # => "ဂျာမန်၊ ပြင်သစ်နှင့် အီတလီ"
+
+# Spelling out numbers
+nii.numbers.spellout 1              # => "တစ်"
+nii.numbers.spellout 115            # => "တစ်ရာ့ဆယ့်ငါး"
+nii.numbers.spellout 2020, :year    # => "နှစ်ထောင့်နှစ်ဆယ်"
+nii.numbers.spellout 1,    :ordinal # => "ပထမ"
 ```
 
 

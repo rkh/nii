@@ -5,7 +5,7 @@ class Nii::RBNF
   # @api internal
   class RuleSet
     DESCRIPTOR    = %r{^ (?<bv>[\d\. ,]+) (?:/ (?<rad>[\d\. ,]+) )? (?<suffix>\>*) $}x
-    SPECIAL_RULES = %w[ -x 0.x x.0 x.x Inf NaN ]
+    SPECIAL_RULES = %w[ -x 0.x x.0 x.x x,x Inf NaN ]
 
     # @param name [String] rule set name without the prefix
     # @param prefix [String] either % or %%

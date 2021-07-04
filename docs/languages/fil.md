@@ -17,6 +17,13 @@ nii = Nii::Context.new "fil" # => #<Nii::Context:fil-PH>
 nii.format 9.99, style: :currency            # => "₱9.99"
 nii.format Nii::Territory["PH"]              # => "Pilipinas"
 nii.format ["de", "fr", "it"], as: :language # => "German, French, at Italian"
+
+# Spelling out numbers
+nii.numbers.spellout 1              # => "isá"
+nii.numbers.spellout 115            # => "isáng daán at labíng-limá"
+nii.numbers.spellout 2020, :year    # => "dalawáng libó’t dalawáng pû"
+nii.numbers.spellout 1,    :ordinal # => "ika isá"
+nii.numbers.spellout 115,  :ordinal # => "ika isáng daán at labíng-limá"
 ```
 
 

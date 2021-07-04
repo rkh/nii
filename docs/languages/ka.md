@@ -17,6 +17,11 @@ nii = Nii::Context.new "ka" # => #<Nii::Context:ka-GE>
 nii.format 9.99, style: :currency            # => "9,99 ₾"
 nii.format Nii::Territory["GE"]              # => "საქართველო"
 nii.format ["de", "fr", "it"], as: :language # => "გერმანული, ფრანგული და იტალიური"
+
+# Spelling out numbers
+nii.numbers.spellout 1           # => "ერთი"
+nii.numbers.spellout 115         # => "ას­თხუთმეტი"
+nii.numbers.spellout 2020, :year # => "ორი ათას ოცი"
 ```
 
 

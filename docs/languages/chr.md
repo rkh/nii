@@ -16,6 +16,11 @@ nii = Nii::Context.new "chr" # => #<Nii::Context:chr-US>
 nii.format 9.99, style: :currency            # => "$9.99"
 nii.format Nii::Territory["US"]              # => "ᏌᏊ ᎢᏳᎾᎵᏍᏔᏅ ᏍᎦᏚᎩ"
 nii.format ["de", "fr", "it"], as: :language # => "ᏙᎢᏥ, ᎦᎸᏥ, ᎠᎴ ᎬᏩᎵᏲᏥᎢ"
+
+# Spelling out numbers
+nii.numbers.spellout 1           # => "ꮠꮼ"
+nii.numbers.spellout 115         # => "ꮠꮼ ꮝꭺꭿꮵꮖ ꭿꮝꭶꮪ"
+nii.numbers.spellout 2020, :year # => "ꮤꮅ ꭲꮿꭶᏼꮅ ꮤꮅꮝꭺꭿ"
 ```
 
 

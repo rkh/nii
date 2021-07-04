@@ -17,6 +17,12 @@ nii = Nii::Context.new "ga" # => #<Nii::Context:ga-IE>
 nii.format 9.99, style: :currency            # => "€9.99"
 nii.format Nii::Territory["IE"]              # => "Éire"
 nii.format ["de", "fr", "it"], as: :language # => "Gearmáinis, Fraincis agus Iodáilis"
+
+# Spelling out numbers
+nii.numbers.spellout 1           # => "a haon"
+nii.numbers.spellout 115         # => "céad a cúig déag"
+nii.numbers.spellout 2020        # => "dhá mhíle, fiche"
+nii.numbers.spellout 2020, :year # => "fiche fiche"
 ```
 
 

@@ -16,6 +16,13 @@ nii = Nii::Context.new "ccp" # => #<Nii::Context:ccp-BD>
 nii.format 9.99, style: :currency            # => "𑄿.𑄿𑄿৳"
 nii.format Nii::Territory["BD"]              # => "𑄝𑄁𑄣𑄘𑄬𑄌𑄴"
 nii.format ["de", "fr", "it"], as: :language # => "𑄎𑄢𑄴𑄟𑄚𑄴, 𑄜𑄧𑄢𑄥𑄨 𑄃𑄳𑄃 𑄃𑄨𑄖𑄣𑄩𑄠𑄧"
+
+# Spelling out numbers
+nii.numbers.spellout 1              # => "𑄆𑄇𑄴"
+nii.numbers.spellout 115            # => "𑄆𑄇𑄴𑄥𑄧 𑄛𑄧𑄚𑄴𑄘𑄳𑄢𑄧"
+nii.numbers.spellout 2020, :year    # => "𑄘𑄨 𑄦𑄎𑄢𑄴 𑄇𑄪𑄢𑄨"
+nii.numbers.spellout 1,    :ordinal # => "𑄆𑄇𑄴 𑄛𑄳𑄆𑄘𑄳𑄠𑄬"
+nii.numbers.spellout 115,  :ordinal # => "𑄆𑄇𑄴𑄥𑄧 𑄛𑄧𑄚𑄴𑄘𑄳𑄢𑄧 𑄛𑄳𑄆𑄘𑄳𑄠𑄬"
 ```
 
 

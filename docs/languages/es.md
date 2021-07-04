@@ -17,6 +17,23 @@ nii = Nii::Context.new "es" # => #<Nii::Context:es-ES>
 nii.format 9.99, style: :currency            # => "9,99 €"
 nii.format Nii::Territory["ES"]              # => "España"
 nii.format ["de", "fr", "it"], as: :language # => "alemán, francés e italiano"
+
+# Spelling out numbers
+nii.numbers.spellout 1                                      # => "uno"
+nii.numbers.spellout 115                                    # => "ciento quince"
+nii.numbers.spellout 2020, :year                            # => "dos mil veinte"
+nii.numbers.spellout 1,    :masculine                       # => "un"
+nii.numbers.spellout 1,    :feminine                        # => "una"
+nii.numbers.spellout 1,    :ordinal, :masculine, :adjective # => "primer"
+nii.numbers.spellout 115,  :ordinal, :masculine, :adjective # => "centésimo decimoquinto"
+nii.numbers.spellout 1,    :ordinal, :masculine, :plural    # => "primeros"
+nii.numbers.spellout 115,  :ordinal, :masculine, :plural    # => "centésimo decimoquintos"
+nii.numbers.spellout 1,    :ordinal, :masculine             # => "primero"
+nii.numbers.spellout 115,  :ordinal, :masculine             # => "centésimo decimoquinto"
+nii.numbers.spellout 1,    :ordinal, :feminine, :plural     # => "primeras"
+nii.numbers.spellout 115,  :ordinal, :feminine, :plural     # => "centésima decimoquintas"
+nii.numbers.spellout 1,    :ordinal, :feminine              # => "primera"
+nii.numbers.spellout 115,  :ordinal, :feminine              # => "centésima decimoquinta"
 ```
 
 ## Variants

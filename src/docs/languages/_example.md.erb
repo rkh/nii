@@ -17,4 +17,9 @@ nii.format <%= nii.territory.inspect.ljust(33) %> # => <%= nii.format(nii.territ
 nii.format Nii::Territory["001"]             # => <%= nii.format(Nii::Territory["001"]).inspect %>
 <% end -%>
 nii.format ["de", "fr", "it"], as: :language # => <%= nii.format(['de', 'fr', 'it'], as: :language).inspect %>
+<% if spellout_examples.any? -%>
+
+# Spelling out numbers
+<%= spellout_examples.join("\n") %>
+<% end -%>
 ```

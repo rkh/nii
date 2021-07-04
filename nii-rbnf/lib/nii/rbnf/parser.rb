@@ -9,7 +9,7 @@ class Nii::RBNF
 
     SET    = %r{ \s* (?<prefix>%%?) (?<name>[\w\-]+) : \s* }mx
     SIMPLE = %r{ \s* (?!%) '? (?<body>[^:;]*) ; }mx
-    RULE   = %r{ \s* (?<descriptor>[\w\-\./]+) : \s* '? (?<body>[^;:]*) ; \s*  }mx
+    RULE   = %r{ \s* (?<descriptor>[\w\-\.,/]+) : \s* '? (?<body>(?:[^;:]|'.)*) ; \s*  }mx
 
     # @see RBNF.load
     def parse(source, file_name)
@@ -40,7 +40,7 @@ class Nii::RBNF
         when scanner.scan(SET)    then tokens << [:set, scanner[:prefix], scanner[:name]]
         when scanner.scan(SIMPLE) then tokens << [:rule, nil, scanner[:body]]
         when scanner.scan(RULE)   then tokens << [:rule, scanner[:descriptor], scanner[:body]]
-        else raise SyntaxError, "unexpected character: #{scanner.peek(1).inspect} in #{file_name}:#{scanner.pos}"
+        else raise SyntaxError, "unexpected character: #{scanner.peek(1).inspect}"
         end
       end
 

@@ -16,6 +16,15 @@ nii = Nii::Context.new "ff" # => #<Nii::Context:ff-Latn-SN>
 nii.format 9.99, style: :currency            # => "9,99 F CFA"
 nii.format Nii::Territory["SN"]              # => "Senegaal"
 nii.format ["de", "fr", "it"], as: :language # => "Docceere, Farayseere, Italiyeere"
+
+# Spelling out numbers
+nii.numbers.spellout 1                # => "goʼo"
+nii.numbers.spellout 115              # => "temedere goʼo e sappo e jowi"
+nii.numbers.spellout 2020, :year      # => "ujunere ɗiɗi e noogas"
+nii.numbers.spellout 1,    :class, :o # => "gooto"
+nii.numbers.spellout 115,  :class, :o # => "temedere gooto e sappo e njowo"
+nii.numbers.spellout 1,    :ordinal   # => "arande"
+nii.numbers.spellout 115,  :ordinal   # => "temedere arande e sappo e jowaɓo"
 ```
 
 

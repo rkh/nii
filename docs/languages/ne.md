@@ -17,6 +17,16 @@ nii = Nii::Context.new "ne" # => #<Nii::Context:ne-NP>
 nii.format 9.99, style: :currency            # => "नेरू ९.९९"
 nii.format Nii::Territory["NP"]              # => "नेपाल"
 nii.format ["de", "fr", "it"], as: :language # => "जर्मन,फ्रान्सेली र इटालेली"
+
+# Spelling out numbers
+nii.numbers.spellout 1                          # => "एक"
+nii.numbers.spellout 115                        # => "एक सय पन्ध्र"
+nii.numbers.spellout 2020                       # => "दुई हजार बिस"
+nii.numbers.spellout 2020, :year                # => "बिस सय बिस"
+nii.numbers.spellout 1,    :ordinal, :masculine # => "पहिलो"
+nii.numbers.spellout 115,  :ordinal, :masculine # => "एक सय पन्ध्रौँ"
+nii.numbers.spellout 1,    :ordinal, :feminine  # => "पहिली"
+nii.numbers.spellout 115,  :ordinal, :feminine  # => "एक सय पन्ध्रौँ"
 ```
 
 

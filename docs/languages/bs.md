@@ -18,6 +18,13 @@ nii = Nii::Context.new "bs" # => #<Nii::Context:bs-Latn-BA>
 nii.format 9.99, style: :currency            # => "9,99 KM"
 nii.format Nii::Territory["BA"]              # => "Bosna i Hercegovina"
 nii.format ["de", "fr", "it"], as: :language # => "njemački, francuski i italijanski"
+
+# Spelling out numbers
+nii.numbers.spellout 1               # => "jedan"
+nii.numbers.spellout 115             # => "sto petnaest"
+nii.numbers.spellout 2020, :year     # => "dve hiljada dvadeset"
+nii.numbers.spellout 1,    :neuter   # => "jedno"
+nii.numbers.spellout 1,    :feminine # => "jedinica"
 ```
 
 

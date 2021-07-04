@@ -17,6 +17,16 @@ nii = Nii::Context.new "zh" # => #<Nii::Context:zh-Hant-TW>
 nii.format 9.99, style: :currency            # => "$9.99"
 nii.format Nii::Territory["TW"]              # => "台灣"
 nii.format ["de", "fr", "it"], as: :language # => "德文、法文和義大利文"
+
+# Spelling out numbers
+nii.numbers.spellout 1                # => "一"
+nii.numbers.spellout 115              # => "一百一十五"
+nii.numbers.spellout 2020             # => "二千零二十"
+nii.numbers.spellout 2020, :year      # => "二二〇"
+nii.numbers.spellout 1,    :financial # => "壹"
+nii.numbers.spellout 115,  :financial # => "壹佰壹拾伍"
+nii.numbers.spellout 1,    :ordinal   # => "第一"
+nii.numbers.spellout 115,  :ordinal   # => "第一百一十五"
 ```
 
 

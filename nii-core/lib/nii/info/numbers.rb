@@ -25,6 +25,24 @@ module Nii::Info
       get(system, "#{type}_formats", format)
     end
 
+    def spellout(number, *keys, **options) = spellout_rules.format(number, spellout_rule(keys), **options)
+    
+    def spellout_ordinal(number, *keys, **options) = spellout(number, :ordinal, *keys, **options)
+    def spellout_cardinal(number, *keys, **options) = spellout(number, :cardinal, *keys, **options)
+    def spellout_year(year, **options) = spellout(year, :year, **options)
+  
+    def ordinal(number) = ordinal_rules.format(number, 'digits-ordinal')
+
+    # Rules for spelling out numbers.
+    # @see #spellout
+    # @return [Nii::RBNF]
+    def spellout_rules = rbnf(:spellout_rules)
+
+    # Rules for formatting ordinal numbers (1th, 2nd, etc).
+    # @see #ordinal
+    # @return [Nii::RBNF]
+    def ordinal_rules = rbnf(:ordinal_rules)
+
     # @overload classify(type = nil, number, complain: true)
     #   @param (see Nii::Plurals#classify)
     #   @return (see Nii::Plurals#classify)
@@ -68,6 +86,17 @@ module Nii::Info
     end
 
     private
+
+    def rbnf(key) = data.cache(:rbnf, context.data_locale, :rbnf, key) { Nii::RBNF.load(_1, plurals: context.grammar.plurals) }
+    
+    def spellout_rule(keys)
+      data.cache(:spellout_rule, locale: context.data_locale, keys: keys) do
+        available = spellout_rules.rule_sets
+        base      = keys.join('-')
+        possible  = ["spellout-#{base}", "spellout-cardinal-#{base}", "spellout-numbering-#{base}", base, "spellout-numbering"]
+        possible.detect { available.include? _1 }
+      end
+    end
 
     def get(system, key, *keys)
       keys.compact!

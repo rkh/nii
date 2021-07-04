@@ -17,6 +17,13 @@ nii = Nii::Context.new "tr" # => #<Nii::Context:tr-TR>
 nii.format 9.99, style: :currency            # => "₺9,99"
 nii.format Nii::Territory["TR"]              # => "Türkiye"
 nii.format ["de", "fr", "it"], as: :language # => "Almanca, Fransızca ve İtalyanca"
+
+# Spelling out numbers
+nii.numbers.spellout 1              # => "bir"
+nii.numbers.spellout 115            # => "yüz on beş"
+nii.numbers.spellout 2020, :year    # => "iki bin yirmi"
+nii.numbers.spellout 1,    :ordinal # => "birinci"
+nii.numbers.spellout 115,  :ordinal # => "yüz on beşinci"
 ```
 
 

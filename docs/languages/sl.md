@@ -17,6 +17,11 @@ nii = Nii::Context.new "sl" # => #<Nii::Context:sl-SI>
 nii.format 9.99, style: :currency            # => "9,99 €"
 nii.format Nii::Territory["SI"]              # => "Slovenija"
 nii.format ["de", "fr", "it"], as: :language # => "nemščina, francoščina in italijanščina"
+
+# Spelling out numbers
+nii.numbers.spellout 1           # => "ena"
+nii.numbers.spellout 115         # => "sto petnajst"
+nii.numbers.spellout 2020, :year # => "dvije tisuće dvaset"
 ```
 
 ## Variants

@@ -17,6 +17,20 @@ nii = Nii::Context.new "he" # => #<Nii::Context:he-IL>
 nii.format 9.99, style: :currency            # => "‏9.99 ₪"
 nii.format Nii::Territory["IL"]              # => "ישראל"
 nii.format ["de", "fr", "it"], as: :language # => "גרמנית, צרפתית ואיטלקית"
+
+# Spelling out numbers
+nii.numbers.spellout 1                             # => "אחת"
+nii.numbers.spellout 115                           # => "מאה וחמש עשרה"
+nii.numbers.spellout 2020, :year                   # => "אלפיים עשרים"
+nii.numbers.spellout 1,    :masculine              # => "אחד"
+nii.numbers.spellout 115,  :masculine              # => "מאה וחמישה עשר"
+nii.numbers.spellout 1,    :masculine, :standalone # => "אחד"
+nii.numbers.spellout 115,  :masculine, :standalone # => "מאה וחמישה עשר"
+nii.numbers.spellout 1,    :construct, :masculine  # => "אחד"
+nii.numbers.spellout 115,  :construct, :masculine  # => "מאה וחמישה עשר"
+nii.numbers.spellout 1,    :ordinal, :masculine    # => "ראשון"
+nii.numbers.spellout 115,  :ordinal, :masculine    # => "מאה וחמישה עשר"
+nii.numbers.spellout 1,    :ordinal, :feminine     # => "ראשונה"
 ```
 
 

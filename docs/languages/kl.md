@@ -16,6 +16,11 @@ nii = Nii::Context.new "kl" # => #<Nii::Context:kl-GL>
 nii.format 9.99, style: :currency            # => "kr. 9,99"
 nii.format Nii::Territory["GL"]              # => "Kalaallit Nunaat"
 nii.format ["de", "fr", "it"], as: :language # => "de, fr, it"
+
+# Spelling out numbers
+nii.numbers.spellout 1           # => "ataaseq"
+nii.numbers.spellout 115         # => "uutritit aqqaneq-tallimat"
+nii.numbers.spellout 2020, :year # => "marlunnik tuusintillit marlunnik qulillit"
 ```
 
 ## Variants

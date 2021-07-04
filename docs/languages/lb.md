@@ -16,6 +16,20 @@ nii = Nii::Context.new "lb" # => #<Nii::Context:lb-LU>
 nii.format 9.99, style: :currency            # => "9,99 €"
 nii.format Nii::Territory["LU"]              # => "Lëtzebuerg"
 nii.format ["de", "fr", "it"], as: :language # => "Däitsch, Franséisch a(n) Italienesch"
+
+# Spelling out numbers
+nii.numbers.spellout 1                          # => "eent"
+nii.numbers.spellout 115                        # => "­honnert­fofzéng"
+nii.numbers.spellout 2020                       # => "zwee­dausend­zwanzeg"
+nii.numbers.spellout 2020, :year                # => "zwanzeghonnertzwanzeg"
+nii.numbers.spellout 1,    :feminine            # => "eng"
+nii.numbers.spellout 1,    :neuter              # => "een"
+nii.numbers.spellout 1,    :ordinal, :masculine # => "éischten"
+nii.numbers.spellout 115,  :ordinal, :masculine # => "­honnert­fofzéngten"
+nii.numbers.spellout 1,    :ordinal, :feminine  # => "éischter"
+nii.numbers.spellout 115,  :ordinal, :feminine  # => "­honnert­fofzéngter"
+nii.numbers.spellout 1,    :ordinal, :neuter    # => "éischt"
+nii.numbers.spellout 115,  :ordinal, :neuter    # => "­honnert­fofzéngt"
 ```
 
 

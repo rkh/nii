@@ -18,6 +18,17 @@ nii = Nii::Context.new "en" # => #<Nii::Context:en-US>
 nii.format 9.99, style: :currency            # => "$9.99"
 nii.format Nii::Territory["US"]              # => "United States"
 nii.format ["de", "fr", "it"], as: :language # => "German, French, and Italian"
+
+# Spelling out numbers
+nii.numbers.spellout 1                        # => "one"
+nii.numbers.spellout 115                      # => "one hundred fifteen"
+nii.numbers.spellout 2020                     # => "two thousand twenty"
+nii.numbers.spellout 2020, :year              # => "twenty twenty"
+nii.numbers.spellout 115,  :verbose           # => "one hundred and fifteen"
+nii.numbers.spellout 1,    :ordinal           # => "first"
+nii.numbers.spellout 115,  :ordinal           # => "one hundred fifteenth"
+nii.numbers.spellout 1,    :ordinal, :verbose # => "first"
+nii.numbers.spellout 115,  :ordinal, :verbose # => "one hundred and fifteenth"
 ```
 
 ## Variants

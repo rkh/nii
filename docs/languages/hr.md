@@ -17,6 +17,19 @@ nii = Nii::Context.new "hr" # => #<Nii::Context:hr-HR>
 nii.format 9.99, style: :currency            # => "9,99 HRK"
 nii.format Nii::Territory["HR"]              # => "Hrvatska"
 nii.format ["de", "fr", "it"], as: :language # => "njemački, francuski i talijanski"
+
+# Spelling out numbers
+nii.numbers.spellout 1                          # => "jedan"
+nii.numbers.spellout 115                        # => "sto petnaest"
+nii.numbers.spellout 2020, :year                # => "dvije tisuće dvadeset"
+nii.numbers.spellout 1,    :neuter              # => "jedno"
+nii.numbers.spellout 1,    :feminine            # => "jedna"
+nii.numbers.spellout 1,    :ordinal, :masculine # => "prvi"
+nii.numbers.spellout 115,  :ordinal, :masculine # => "st petnaesti"
+nii.numbers.spellout 1,    :ordinal, :neuter    # => "prvo"
+nii.numbers.spellout 115,  :ordinal, :neuter    # => "st petnaesto"
+nii.numbers.spellout 1,    :ordinal, :feminine  # => "prva"
+nii.numbers.spellout 115,  :ordinal, :feminine  # => "st petnaesta"
 ```
 
 

@@ -17,6 +17,13 @@ nii = Nii::Context.new "ta" # => #<Nii::Context:ta-IN>
 nii.format 9.99, style: :currency            # => "₹ 9.99"
 nii.format Nii::Territory["IN"]              # => "இந்தியா"
 nii.format ["de", "fr", "it"], as: :language # => "ஜெர்மன், பிரெஞ்சு மற்றும் இத்தாலியன்"
+
+# Spelling out numbers
+nii.numbers.spellout 1              # => "ஒன்று"
+nii.numbers.spellout 115            # => "நூறு பதினைந்து"
+nii.numbers.spellout 2020, :year    # => "இரண்டு ஆயிரம் இருபது"
+nii.numbers.spellout 1,    :ordinal # => "முதலாவது"
+nii.numbers.spellout 115,  :ordinal # => "115ாவது"
 ```
 
 

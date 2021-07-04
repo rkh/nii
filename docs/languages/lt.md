@@ -17,6 +17,12 @@ nii = Nii::Context.new "lt" # => #<Nii::Context:lt-LT>
 nii.format 9.99, style: :currency            # => "9,99 €"
 nii.format Nii::Territory["LT"]              # => "Lietuva"
 nii.format ["de", "fr", "it"], as: :language # => "vokiečių, prancūzų ir italų"
+
+# Spelling out numbers
+nii.numbers.spellout 1               # => "vienas"
+nii.numbers.spellout 115             # => "šimtas penkiolika"
+nii.numbers.spellout 2020, :year     # => "du tūkstančiai dvidešimt"
+nii.numbers.spellout 1,    :feminine # => "viena"
 ```
 
 

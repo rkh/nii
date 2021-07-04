@@ -17,6 +17,13 @@ nii = Nii::Context.new "km" # => #<Nii::Context:km-KH>
 nii.format 9.99, style: :currency            # => "9,99៛"
 nii.format Nii::Territory["KH"]              # => "កម្ពុជា"
 nii.format ["de", "fr", "it"], as: :language # => "អាល្លឺម៉ង់, បារាំង និង អ៊ីតាលី"
+
+# Spelling out numbers
+nii.numbers.spellout 1              # => "មួយ"
+nii.numbers.spellout 115            # => "មួយ​រយ​ដប់​ប្រាំ"
+nii.numbers.spellout 2020, :year    # => "ពីរ​ពាន់​ម្ភៃ"
+nii.numbers.spellout 1,    :ordinal # => "ទីមួយ"
+nii.numbers.spellout 115,  :ordinal # => "ទីមួយ​រយ​ដប់​ប្រាំ"
 ```
 
 

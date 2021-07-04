@@ -16,6 +16,13 @@ nii = Nii::Context.new "eo" # => #<Nii::Context:eo-001>
 nii.format 9.99, currency: "USD"             # => "US$ 9,99"
 nii.format Nii::Territory["001"]             # => "Mondo"
 nii.format ["de", "fr", "it"], as: :language # => "germana, franca, itala"
+
+# Spelling out numbers
+nii.numbers.spellout 1              # => "unu"
+nii.numbers.spellout 115            # => "cent dek kvin"
+nii.numbers.spellout 2020, :year    # => "du mil dudek"
+nii.numbers.spellout 1,    :ordinal # => "unua"
+nii.numbers.spellout 115,  :ordinal # => "cent dek kvina"
 ```
 
 ## Variants

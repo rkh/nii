@@ -17,6 +17,23 @@ nii = Nii::Context.new "sv" # => #<Nii::Context:sv-SE>
 nii.format 9.99, style: :currency            # => "9,99 kr"
 nii.format Nii::Territory["SE"]              # => "Sverige"
 nii.format ["de", "fr", "it"], as: :language # => "tyska, franska och italienska"
+
+# Spelling out numbers
+nii.numbers.spellout 1                          # => "ett"
+nii.numbers.spellout 115                        # => "ett­hundra­femton"
+nii.numbers.spellout 2020                       # => "två­tusen tjugo"
+nii.numbers.spellout 2020, :year                # => "tjugo­hundra­tjugo"
+nii.numbers.spellout 1,    :masculine           # => "en"
+nii.numbers.spellout 1,    :feminine            # => "en"
+nii.numbers.spellout 1,    :reale               # => "en"
+nii.numbers.spellout 1,    :ordinal, :neuter    # => "första"
+nii.numbers.spellout 115,  :ordinal, :neuter    # => "ett­hundra femtonde"
+nii.numbers.spellout 1,    :ordinal, :masculine # => "förste"
+nii.numbers.spellout 115,  :ordinal, :masculine # => "ett­hundra femtonde"
+nii.numbers.spellout 1,    :ordinal, :feminine  # => "första"
+nii.numbers.spellout 115,  :ordinal, :feminine  # => "ett­hundra femtonde"
+nii.numbers.spellout 1,    :ordinal, :reale     # => "första"
+nii.numbers.spellout 115,  :ordinal, :reale     # => "ett­hundra femtonde"
 ```
 
 

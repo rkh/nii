@@ -17,6 +17,13 @@ nii = Nii::Context.new "uk" # => #<Nii::Context:uk-UA>
 nii.format 9.99, style: :currency            # => "9,99 ₴"
 nii.format Nii::Territory["UA"]              # => "Україна"
 nii.format ["de", "fr", "it"], as: :language # => "німецька, французька і італійська"
+
+# Spelling out numbers
+nii.numbers.spellout 1               # => "один"
+nii.numbers.spellout 115             # => "сто пʼятнадцять"
+nii.numbers.spellout 2020, :year     # => "дві  двадцять"
+nii.numbers.spellout 1,    :neuter   # => "одне"
+nii.numbers.spellout 1,    :feminine # => "одна"
 ```
 
 

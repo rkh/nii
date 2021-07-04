@@ -16,6 +16,13 @@ nii = Nii::Context.new "fo" # => #<Nii::Context:fo-FO>
 nii.format 9.99, style: :currency            # => "9,99 kr"
 nii.format Nii::Territory["FO"]              # => "Føroyar"
 nii.format ["de", "fr", "it"], as: :language # => "týskt, franskt og italskt"
+
+# Spelling out numbers
+nii.numbers.spellout 1             # => "ein"
+nii.numbers.spellout 115           # => "eitt­hundrað­og­fímtan"
+nii.numbers.spellout 2020          # => "tvey tusin og tjúgo"
+nii.numbers.spellout 2020, :year   # => "tjúgo­hundrað­og­tjúgo"
+nii.numbers.spellout 1,    :neuter # => "eitt"
 ```
 
 

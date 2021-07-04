@@ -17,6 +17,13 @@ nii = Nii::Context.new "cy" # => #<Nii::Context:cy-GB>
 nii.format 9.99, style: :currency            # => "£9.99"
 nii.format Nii::Territory["GB"]              # => "Y Deyrnas Unedig"
 nii.format ["de", "fr", "it"], as: :language # => "Almaeneg, Ffrangeg, a(c) Eidaleg"
+
+# Spelling out numbers
+nii.numbers.spellout 1                                     # => "un"
+nii.numbers.spellout 115                                   # => "un cant un deg pump"
+nii.numbers.spellout 2020, :year                           # => "dau mil dau ddeg"
+nii.numbers.spellout 115,  :masculine, :before, :consonant # => "un cant un deg pum"
+nii.numbers.spellout 115,  :feminine, :before, :consonant  # => "un cant un deg pum"
 ```
 
 

@@ -18,6 +18,13 @@ nii = Nii::Context.new "sw" # => #<Nii::Context:sw-TZ>
 nii.format 9.99, style: :currency            # => "TSh 9.99"
 nii.format Nii::Territory["TZ"]              # => "Tanzania"
 nii.format ["de", "fr", "it"], as: :language # => "Kijerumani, Kifaransa na Kiitaliano"
+
+# Spelling out numbers
+nii.numbers.spellout 1              # => "moja"
+nii.numbers.spellout 115            # => "mia moja na kumi na tano"
+nii.numbers.spellout 2020, :year    # => "elfu mbili, ishirini"
+nii.numbers.spellout 1,    :ordinal # => "kwanza"
+nii.numbers.spellout 115,  :ordinal # => "wa mia moja na kumi na tano"
 ```
 
 
