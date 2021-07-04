@@ -24,8 +24,8 @@ nii.numbers.spellout 1                            # => "אחת"
 nii.numbers.spellout 2020, :year                  # => "אלפיים עשרים"
 nii.numbers.spellout 115,  :masculine             # => "מאה וחמישה עשר"
 nii.numbers.spellout 115,  :construct, :masculine # => "מאה וחמישה עשר"
-nii.numbers.spellout 115,  :ordinal,   :masculine # => "מאה וחמישה עשר"
-nii.numbers.spellout 1,    :ordinal,   :feminine  # => "ראשונה"
+nii.numbers.spellout 115,  :ordinal, :masculine   # => "מאה וחמישה עשר"
+nii.numbers.spellout 1,    :ordinal, :feminine    # => "ראשונה"
 ```
 
 

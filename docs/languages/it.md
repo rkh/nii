@@ -19,13 +19,13 @@ nii.format Nii::Territory["IT"]              # => "Italia"
 nii.format ["de", "fr", "it"], as: :language # => "tedesco, francese e italiano"
 
 # Spelling out numbers
-nii.numbers.spellout 115                          # => "cento­quindici"
-nii.numbers.spellout 1                            # => "uno"
-nii.numbers.spellout 2020, :year                  # => "due­mila­venti"
-nii.numbers.spellout 1,    :masculine             # => "un"
-nii.numbers.spellout 1,    :feminine              # => "una"
-nii.numbers.spellout 115,  :ordinal,   :masculine # => "cento­quindicesimo"
-nii.numbers.spellout 115,  :ordinal,   :feminine  # => "cento­quindicesima"
+nii.numbers.spellout 115                        # => "cento­quindici"
+nii.numbers.spellout 1                          # => "uno"
+nii.numbers.spellout 2020, :year                # => "due­mila­venti"
+nii.numbers.spellout 1,    :masculine           # => "un"
+nii.numbers.spellout 1,    :feminine            # => "una"
+nii.numbers.spellout 115,  :ordinal, :masculine # => "cento­quindicesimo"
+nii.numbers.spellout 115,  :ordinal, :feminine  # => "cento­quindicesima"
 ```
 
 

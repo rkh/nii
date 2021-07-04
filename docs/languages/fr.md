@@ -19,14 +19,14 @@ nii.format Nii::Territory["FR"]              # => "France"
 nii.format ["de", "fr", "it"], as: :language # => "allemand, français et italien"
 
 # Spelling out numbers
-nii.numbers.spellout 115                                   # => "cent quinze"
-nii.numbers.spellout 1                                     # => "un"
-nii.numbers.spellout 2020, :year                           # => "deux mille vingt"
-nii.numbers.spellout 1,    :feminine                       # => "une"
-nii.numbers.spellout 115,  :ordinal,   :masculine, :plural # => "cent quinzièmes"
-nii.numbers.spellout 115,  :ordinal,   :masculine          # => "cent quinzième"
-nii.numbers.spellout 115,  :ordinal,   :feminine,  :plural # => "cent quinzièmes"
-nii.numbers.spellout 115,  :ordinal,   :feminine           # => "cent quinzième"
+nii.numbers.spellout 115                                 # => "cent quinze"
+nii.numbers.spellout 1                                   # => "un"
+nii.numbers.spellout 2020, :year                         # => "deux mille vingt"
+nii.numbers.spellout 1,    :feminine                     # => "une"
+nii.numbers.spellout 115,  :ordinal, :masculine, :plural # => "cent quinzièmes"
+nii.numbers.spellout 115,  :ordinal, :masculine          # => "cent quinzième"
+nii.numbers.spellout 115,  :ordinal, :feminine, :plural  # => "cent quinzièmes"
+nii.numbers.spellout 115,  :ordinal, :feminine           # => "cent quinzième"
 ```
 
 ## Variants

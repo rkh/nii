@@ -32,7 +32,7 @@ module Docs
               result = nii.numbers.spellout(value, *keys)
               if keys == [:year] or result != nii.numbers.spellout(value, *keys[0..-2])
                 lines << [
-                  "nii.numbers.spellout #{"#{value},".ljust(5)} #{keys.map { ":#{_1}, ".ljust(12) }.join.sub(/,\s*$/, '')}",
+                  "nii.numbers.spellout #{"#{value},".ljust(5)} #{keys.map(&:inspect).join(', ')}",
                   nii.numbers.spellout(value, *keys)
                 ]
                 break

@@ -19,12 +19,12 @@ nii.format Nii::Territory["HU"]              # => "Magyarország"
 nii.format ["de", "fr", "it"], as: :language # => "német, francia és olasz"
 
 # Spelling out numbers
-nii.numbers.spellout 115                        # => "száz­tizen­öt"
-nii.numbers.spellout 1                          # => "egy"
-nii.numbers.spellout 2020, :year                # => "két­ezer­húsz"
-nii.numbers.spellout 115,  :verbose             # => "egy­száz­tizen­öt"
-nii.numbers.spellout 115,  :ordinal             # => "száztizenötödik"
-nii.numbers.spellout 115,  :ordinal,   :verbose # => "egyszáztizenötödik"
+nii.numbers.spellout 115                      # => "száz­tizen­öt"
+nii.numbers.spellout 1                        # => "egy"
+nii.numbers.spellout 2020, :year              # => "két­ezer­húsz"
+nii.numbers.spellout 115,  :verbose           # => "egy­száz­tizen­öt"
+nii.numbers.spellout 115,  :ordinal           # => "száztizenötödik"
+nii.numbers.spellout 115,  :ordinal, :verbose # => "egyszáztizenötödik"
 ```
 
 

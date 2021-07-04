@@ -19,14 +19,14 @@ nii.format Nii::Territory["BY"]              # => "Беларусь"
 nii.format ["de", "fr", "it"], as: :language # => "нямецкая, французская і італьянская"
 
 # Spelling out numbers
-nii.numbers.spellout 115                          # => "сто пятнаццаць"
-nii.numbers.spellout 1                            # => "адзiн"
-nii.numbers.spellout 2020, :year                  # => "дзве  дваццаць"
-nii.numbers.spellout 1,    :neuter                # => "адно"
-nii.numbers.spellout 1,    :feminine              # => "адна"
-nii.numbers.spellout 115,  :ordinal,   :masculine # => "сто пятнаццаты"
-nii.numbers.spellout 115,  :ordinal,   :feminine  # => "сто пятнаццатая"
-nii.numbers.spellout 115,  :ordinal,   :neuter    # => "сто пятнаццатае"
+nii.numbers.spellout 115                        # => "сто пятнаццаць"
+nii.numbers.spellout 1                          # => "адзiн"
+nii.numbers.spellout 2020, :year                # => "дзве  дваццаць"
+nii.numbers.spellout 1,    :neuter              # => "адно"
+nii.numbers.spellout 1,    :feminine            # => "адна"
+nii.numbers.spellout 115,  :ordinal, :masculine # => "сто пятнаццаты"
+nii.numbers.spellout 115,  :ordinal, :feminine  # => "сто пятнаццатая"
+nii.numbers.spellout 115,  :ordinal, :neuter    # => "сто пятнаццатае"
 ```
 
 ## Variants

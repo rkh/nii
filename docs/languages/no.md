@@ -19,16 +19,16 @@ nii.format Nii::Territory["001"]             # => "verden"
 nii.format ["de", "fr", "it"], as: :language # => "tysk, fransk og italiensk"
 
 # Spelling out numbers
-nii.numbers.spellout 115                          # => "hundre og femten"
-nii.numbers.spellout 1                            # => "én"
-nii.numbers.spellout 2020                         # => "to tusen og tjue"
-nii.numbers.spellout 2020, :year                  # => "tjue­hundre og tjue"
-nii.numbers.spellout 1,    :feminine              # => "ei"
-nii.numbers.spellout 1,    :neuter                # => "ett"
-nii.numbers.spellout 115,  :ordinal,   :masculine # => "én­hundre femtende"
-nii.numbers.spellout 115,  :ordinal,   :neuter    # => "én­hundre femtende"
-nii.numbers.spellout 115,  :ordinal,   :feminine  # => "én­hundre femtende"
-nii.numbers.spellout 115,  :ordinal,   :plural    # => "én­hundre femtende"
+nii.numbers.spellout 115                        # => "hundre og femten"
+nii.numbers.spellout 1                          # => "én"
+nii.numbers.spellout 2020                       # => "to tusen og tjue"
+nii.numbers.spellout 2020, :year                # => "tjue­hundre og tjue"
+nii.numbers.spellout 1,    :feminine            # => "ei"
+nii.numbers.spellout 1,    :neuter              # => "ett"
+nii.numbers.spellout 115,  :ordinal, :masculine # => "én­hundre femtende"
+nii.numbers.spellout 115,  :ordinal, :neuter    # => "én­hundre femtende"
+nii.numbers.spellout 115,  :ordinal, :feminine  # => "én­hundre femtende"
+nii.numbers.spellout 115,  :ordinal, :plural    # => "én­hundre femtende"
 ```
 
 
