@@ -9,7 +9,7 @@ class Nii::RBNF
 
     SET    = %r{ \s* (?<prefix>%%?) (?<name>[\w\-]+) : \s* }mx
     SIMPLE = %r{ \s* (?!%) '? (?<body>[^:;]*) ; }mx
-    RULE   = %r{ \s* (?<descriptor>[\w\-\.,/]+) : \s* '? (?<body>(?:[^;:]|'.)*) ; \s*  }mx
+    RULE   = %r{ \s* (?<descriptor>[\w\-\.,/]+) : \s* '? (?<body>(?:[^;]|'.)*) ; \s*  }mx
 
     # @see RBNF.load
     def parse(source, file_name)
