@@ -14,7 +14,7 @@ module Nii::NumberingSystem
 
     def replace_symbols(source, symbols)
       @base_symbols    ||= symbols('und', 'latn')
-      @replace_symbols ||= @base_symbols.invert
+      @replace_symbols ||= @base_symbols.invert.except('', :'', nil)
       @replace_regexp  ||= Regexp.union(@replace_symbols.keys)
       source.gsub(@replace_regexp) do |symbol|
         key = @replace_symbols.fetch(symbol)

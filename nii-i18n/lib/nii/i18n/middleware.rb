@@ -10,12 +10,12 @@ module Nii::I18n
   #   run do |env|
   #     # I18n and Nii are synchronized while processing the request.
   #     I18n.locale = 'en-US'
-  #     env['nii.context'].locale # => #<Nii::Locale:en-US>
+  #     env['nii.context'].locale # => Nii::Locale["en-US"]
   #
   #     # use env['nii.sync'] to temporarily disable synchronization
   #     env['nii.sync'].disable do
   #       I18n.locale = 'de-DE'
-  #       env['nii.context'].locale # => #<Nii::Locale:en-US>
+  #       env['nii.context'].locale # => Nii::Locale["en-US"]
   #     end
   #
   #     # Rack compatible response

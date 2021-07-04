@@ -1,0 +1,35 @@
+# Languages
+
+## Core Languages
+
+The `nii-core` gem ships with all the languages and locales considered "modern" by the Unicode Consortium and thus properly supported by the CLDR.
+
+These languages are:
+
+<% languages.select { _2[:locales].include? 'nii-core' }.sort_by { l(_1).to_s }.each do |language, data| -%>
+* **[<%= l language %>](languages/<%= language %>.md)** (code: `<%= language%>`<%=
+  ", #{data[:locales]['nii-core'].size} locales" if data[:locales]['nii-core'].size > 1
+%><%= 
+  other = data[:locales].except('nii-core')
+  ", additional conntent in #{l other.keys.map { "`#{_1}`" }}" if other.any?
+%>)
+<% end -%>
+
+## Extra Languages and Locales
+
+You can add additional languages and locales by installing `nii-extra-locales`.
+Keep in mind that this data might be incomplete and not as well maintained as the locale information included in nii-core.
+
+It will add more content for the following languages:
+
+<% languages.select { _2[:locales].include? 'nii-extra-locales' and _2[:locales].include? 'nii-core' }.sort_by { l(_1).to_s }.each do |language, data| -%>
+* **[<%= l language %>](languages/<%= language %>.md)**: <%= l data[:locales]['nii-extra-locales'] %>
+<% end -%>
+
+It will also add the following languages:
+
+<% languages.reject { _2[:locales].include? 'nii-core' }.sort_by { l(_1).to_s }.each do |language, data| -%>
+* **[<%= l language %>](languages/<%= language %>.md)** (code: `<%= language%>`<%=
+  ", #{data[:locales]['nii-extra-locales'].size} locales" if data[:locales]['nii-extra-locales'].size > 1
+%>)
+<% end -%>

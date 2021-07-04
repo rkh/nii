@@ -40,8 +40,8 @@ module Nii::Formatters
     #   Style for the list to use.
     #   Available styles:
     #   * +standard+/+and+ (default): A typical 'and' list for arbitrary placeholders.
-    #   * +standard-short+/+and-short+: A short version of an 'and' list, suitable for use with short or abbreviated placeholder values.
-    #   * +standard-narrow+/+and-narrow+: A yet shorter version of a short 'and' list (where possible).
+    #   * +short+/+standard-short+/+and-short+: A short version of an 'and' list, suitable for use with short or abbreviated placeholder values.
+    #   * +narrow+/+standard-narrow+/+and-narrow+: A yet shorter version of a short 'and' list (where possible).
     #   * +or+: A typical 'or' list for arbitrary placeholders.
     #   * +or-short+: A short version of an 'or' list.
     #   * +or-narrow+: A yet shorter version of a short 'or' list (where possible).

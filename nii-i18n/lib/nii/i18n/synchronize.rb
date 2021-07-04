@@ -14,7 +14,7 @@ module Nii::I18n
   #   Nii::I18n.synchronize(context) do
   #     # Synchronize I18n → Nii
   #     I18n.locale = 'de-DE'
-  #     context.locale # => #<Nii::Locale:de-DE>
+  #     context.locale # => Nii::Locale["de-DE"]
   #
   #     # Synchronize Nii → I18n
   #     context.locale = Nii::Locale.new(language: 'en', region: 'US')
@@ -30,7 +30,7 @@ module Nii::I18n
   #
   #   # Synchronize I18n → Nii
   #   I18n.locale = 'en-US'
-  #   context.locale # => #<Nii::Locale:en-US>
+  #   context.locale # => Nii::Locale["en-US"]
   #
   # @example Temporarility disabling synchronization
   #   context = Nii::Context.new

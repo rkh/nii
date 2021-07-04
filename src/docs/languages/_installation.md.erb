@@ -1,0 +1,16 @@
+## Installation
+
+<% if locales.keys == ['nii-core'] -%>
+You do not need any additional libraries to use <%= l language %> with Nii.
+All language data is included in `nii-core`.
+<% elsif locales.size > 1 -%>
+<% if included = locales['nii-core'] -%>
+You do not need any additional libraries to use <%= l language %> with Nii.
+<% end -%>
+<% locales.except('nii-core').each do |source, list| -%>
+However, you do need to install `<%= source %>` in order to use <%= l(list, list_style: :or) %>.
+<% end -%>
+See the [list of locales](#locales) below.
+<% else -%>
+In order to use <%= l language %> with Nii, you need to install `<%= locales.keys.first%>`.
+<% end -%>

@@ -5,9 +5,9 @@ module Nii::Formatters
     extend self
 
     # Allows plugins to register their own +as+ option.
-    # @return [Hash{String => #format}]
+    # @return [Hash{Symbol => #format, String}]
     # @api internal
-    FORMAT_AS = { region: 'territory', country: 'territory', numbers: 'numbering_system' }
+    FORMAT_AS = { region: 'territory', country: 'territory', numbers: 'numbering_system', calendar_algorithm: 'calendar' }
 
     # Called by Nii::Context#format to determine whether the result needs HTML escaping.
     # @api internal
@@ -86,8 +86,9 @@ module Nii::Formatters
       as = FORMAT_AS[as.to_sym] || Utils.string(as)
       if as.is_a? ::String
         method = "format_as_#{as}"
-        raise ArgumentError, "unsupported string format: #{as.inspect}" unless respond_to? method
-        public_send(method, context, value, **options)
+        return public_send(method, context, value, **options) if respond_to? method
+        raise ArgumentError, "unsupported string format: #{as.inspect}" unless options[:complain] == false
+        value.to_str
       else
         as.format(context, value, **options)
       end
@@ -116,6 +117,8 @@ module Nii::Formatters
         context.locale_data(:names, :currencies, key, :display_name, style)
       end
     end
+
+    def format_as_currency_format(context, value, **options) = format_as_key(context, ['cf', value.downcase], **options)
 
     # Formats a string as a day period, where the given string is a day period identifier (like "afternoon1" or "pm").
     # @overload format(context, value, as: :day_period, **options)

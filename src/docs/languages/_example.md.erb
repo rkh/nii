@@ -1,0 +1,20 @@
+## Example Usage
+
+``` ruby
+# Create a context for <%= l language %>
+<% nii = Nii::Context.new(language) -%>
+nii = Nii::Context.new <%= language.to_s.inspect %> # => <%= nii.inspect %>
+
+# Value formatting
+<% if nii.currency -%>
+nii.format 9.99, style: :currency            # => <%= nii.format(9.99, style: :currency).inspect %>
+<% else -%>
+nii.format 9.99, currency: "USD"             # => <%= nii.format(9.99, currency: 'USD').inspect %>
+<% end -%>
+<% if nii.territory -%>
+nii.format <%= nii.territory.inspect.ljust(33) %> # => <%= nii.format(nii.territory).inspect %>
+<% else -%>
+nii.format Nii::Territory["001"]             # => <%= nii.format(Nii::Territory["001"]).inspect %>
+<% end -%>
+nii.format ["de", "fr", "it"], as: :language # => <%= nii.format(['de', 'fr', 'it'], as: :language).inspect %>
+```

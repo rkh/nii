@@ -10,7 +10,7 @@ module Nii
   #     def render = t(:content)
   #   end
   #
-  #   Nii.setup(MyApp) { lookup 'config/locales'}
+  #   Nii.setup(MyApp) { lookup 'config/locales' }
   #
   #   app = MyApp.new
   #   app.locale = :en

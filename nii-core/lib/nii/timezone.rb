@@ -552,10 +552,10 @@ module Nii
     # a timezone instead.
     #
     # @example
-    #   Nii::Timezone["Europe/Berlin"].to_nii_locale # => #<Nii::Locale:und-u-tz-deber>
+    #   Nii::Timezone["Europe/Berlin"].to_nii_locale # => Nii::Locale["und-u-tz-deber"]
     #
     #   locale = Nii::Locale.parse "en-US"
-    #   locale & Nii::Timezone["America/New York"] # => #<Nii::Locale:en-US-u-tz-usnyc>
+    #   locale & Nii::Timezone["America/New York"] # => Nii::Locale["en-US-u-tz-usnyc"]
     #
     # @return [Nii::Locale] Locale representation of the timezone.
     def to_nii_locale = @locale ||= Nii::Locale.new(timezone: code)

@@ -96,7 +96,7 @@ module Nii
       @callback = callback
       @lock     = Concurrent::ReadWriteLock.new
       @paths    = []
-      add(*paths.flatten)
+      add(paths)
     end
 
     # Shorthand for reading a JSON file. Will automatically add the .json file extension.
@@ -228,14 +228,18 @@ module Nii
 
     # @private
     def inspect
-      "#<#{self.class.inspect}:#{@paths.inspect}>"
+      "#<#{self.class.inspect}:#{@paths.map(&:to_s).inspect}>"
     end
 
     private
 
     def add(*paths, position: :last)
       @lock.with_write_lock do
-        paths.flatten.each do |path|
+        paths = paths.flatten
+        paths = paths.flat_map { _1.respond_to?(:to_a) ? _1.to_a : _1 }
+        paths.map! { Nii::Utils.string(_1.respond_to?(:to_path) ? _1.to_path : _1) }
+
+        paths.each do |path|
           path = Pathname.new(path).expand_path
           next if @paths.include? path
 

@@ -335,9 +335,9 @@ module Nii
     #
     # @example
     #   territory = Nii::Territory.new :de # => #<Nii::Territory:DE (Germany)>
-    #   territory.to_nii_locale            # => #<Nii::Locale:und-DE>
+    #   territory.to_nii_locale            # => Nii::Locale["und-DE"]
     #
-    #   Nii::Locale.new(:de) & Nii::Territory.new(:at) # => #<Nii::Locale:de-AT>
+    #   Nii::Locale.new(:de) & Nii::Territory.new(:at) # => Nii::Locale["de-AT"]
     #
     # @return [Nii::Locale] Locale representation of the territory.
     def to_nii_locale = @locale ||= Locale.new(territory: code)
@@ -346,12 +346,7 @@ module Nii
     def to_nii_territory = self
 
     # @private
-    def inspect
-      names  = @data.locale_data(:en, :names, :territories, code)
-      name   = names['short'] || names['default'] if names
-      name ||= code
-      name  == code ? "#<#{self.class}:#{code}>" : "#<#{self.class}:#{code} (#{name})>"
-    end
+    def inspect = "#{self.class.inspect}[#{code.inspect}]"
 
     private
 

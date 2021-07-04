@@ -1,0 +1,26 @@
+<% if variants.any? -%>
+## Variants
+
+<table>
+  <thead>
+    <tr>
+      <th>Subtag</th>
+      <th>Description</th>
+<% if variants.any? { _2[:comments].any? } -%>
+      <th>Comments</th>
+<% end -%>
+    </tr>
+  </thead>
+  <tbody>
+<% variants.each do |variant, data| -%>
+    <tr>
+      <td><code><%= variant %></code></td>
+      <td><%= data[:description].join(' / ') %></td>
+<% if variants.any? { _2[:comments].any? } -%>
+      <td><%= data[:comments].join('<br>') %></td>
+<% end -%>
+    </tr>
+<% end -%>
+  </tbody>
+</table>
+<% end -%>

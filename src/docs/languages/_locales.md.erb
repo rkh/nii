@@ -1,0 +1,32 @@
+## Locales
+
+<table>
+  <thead>
+    <tr>
+      <th>Locale Tag</th>
+<% if locales.size > 1 -%>
+      <th>Library</th>
+<% end -%>
+      <th>Description</th>
+<% if aliases.any? -%>
+      <th>Aliases</th>
+<% end -%>
+    </tr>
+  </thead>
+  <tbody>
+<% locales.each do |source, list| -%>
+<% list.sort.each do |locale| -%>
+    <tr>
+      <td><code><%= locale %></code></td>
+<% if locales.size > 1 -%>
+      <td><code><%= source %></code></td>
+<% end -%>
+      <td><%= l locale %></td>
+<% if aliases.any? -%>
+      <td><%= l aliases[locale].to_a.map { nii.html('<code>?</code>', _1) } %></td>
+<% end -%>
+    </tr>
+<% end -%>
+<% end -%>
+  </tbody>
+</table>

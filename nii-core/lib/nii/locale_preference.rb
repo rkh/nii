@@ -10,7 +10,7 @@ module Nii
   #   available  = Nii::LocalePreference.new(:en, :de)
   #   possible   = preference & available
   #
-  #   possible.first # => #<Nii::Locale:de-AT>
+  #   possible.first # => Nii::Locale["de-AT"]
   #   possible.to_s  # => "de-AT, de-DE"
   class LocalePreference
     CACHE = Nii::Cache.new
@@ -35,7 +35,7 @@ module Nii
     #
     #   @example
     #     Nii::LocalePreference.new("fr-FR;q=1.0,de-DE,en")
-    #     # => #<Nii::LocalePreference:[#<Nii::Locale:fr-FR>, #<Nii::Locale:de-DE>, #<Nii::Locale:en>]>
+    #     # => #<Nii::LocalePreference:[Nii::Locale["fr-FR"], Nii::Locale["de-DE"], Nii::Locale["en"]]>
     #
     #   @param accept_languages [String] valid value for an HTTP Accept-Language header
     #   @return [Nii::LocalePreference]
@@ -44,8 +44,8 @@ module Nii
     #   Creates a locale preference from a list of locales and/or locale options.
     #
     #   @example
-    #     Nii::LocalePreference.new(:en, :fr)         # => #<Nii::LocalePreference:[#<Nii::Locale:en>, #<Nii::Locale:fr>]>
-    #     Nii::LocalePreference.new(:en, region: :us) # => #<Nii::LocalePreference:[#<Nii::Locale:en-US>]>
+    #     Nii::LocalePreference.new(:en, :fr)         # => #<Nii::LocalePreference:[Nii::Locale["en"], Nii::Locale["fr"]]>
+    #     Nii::LocalePreference.new(:en, region: :us) # => #<Nii::LocalePreference:[Nii::Locale["en-US"]]>
     #     
     #   @param locales [Array<String, Symbol, Nii::Locale, #to_nii_locale>]
     #   @option (see Nii::Locale.new)
@@ -79,7 +79,7 @@ module Nii
     #
     # @example
     #   Nii::LocalePreference.new('en-US', 'de-DE-x-informal').without_extensions
-    #   # => #<Nii::LocalePreference:[#<Nii::Locale:en-US>, #<Nii::Locale:de-DE>]>
+    #   # => #<Nii::LocalePreference:[Nii::Locale["en-US"], Nii::Locale["de-DE"]]>
     #
     # @see Nii::Locale#without_extensions
     # @return [Nii::LocalePreference]

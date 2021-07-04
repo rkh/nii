@@ -8,3 +8,6 @@
 [submodule "vendor/astro-data"]
 	path = vendor/astro-data
 	url = https://github.com/rkh/astro-data
+[submodule "vendor/language-subtag-registry"]
+	path = vendor/language-subtag-registry
+	url = https://github.com/mattcg/language-subtag-registry.git

@@ -51,25 +51,25 @@ module Nii
   #   # => true
   #
   #   Nii::Locale.new('de') & Nii::Locale.new(region: 'AT')
-  #   # => #<Nii::Locale:de-AT>
+  #   # => Nii::Locale["de-AT"]
   #
   #   Nii::Locale.new('de-DE') & Nii::Locale.new(script: 'Latn')
-  #   # => #<Nii::Locale:de-Latn-DE>
+  #   # => Nii::Locale["de-Latn-DE"]
   #
   #   Nii::Locale.new('de') | Nii::Locale.new('de-AT')
-  #   # => #<Nii::Locale:de>
+  #   # => Nii::Locale["de"]
   #
   #   Nii::Locale.new('de') & Nii::Locale.new('en-US')
   #   # => #<Nii::LocalePreference:[]>
   #
   #   Nii::Locale.new('de') | Nii::Locale.new('en-US')
-  #   # => #<Nii::LocalePreference:[#<Nii::Locale:de>, #<Nii::Locale:en-US>]>
+  #   # => #<Nii::LocalePreference:[Nii::Locale["de"], Nii::Locale["en-US"]]>
   #
   #   (Nii::Locale.new('de') | Nii::Locale.new('en-US')) & Nii::Locale.new(region: 'US')
-  #   # => #<Nii::LocalePreference:[#<Nii::Locale:de-US>, #<Nii::Locale:en-US>]>
+  #   # => #<Nii::LocalePreference:[Nii::Locale["de-US"], Nii::Locale["en-US"]]>
   #
   #   (Nii::Locale.new('de') | Nii::Locale.new('en-US')) & Nii::Locale.new(region: 'DE')
-  #   # => #<Nii::LocalePreference:[#<Nii::Locale:de-DE>]>
+  #   # => #<Nii::LocalePreference:[Nii::Locale["de-DE"]]>
   #
   # @see https://tools.ietf.org/html/bcp47 [BCP 47] IETF Best Current Practice #47: Tags for Identifying Languages
   # @see http://www.unicode.org/reports/tr35/#Identifiers [UTS 35] Unicode Technical Standard #35: UNICODE LOCALE DATA MARKUP LANGUAGE (LDML)
@@ -222,13 +222,13 @@ module Nii
     private_constant :AVAILABLE_KEYS, :KEY_ALIASES, :ALL_KEYS, :CACHE
 
     # @example With options
-    #   Nii::Locale.new(language: 'en', region: 'US') # => #<Nii::Locale:en-US>
+    #   Nii::Locale.new(language: 'en', region: 'US') # => Nii::Locale["en-US"]
     #
     # @example With code
-    #    Nii::Locale.new('en-US') # => #<Nii::Locale:en-US>
+    #    Nii::Locale.new('en-US') # => Nii::Locale["en-US"]
     #
     # @example With code and options
-    #    Nii::Locale.new('en', region: 'US') # => #<Nii::Locale:en-US>
+    #    Nii::Locale.new('en', region: 'US') # => Nii::Locale["en-US"]
     #
     # @param code [String, Symbol, Nii::Locale, nil]
     # @param complain [true, false] whether or not to raise an exception if the code is invalid
@@ -325,7 +325,7 @@ module Nii
     # Will override any existing attributes.
     #
     # @example 
-    #   Nii::Locale.new('en-US').with(region: 'GB') # => #<Nii::Locale:en-GB>
+    #   Nii::Locale.new('en-US').with(region: 'GB') # => Nii::Locale["en-GB"]
     #
     # @return [Nii::Locale]
     def with(**options)
@@ -336,13 +336,11 @@ module Nii
       end
     end
 
-    alias_method :merge, :with
-
     # A new locale without any of the unicode or private extensions.
     # Useful for converting an IETF compatible locale into a W3C compatible locale (for use in HTML and HTTP headers).
     #
     # @example
-    #   Nii::Locale.new('de-DE-x-formal').without_extensions # => #<Nii::Locale:de-DE>
+    #   Nii::Locale.new('de-DE-x-formal').without_extensions # => Nii::Locale["de-DE"]
     #
     # @return [Nii::Locale] locale without locale extensions
     def without_extensions
@@ -384,7 +382,7 @@ module Nii
     #
     # @example
     #   locale = Nii::Locale.parse "de-DE"
-    #   locale.lookup # => [#<Nii::Locale:de-DE>, #<Nii::Locale:de>, #<Nii::Locale:und>]
+    #   locale.lookup # => [Nii::Locale["de-DE"], Nii::Locale["de"], Nii::Locale["und"]]
     #
     # @return [Array<Nii::Locale>]
     def lookup
@@ -472,7 +470,7 @@ module Nii
     #
     # @example
     #   Nii::Locale.parse('de') & Nii::Locale.new(region: 'at')
-    #   # => #<Nii::Locale:de-AT>
+    #   # => Nii::Locale["de-AT"]
     #
     # @param other [Nii::Locale, Nii::LocalePreference, String, Symbol, #to_nii_locale]
     # @return [Nii::Locale, Nii::LocalePreference]
@@ -497,10 +495,10 @@ module Nii
     #
     # @example
     #   Nii::Locale.parse("de") | Nii::Locale.parse("en")
-    #   # => => #<Nii::LocalePreference:[#<Nii::Locale:de>, #<Nii::Locale:en>]>
+    #   # => => #<Nii::LocalePreference:[Nii::Locale["de"], Nii::Locale["en"]]>
     #
     #   Nii::Locale.parse("de") | Nii::Locale.parse("de-AT")
-    #   # => #<Nii::Locale:de>
+    #   # => Nii::Locale["de"]
     #
     # @return [Nii::Locale, Nii::LocalePreference]
     def |(other)
@@ -508,6 +506,45 @@ module Nii
       return other if subset_of?   other
       LocalePreference.new(self, other)
     end
+
+    # Overrides the locale's fields with fields from the other locale.
+    #
+    # @example
+    #   Nii::Locale["de-CH"] + Nii::Locale["fr"] # => Nii::Locale["fr-CH"]
+    #
+    # @param other [Nii::Locale]
+    # @return [Nii::Locale]
+    def +(other)
+      other = Locale.new(other) unless other.is_a? Locale
+      Locale.new(to_h.merge(other.to_h))
+    end
+
+    alias_method :merge, :+
+    
+    # Removes fileds from the locale that are equal to fields present in the other locale.
+    #
+    # @example
+    #   Nii::Locale["de-CH"] - Nii::Locale["fr-CH"] # => Nii::Locale["de"]
+    #   Nii::Locale["de-CH"] - Nii::Locale["de"]    # => Nii::Locale["und-CH"]
+    #   Nii::Locale["de-CH"] - Nii::Locale["fr"]    # => Nii::Locale["de-CH"]
+    #
+    # @param other [Nii::Locale]
+    # @return [Nii::Locale]
+    def -(other)
+      other = Locale.new(other) unless other.is_a? Locale
+      Locale.new(to_h.reject { other[_1] == _2 })
+    end
+
+    # Creates a new locale with only the given fields.
+    #
+    # @example
+    #   locale = Nii::Locale["de-Latn-CH-x-formal"]
+    #   locale.slice(:language, :region)    # => Nii::Locale["de-CH"]
+    #   locale.slice(:language, :formality) # => Nii::Locale["de-x-formal"]
+    #
+    # @param keys [Array<Symbol>] keys for the fields to keep
+    # @return [Nii::Locale]
+    def slice(*keys) = Locale.new(deconstruct_keys(keys.map(&:to_sym)))
 
     # @api internal
     def glob_pattern
@@ -557,7 +594,7 @@ module Nii
     def to_nii_locale = self
 
     # @private
-    def inspect = "#<#{self.class.inspect}:#{code}>"
+    def inspect = "#{self.class.inspect}[#{code.inspect}]"
 
     # @private
     def freeze
@@ -569,10 +606,19 @@ module Nii
       has_extensions?
       without_extensions
       code.freeze
+      sort_key
       lookup
 
       @options.freeze
       super
+    end
+
+    # @api internal
+    def sort_key = @sort_key ||= AVAILABLE_KEYS.map { self[_1] || '' }
+
+    # @api internal
+    def <=>(other)
+      sort_key <=> other.sort_key if other.is_a? Locale
     end
 
     private

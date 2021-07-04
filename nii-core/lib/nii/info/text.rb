@@ -61,6 +61,12 @@ module Nii::Info
 
     # @api internal
     def key_type_pattern = locale_data(:names, :display_pattern, :key_type_pattern)
+    
+    # @api internal
+    def display_pattern = locale_data(:names, :display_pattern, :pattern)
+
+    # @api internal
+    def separator = locale_data(:names, :display_pattern, :separator)
 
     # @return [Symbol, String, nil] mode parameter to use instead of +nil+ for {#bidi}
     # @see #bidi

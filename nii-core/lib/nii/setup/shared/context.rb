@@ -36,8 +36,8 @@ module Nii::Setup::Shared
     #   context         = Nii::Context.new(accept_language, setup)
     #
     #   # gsw-CH gets filtered out, as it isn't supported
-    #   context.locale           # => #<Nii::Locale:de-CH>
-    #   context.fallback_locales # => [#<Nii::Locale:fr-CH>, #<Nii::Locale:en>]
+    #   context.locale           # => Nii::Locale["de-CH"]
+    #   context.fallback_locales # => [Nii::Locale["fr-CH"], Nii::Locale["en"]]
     #
     # @default false
     def auto_fallbacks(value = true) = set(:auto_fallbacks, value)
