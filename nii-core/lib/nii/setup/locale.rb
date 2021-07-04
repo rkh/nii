@@ -3,7 +3,7 @@
 module Nii::Setup
   # Setup scope inside an `on` block.
   class Locale
-    include Shared, Shared::Context, Shared::Conditional
+    include Shared, Shared::Context, Shared::Conditional, Shared::Load
 
     # @api internal
     def initialize(locale, parent)

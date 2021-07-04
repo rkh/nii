@@ -116,11 +116,11 @@ module Nii
     #
     # @example
     #   currency = Nii::Currency.new :USD # => #<Nii::Currency:USD>
-    #   currency.to_nii_locale            # => #<Nii::Locale:und-u-cu-usd>
+    #   currency.to_nii_locale            # => Nii::Locale["und-u-cu-usd"]
     #
     #   language  = Nii::Locale    :en
     #   territory = Nii::Territory :US
-    #   language & territory & currency # => #<Nii::Locale:en-US-u-cu-usd>
+    #   language & territory & currency # => Nii::Locale["en-US-u-cu-usd"]
     #
     # @return [Nii::Locale] Locale representation of the currency.
     def to_nii_locale = @locale ||= Nii::Locale.new(currency: code)

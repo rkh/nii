@@ -6,6 +6,7 @@ module Nii::Setup
     autoload :Conditional, 'nii/setup/shared/conditional'
     autoload :Config,      'nii/setup/shared/config'
     autoload :Context,     'nii/setup/shared/context'
+    autoload :Load,        'nii/setup/shared/load'
     autoload :Locales,     'nii/setup/shared/locales'
     autoload :Paths,       'nii/setup/shared/paths'
     autoload :Routing,     'nii/setup/shared/routing'

@@ -3,7 +3,7 @@
 module Nii::Setup
   # Setup scope when setup is invoked without an application argument.
   class Vanilla
-    include Shared, Shared::Context, Shared::Conditional
+    include Shared, Shared::Context, Shared::Conditional, Shared::Load
 
     # @api internal
     attr_reader :application, :implicit_locales, :subsetups
@@ -33,7 +33,7 @@ module Nii::Setup
       @implicit_locales = []
       @subsetups        = {}
       @lookup           = Lookup::Cascade.new
-      options.each { |k, v| instance.public_send(k, v) }
+      apply(options) if options.any?
       super()
     end
 
@@ -68,6 +68,24 @@ module Nii::Setup
     end
 
     alias_method :locales, :available_locales
+
+    # @api setup
+    #
+    # Allows swapping out the parser used for various formats.
+    #
+    # @example
+    #   Nii::Setup.new do
+    #     # change the parser for JSON to Yajl
+    #     parser.json = Yajl
+    #
+    #     # configure multiple parsers
+    #     parser do
+    #       json Oj
+    #       toml TomlRB
+    #       ini  IniFile
+    #     end
+    #   end
+    def parser = Parser
 
     def lookup(*args, **options) = Lookup.prepare(*args, **options) { @lookup << _1 }
 

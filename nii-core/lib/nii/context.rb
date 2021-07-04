@@ -113,17 +113,17 @@ module Nii
     # @example overriding locale preference
     #   context = Nii::Context.new('en')
     #   context.locale_preference = 'de'
-    #   context.locale_preference # => #<Nii::LocalePreference:[#<Nii::Locale:de>]>
+    #   context.locale_preference # => #<Nii::LocalePreference:[Nii::Locale["de"]]>
     #
     # @example adding locale preferences
     #   context = Nii::Context.new('en')
     #   context.locale_preference += 'de'
-    #   context.locale_preference # => #<Nii::LocalePreference:[#<Nii::Locale:en>, #<Nii::Locale:de>]>
+    #   context.locale_preference # => #<Nii::LocalePreference:[Nii::Locale["en"], Nii::Locale["de"]]>
     #
     # @example limiting locales via pre-negotiation
     #   context = Nii::Context.new('en-US', 'de-DE')
     #   context.locale_preference &= 'de'
-    #   context.locale_preference # => #<Nii::LocalePreference:[#<Nii::Locale:de-DE>]>
+    #   context.locale_preference # => #<Nii::LocalePreference:[Nii::Locale["de-DE"]]>
     #
     # @return [LocalePreference] preference to use for locale negotiation
     attr_reader :locale_preference
@@ -324,12 +324,12 @@ module Nii
     # @example calling locale before the context is ready to negotiate
     #   context = Nii::Context.new
     #   context.locale       # => nil
-    #   context.locale(true) # => #<Nii::Locale:und-001>
+    #   context.locale(true) # => Nii::Locale["und-001"]
     #
     # @example calling locale when the context is ready to negotiate
     #   lookup  = Nii::Lookup.new('config/locales') # assuming this defined en and de messages
     #   context = Nii::Context.new('gsw', 'de-CH', 'en', lookup: lookup)
-    #   context.locale(false) # => #<Nii::Locale:de-CH>
+    #   context.locale(false) # => Nii::Locale["de-CH"]
     #
     # @return [Nii::Locale, nil] the primary locale to be used by the context, if already available
     def locale(force = true)
@@ -634,9 +634,9 @@ module Nii
     def localize(value, **options)
       return value.nii_localize(self, **options) if value.respond_to? :nii_localize
       case value = prepare_format(value)
-      when Hash  then Localized.new(value.transform_values { |v| localize(v, **options) })
-      when Array then Localized.new(value.map { |v| localize(v, **options) })
-      when Set   then Localized.new(value.dup.map! { |v| localize(v, **options) })
+      when Hash  then Localized.new(value.transform_values { |v| localize(v, **options) }, self, **options)
+      when Array then Localized.new(value.map { |v| localize(v, **options) },              self, **options)
+      when Set   then Localized.new(value.dup.map! { |v| localize(v, **options) },         self, **options)
       else localize?(value) ? Localized.new(value, self, **options) : value
       end
     end
@@ -832,12 +832,12 @@ module Nii
     #
     # @example With auto fallbacks
     #   context = Nii::Context.new "gsw", "de-CH", "en", auto_fallbacks: true
-    #   context.fallback_locales # => [#<Nii::Locale:de-CH>, #<Nii::Locale:en>]
+    #   context.fallback_locales # => [Nii::Locale["de-CH"], Nii::Locale["en"]]
     #
     # @example With explicit fallback
     #   context = Nii::Context.new "gsw"
     #   context.fallback_locale = "de-CH"
-    #   context.fallback_locales # => [#<Nii::Locale:de-CH>]
+    #   context.fallback_locales # => [Nii::Locale["de-CH"]]
     #
     # @return [Array<Locale>] ordered list of locales to fall back to if a message could not be resolved for a given locale.
     def fallback_locales

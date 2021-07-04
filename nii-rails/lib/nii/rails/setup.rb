@@ -29,6 +29,11 @@ module Nii::Rails
 
     private
 
+    def default_config_path
+      rails_path = Rails.configuration.paths['config'] || Rails.root.join('config')
+      [ rails_path, '.' ]
+    end
+
     def finalize_i18n(finalized)
       return if finalized[::I18n] # someone set it up explicitly
       ::I18n.fallbacks = Nii::I18n::Fallbacks.new(finalized.config)

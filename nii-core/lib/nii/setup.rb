@@ -17,5 +17,17 @@ module Nii
       raise ArgumentError, "don't know how to run setup for #{application.inspect}" unless klass
       klass.setup(application, **options, &block)
     end
+
+    def self.load(*arguments, path: nil, **options, &block)
+      paths        = arguments.select { _1.is_a? String or _1.is_a? Pathname }
+      applications = arguments == paths ? [nil] : arguments - paths
+
+      applications.each do |application|
+        new(application, **options) do |dsl|
+          dsl.load(*paths, path: path) if paths.any?
+          dsl.run(&block)
+        end
+      end
+    end
   end
 end

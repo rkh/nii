@@ -16,6 +16,14 @@ path '.' do
   gem 'nii-xml'
 end
 
+# optional dependencies
+gem 'iniparse'
+gem 'inifile'
+gem 'hjson'
+gem 'oj'
+gem 'concurrent-ruby-ext'
+gem 'tomlrb'
+
 group :development do
   gem 'rake', '~> 13.0'
   gem 'nii-cldr', path: 'tools'
@@ -35,7 +43,6 @@ group :benchmark do
   gem 'gettext'
   gem 'r18n-core'
   gem 'profile'
-  gem 'concurrent-ruby-ext'
   gem 'activesupport'
   gem 'twitter_cldr'
   gem 'rails-i18n'

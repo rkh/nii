@@ -6,8 +6,8 @@ module Nii::Setup
     def self.run(object, on_setup = :run, &block)
       return object unless block
       instance = new
-      instance.instance_eval { @object, @on_setup, @block = object, on_setup, block }
-      block.arity == 0 ? instance.instance_eval(&block) : block.call(instance)
+      instance.run { @object, @on_setup, @block = object, on_setup, block }
+      instance.run(&block)
       object
     end
 
@@ -45,6 +45,12 @@ module Nii::Setup
       else
         ::Kernel.raise ::Nii::Errors::SetupError, "unexpected value #{@on_setup.inspect} for on_setup"
       end
+    end
+
+    # @api internal
+    def run(&block)
+      return unless block
+      block.arity == 0 ? instance_eval(&block) : block.call(self)
     end
 
     private
