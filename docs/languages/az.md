@@ -26,6 +26,83 @@ nii.numbers.spellout 2020, :year    # => "iki min iyirmi"
 nii.numbers.spellout 115,  :ordinal # => "bir yüz on beşinci"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Azerbaijani</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>AM</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>PM</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>afternoon1</td>
+      <td>afternoon</td>
+      <td>gündüz</td>
+      <td>12:00 to 17:00</td>
+    </tr>
+    <tr>
+      <td>evening1</td>
+      <td>evening</td>
+      <td>axşamüstü</td>
+      <td>17:00 to 19:00</td>
+    </tr>
+    <tr>
+      <td>midnight</td>
+      <td>midnight</td>
+      <td>gecəyarı</td>
+      <td>at 00:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>sübh</td>
+      <td>04:00 to 06:00</td>
+    </tr>
+    <tr>
+      <td>morning2</td>
+      <td>morning</td>
+      <td>səhər</td>
+      <td>06:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>axşam</td>
+      <td>19:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>night2</td>
+      <td>night</td>
+      <td>gecə</td>
+      <td>00:00 to 04:00</td>
+    </tr>
+    <tr>
+      <td>noon</td>
+      <td>noon</td>
+      <td>günorta</td>
+      <td>at 12:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 ## Variants
 
 <table>

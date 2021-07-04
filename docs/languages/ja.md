@@ -27,6 +27,77 @@ nii.numbers.spellout 115,  :financial # => "壱百拾伍"
 nii.numbers.spellout 115,  :ordinal   # => "第百十五"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Japanese</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>午前</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>午後</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>afternoon1</td>
+      <td>afternoon</td>
+      <td>昼</td>
+      <td>12:00 to 16:00</td>
+    </tr>
+    <tr>
+      <td>evening1</td>
+      <td>evening</td>
+      <td>夕方</td>
+      <td>16:00 to 19:00</td>
+    </tr>
+    <tr>
+      <td>midnight</td>
+      <td>midnight</td>
+      <td>真夜中</td>
+      <td>at 00:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>朝</td>
+      <td>04:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>夜</td>
+      <td>19:00 to 23:00</td>
+    </tr>
+    <tr>
+      <td>night2</td>
+      <td>night</td>
+      <td>夜中</td>
+      <td>23:00 to 04:00</td>
+    </tr>
+    <tr>
+      <td>noon</td>
+      <td>noon</td>
+      <td>正午</td>
+      <td>at 12:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

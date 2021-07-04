@@ -18,6 +18,35 @@ nii.format Nii::Territory["BT"]              # => "འབྲུག"
 nii.format ["de", "fr", "it"], as: :language # => "ཇཱར་མཱན་ཁ དང་ ཕྲནཅ་ཁ དང་ ཨི་ཊ་ལི་ཡཱན་ཁ"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Dzongkha</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>སྔ་ཆ་</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>ཕྱི་ཆ་</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

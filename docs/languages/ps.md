@@ -19,6 +19,35 @@ nii.format Nii::Territory["AF"]              # => "افغانستان"
 nii.format ["de", "fr", "it"], as: :language # => "الماني، فرانسوي، او ایټالوي"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Pashto</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>غ.م.</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>غ.و.</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

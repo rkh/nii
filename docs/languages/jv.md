@@ -19,6 +19,35 @@ nii.format Nii::Territory["ID"]              # => "Indonésia"
 nii.format ["de", "fr", "it"], as: :language # => "Jérman, Prancis, lan Italia"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Javanese</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>Isuk</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>Wengi</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

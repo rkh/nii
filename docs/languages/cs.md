@@ -26,6 +26,77 @@ nii.numbers.spellout 1,    :neuter   # => "jedno"
 nii.numbers.spellout 1,    :feminine # => "jedna"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Czech</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>dop.</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>odp.</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>afternoon1</td>
+      <td>afternoon</td>
+      <td>odpoledne</td>
+      <td>12:00 to 18:00</td>
+    </tr>
+    <tr>
+      <td>evening1</td>
+      <td>evening</td>
+      <td>večer</td>
+      <td>18:00 to 22:00</td>
+    </tr>
+    <tr>
+      <td>midnight</td>
+      <td>midnight</td>
+      <td>půlnoc</td>
+      <td>at 00:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>ráno</td>
+      <td>04:00 to 09:00</td>
+    </tr>
+    <tr>
+      <td>morning2</td>
+      <td>morning</td>
+      <td>dopoledne</td>
+      <td>09:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>noc</td>
+      <td>22:00 to 04:00</td>
+    </tr>
+    <tr>
+      <td>noon</td>
+      <td>noon</td>
+      <td>poledne</td>
+      <td>at 12:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

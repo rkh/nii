@@ -18,6 +18,35 @@ nii.format Nii::Territory["DE"]              # => "Němska"
 nii.format ["de", "fr", "it"], as: :language # => "němčina, francošćina a italšćina"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Upper Sorbian</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>dopołdnja</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>popołdnju</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

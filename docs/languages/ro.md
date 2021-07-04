@@ -25,6 +25,71 @@ nii.numbers.spellout 2020, :year     # => "două mii douăzeci"
 nii.numbers.spellout 1,    :feminine # => "una"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Romanian</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>a.m.</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>p.m.</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>afternoon1</td>
+      <td>afternoon</td>
+      <td>după-amiaza</td>
+      <td>12:00 to 18:00</td>
+    </tr>
+    <tr>
+      <td>evening1</td>
+      <td>evening</td>
+      <td>seara</td>
+      <td>18:00 to 22:00</td>
+    </tr>
+    <tr>
+      <td>midnight</td>
+      <td>midnight</td>
+      <td>la miezul nopții</td>
+      <td>at 00:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>dimineața</td>
+      <td>05:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>noaptea</td>
+      <td>22:00 to 05:00</td>
+    </tr>
+    <tr>
+      <td>noon</td>
+      <td>noon</td>
+      <td>la amiază</td>
+      <td>at 12:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

@@ -29,6 +29,7 @@ module Nii
 
     # @return [String] locale independent idetifier for the day period
     attr_reader :name
+    alias_method :to_s, :name
 
     # @return [String] same as name, but with any digits removed from the end ("night" instead of "night1")
     attr_reader :category

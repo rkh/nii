@@ -27,6 +27,77 @@ nii.numbers.spellout 115,  :ordinal, :feminine  # => "المائة و خمسة �
 nii.numbers.spellout 115,  :ordinal, :masculine # => "المائة و خمسة عشر"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Arabic</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>صباحًا</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>مساءً</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>afternoon1</td>
+      <td>afternoon</td>
+      <td>ظهرًا</td>
+      <td>12:00 to 13:00</td>
+    </tr>
+    <tr>
+      <td>afternoon2</td>
+      <td>afternoon</td>
+      <td>بعد الظهر</td>
+      <td>13:00 to 18:00</td>
+    </tr>
+    <tr>
+      <td>evening1</td>
+      <td>evening</td>
+      <td>مساءً</td>
+      <td>18:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>فجرًا</td>
+      <td>03:00 to 06:00</td>
+    </tr>
+    <tr>
+      <td>morning2</td>
+      <td>morning</td>
+      <td>صباحًا</td>
+      <td>06:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>منتصف الليل</td>
+      <td>00:00 to 01:00</td>
+    </tr>
+    <tr>
+      <td>night2</td>
+      <td>night</td>
+      <td>ليلاً</td>
+      <td>01:00 to 03:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

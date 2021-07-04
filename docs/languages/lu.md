@@ -18,6 +18,35 @@ nii.format Nii::Territory["CD"]              # => "Ditunga wa Kongu"
 nii.format ["de", "fr", "it"], as: :language # => "Lizelumani, Mfwàlànsa, Litali"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Luba-Katanga</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>Dinda</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>Dilolo</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

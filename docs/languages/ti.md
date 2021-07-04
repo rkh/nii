@@ -18,6 +18,35 @@ nii.format Nii::Territory["ET"]              # => "ኢትዮጵያ"
 nii.format ["de", "fr", "it"], as: :language # => "ጀርመን, ፈረንሳይን, ጥልያን"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Tigrinya</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>ቅድመ ፍርቂ-መዓልቲ</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>ደሕረ ፍርቀ-መዓልቲ</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

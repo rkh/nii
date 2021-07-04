@@ -20,6 +20,35 @@ nii.format Nii::Territory["IN"]              # => "भारत"
 nii.format ["de", "fr", "it"], as: :language # => "जर्मन, फ़्रांस जी ॿोली، ۽ इटालियनु"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Sindhi</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>صبح، منجهند</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>منجهند، شام</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

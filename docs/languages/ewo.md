@@ -18,6 +18,35 @@ nii.format Nii::Territory["CM"]              # => "Kamərún"
 nii.format ["de", "fr", "it"], as: :language # => "Ǹkɔ́bɔ ndzáman, Ǹkɔ́bɔ fulɛnsí, Ǹkɔ́bɔ etáliɛn"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Ewondo</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>kíkíríg</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>ngəgógəle</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

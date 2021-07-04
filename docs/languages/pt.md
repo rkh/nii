@@ -28,6 +28,71 @@ nii.numbers.spellout 115,  :ordinal, :masculine # => "centésimo décimo quinto"
 nii.numbers.spellout 115,  :ordinal, :feminine  # => "centésima décima quinta"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Portuguese</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>AM</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>PM</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>afternoon1</td>
+      <td>afternoon</td>
+      <td>tarde</td>
+      <td>12:00 to 19:00</td>
+    </tr>
+    <tr>
+      <td>evening1</td>
+      <td>evening</td>
+      <td>noite</td>
+      <td>19:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>midnight</td>
+      <td>midnight</td>
+      <td>meia-noite</td>
+      <td>at 00:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>manhã</td>
+      <td>06:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>madrugada</td>
+      <td>00:00 to 06:00</td>
+    </tr>
+    <tr>
+      <td>noon</td>
+      <td>noon</td>
+      <td>meio-dia</td>
+      <td>at 12:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 ## Variants
 
 <table>

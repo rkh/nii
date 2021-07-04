@@ -25,6 +25,83 @@ nii.numbers.spellout 2020, :year    # => "สอง​พัน​ยี่​�
 nii.numbers.spellout 115,  :ordinal # => "ที่​หนึ่ง​ร้อย​สิบ​ห้า"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Thai</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>ก่อนเที่ยง</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>หลังเที่ยง</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>afternoon1</td>
+      <td>afternoon</td>
+      <td>ในตอนบ่าย</td>
+      <td>12:00 to 13:00</td>
+    </tr>
+    <tr>
+      <td>afternoon2</td>
+      <td>afternoon</td>
+      <td>บ่าย</td>
+      <td>13:00 to 16:00</td>
+    </tr>
+    <tr>
+      <td>evening1</td>
+      <td>evening</td>
+      <td>ในตอนเย็น</td>
+      <td>16:00 to 18:00</td>
+    </tr>
+    <tr>
+      <td>evening2</td>
+      <td>evening</td>
+      <td>ค่ำ</td>
+      <td>18:00 to 21:00</td>
+    </tr>
+    <tr>
+      <td>midnight</td>
+      <td>midnight</td>
+      <td>เที่ยงคืน</td>
+      <td>at 00:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>ในตอนเช้า</td>
+      <td>06:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>กลางคืน</td>
+      <td>21:00 to 06:00</td>
+    </tr>
+    <tr>
+      <td>noon</td>
+      <td>noon</td>
+      <td>เที่ยง</td>
+      <td>at 12:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

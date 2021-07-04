@@ -25,6 +25,83 @@ nii.numbers.spellout 2020, :year    # => "iki bin yirmi"
 nii.numbers.spellout 115,  :ordinal # => "yüz on beşinci"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Turkish</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>ÖÖ</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>ÖS</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>afternoon1</td>
+      <td>afternoon</td>
+      <td>öğleden sonra</td>
+      <td>12:00 to 18:00</td>
+    </tr>
+    <tr>
+      <td>afternoon2</td>
+      <td>afternoon</td>
+      <td>akşamüstü</td>
+      <td>18:00 to 19:00</td>
+    </tr>
+    <tr>
+      <td>evening1</td>
+      <td>evening</td>
+      <td>akşam</td>
+      <td>19:00 to 21:00</td>
+    </tr>
+    <tr>
+      <td>midnight</td>
+      <td>midnight</td>
+      <td>gece yarısı</td>
+      <td>at 00:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>sabah</td>
+      <td>06:00 to 11:00</td>
+    </tr>
+    <tr>
+      <td>morning2</td>
+      <td>morning</td>
+      <td>öğleden önce</td>
+      <td>11:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>gece</td>
+      <td>21:00 to 06:00</td>
+    </tr>
+    <tr>
+      <td>noon</td>
+      <td>noon</td>
+      <td>öğle</td>
+      <td>at 12:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

@@ -141,7 +141,7 @@ module Nii::Formatters
       result  = result[display] || result.fetch('stand-alone')
       result  = result[style]   || result.fetch('wide')
       result  = result[value]
-      result  = options[:variant] ? result[:variant] || result[:default] : result[:default] if result.is_a? Hash
+      result  = options[:variant] ? result['variant'] || result['default'] : result['default'] if result.is_a? ::Hash
       result || value
     end
 

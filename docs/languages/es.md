@@ -31,6 +31,123 @@ nii.numbers.spellout 115,  :ordinal, :feminine, :plural     # => "centésima dec
 nii.numbers.spellout 115,  :ordinal, :feminine              # => "centésima decimoquinta"
 ```
 
+## Day Periods
+
+### Spanish
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Spanish</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>a. m.</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>p. m.</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>evening1</td>
+      <td>evening</td>
+      <td>tarde</td>
+      <td>12:00 to 20:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>madrugada</td>
+      <td>00:00 to 06:00</td>
+    </tr>
+    <tr>
+      <td>morning2</td>
+      <td>morning</td>
+      <td>mañana</td>
+      <td>06:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>noche</td>
+      <td>20:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>noon</td>
+      <td>noon</td>
+      <td>mediodía</td>
+      <td>at 12:00</td>
+    </tr>
+  </tbody>
+</table>
+
+### Spanish (Colombia)
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Spanish</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>a. m.</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>p. m.</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>evening1</td>
+      <td>evening</td>
+      <td>tarde</td>
+      <td>12:00 to 20:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>madrugada</td>
+      <td>00:00 to 06:00</td>
+    </tr>
+    <tr>
+      <td>morning2</td>
+      <td>morning</td>
+      <td>mañana</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>noche</td>
+      <td>20:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>noon</td>
+      <td>noon</td>
+      <td>mediodía</td>
+      <td>at 12:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 ## Variants
 
 <table>

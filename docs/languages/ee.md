@@ -24,6 +24,71 @@ nii.numbers.spellout 2020, :year    # => "akpe eve kple blaeve"
 nii.numbers.spellout 115,  :ordinal # => "alafa ɖeka kple wuiatɔ̃lia"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Ewe</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>ŋdi</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>ɣetrɔ</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>afternoon1</td>
+      <td>afternoon</td>
+      <td>ŋdɔ</td>
+      <td>12:00 to 14:00</td>
+    </tr>
+    <tr>
+      <td>afternoon2</td>
+      <td>afternoon</td>
+      <td>ɣetrɔ</td>
+      <td>14:00 to 18:00</td>
+    </tr>
+    <tr>
+      <td>evening1</td>
+      <td>evening</td>
+      <td>fiẽ</td>
+      <td>18:00 to 21:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>fɔŋli</td>
+      <td>04:00 to 05:00</td>
+    </tr>
+    <tr>
+      <td>morning2</td>
+      <td>morning</td>
+      <td>ŋdi</td>
+      <td>05:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>zã</td>
+      <td>21:00 to 04:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

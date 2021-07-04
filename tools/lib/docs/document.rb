@@ -9,6 +9,18 @@ module Docs
         super("#{language}/#{key}", complain: false) || super(key, complain: complain)
       end
 
+      def day_periods
+        @day_periods ||= begin
+          base   = Nii::Context.new(language).time.day_periods
+          result = [ [language, base] ]
+          locales.values.flatten.each do |locale|
+            periods = Nii::Context.new(locale).time.day_periods
+            result << [locale, periods] unless periods.eql? base
+          end
+          result
+        end
+      end
+
       def spellout_examples
         @spellout_examples ||= begin
           nii   = Nii::Context.new(language)

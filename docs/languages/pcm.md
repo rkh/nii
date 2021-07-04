@@ -18,6 +18,35 @@ nii.format Nii::Territory["NG"]              # => "Naijíria"
 nii.format ["de", "fr", "it"], as: :language # => "Jámán Lángwej, Frẹ́nch Lángwej, an Ítáli Lángwej"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Nigerian Pidgin</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>Fọ mọ́nin</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>Fọ ívnin</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

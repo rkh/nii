@@ -27,6 +27,77 @@ nii.numbers.spellout 115,  :financial # => "壹佰壹拾伍"
 nii.numbers.spellout 115,  :ordinal   # => "第一百一十五"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Chinese</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>上午</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>下午</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>afternoon1</td>
+      <td>afternoon</td>
+      <td>中午</td>
+      <td>12:00 to 13:00</td>
+    </tr>
+    <tr>
+      <td>afternoon2</td>
+      <td>afternoon</td>
+      <td>下午</td>
+      <td>13:00 to 19:00</td>
+    </tr>
+    <tr>
+      <td>evening1</td>
+      <td>evening</td>
+      <td>晚上</td>
+      <td>19:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>midnight</td>
+      <td>midnight</td>
+      <td>午夜</td>
+      <td>at 00:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>清晨</td>
+      <td>05:00 to 08:00</td>
+    </tr>
+    <tr>
+      <td>morning2</td>
+      <td>morning</td>
+      <td>上午</td>
+      <td>08:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>凌晨</td>
+      <td>00:00 to 05:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

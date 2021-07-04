@@ -20,6 +20,71 @@ nii.format Nii::Territory["UZ"]              # => "Oʻzbekiston"
 nii.format ["de", "fr", "it"], as: :language # => "nemischa, fransuzcha va italyan"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Uzbek</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>TO</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>TK</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>afternoon1</td>
+      <td>afternoon</td>
+      <td>kunduzi</td>
+      <td>11:00 to 18:00</td>
+    </tr>
+    <tr>
+      <td>evening1</td>
+      <td>evening</td>
+      <td>kechqurun</td>
+      <td>18:00 to 22:00</td>
+    </tr>
+    <tr>
+      <td>midnight</td>
+      <td>midnight</td>
+      <td>yarim tun</td>
+      <td>at 00:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>ertalab</td>
+      <td>06:00 to 11:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>kechasi</td>
+      <td>22:00 to 06:00</td>
+    </tr>
+    <tr>
+      <td>noon</td>
+      <td>noon</td>
+      <td>tush payti</td>
+      <td>at 12:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 ## Variants
 
 <table>

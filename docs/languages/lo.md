@@ -25,6 +25,71 @@ nii.numbers.spellout 2020, :year    # => "ສອງ​พัน​ຊາວ"
 nii.numbers.spellout 115,  :ordinal # => "ที่​ໜຶ່ງ​ร้อย​ສິບ​ຫ້າ"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Lao</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>ກ່ອນທ່ຽງ</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>ຫຼັງທ່ຽງ</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>afternoon1</td>
+      <td>afternoon</td>
+      <td>ສວຍ</td>
+      <td>12:00 to 16:00</td>
+    </tr>
+    <tr>
+      <td>evening1</td>
+      <td>evening</td>
+      <td>ແລງ</td>
+      <td>16:00 to 20:00</td>
+    </tr>
+    <tr>
+      <td>midnight</td>
+      <td>midnight</td>
+      <td>ທ່ຽງຄືນ</td>
+      <td>at 00:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>​ເຊົ້າ</td>
+      <td>05:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>​ກາງ​ຄືນ</td>
+      <td>20:00 to 05:00</td>
+    </tr>
+    <tr>
+      <td>noon</td>
+      <td>noon</td>
+      <td>ຕອນທ່ຽງ</td>
+      <td>at 12:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 

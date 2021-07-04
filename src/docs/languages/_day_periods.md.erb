@@ -1,0 +1,29 @@
+## Day Periods
+
+<% day_periods.each do |locale, periods| -%>
+<% if day_periods.size > 1 -%>
+### <%= l locale %>
+<% end -%>
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in <%= l language %></td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+<% periods.each do |period| -%>
+    <tr>
+      <td><%= period %></td>
+      <td><%= period.category %></td>
+      <td><%= Nii::Context.new(locale).format period %></td>
+      <td><%= period.at ? "at #{period.at}" : "#{period.from} to #{period.before}"  %></td>
+    </tr>
+<% end -%>
+  </tbody>
+</table>
+
+<% end -%>

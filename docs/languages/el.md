@@ -29,6 +29,59 @@ nii.numbers.spellout 115,  :ordinal, :feminine  # => "εκατοστή δέκα�
 nii.numbers.spellout 115,  :ordinal, :neuter    # => "εκατοστό δέκατο πέμπτο"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Greek</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>π.μ.</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>μ.μ.</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>afternoon1</td>
+      <td>afternoon</td>
+      <td>μεσημέρι</td>
+      <td>12:00 to 17:00</td>
+    </tr>
+    <tr>
+      <td>evening1</td>
+      <td>evening</td>
+      <td>απόγευμα</td>
+      <td>17:00 to 20:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>πρωί</td>
+      <td>04:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>βράδυ</td>
+      <td>20:00 to 04:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 ## Variants
 
 <table>

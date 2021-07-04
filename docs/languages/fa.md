@@ -24,6 +24,71 @@ nii.numbers.spellout 1           # => "یک"
 nii.numbers.spellout 2020, :year # => "دو هزار و بیست"
 ```
 
+## Day Periods
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Period</td>
+      <td>Category</td>
+      <td>Name in Persian</td>
+      <td>Time of Day</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>am</td>
+      <td>am</td>
+      <td>قبل‌ازظهر</td>
+      <td>00:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>pm</td>
+      <td>بعدازظهر</td>
+      <td>12:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>afternoon1</td>
+      <td>afternoon</td>
+      <td>ظهر</td>
+      <td>12:00 to 13:00</td>
+    </tr>
+    <tr>
+      <td>afternoon2</td>
+      <td>afternoon</td>
+      <td>عصر</td>
+      <td>13:00 to 19:00</td>
+    </tr>
+    <tr>
+      <td>morning1</td>
+      <td>morning</td>
+      <td>بامداد</td>
+      <td>01:00 to 04:00</td>
+    </tr>
+    <tr>
+      <td>morning2</td>
+      <td>morning</td>
+      <td>صبح</td>
+      <td>04:00 to 12:00</td>
+    </tr>
+    <tr>
+      <td>night1</td>
+      <td>night</td>
+      <td>شب</td>
+      <td>19:00 to 24:00</td>
+    </tr>
+    <tr>
+      <td>night2</td>
+      <td>night</td>
+      <td>نیمه‌شب</td>
+      <td>00:00 to 01:00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## Locales
 
