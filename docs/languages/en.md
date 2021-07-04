@@ -20,13 +20,13 @@ nii.format Nii::Territory["US"]              # => "United States"
 nii.format ["de", "fr", "it"], as: :language # => "German, French, and Italian"
 
 # Spelling out numbers
-nii.numbers.spellout 115                      # => "one hundred fifteen"
-nii.numbers.spellout 1                        # => "one"
-nii.numbers.spellout 2020                     # => "two thousand twenty"
-nii.numbers.spellout 2020, :year              # => "twenty twenty"
-nii.numbers.spellout 115,  :verbose           # => "one hundred and fifteen"
-nii.numbers.spellout 115,  :ordinal           # => "one hundred fifteenth"
-nii.numbers.spellout 115,  :ordinal, :verbose # => "one hundred and fifteenth"
+nii.numbers.spellout 115                        # => "one hundred fifteen"
+nii.numbers.spellout 1                          # => "one"
+nii.numbers.spellout 2020                       # => "two thousand twenty"
+nii.numbers.spellout 2020, :year                # => "twenty twenty"
+nii.numbers.spellout 115,  :verbose             # => "one hundred and fifteen"
+nii.numbers.spellout 115,  :ordinal             # => "one hundred fifteenth"
+nii.numbers.spellout 115,  :ordinal,   :verbose # => "one hundred and fifteenth"
 ```
 
 ## Variants

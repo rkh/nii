@@ -20,12 +20,12 @@ nii.format Nii::Territory["BR"]              # => "Brasil"
 nii.format ["de", "fr", "it"], as: :language # => "alemão, francês e italiano"
 
 # Spelling out numbers
-nii.numbers.spellout 115                        # => "cento e quinze"
-nii.numbers.spellout 1                          # => "um"
-nii.numbers.spellout 2020, :year                # => "dois mil e vinte"
-nii.numbers.spellout 1,    :feminine            # => "uma"
-nii.numbers.spellout 115,  :ordinal, :masculine # => "centésimo décimo quinto"
-nii.numbers.spellout 115,  :ordinal, :feminine  # => "centésima décima quinta"
+nii.numbers.spellout 115                          # => "cento e quinze"
+nii.numbers.spellout 1                            # => "um"
+nii.numbers.spellout 2020, :year                  # => "dois mil e vinte"
+nii.numbers.spellout 1,    :feminine              # => "uma"
+nii.numbers.spellout 115,  :ordinal,   :masculine # => "centésimo décimo quinto"
+nii.numbers.spellout 115,  :ordinal,   :feminine  # => "centésima décima quinta"
 ```
 
 ## Variants
