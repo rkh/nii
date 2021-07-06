@@ -19,12 +19,16 @@ nii.format Nii::Territory["HU"]              # => "Magyarország"
 nii.format ["de", "fr", "it"], as: :language # => "német, francia és olasz"
 
 # Spelling out numbers
-nii.numbers.spellout 115                      # => "száz­tizen­öt"
-nii.numbers.spellout 1                        # => "egy"
-nii.numbers.spellout 2020, :year              # => "két­ezer­húsz"
-nii.numbers.spellout 115,  :verbose           # => "egy­száz­tizen­öt"
-nii.numbers.spellout 115,  :ordinal           # => "száztizenötödik"
-nii.numbers.spellout 115,  :ordinal, :verbose # => "egyszáztizenötödik"
+nii.spellout 115                              # => "száz­tizen­öt"
+nii.spellout 1                                # => "egy"
+nii.spellout 2020, rule: :year                # => "két­ezer­húsz"
+nii.spellout 115,  rule: :ordinal             # => "száztizenötödik"
+nii.spellout 115,  rule: [:ordinal, :verbose] # => "egyszáztizenötödik"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "15,00 €"
+nii.spellout price # => "tizen­öt euró"
 ```
 
 ## Day Periods

@@ -18,11 +18,16 @@ nii.format Nii::Territory["MT"]              # => "Malta"
 nii.format ["de", "fr", "it"], as: :language # => "Ġermaniż, Franċiż, u Taljan"
 
 # Spelling out numbers
-nii.numbers.spellout 115              # => "mija u ħmistax"
-nii.numbers.spellout 1                # => "wieħed"
-nii.numbers.spellout 2020, :year      # => "elfejn u għoxrin"
-nii.numbers.spellout 115,  :masculine # => "mija u ħmistax-il"
-nii.numbers.spellout 115,  :feminine  # => "mija u ħmistax-il"
+nii.spellout 115                    # => "mija u ħmistax"
+nii.spellout 1                      # => "wieħed"
+nii.spellout 2020, rule: :year      # => "elfejn u għoxrin"
+nii.spellout 115,  rule: :masculine # => "mija u ħmistax-il"
+nii.spellout 115,  rule: :feminine  # => "mija u ħmistax-il"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "€15.00"
+nii.spellout price # => "ħmistax ewro"
 ```
 
 ## Day Periods

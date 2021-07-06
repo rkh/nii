@@ -26,27 +26,23 @@ module Docs
           nii   = Nii::Context.new(language)
           base  = [115, 1]
           year  = 2020  
-          lines = base.map { ["nii.numbers.spellout #{_1}", nii.numbers.spellout(_1)] }
+          lines = base.map { ["nii.spellout #{_1}", nii.spellout(_1)] }
 
-          if year_spelled = nii.numbers.spellout(year) and year_spelled != nii.numbers.spellout(year, :year)
-            lines << ["nii.numbers.spellout #{year}", year_spelled]
+          if year_spelled = nii.spellout(year) and year_spelled != nii.spellout(year, rule: :year)
+            lines << ["nii.spellout #{year}", year_spelled]
           end
 
-          nii.numbers.spellout_rules.rule_sets.each do |set|
-            case set
-            when 'spellout-numbering'      then next
-            when 'spellout-numbering-year' then keys, values = [:year], [year]
-            else
-              keys   = set.split('-').map(&:to_sym) - [:spellout, :numbering, :cardinal]
-              values = base
-            end
+          nii.numbers.spellout_rules.rule_sets.each do |rule|
+            next if rule == 'spellout-numbering'
+            rule   = rule.sub(/^spellout-(?:numbering-|cardinal-)?/, '')
+            values = rule == 'year' ? [year] : base
+            parent = rule.sub(/-?[^-]+$/, '')
+            rule   = rule['-'] ? rule.split('-').map(&:to_sym) : rule.to_sym
+
             values.each do |value|
-              result = nii.numbers.spellout(value, *keys)
-              if keys == [:year] or result != nii.numbers.spellout(value, *keys[0..-2])
-                lines << [
-                  "nii.numbers.spellout #{"#{value},".ljust(5)} #{keys.map(&:inspect).join(', ')}",
-                  nii.numbers.spellout(value, *keys)
-                ]
+              result = nii.spellout(value, rule: rule)
+              if rule == :year or result != nii.spellout(value, rule: parent)
+                lines << [ "nii.spellout #{"#{value},".ljust(5)} rule: #{rule.inspect}", nii.spellout(value, rule: rule) ]
                 break
               end
             end

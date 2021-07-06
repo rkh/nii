@@ -20,11 +20,16 @@ nii.format Nii::Territory["IN"]              # => "भारत"
 nii.format ["de", "fr", "it"], as: :language # => "जर्मन, फ़्रेंच, और इतालवी"
 
 # Spelling out numbers
-nii.numbers.spellout 115                        # => "एक सौ पन्द्रह"
-nii.numbers.spellout 1                          # => "एक"
-nii.numbers.spellout 2020, :year                # => "दो हज़ार बीस"
-nii.numbers.spellout 115,  :ordinal, :masculine # => "एक सौ पन्द्रहवाँ"
-nii.numbers.spellout 115,  :ordinal, :feminine  # => "एक सौ पन्द्रहवी"
+nii.spellout 115                                # => "एक सौ पन्द्रह"
+nii.spellout 1                                  # => "एक"
+nii.spellout 2020, rule: :year                  # => "दो हज़ार बीस"
+nii.spellout 115,  rule: [:ordinal, :masculine] # => "एक सौ पन्द्रहवाँ"
+nii.spellout 115,  rule: [:ordinal, :feminine]  # => "एक सौ पन्द्रहवी"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "€15.00"
+nii.spellout price # => "पन्द्रह यूरो"
 ```
 
 ## Day Periods

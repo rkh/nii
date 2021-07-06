@@ -19,16 +19,21 @@ nii.format Nii::Territory["KR"]              # => "대한민국"
 nii.format ["de", "fr", "it"], as: :language # => "독일어, 프랑스어 및 이탈리아어"
 
 # Spelling out numbers
-nii.numbers.spellout 115                                 # => "백십오"
-nii.numbers.spellout 1                                   # => "일"
-nii.numbers.spellout 2020, :year                         # => "이천이십"
-nii.numbers.spellout 115,  :native, :attributive         # => "백열다섯"
-nii.numbers.spellout 1,    :native                       # => "하나"
-nii.numbers.spellout 115,  :financial                    # => "일백일십오"
-nii.numbers.spellout 115,  :ordinal, :sinokorean, :count # => "백십오 번째"
-nii.numbers.spellout 115,  :ordinal, :native, :count     # => "백열다섯 번째"
-nii.numbers.spellout 115,  :ordinal, :sinokorean         # => "백십오째"
-nii.numbers.spellout 115,  :ordinal, :native             # => "백열다섯째"
+nii.spellout 115                                         # => "백십오"
+nii.spellout 1                                           # => "일"
+nii.spellout 2020, rule: :year                           # => "이천이십"
+nii.spellout 115,  rule: [:native, :attributive]         # => "백열다섯"
+nii.spellout 1,    rule: :native                         # => "하나"
+nii.spellout 115,  rule: :financial                      # => "일백일십오"
+nii.spellout 115,  rule: [:ordinal, :sinokorean, :count] # => "백십오 번째"
+nii.spellout 115,  rule: [:ordinal, :native, :count]     # => "백열다섯 번째"
+nii.spellout 115,  rule: [:ordinal, :sinokorean]         # => "백십오째"
+nii.spellout 115,  rule: [:ordinal, :native]             # => "백열다섯째"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "€15.00"
+nii.spellout price # => "십오 유로"
 ```
 
 ## Day Periods

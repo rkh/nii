@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'nii/all'
+require 'money'
 
 module Docs
   autoload :Document, 'docs/document'

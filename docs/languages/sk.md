@@ -19,11 +19,16 @@ nii.format Nii::Territory["SK"]              # => "Slovensko"
 nii.format ["de", "fr", "it"], as: :language # => "nemčina, francúzština a taliančina"
 
 # Spelling out numbers
-nii.numbers.spellout 115             # => "jedna­sto pätnásť"
-nii.numbers.spellout 1               # => "jeden"
-nii.numbers.spellout 2020, :year     # => "dve tisíc dvadsať"
-nii.numbers.spellout 1,    :neuter   # => "jedno"
-nii.numbers.spellout 1,    :feminine # => "jedna"
+nii.spellout 115                   # => "jedna­sto pätnásť"
+nii.spellout 1                     # => "jeden"
+nii.spellout 2020, rule: :year     # => "dve tisíc dvadsať"
+nii.spellout 1,    rule: :neuter   # => "jedno"
+nii.spellout 1,    rule: :feminine # => "jedna"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "15,00 €"
+nii.spellout price # => "pätnásť eur"
 ```
 
 ## Day Periods

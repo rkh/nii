@@ -20,10 +20,15 @@ nii.format Nii::Territory["TZ"]              # => "Tanzania"
 nii.format ["de", "fr", "it"], as: :language # => "Kijerumani, Kifaransa na Kiitaliano"
 
 # Spelling out numbers
-nii.numbers.spellout 115            # => "mia moja na kumi na tano"
-nii.numbers.spellout 1              # => "moja"
-nii.numbers.spellout 2020, :year    # => "elfu mbili, ishirini"
-nii.numbers.spellout 115,  :ordinal # => "wa mia moja na kumi na tano"
+nii.spellout 115                  # => "mia moja na kumi na tano"
+nii.spellout 1                    # => "moja"
+nii.spellout 2020, rule: :year    # => "elfu mbili, ishirini"
+nii.spellout 115,  rule: :ordinal # => "wa mia moja na kumi na tano"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "€ 15.00"
+nii.spellout price # => "yuro kumi na tano"
 ```
 
 ## Day Periods

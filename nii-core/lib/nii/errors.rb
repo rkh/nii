@@ -6,6 +6,7 @@ module Nii
     CompileError      = Class.new(ParseError)
     SetupError        = Class.new(StandardError)
     DependencyMissing = Class.new(SetupError)
+    FormatError       = Class.new(StandardError)
     ConversionError   = Class.new(StandardError)
     UnknownLocale     = Class.new(ArgumentError)
     UnknownTimezone   = Class.new(UnknownLocale)

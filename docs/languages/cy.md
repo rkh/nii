@@ -19,11 +19,16 @@ nii.format Nii::Territory["GB"]              # => "Y Deyrnas Unedig"
 nii.format ["de", "fr", "it"], as: :language # => "Almaeneg, Ffrangeg, a(c) Eidaleg"
 
 # Spelling out numbers
-nii.numbers.spellout 115                                   # => "un cant un deg pump"
-nii.numbers.spellout 1                                     # => "un"
-nii.numbers.spellout 2020, :year                           # => "dau mil dau ddeg"
-nii.numbers.spellout 115,  :masculine, :before, :consonant # => "un cant un deg pum"
-nii.numbers.spellout 115,  :feminine, :before, :consonant  # => "un cant un deg pum"
+nii.spellout 115                                           # => "un cant un deg pump"
+nii.spellout 1                                             # => "un"
+nii.spellout 2020, rule: :year                             # => "dau mil dau ddeg"
+nii.spellout 115,  rule: [:masculine, :before, :consonant] # => "un cant un deg pum"
+nii.spellout 115,  rule: [:feminine, :before, :consonant]  # => "un cant un deg pum"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "€15.00"
+nii.spellout price # => "un deg pump ewro"
 ```
 
 ## Day Periods

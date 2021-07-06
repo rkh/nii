@@ -18,11 +18,16 @@ nii.format Nii::Territory["GH"]              # => "Gaana"
 nii.format ["de", "fr", "it"], as: :language # => "Gyaaman, Frɛnkye, Italy kasa"
 
 # Spelling out numbers
-nii.numbers.spellout 115            # => "­ɔha-na-­du-anum"
-nii.numbers.spellout 1              # => "koro"
-nii.numbers.spellout 2020           # => "mpem-abien-na-aduonu"
-nii.numbers.spellout 2020, :year    # => "abien abien hwee"
-nii.numbers.spellout 115,  :ordinal # => "a-ɛ-tɔ-so-­ɔha-na-­du-anum"
+nii.spellout 115                  # => "­ɔha-na-­du-anum"
+nii.spellout 1                    # => "koro"
+nii.spellout 2020                 # => "mpem-abien-na-aduonu"
+nii.spellout 2020, rule: :year    # => "abien abien hwee"
+nii.spellout 115,  rule: :ordinal # => "a-ɛ-tɔ-so-­ɔha-na-­du-anum"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "€15.00"
+nii.spellout price # => "du-anum Iro"
 ```
 
 ## Day Periods

@@ -19,12 +19,17 @@ nii.format Nii::Territory["001"]             # => "العالم"
 nii.format ["de", "fr", "it"], as: :language # => "الألمانية والفرنسية والإيطالية"
 
 # Spelling out numbers
-nii.numbers.spellout 115                        # => "مائة و خمسة عشر"
-nii.numbers.spellout 1                          # => "واحد"
-nii.numbers.spellout 2020, :year                # => "ألفين و عشرون"
-nii.numbers.spellout 1,    :feminine            # => "واحدة"
-nii.numbers.spellout 115,  :ordinal, :feminine  # => "المائة و خمسة عشر"
-nii.numbers.spellout 115,  :ordinal, :masculine # => "المائة و خمسة عشر"
+nii.spellout 115                                # => "مائة و خمسة عشر"
+nii.spellout 1                                  # => "واحد"
+nii.spellout 2020, rule: :year                  # => "ألفين و عشرون"
+nii.spellout 1,    rule: :feminine              # => "واحدة"
+nii.spellout 115,  rule: [:ordinal, :feminine]  # => "المائة و خمسة عشر"
+nii.spellout 115,  rule: [:ordinal, :masculine] # => "المائة و خمسة عشر"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "١٥٫٠٠ €"
+nii.spellout price # => "خمسة عشر يورو"
 ```
 
 ## Day Periods

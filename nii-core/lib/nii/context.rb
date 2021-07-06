@@ -604,7 +604,7 @@ module Nii
 
       value              = prepare_format(value)
       value, formatter   = Utils.string(value), Formatters::String unless formatter = Formatters[value.class, config]
-      result             = formatter.format(self, value, **options, &block)
+      result             = formatter.public_send(options.fetch(:_method, :format), self, value, **options, &block)
       return result unless result.is_a? String
   
       result             = result.encode(encoding)
@@ -615,6 +615,16 @@ module Nii
 
       text.bidi(result, bidi, **bidi_options.to_h)
     end
+
+    def spellout(value = scope, **options, &block)
+      options[:spellout_rule] ||= options.delete(:rule)
+      format(value, _method: :spellout, **options, &block)
+    rescue NameError => error
+      raise error unless error.name == :spellout
+      raise Errors::FormatError, "Cannot spell out #{value.class}: #{error.receiver.inspect} does not implement spellout"
+    end
+
+    alias_method :spell_out, :spellout
 
     # Whether or not output from {#format} and {#render} should be HTML escaped by default.
     # This value will be used if the +escape_html+ option for {#format} is not set.

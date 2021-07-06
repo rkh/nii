@@ -5,6 +5,8 @@ require 'nii/decimal_format'
 module Nii
   # Implements ICU's Rule Based Number Formatter
   class RBNF
+    MissingRuleSet = Class.new(ArgumentError)
+
     # @param source [String]
     #   The RBNF source definition.
     #
@@ -53,9 +55,13 @@ module Nii
     # @param number [Numeric]
     # @return [String]
     def format(number, rule_set = 'default', **options)
-      raise ArgumentError, "unsupported rule set #{rule_set.inspect} (supported: #{rule_sets.join(', ')})" unless rule_sets.include? rule_set
+      raise MissingRuleSet, "unsupported rule set #{rule_set.inspect} (supported: #{rule_sets.join(', ')})" unless has_rule? rule_set
       public_send("%#{rule_set}", number, **options)
     end
+
+    # @param name [String]
+    # @return [true, false]
+    def has_rule?(name) = rule_sets.include?(name)
 
     # @private
     def inspect

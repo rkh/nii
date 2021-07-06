@@ -18,11 +18,16 @@ nii.format Nii::Territory["SN"]              # => "Senegaal"
 nii.format ["de", "fr", "it"], as: :language # => "Docceere, Farayseere, Italiyeere"
 
 # Spelling out numbers
-nii.numbers.spellout 115              # => "temedere goʼo e sappo e jowi"
-nii.numbers.spellout 1                # => "goʼo"
-nii.numbers.spellout 2020, :year      # => "ujunere ɗiɗi e noogas"
-nii.numbers.spellout 115,  :class, :o # => "temedere gooto e sappo e njowo"
-nii.numbers.spellout 115,  :ordinal   # => "temedere arande e sappo e jowaɓo"
+nii.spellout 115                      # => "temedere goʼo e sappo e jowi"
+nii.spellout 1                        # => "goʼo"
+nii.spellout 2020, rule: :year        # => "ujunere ɗiɗi e noogas"
+nii.spellout 115,  rule: [:class, :o] # => "temedere gooto e sappo e njowo"
+nii.spellout 115,  rule: :ordinal     # => "temedere arande e sappo e jowaɓo"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "15,00 €"
+nii.spellout price # => "sappo e jowi Oroo"
 ```
 
 ## Day Periods

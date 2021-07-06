@@ -19,10 +19,15 @@ nii.format Nii::Territory["KH"]              # => "កម្ពុជា"
 nii.format ["de", "fr", "it"], as: :language # => "អាល្លឺម៉ង់, បារាំង និង អ៊ីតាលី"
 
 # Spelling out numbers
-nii.numbers.spellout 115            # => "មួយ​រយ​ដប់​ប្រាំ"
-nii.numbers.spellout 1              # => "មួយ"
-nii.numbers.spellout 2020, :year    # => "ពីរ​ពាន់​ម្ភៃ"
-nii.numbers.spellout 115,  :ordinal # => "ទីមួយ​រយ​ដប់​ប្រាំ"
+nii.spellout 115                  # => "មួយ​រយ​ដប់​ប្រាំ"
+nii.spellout 1                    # => "មួយ"
+nii.spellout 2020, rule: :year    # => "ពីរ​ពាន់​ម្ភៃ"
+nii.spellout 115,  rule: :ordinal # => "ទីមួយ​រយ​ដប់​ប្រាំ"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "15,00€"
+nii.spellout price # => "ដប់​ប្រាំ អឺរ៉ូ"
 ```
 
 ## Day Periods

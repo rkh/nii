@@ -19,10 +19,15 @@ nii.format Nii::Territory["MM"]              # => "မြန်မာ"
 nii.format ["de", "fr", "it"], as: :language # => "ဂျာမန်၊ ပြင်သစ်နှင့် အီတလီ"
 
 # Spelling out numbers
-nii.numbers.spellout 115            # => "တစ်ရာ့ဆယ့်ငါး"
-nii.numbers.spellout 1              # => "တစ်"
-nii.numbers.spellout 2020, :year    # => "နှစ်ထောင့်နှစ်ဆယ်"
-nii.numbers.spellout 1,    :ordinal # => "ပထမ"
+nii.spellout 115                  # => "တစ်ရာ့ဆယ့်ငါး"
+nii.spellout 1                    # => "တစ်"
+nii.spellout 2020, rule: :year    # => "နှစ်ထောင့်နှစ်ဆယ်"
+nii.spellout 1,    rule: :ordinal # => "ပထမ"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "၁၅.၀၀ €"
+nii.spellout price # => "ယူရို ဆယ့်ငါး"
 ```
 
 ## Day Periods

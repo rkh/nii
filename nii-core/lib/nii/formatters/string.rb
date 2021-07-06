@@ -83,16 +83,24 @@ module Nii::Formatters
     # @!scope module
     def format(context, value, **options)
       return value.to_str unless as = options.delete(:as)
-      as = FORMAT_AS[as.to_sym] || Utils.string(as)
+      as     = FORMAT_AS[as.to_sym] || Utils.string(as)
+      method = options.fetch(:_method, :format)
       if as.is_a? ::String
-        method = "format_as_#{as}"
+        method = "#{method}_as_#{as}"
         return public_send(method, context, value, **options) if respond_to? method
         raise ArgumentError, "unsupported string format: #{as.inspect}" unless options[:complain] == false
         value.to_str
+      elsif as.respond_to? method
+        as.public_send(method, context, value, **options)
       else
-        as.format(context, value, **options)
+        raise Errors::FormatError, "Cannot format String with #{as.inspect} (does not implement #{method})"
       end
     end
+
+    # Attempts to spell out the string (only implemented for certain "as" targets, like number).
+    # @see Nii::Context#spellout
+    # @see #format
+    def spellout(context, value, **options) = format(context, value, _method: :spellout, **options)
 
     # Formats a string as a calendar identifier.
     #
@@ -192,6 +200,14 @@ module Nii::Formatters
       context.format(value, **options)
     end
 
+    # Spells out a string number.
+    # @overload spellout(context, value, as: :number, **options)
+    # @!scope module
+    def spellout_as_number(context, value, **options)
+      value = ::Nii::Parser.number(value)
+      context.spellout(value, **options)
+    end
+
     # Formats a string as a numbering system identifier.
     #
     # @overload format(context, value, as: :numbering_system, **options)
@@ -234,7 +250,6 @@ module Nii::Formatters
         context.locale_data(:units, :units, key, style, :display_name)
       end
     end
-
 
     # Formats a string as a language variant, where the given string is the CLDR variant code.
     #

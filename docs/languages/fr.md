@@ -19,14 +19,19 @@ nii.format Nii::Territory["FR"]              # => "France"
 nii.format ["de", "fr", "it"], as: :language # => "allemand, français et italien"
 
 # Spelling out numbers
-nii.numbers.spellout 115                                 # => "cent quinze"
-nii.numbers.spellout 1                                   # => "un"
-nii.numbers.spellout 2020, :year                         # => "deux mille vingt"
-nii.numbers.spellout 1,    :feminine                     # => "une"
-nii.numbers.spellout 115,  :ordinal, :masculine, :plural # => "cent quinzièmes"
-nii.numbers.spellout 115,  :ordinal, :masculine          # => "cent quinzième"
-nii.numbers.spellout 115,  :ordinal, :feminine, :plural  # => "cent quinzièmes"
-nii.numbers.spellout 115,  :ordinal, :feminine           # => "cent quinzième"
+nii.spellout 115                                         # => "cent quinze"
+nii.spellout 1                                           # => "un"
+nii.spellout 2020, rule: :year                           # => "deux mille vingt"
+nii.spellout 1,    rule: :feminine                       # => "une"
+nii.spellout 115,  rule: [:ordinal, :masculine, :plural] # => "cent quinzièmes"
+nii.spellout 115,  rule: [:ordinal, :masculine]          # => "cent quinzième"
+nii.spellout 115,  rule: [:ordinal, :feminine, :plural]  # => "cent quinzièmes"
+nii.spellout 115,  rule: [:ordinal, :feminine]           # => "cent quinzième"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "15,00 €"
+nii.spellout price # => "quinze euros"
 ```
 
 ## Day Periods

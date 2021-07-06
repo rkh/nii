@@ -19,12 +19,17 @@ nii.format Nii::Territory["TW"]              # => "台灣"
 nii.format ["de", "fr", "it"], as: :language # => "德文、法文和義大利文"
 
 # Spelling out numbers
-nii.numbers.spellout 115              # => "一百一十五"
-nii.numbers.spellout 1                # => "一"
-nii.numbers.spellout 2020             # => "二千零二十"
-nii.numbers.spellout 2020, :year      # => "二二〇"
-nii.numbers.spellout 115,  :financial # => "壹佰壹拾伍"
-nii.numbers.spellout 115,  :ordinal   # => "第一百一十五"
+nii.spellout 115                    # => "一百一十五"
+nii.spellout 1                      # => "一"
+nii.spellout 2020                   # => "二千零二十"
+nii.spellout 2020, rule: :year      # => "二二〇"
+nii.spellout 115,  rule: :financial # => "壹佰壹拾伍"
+nii.spellout 115,  rule: :ordinal   # => "第一百一十五"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "€15.00"
+nii.spellout price # => "十五 歐元"
 ```
 
 ## Day Periods

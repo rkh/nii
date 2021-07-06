@@ -19,11 +19,16 @@ nii.format Nii::Territory["ET"]              # => "ኢትዮጵያ"
 nii.format ["de", "fr", "it"], as: :language # => "ጀርመን፣ ፈረንሳይኛ, እና ጣሊያንኛ"
 
 # Spelling out numbers
-nii.numbers.spellout 115            # => "መቶ አስር አምስት"
-nii.numbers.spellout 1              # => "አንድ"
-nii.numbers.spellout 2020           # => "ሁለት ሺ ሁለት አስር"
-nii.numbers.spellout 2020, :year    # => "ሁለት አስር መቶ ሁለት አስር"
-nii.numbers.spellout 115,  :ordinal # => "መቶ አስር አምስትኛ"
+nii.spellout 115                  # => "መቶ አስር አምስት"
+nii.spellout 1                    # => "አንድ"
+nii.spellout 2020                 # => "ሁለት ሺ ሁለት አስር"
+nii.spellout 2020, rule: :year    # => "ሁለት አስር መቶ ሁለት አስር"
+nii.spellout 115,  rule: :ordinal # => "መቶ አስር አምስትኛ"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "€15.00"
+nii.spellout price # => "አስር አምስት ዩሮ"
 ```
 
 ## Day Periods

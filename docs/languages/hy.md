@@ -19,9 +19,14 @@ nii.format Nii::Territory["AM"]              # => "Հայաստան"
 nii.format ["de", "fr", "it"], as: :language # => "գերմաներեն, ֆրանսերեն և իտալերեն"
 
 # Spelling out numbers
-nii.numbers.spellout 115         # => "մեկ­հարյուր տասն­հինգ"
-nii.numbers.spellout 1           # => "մեկ"
-nii.numbers.spellout 2020, :year # => "երկու հազար քսան"
+nii.spellout 115               # => "մեկ­հարյուր տասն­հինգ"
+nii.spellout 1                 # => "մեկ"
+nii.spellout 2020, rule: :year # => "երկու հազար քսան"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "15,00 €"
+nii.spellout price # => "տասն­հինգ եվրո"
 ```
 
 ## Day Periods

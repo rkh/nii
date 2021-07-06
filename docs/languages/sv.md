@@ -19,17 +19,22 @@ nii.format Nii::Territory["SE"]              # => "Sverige"
 nii.format ["de", "fr", "it"], as: :language # => "tyska, franska och italienska"
 
 # Spelling out numbers
-nii.numbers.spellout 115                        # => "ett­hundra­femton"
-nii.numbers.spellout 1                          # => "ett"
-nii.numbers.spellout 2020                       # => "två­tusen tjugo"
-nii.numbers.spellout 2020, :year                # => "tjugo­hundra­tjugo"
-nii.numbers.spellout 1,    :masculine           # => "en"
-nii.numbers.spellout 1,    :feminine            # => "en"
-nii.numbers.spellout 1,    :reale               # => "en"
-nii.numbers.spellout 115,  :ordinal, :neuter    # => "ett­hundra femtonde"
-nii.numbers.spellout 115,  :ordinal, :masculine # => "ett­hundra femtonde"
-nii.numbers.spellout 115,  :ordinal, :feminine  # => "ett­hundra femtonde"
-nii.numbers.spellout 115,  :ordinal, :reale     # => "ett­hundra femtonde"
+nii.spellout 115                                # => "ett­hundra­femton"
+nii.spellout 1                                  # => "ett"
+nii.spellout 2020                               # => "två­tusen tjugo"
+nii.spellout 2020, rule: :year                  # => "tjugo­hundra­tjugo"
+nii.spellout 1,    rule: :masculine             # => "en"
+nii.spellout 1,    rule: :feminine              # => "en"
+nii.spellout 1,    rule: :reale                 # => "en"
+nii.spellout 115,  rule: [:ordinal, :neuter]    # => "ett­hundra femtonde"
+nii.spellout 115,  rule: [:ordinal, :masculine] # => "ett­hundra femtonde"
+nii.spellout 115,  rule: [:ordinal, :feminine]  # => "ett­hundra femtonde"
+nii.spellout 115,  rule: [:ordinal, :reale]     # => "ett­hundra femtonde"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "15,00 €"
+nii.spellout price # => "femton euro"
 ```
 
 ## Day Periods

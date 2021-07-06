@@ -18,15 +18,20 @@ nii.format Nii::Territory["LU"]              # => "Lëtzebuerg"
 nii.format ["de", "fr", "it"], as: :language # => "Däitsch, Franséisch a(n) Italienesch"
 
 # Spelling out numbers
-nii.numbers.spellout 115                        # => "­honnert­fofzéng"
-nii.numbers.spellout 1                          # => "eent"
-nii.numbers.spellout 2020                       # => "zwee­dausend­zwanzeg"
-nii.numbers.spellout 2020, :year                # => "zwanzeghonnertzwanzeg"
-nii.numbers.spellout 1,    :feminine            # => "eng"
-nii.numbers.spellout 1,    :neuter              # => "een"
-nii.numbers.spellout 115,  :ordinal, :masculine # => "­honnert­fofzéngten"
-nii.numbers.spellout 115,  :ordinal, :feminine  # => "­honnert­fofzéngter"
-nii.numbers.spellout 115,  :ordinal, :neuter    # => "­honnert­fofzéngt"
+nii.spellout 115                                # => "­honnert­fofzéng"
+nii.spellout 1                                  # => "eent"
+nii.spellout 2020                               # => "zwee­dausend­zwanzeg"
+nii.spellout 2020, rule: :year                  # => "zwanzeghonnertzwanzeg"
+nii.spellout 1,    rule: :feminine              # => "eng"
+nii.spellout 1,    rule: :neuter                # => "een"
+nii.spellout 115,  rule: [:ordinal, :masculine] # => "­honnert­fofzéngten"
+nii.spellout 115,  rule: [:ordinal, :feminine]  # => "­honnert­fofzéngter"
+nii.spellout 115,  rule: [:ordinal, :neuter]    # => "­honnert­fofzéngt"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "15,00 €"
+nii.spellout price # => "fofzéng Euro"
 ```
 
 ## Day Periods

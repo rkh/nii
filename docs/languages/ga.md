@@ -19,10 +19,15 @@ nii.format Nii::Territory["IE"]              # => "Éire"
 nii.format ["de", "fr", "it"], as: :language # => "Gearmáinis, Fraincis agus Iodáilis"
 
 # Spelling out numbers
-nii.numbers.spellout 115         # => "céad a cúig déag"
-nii.numbers.spellout 1           # => "a haon"
-nii.numbers.spellout 2020        # => "dhá mhíle, fiche"
-nii.numbers.spellout 2020, :year # => "fiche fiche"
+nii.spellout 115               # => "céad a cúig déag"
+nii.spellout 1                 # => "a haon"
+nii.spellout 2020              # => "dhá mhíle, fiche"
+nii.spellout 2020, rule: :year # => "fiche fiche"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "€15.00"
+nii.spellout price # => "a cúig déag euro"
 ```
 
 ## Day Periods

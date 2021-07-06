@@ -21,5 +21,10 @@ nii.format ["de", "fr", "it"], as: :language # => <%= nii.format(['de', 'fr', 'i
 
 # Spelling out numbers
 <%= spellout_examples.join("\n") %>
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => <%= nii.format(Money.eur(15_00)).inspect %>
+nii.spellout price # => <%= nii.spellout(Money.eur(15_00)).inspect %>
 <% end -%>
 ```

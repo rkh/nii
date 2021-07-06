@@ -19,10 +19,15 @@ nii.format Nii::Territory["LA"]              # => "ລາວ"
 nii.format ["de", "fr", "it"], as: :language # => "ເຢຍລະມັນ, ຝຣັ່ງ, ອິຕາລຽນ"
 
 # Spelling out numbers
-nii.numbers.spellout 115            # => "ໜຶ່ງ​ร้อย​ສິບ​ຫ້າ"
-nii.numbers.spellout 1              # => "ໜຶ່ງ"
-nii.numbers.spellout 2020, :year    # => "ສອງ​พัน​ຊາວ"
-nii.numbers.spellout 115,  :ordinal # => "ที่​ໜຶ່ງ​ร้อย​ສິບ​ຫ້າ"
+nii.spellout 115                  # => "ໜຶ່ງ​ร้อย​ສິບ​ຫ້າ"
+nii.spellout 1                    # => "ໜຶ່ງ"
+nii.spellout 2020, rule: :year    # => "ສອງ​พัน​ຊາວ"
+nii.spellout 115,  rule: :ordinal # => "ที่​ໜຶ່ງ​ร้อย​ສິບ​ຫ້າ"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "€15,00"
+nii.spellout price # => "ສິບ​ຫ້າ ຢູ​ໂຣ"
 ```
 
 ## Day Periods

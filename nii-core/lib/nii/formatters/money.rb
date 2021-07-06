@@ -67,5 +67,10 @@ module Nii::Formatters
   
       context.format(amount, style: 'currency', **options)
     end
+
+    # @param  (see #format)
+    # @option (see #format)
+    # @!scope module
+    def spellout(context, value, **options) = format(context, value, spellout: true, **options)
   end
 end

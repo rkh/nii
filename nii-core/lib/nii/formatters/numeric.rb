@@ -176,10 +176,11 @@ module Nii::Formatters
         options[:max_precision] ||= precision
       end
 
-      options[:round]   = true if options[:max_precision] and options[:round].nil?
-      options[:round]   = context.config.rounding_mode || :halfeven if options[:round] == true
-      options[:style] ||= 'unit'     if options[:unit]
-      options[:style] ||= 'currency' if options[:currency] or options[:cash]
+      options[:round]            = true if options[:max_precision] and options[:round].nil?
+      options[:round]            = context.config.rounding_mode || :halfeven if options[:round] == true
+      options[:style]          ||= 'unit'     if options[:unit]
+      options[:style]          ||= 'currency' if options[:currency] or options[:cash]
+      options[:spellout_rules] ||= context.numbers.spellout_rules
 
       case Utils.string(options[:style] || 'default')
       when 'default'    then format_default   numbers, value, **options
@@ -187,9 +188,14 @@ module Nii::Formatters
       when 'currency'   then format_currency  numbers, value, **options
       when 'percent'    then format_percent   numbers, value, **options
       when 'unit'       then format_unit      numbers, value, **options
-      else raise ArgumentError, "unsupported style: #{options[:style].inspect}"
+      else raise ::Nii::Errors::FormatError, "unsupported style: #{options[:style].inspect}"
       end
     end
+
+    # @param  (see #format)
+    # @option (see #format)
+    # @!scope module
+    def spellout(context, value, **options) = format(context, value, spellout: true, **options)
 
     private
 
@@ -235,10 +241,26 @@ module Nii::Formatters
     end
     
     def format_default(numbers, value, **options)
+      return spell(value, **options) if options[:spellout]
       format_number(:decimal, numbers, value, **options)
+    end
+
+    def spell(value, spellout_rule: nil, **options)
+      value         = round(value, options[:round], options[:max_precision] || options[:default_precision] || 0, options[:rounding_increment])
+      rules         = options.fetch(:spellout_rules)
+      spellout_rule = spellout_rule.flatten.compact.join('-') if spellout_rule.is_a? ::Array
+      spellout_rule = Utils.string(spellout_rule)
+      spellout_rule = 'numbering' if spellout_rule == ''
+      spellout_rule = "numbering-#{spellout_rule}" if spellout_rule == 'year' or spellout_rule == 'verbose'
+      spellout_rule = "cardinal-#{spellout_rule}" unless spellout_rule =~ /^(?:numbering|cardinal|ordinal)/
+      options.fetch(:spellout_rules).format(value, "spellout-#{spellout_rule}")
+    rescue ::Nii::RBNF::MissingRuleSet
+      raise if spellout_rule == 'numbering' # should not be the case as this is defined for root locale, but lets be safe
+      spell(value, spellout_rule: spellout_rule.sub(/-?[^-]+$/, ''), **options)
     end
     
     def format_decimal(numbers, value, numbering_system: nil, **options)
+      raise ::Nii::Errors::FormatError, 'cannot combine declimal formatting and spellout' if options[:spellout]
       system = numbers.system(numbering_system)
       system = numbers.system           unless system.decimal?
       system = numbers.system('native') unless system.decimal?
@@ -247,8 +269,9 @@ module Nii::Formatters
     end
     
     def format_currency(numbers, value, cash: false, currency: nil, currency_symbol: nil, currency_name: nil, currency_display: nil, currency_sign: nil, **options)
-      return format_decimal(numbers, value, min_precision: 2, max_precision: 2, **options) unless currency = numbers.currency(currency)
+      return format_default(numbers, value, min_precision: 2, max_precision: 2, **options) unless currency = numbers.currency(currency)
       currency_display               = Utils.symbol(currency_display) if currency_display
+      currency_display               = :spellout if options[:spellout]
       data_locale                    = numbers.context.data_locale
       options[:default_precision]  ||= cash ? currency.cash_digits   : currency.digits
       options[:rounding_increment] ||= cash ? currency.cash_rounding : currency.rounding
@@ -287,15 +310,20 @@ module Nii::Formatters
         unit_pattern    = unit_pattern.fetch(category, unit_pattern.fetch('other'))
         currency_name   = currency.code if currency_display == :code
         currency_name ||= currency.display_name(locale: data_locale, style: category)
-
-        # todo: support short, spellout, etc
-        unit_pattern.sub('{0}', value).sub('{1}', currency_name)
+        unit_pattern.sub('{0}', value).sub('{1}', currency_name) # todo: support short etc
+      when :spellout, :spell_out
+        category                  = numbers.plural_category(value).name
+        patterns                  = numbers.format_rules :currency, :unit_pattern
+        pattern                   = patterns.fetch(category, patterns.fetch('other'))
+        options[:spellout_rule] ||= 'cardinal-neuter' # will automatically fall back to cardinal – todo: figure out if we can get this from CLDR
+        pattern.sub('{0}', spell(value, **options)).sub('{1}', currency.display_name(locale: data_locale, style: category))
       else
         raise ArgumentError, "unsupported currency display: #{currency_display.inspect}"
       end
     end
     
     def format_percent(numbers, value, **options)
+      raise ::Nii::Errors::FormatError, 'cannot combine declimal formatting and spellout' if options[:spellout]
       format_number(:percent, numbers, value, **options)
     end
 

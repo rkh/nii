@@ -19,16 +19,21 @@ nii.format Nii::Territory["001"]             # => "verden"
 nii.format ["de", "fr", "it"], as: :language # => "tysk, fransk og italiensk"
 
 # Spelling out numbers
-nii.numbers.spellout 115                        # => "hundre og femten"
-nii.numbers.spellout 1                          # => "én"
-nii.numbers.spellout 2020                       # => "to tusen og tjue"
-nii.numbers.spellout 2020, :year                # => "tjue­hundre og tjue"
-nii.numbers.spellout 1,    :feminine            # => "ei"
-nii.numbers.spellout 1,    :neuter              # => "ett"
-nii.numbers.spellout 115,  :ordinal, :masculine # => "én­hundre femtende"
-nii.numbers.spellout 115,  :ordinal, :neuter    # => "én­hundre femtende"
-nii.numbers.spellout 115,  :ordinal, :feminine  # => "én­hundre femtende"
-nii.numbers.spellout 115,  :ordinal, :plural    # => "én­hundre femtende"
+nii.spellout 115                                # => "hundre og femten"
+nii.spellout 1                                  # => "én"
+nii.spellout 2020                               # => "to tusen og tjue"
+nii.spellout 2020, rule: :year                  # => "tjue­hundre og tjue"
+nii.spellout 1,    rule: :feminine              # => "ei"
+nii.spellout 1,    rule: :neuter                # => "ett"
+nii.spellout 115,  rule: [:ordinal, :masculine] # => "én­hundre femtende"
+nii.spellout 115,  rule: [:ordinal, :neuter]    # => "én­hundre femtende"
+nii.spellout 115,  rule: [:ordinal, :feminine]  # => "én­hundre femtende"
+nii.spellout 115,  rule: [:ordinal, :plural]    # => "én­hundre femtende"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "€ 15,00"
+nii.spellout price # => "femten euro"
 ```
 
 ## Day Periods

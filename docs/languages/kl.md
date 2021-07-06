@@ -18,9 +18,14 @@ nii.format Nii::Territory["GL"]              # => "Kalaallit Nunaat"
 nii.format ["de", "fr", "it"], as: :language # => "de, fr, it"
 
 # Spelling out numbers
-nii.numbers.spellout 115         # => "uutritit aqqaneq-tallimat"
-nii.numbers.spellout 1           # => "ataaseq"
-nii.numbers.spellout 2020, :year # => "marlunnik tuusintillit marlunnik qulillit"
+nii.spellout 115               # => "uutritit aqqaneq-tallimat"
+nii.spellout 1                 # => "ataaseq"
+nii.spellout 2020, rule: :year # => "marlunnik tuusintillit marlunnik qulillit"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "€15,00"
+nii.spellout price # => "aqqaneq-tallimat euro"
 ```
 
 ## Day Periods

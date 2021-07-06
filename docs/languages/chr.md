@@ -18,9 +18,14 @@ nii.format Nii::Territory["US"]              # => "ᏌᏊ ᎢᏳᎾᎵᏍᏔᏅ 
 nii.format ["de", "fr", "it"], as: :language # => "ᏙᎢᏥ, ᎦᎸᏥ, ᎠᎴ ᎬᏩᎵᏲᏥᎢ"
 
 # Spelling out numbers
-nii.numbers.spellout 115         # => "ꮠꮼ ꮝꭺꭿꮵꮖ ꭿꮝꭶꮪ"
-nii.numbers.spellout 1           # => "ꮠꮼ"
-nii.numbers.spellout 2020, :year # => "ꮤꮅ ꭲꮿꭶᏼꮅ ꮤꮅꮝꭺꭿ"
+nii.spellout 115               # => "ꮠꮼ ꮝꭺꭿꮵꮖ ꭿꮝꭶꮪ"
+nii.spellout 1                 # => "ꮠꮼ"
+nii.spellout 2020, rule: :year # => "ꮤꮅ ꭲꮿꭶᏼꮅ ꮤꮅꮝꭺꭿ"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "€15.00"
+nii.spellout price # => "ꭿꮝꭶꮪ ᏳᎳᏛ ᎠᏕᎳ"
 ```
 
 ## Day Periods

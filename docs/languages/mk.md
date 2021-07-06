@@ -19,11 +19,16 @@ nii.format Nii::Territory["MK"]              # => "Северна Македон
 nii.format ["de", "fr", "it"], as: :language # => "германски, француски и италијански"
 
 # Spelling out numbers
-nii.numbers.spellout 115             # => "еднасто петнаесет"
-nii.numbers.spellout 1               # => "еден"
-nii.numbers.spellout 2020, :year     # => "две илјада дваесет"
-nii.numbers.spellout 1,    :neuter   # => "едно"
-nii.numbers.spellout 1,    :feminine # => "една"
+nii.spellout 115                   # => "еднасто петнаесет"
+nii.spellout 1                     # => "еден"
+nii.spellout 2020, rule: :year     # => "две илјада дваесет"
+nii.spellout 1,    rule: :neuter   # => "едно"
+nii.spellout 1,    rule: :feminine # => "една"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "15,00 €"
+nii.spellout price # => "петнаесет евра"
 ```
 
 ## Day Periods

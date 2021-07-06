@@ -23,42 +23,6 @@ module Nii::Info
 
     # @api internal
     def format_rules(type, format = :standard, system: nil) = get(system, "#{type}_formats", format)
-
-    # Spells out a number.
-    #
-    # @example Spellout options for English
-    #   nii = Nii::Context.new :en
-    #   nii.numbers.spellout 115                      # => "one hundred fifteen"
-    #   nii.numbers.spellout 2020                     # => "two thousand twenty"
-    #   nii.numbers.spellout 2020, :year              # => "twenty twenty"
-    #   nii.numbers.spellout 115,  :verbose           # => "one hundred and fifteen"
-    #   nii.numbers.spellout 115,  :ordinal           # => "one hundred fifteenth"
-    #   nii.numbers.spellout 115,  :ordinal, :verbose # => "one hundred and fifteenth"
-    #
-    # @example Spellout options for Catalan
-    #   nii = Nii::Context.new :ca
-    #   nii.numbers.spellout 115                        # => "cent-quinze"
-    #   nii.numbers.spellout 1                          # => "u"
-    #   nii.numbers.spellout 1,    :masculine           # => "un"
-    #   nii.numbers.spellout 1,    :feminine            # => "una"
-    #   nii.numbers.spellout 115,  :ordinal, :masculine # => "cent-quinzè"
-    #   nii.numbers.spellout 115,  :ordinal, :feminine  # => "cent-quinzena"
-    #
-    # @param number [Numeric]
-    #
-    # @param rules [Array<Symbol, String>]
-    #   specific rules to use (cardinal/ordinal/year, gender, case, plural, verbose).
-    #   See the documentation for the specific language on examples.
-    #
-    # @return [String]
-    def spellout(number, *rules) = spellout_rules.format(number, spellout_rule(rules))
-    
-    # Spells out a number as a year. In English, 2020 will become "twenty twenty" instead of "two thousand twenty".
-    #
-    # @see #spellout
-    # @param number [Numeric]
-    # @return [String]
-    def spellout_year(year) = spellout(year, :year)
   
     # Formats a number as ordinal
     #
@@ -68,15 +32,15 @@ module Nii::Info
     #   nii.numbers.ordinal 42 # => "42nd"
     #
     # @example Ordinal numbers in Swedisch
-    #   nii.numbers.ordinal 1, :neuter    # => "1:a"
-    #   nii.numbers.ordinal 1, :masculine # => "1:e"
+    #   nii.numbers.ordinal 1, rule: :neuter    # => "1:a"
+    #   nii.numbers.ordinal 1, rule: :masculine # => "1:e"
     #
     # @param number [Numeric]
     # @param rule [nil, Symbol, String] special rule to use (case, gender, etc)
     # @return [String]
-    def ordinal(number, rule = nil)
+    def ordinal(number, rule: nil, **)
       ordinal_rules.format(number, "digits-ordinal#{"-#{rule}" if rule}")
-    rescue ArgumentError
+    rescue Nii::RBNF::MissingRuleSet
       ordinal_rules.format(number, 'digits-ordinal')
     end
 
@@ -137,15 +101,6 @@ module Nii::Info
     private
 
     def rbnf(key) = data.cache(:rbnf, context.data_locale, :rbnf, key) { Nii::RBNF.load(_1, plurals: context.grammar.plurals) }
-    
-    def spellout_rule(keys)
-      data.cache(:spellout_rule, locale: context.data_locale, keys: keys) do
-        available = spellout_rules.rule_sets
-        base      = keys.join('-')
-        possible  = ["spellout-#{base}", "spellout-cardinal-#{base}", "spellout-numbering-#{base}", base, "spellout-numbering"]
-        possible.detect { available.include? _1 }
-      end
-    end
 
     def get(system, key, *keys)
       keys.compact!

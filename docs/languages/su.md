@@ -18,10 +18,15 @@ nii.format Nii::Territory["ID"]              # => "ID"
 nii.format ["de", "fr", "it"], as: :language # => "Jérman, Prancis, sareng Italia"
 
 # Spelling out numbers
-nii.numbers.spellout 115            # => "hiji ratus lima belas"
-nii.numbers.spellout 1              # => "hiji"
-nii.numbers.spellout 2020, :year    # => "dua rebu dua puluh"
-nii.numbers.spellout 115,  :ordinal # => "kahiji ratus lima belas"
+nii.spellout 115                  # => "hiji ratus lima belas"
+nii.spellout 1                    # => "hiji"
+nii.spellout 2020, rule: :year    # => "dua rebu dua puluh"
+nii.spellout 115,  rule: :ordinal # => "kahiji ratus lima belas"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "€15,00"
+nii.spellout price # => "lima belas euro"
 ```
 
 ## Day Periods

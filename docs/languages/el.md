@@ -19,14 +19,19 @@ nii.format Nii::Territory["GR"]              # => "Ελλάδα"
 nii.format ["de", "fr", "it"], as: :language # => "Γερμανικά, Γαλλικά και Ιταλικά"
 
 # Spelling out numbers
-nii.numbers.spellout 115                        # => "εκατόν δεκα­πέντε"
-nii.numbers.spellout 1                          # => "ένα"
-nii.numbers.spellout 2020, :year                # => "δύο χίλιάδες είκοσι"
-nii.numbers.spellout 1,    :masculine           # => "ένας"
-nii.numbers.spellout 1,    :feminine            # => "μία"
-nii.numbers.spellout 115,  :ordinal, :masculine # => "εκατοστός δέκατος πέμπτος"
-nii.numbers.spellout 115,  :ordinal, :feminine  # => "εκατοστή δέκατη πέμπτη"
-nii.numbers.spellout 115,  :ordinal, :neuter    # => "εκατοστό δέκατο πέμπτο"
+nii.spellout 115                                # => "εκατόν δεκα­πέντε"
+nii.spellout 1                                  # => "ένα"
+nii.spellout 2020, rule: :year                  # => "δύο χίλιάδες είκοσι"
+nii.spellout 1,    rule: :masculine             # => "ένας"
+nii.spellout 1,    rule: :feminine              # => "μία"
+nii.spellout 115,  rule: [:ordinal, :masculine] # => "εκατοστός δέκατος πέμπτος"
+nii.spellout 115,  rule: [:ordinal, :feminine]  # => "εκατοστή δέκατη πέμπτη"
+nii.spellout 115,  rule: [:ordinal, :neuter]    # => "εκατοστό δέκατο πέμπτο"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "15,00 €"
+nii.spellout price # => "δεκα­πέντε ευρώ"
 ```
 
 ## Day Periods

@@ -143,10 +143,33 @@ module Nii
     #
     #   example = Liked by {$friend} { OFFSET($likes, -1) ->
     #     [0]
-    #     [one]   one other person
-    #    *[other] {OFFSET($likes, -1)} others
+    #     [one]   and one other person
+    #    *[other] and {OFFSET($likes, -1)} others
     #   }
     def offset(first, second) = ::Nii::Parser.number(first) + ::Nii::Parser.number(second)
+
+    # Formats a number as ordinal. Takes a rule option for fine-tuning:
+    def ordinal(value, **options)
+      value = ::Nii::Parser.number(value)
+      @context.numbers.ordinal(value, **options)
+    end
+
+    # Spells out a number, unit, money amount, or similar.
+    # Use the rule option for fine-tuning:
+    #
+    #   # "one hundred fifteen" for 115 in English
+    #   a = { SPELLOUT($number) }
+    #
+    #   # "one hundred and fifteen" for 115 in English
+    #   b = { SPELLOUT($number, rule: "verbose") }
+    #
+    #   # "one hundred and fifteenth" for 115 in English
+    #   c = { SPELLOUT($number, rule: "ordinal-verbose") }
+    #
+    # Available rules depend on language.
+    # @see Nii::Context#spellout
+    def spellout(value, **options) = @context.spellout(value, **options)
+    alias_method :spell_out, :spellout
 
     # The tone to use. Helpful for languages with a T-V distinction (which includes all Roman languages
     # and most Germanic languages with the notable exception of modern English).

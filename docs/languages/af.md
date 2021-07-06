@@ -19,11 +19,16 @@ nii.format Nii::Territory["ZA"]              # => "Suid-Afrika"
 nii.format ["de", "fr", "it"], as: :language # => "Duits, Frans en Italiaans"
 
 # Spelling out numbers
-nii.numbers.spellout 115            # => "honderd vyftien"
-nii.numbers.spellout 1              # => "een"
-nii.numbers.spellout 2020           # => "twee­duisend twintig"
-nii.numbers.spellout 2020, :year    # => "twintig twintig"
-nii.numbers.spellout 115,  :ordinal # => "een honderd vyftiende"
+nii.spellout 115                  # => "honderd vyftien"
+nii.spellout 1                    # => "een"
+nii.spellout 2020                 # => "twee­duisend twintig"
+nii.spellout 2020, rule: :year    # => "twintig twintig"
+nii.spellout 115,  rule: :ordinal # => "een honderd vyftiende"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "€15,00"
+nii.spellout price # => "vyftien euro"
 ```
 
 ## Day Periods

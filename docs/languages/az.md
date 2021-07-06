@@ -20,10 +20,15 @@ nii.format Nii::Territory["AZ"]              # => "Azərbaycan"
 nii.format ["de", "fr", "it"], as: :language # => "alman, fransız və italyan"
 
 # Spelling out numbers
-nii.numbers.spellout 115            # => "bir yüz on beş"
-nii.numbers.spellout 1              # => "bir"
-nii.numbers.spellout 2020, :year    # => "iki min iyirmi"
-nii.numbers.spellout 115,  :ordinal # => "bir yüz on beşinci"
+nii.spellout 115                  # => "bir yüz on beş"
+nii.spellout 1                    # => "bir"
+nii.spellout 2020, rule: :year    # => "iki min iyirmi"
+nii.spellout 115,  rule: :ordinal # => "bir yüz on beşinci"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "15,00 €"
+nii.spellout price # => "on beş Avro"
 ```
 
 ## Day Periods

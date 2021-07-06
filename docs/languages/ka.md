@@ -19,9 +19,14 @@ nii.format Nii::Territory["GE"]              # => "საქართველ�
 nii.format ["de", "fr", "it"], as: :language # => "გერმანული, ფრანგული და იტალიური"
 
 # Spelling out numbers
-nii.numbers.spellout 115         # => "ას­თხუთმეტი"
-nii.numbers.spellout 1           # => "ერთი"
-nii.numbers.spellout 2020, :year # => "ორი ათას ოცი"
+nii.spellout 115               # => "ას­თხუთმეტი"
+nii.spellout 1                 # => "ერთი"
+nii.spellout 2020, rule: :year # => "ორი ათას ოცი"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "15,00 €"
+nii.spellout price # => "თხუთმეტი ევრო"
 ```
 
 ## Day Periods

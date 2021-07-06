@@ -19,13 +19,17 @@ nii.format Nii::Territory["IL"]              # => "ישראל"
 nii.format ["de", "fr", "it"], as: :language # => "גרמנית, צרפתית ואיטלקית"
 
 # Spelling out numbers
-nii.numbers.spellout 115                          # => "מאה וחמש עשרה"
-nii.numbers.spellout 1                            # => "אחת"
-nii.numbers.spellout 2020, :year                  # => "אלפיים עשרים"
-nii.numbers.spellout 115,  :masculine             # => "מאה וחמישה עשר"
-nii.numbers.spellout 115,  :construct, :masculine # => "מאה וחמישה עשר"
-nii.numbers.spellout 115,  :ordinal, :masculine   # => "מאה וחמישה עשר"
-nii.numbers.spellout 1,    :ordinal, :feminine    # => "ראשונה"
+nii.spellout 115                                # => "מאה וחמש עשרה"
+nii.spellout 1                                  # => "אחת"
+nii.spellout 2020, rule: :year                  # => "אלפיים עשרים"
+nii.spellout 115,  rule: :masculine             # => "מאה וחמישה עשר"
+nii.spellout 115,  rule: [:ordinal, :masculine] # => "מאה וחמישה עשר"
+nii.spellout 1,    rule: [:ordinal, :feminine]  # => "ראשונה"
+
+# With RubyMoney
+price = Money.eur 15_00
+nii.format   price # => "‏15.00 €"
+nii.spellout price # => "חמש עשרה אירו"
 ```
 
 ## Day Periods
