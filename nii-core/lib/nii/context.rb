@@ -779,9 +779,8 @@ module Nii
     # placeholder to allow more advanced normalization in the future
     def normalize_variable_name(name) = Utils.string(name)
 
-    def call_function(function, ...)
-      @functions.invoke(function, ...)
-    end
+    # @api internal
+    def call_function(function, ...) = @functions.invoke(function, ...)
 
     # Retrives an attribute for a given object.
     # @see Nii::Template::Attribute
