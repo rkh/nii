@@ -62,7 +62,7 @@ context.render :greeting, { name: "Maria" } # => "Good morning, Maria!" (dependi
 * Built-in support for [HTML formatting](html.md), sanitizing, and escaping (compatible with Active Support).
 * Support for positional and named arguments, which can be provided ad hoc and/or predefined.
 * Comes with a library of [template functions](functions.md) for more flexible translations.
-* Script and directionality aware string constructions, with automatic support support for bidirectional text, with embedded UTF-8 markers or HTML tags.
+* Script and directionality aware string constructions, with automatic support for bidirectional text, with embedded UTF-8 markers or HTML tags.
 * Differentiates between language inheritance and fallbacks, to avoid mixed language content.
 
 ## Object Localization
