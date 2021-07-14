@@ -161,11 +161,6 @@ module Nii
     #   @return [Nii::Config]
     def slice(...) = Config.new(@options.slice(...))
 
-    # @overload except(*keys)
-    #   Hash#except for Config objects.
-    #   @return [Nii::Config]
-    def except(...) = Config.new(@options.except(...))
-
     # @api internal
     def hash = @options.hash
     
