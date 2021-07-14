@@ -1,4 +1,4 @@
-<!-- This file has been generated. Source: languages/_template.md.erb -->
+<!-- This file has been generated. Source: src/docs/languages/_template.md.erb -->
 
 # Prussian
 

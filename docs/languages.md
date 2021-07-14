@@ -1,4 +1,4 @@
-<!-- This file has been generated. Source: languages.md.erb -->
+<!-- This file has been generated. Source: src/docs/languages.md.erb -->
 
 # Languages
 

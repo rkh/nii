@@ -60,7 +60,7 @@ module Docs
       @nii       = Nii::Context.new 'en'
       @path      = path
       @directory = @path.dirname
-      @file_name = @path.relative_path.to_s
+      @file_name = @path.relative_path_from File.expand_path('.')
       @data      = data.transform_keys(&:to_sym)
     end
 
@@ -70,7 +70,8 @@ module Docs
       render(path) if complain or path.exist?
     end
 
-    def partial? = @path.basename.to_s.start_with?(?_)
+    def partial?       = @path.basename.to_s.start_with?(?_)
+    def relative(path) = Pathname.new(path).relative_path_from(@path.relative_path.dirname)
 
     def write(target)
       target.dirname.mkpath unless target.dirname.exist?

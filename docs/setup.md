@@ -1,4 +1,4 @@
-<!-- This file has been generated. Source: setup.md.erb -->
+<!-- This file has been generated. Source: src/docs/setup.md.erb -->
 
 # Setup
 

@@ -1,12 +1,10 @@
-<!-- This file has been generated. Source: src/README.md.erb -->
+<!-- This file has been generated. Source: src/docs/overview.md.erb -->
 
-# Nii
-
-[![Test](https://github.com/rkh/nii/actions/workflows/ci.yml/badge.svg)](https://github.com/rkh/nii/actions/workflows/ci.yml)
+# Overview
 
 Nii is an **internationalization** (i18n) and **localization** (l10n) solution for Ruby. It is **modular**, **comprehensive**, **fast**, and built on top of **modern standards** and best practices.
 
-With Nii, you can **[manage translations](#translation-management)**, **[localize any Ruby object](#object-localization)**, all with an easy to use, powerful **[configuration setup](#advanced-setups)**. It includes out of the box support for **[233 languages](docs/languages.md)**, with **1531 language variants**.
+With Nii, you can **[manage translations](#translation-management)**, **[localize any Ruby object](#object-localization)**, all with an easy to use, powerful **[configuration setup](#advanced-setups)**. It includes out of the box support for **[233 languages](languages.md)**, with **1531 language variants**.
 
 ## Translation Management
 
@@ -15,7 +13,7 @@ Similar solutions include [Ruby I18n](https://github.com/ruby-i18n/i18n), [R18n]
 
 ### Example
 
-`locales/en/example.ftl` (localizaiton for [English](docs/languages/en.md), using [Fluent](docs/formats/fluent.md)):
+`locales/en/example.ftl` (localizaiton for [English](languages/en.md), using [Fluent](formats/fluent.md)):
 
 ``` fluent
 hello-world = Hello World!
@@ -112,8 +110,3 @@ nii.spellout price # => "fifteen euros"
 
 … *todo* …
 
-
-## License
-
-Nii is licensed under an [MIT License](LICENSE).
-It also includes modified versions of the CLDR data files, which are licensed under a [Unicode license](nii-core/data/LICENSE).
