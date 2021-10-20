@@ -33,8 +33,9 @@ module Nii
   autoload :Info,               'nii/info'
   autoload :LoadPath,           'nii/load_path'
   autoload :LocalePreference,   'nii/locale_preference'
-  autoload :Localized,          'nii/localized'
+  autoload :LocaleMap,          'nii/locale_map'
   autoload :Locale,             'nii/locale'
+  autoload :Localized,          'nii/localized'
   autoload :Lookup,             'nii/lookup'
   autoload :Message,            'nii/message'
   autoload :Middleware,         'nii/middleware'
@@ -45,6 +46,7 @@ module Nii
   autoload :Setup,              'nii/setup'
   autoload :Template,           'nii/template'
   autoload :Territory,          'nii/territory'
+  autoload :TimePattern,        'nii/time_pattern'
   autoload :Timezone,           'nii/timezone'
   autoload :Utils,              'nii/utils'
 

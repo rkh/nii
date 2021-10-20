@@ -310,6 +310,14 @@ module Nii
     alias_method :children,  :territories
     alias_method :divisions, :territories
 
+    # @return [Array<String>] List of calendar types used in the territory, in order of preference.
+    def calendar_preference = get(:calendar_preference)
+
+    # @return [Array<Nii::Calendar::Generic>]
+    #   List of calendars used in the territory, in order of preference.
+    #   This is equivalent to the +calendar_preference+ attribute, but excludes unsupported calendars.
+    def calendars = @attributes[:calendars] ||= calendar_preference.map { @data.calendar(_1, false) }.compact
+
     def deconstruct = [code]
 
     def deconstruct_keys(keys)

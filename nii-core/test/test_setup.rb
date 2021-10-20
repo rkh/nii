@@ -8,12 +8,13 @@ class TestSetup < Minitest::Test
   def test_conditional
     configure do
       measurement_system 'US'
+      available_locales 'en'
       on('en-US') { measurement_system 'metric' }
     end
 
     assert !context('en-DE').measurement_system.metric?
     assert context('en-US').measurement_system.metric?
-    assert_equal 'en-US', config.available_locales.to_s
+    assert_equal 'en', config.available_locales.to_s
   end
 
   def test_block_argument

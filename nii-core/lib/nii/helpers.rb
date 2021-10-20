@@ -40,6 +40,7 @@ module Nii
     # @return [Nii::Context]
     # @raise [Nii::Errors::SetupError] if localization context cannot be determined
     def nii(complain = true)
+      @nii ||= super() if defined? super # allows Helpers to be included further down the inheritance chain
       case
       when defined?(@nii) && @nii           then @nii
       when respond_to?(:to_nii_context)     then @nii = self
@@ -49,7 +50,9 @@ module Nii
       when complain                         then raise Errors::SetupError, 'no nii context'
       else return
       end
-      @nii.to_nii_context
+      result = @nii.to_nii_context
+      @nii   = @nii.subcontext(namespace: _nii_namespace) if result.config.namespace.nil? and _nii_namespace
+      result
     end
 
     # Check for a localization context (to avoid an exception when calling {#nii}).
@@ -81,7 +84,7 @@ module Nii
     def translate(message, variables = nil, **options)
       return nii.format(message, **options) unless message.is_a? Symbol or message.is_a? String
       default = options.fetch(:default, UNDEFINED)
-      default = -> { super(message, **options) } if variables.nil? and defined? super
+      default = -> { super(message, **options) } if default == UNDEFINED and variables.nil? and defined? super
       nii.render(message, variables, **options, default: default)
     end
     alias_method :t, :translate
@@ -101,6 +104,8 @@ module Nii
     alias_method :l, :localize
 
     private
+
+    def _nii_namespace = nil
 
     def _nii_config
       @_nii_config ||= begin

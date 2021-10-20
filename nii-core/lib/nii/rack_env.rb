@@ -23,7 +23,7 @@ module Nii
       @config          = Nii::Config.new(config)
       @env             = nil
 
-      @env_key         = @config.env_key      || 'nii.context'
+      @env_key         = @config.env_key || 'nii.context'
       @ignore_paths    = Array(@config.ignore_paths).map { |path| path_pattern(path) }
 
       @content_header  = @config.content_header
@@ -42,6 +42,9 @@ module Nii
 
       @locale_path     = path_pattern(@config.locale_path)
       @locale_path     = %r{\A/?(?<locale>[^/]+)(?<path>/.*)?\Z} if locale_path == true
+
+      @vary            = [@content_header, @language_header, @timezone_header].flatten.map { header(_1) }.compact.join(', ')
+      @vary            = nil if @vary.empty? or @config.vary == false
 
       @domains         = @config.domains&.map do |domain, domain_config|
         domain_config  = Config.new(domain_config)
@@ -62,7 +65,7 @@ module Nii
       raise RuntimeError, "env already initialized" if @env
       @env     = env
       @request = Rack::Request.new(env) if defined? Rack::Request
-      negotiate!
+      negotiate! unless @context = env[env_key]
       self
     end
 
@@ -83,6 +86,11 @@ module Nii
           locales = context.available_locales || context.locale(true)
           locales.without_extensions.to_s
         end
+      end
+
+      if @vary
+        headers['Vary'] &&= "#{headers['Vary']}, #{@vary}"
+        headers['Vary'] ||= @vary
       end
 
       [status, headers, body]
@@ -162,6 +170,12 @@ module Nii
     def path_pattern(pattern)
       return pattern unless pattern.is_a? String and type = config.pattern_style
       type.new(pattern)
+    end
+
+    def header(header_key)
+      return unless header_key and header_key = header_key[/^HTTP_(.+)$/, 1]
+      return header_key.upcase if header_key =~ /^[A-z]{1,2}$/
+      header_key.split('_').map(&:capitalize).join('-')
     end
 
     def header_key(header)

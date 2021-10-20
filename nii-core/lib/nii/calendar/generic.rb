@@ -27,6 +27,7 @@ module Nii::Calendar
 
     # @return [String] CLDR compatible calendar identifier
     attr_reader :type
+    alias_method :to_s, :type
 
     # @api internal
     def initialize(data: Nii::DATA, type: nil)
@@ -98,6 +99,12 @@ module Nii::Calendar
 
     # @abstract The exact behavior of this method depends on the calendar system.
     # @param date [::Date, Nii::Date, #to_nii_date, #to_date] date in question
+    # @return [Integer] the Gergorian year for a given date
+    # @see Nii::Date#gregorian_year
+    def gregorian_year(date) = new_year(date).year
+
+    # @abstract The exact behavior of this method depends on the calendar system.
+    # @param date [::Date, Nii::Date, #to_nii_date, #to_date] date in question
     # @return [Integer] the calendar's quarter for a given date
     # @see Nii::Date#quarter
     def quarter(date) = raise(NotImplementedError, 'subclass responsibility')
@@ -125,7 +132,13 @@ module Nii::Calendar
     # @param date [::Date, Nii::Date, #to_nii_date, #to_date] date in question
     # @return [Symbol] the week day for a given date, as a three letter symbol
     # @see Nii::Date#week_day
-    def week_day(date) = WEEK_DAYS[date(date).wday]
+    def week_day(date) = WEEK_DAYS[day_of_week(date)]
+
+    # @abstract The exact behavior of this method depends on the calendar system.
+    # @param date [::Date, Nii::Date, #to_nii_date, #to_date] date in question
+    # @return [Integer] the date's week day, as an integer
+    # @see Nii::Date#day_of_week
+    def day_of_week(date) = date(date).wday
 
     # @abstract The exact behavior of this method depends on the calendar system.
     # The year cycle for a given date. Non-cyclic calendars will return +nil+.
@@ -140,9 +153,7 @@ module Nii::Calendar
     # @param date [::Date, Nii::Date, #to_nii_date, #to_date] date in question
     # @return [Integer, nil]
     # @see Nii::Date#era
-    def era(date)
-      raise 'todo'
-    end
+    def era(date) = nil
 
     # @abstract The exact behavior of this method depends on the calendar system.
     # Calculates the Gregorian date of the new year.
@@ -203,6 +214,9 @@ module Nii::Calendar
     def to_nii_calendar
       self
     end
+
+    # @return [Symbol] symbol representing the calendar system
+    def to_sym = @to_sym ||= type.to_sym
 
     # @api internal
     def calculate_jd(**options) = raise(ArgumentError, "cannot calculate gregorian from #{type} for given options")

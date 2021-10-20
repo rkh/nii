@@ -2,6 +2,9 @@
 
 module Nii::Info
   class Time < Generic
+    DEFAULT_DATE_FORMATS = { iso: Nii::TimePattern.new('y-MM-dd') }
+    private_constant :DEFAULT_DATE_FORMATS
+
     # @overload day_periods(type: :default)
     #   @return [Array<Nii::DayPeriod>] list of all day periods known in the current locale
     #
@@ -140,5 +143,40 @@ module Nii::Info
     # @return [Nii::Timezone::Meta]
     # @see Nii::Timezone#meta_zone
     def meta_zone(name = nil) = zone(name).meta_zone
+
+    # @param calendar [nil, String, Symbol, Nii::Calendar]
+    # @return [Hash{Symbol => Nii::TimePattern}]
+    def date_formats(calendar = nil)
+      calendar ||= context.calendar
+      data.cache(:date_formats, data_locale, :calendars, calendar, :date_formats) do
+        result = DEFAULT_DATE_FORMATS.merge(pattern_map(_1.to_h))
+        result.merge! pattern_match(config.date_formats[calendar.to_sym]) if config.date_formats and config.date_formats[calendar.to_sym]
+        result
+      end
+    end
+
+    # @param style [Symbol, #to_sym] Style to use (full, long, medium, short).
+    # @param calendar [nil, String, Symbol, Nii::Calendar]
+    def date_format(style, calendar: nil, complain: true)
+      style = style.to_sym
+      date_formats(calendar).fetch(style) do
+        date_formats(:generic).fetch(style) do
+          return unless complain
+          raise ArgumentError, "Unknown date format style #{style.inspect}"
+        end
+      end
+    end
+
+    private
+
+    def pattern_map(input)
+      input.transform_keys(&:to_sym).transform_values do |value|
+        case value
+        when String then Nii::TimePattern.new(value)
+        when Hash   then pattern_map(value)
+        else value
+        end
+      end
+    end
   end
 end

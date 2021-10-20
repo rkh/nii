@@ -9,6 +9,12 @@ module Nii::Calendar
     # @see Nii::Calendar::Generic#year
     def year(date) = date(date).year
 
+    # Returns 0 for BCE date, 1 for CE dates.
+    # @param date [::Date, Nii::Date, #to_nii_date, #to_date] date in question
+    # @return [Integer, nil]
+    # @see Nii::Date#era
+    def era(date) = year(date).positive? ? 1 : 0
+
     # @param date [::Date, Nii::Date, #to_nii_date, #to_date] date in question
     # @return [Integer] the calendar's quarter for a given date
     # @see Nii::Date#quarter
@@ -66,5 +72,8 @@ module Nii::Calendar
 
     # @api internal
     def format(date) = date(date).to_s
+
+    # @api internal
+    def data_key = :gregorian
   end
 end

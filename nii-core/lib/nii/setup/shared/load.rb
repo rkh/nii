@@ -33,7 +33,7 @@ module Nii::Setup::Shared
     #
     # @example
     #   Nii::Setup.new do
-    #     # load nii config files from config/i18n and  config/nii
+    #     # load nii config files from config/i18n and config/nii
     #     config_path "config/i18n", "config/nii"
     #
     #     load "all.yml"

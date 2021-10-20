@@ -59,7 +59,7 @@ module Nii::I18n
     def self.delegate(*methods, setter: true)
       methods.each do |method|
         class_eval "def #{method} = @lock.with_read_lock { @i18n.#{method} }"
-        class_eval "def #{method}(value) @lock.with_write_lock { @i18n.#{method} = value }; end" if setter
+        class_eval "def #{method}=(value) @lock.with_write_lock { @i18n.#{method} = value }; end" if setter
       end
     end
 
@@ -86,7 +86,7 @@ module Nii::I18n
     # @overload enable
     #   Enables synchronization for the current thread.
     #   @return [nil]
-    def enable(&block) = with_confg(self,  &block)
+    def enable(&block) = with_config(self,  &block)
 
     # Desynchronzies I18n.locale and context.locale.
     # Desynchronization is thread-local (ie, new threads spawned will disregard the locale).
@@ -99,7 +99,7 @@ module Nii::I18n
     # @overload enable
     #   Disables synchronization for the current thread.
     #   @return [nil]
-    def disable(&block) = with_confg(@i18n, &block)
+    def disable(&block) = with_config(@i18n, &block)
 
     # Whether or not this synchronization is enabled.
     # Note that another synchronization might be active instead.

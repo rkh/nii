@@ -16,6 +16,9 @@ module Nii::Rails
     def initialize(application)
       application = application.application if application == ::Rails
       super
+      set :reload_templates, Rails.env.development?
+      lookup(:default, Rails.root.join('app/locales'))
+      lookup(:i18n, Rails.root.join('config/locales'))
     end
 
     # @api internal
@@ -23,6 +26,7 @@ module Nii::Rails
       @application.config.nii = finalized.config
       finalize_middleware(finalized)
       finalize_i18n(finalized)
+      Extension.install
     end
 
     def middleware(value = Nii::UNDEFINED) = set(:middleware, value, Nii::Middleware)
@@ -37,6 +41,12 @@ module Nii::Rails
     def finalize_i18n(finalized)
       return if finalized[::I18n] # someone set it up explicitly
       ::I18n.fallbacks = Nii::I18n::Fallbacks.new(finalized.config)
+      unless I18n.config.available_locales_initialized?
+        available_locales                     = finalized.config.available_locales&.map(&:code)
+        available_locales                   ||= finalized.config.data.available_locales
+        I18n.config.available_locales         = available_locales
+        I18n.config.enforce_available_locales = false
+      end
     end
 
     def finalize_middleware(finalized)

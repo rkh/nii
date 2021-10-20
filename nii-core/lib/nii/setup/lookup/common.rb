@@ -6,6 +6,7 @@ module Nii::Setup::Lookup
 
     # @api internal
     def initialize(type, *sources, **options)
+      super
       @type     = type
       @sources  = sources
       @callback = nil

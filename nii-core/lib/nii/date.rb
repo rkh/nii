@@ -30,21 +30,23 @@ module Nii
     # @overload initialize(calendar, year:, month:, day:, cycle: nil, era: nil)
     #   @param calendar [String, Symbol, Nii::Calendar::Generic] calendar to use (example values: +gregorian+, +chinese+)
     def initialize(calendar, date = nil, **options)
-      @calendar     = calendar.to_nii_calendar if calendar.respond_to? :to_nii_calendar
-      @calendar   ||= Nii::DATA.calendar(calendar)
-      @era          = options[:era]
-      @year         = options[:year]
-      @quarter      = options[:quarter]
-      @month        = options[:month]
-      @week         = options[:week]
-      @day          = options[:day]
-      @day_of_year  = options[:day_of_year]
-      @week_day     = options[:week_day]
-      @cycle        = options[:cycle]
-      @year_of_week = options[:year_of_week]
-      @leap_year    = options[:leap_year]
-      @leap_month   = options[:leap_month]
-      @leap_day     = options[:leap_day]
+      @calendar       = calendar.to_nii_calendar if calendar.respond_to? :to_nii_calendar
+      @calendar     ||= Nii::DATA.calendar(calendar)
+      @era            = options[:era]
+      @year           = options[:year]
+      @gregorian_year = options[:gregorian_year]
+      @quarter        = options[:quarter]
+      @month          = options[:month]
+      @week           = options[:week]
+      @day            = options[:day]
+      @day_of_year    = options[:day_of_year]
+      @week_day       = options[:week_day]
+      @day_of_week    = options[:day_of_week]
+      @cycle          = options[:cycle]
+      @year_of_week   = options[:year_of_week]
+      @leap_year      = options[:leap_year]
+      @leap_month     = options[:leap_month]
+      @leap_day       = options[:leap_day]
 
       case date
       when Integer
@@ -54,19 +56,21 @@ module Nii
       when Date
         @jd = date.jd
         if date.calendar == @calendar
-          @era          ||= date.era
-          @year         ||= date.year
-          @quarter      ||= date.quarter
-          @month        ||= date.month
-          @week         ||= date.week
-          @day          ||= date.day
-          @day_of_year  ||= date.day_of_year
-          @week_day     ||= date.week_day
-          @cycle        ||= date.cycle
-          @year_of_week ||= date.year_of_week
-          @leap_year      = options[:leap_year]  if @leap_year.nil?
-          @leap_month     = options[:leap_month] if @leap_month.nil?
-          @leap_day       = options[:leap_day]   if @leap_day.nil?
+          @era            ||= date.era
+          @year           ||= date.year
+          @gregorian_year ||= date.gregorian_year
+          @quarter        ||= date.quarter
+          @month          ||= date.month
+          @week           ||= date.week
+          @day            ||= date.day
+          @day_of_year    ||= date.day_of_year
+          @week_day       ||= date.week_day
+          @day_of_week    ||= date.day_of_week
+          @cycle          ||= date.cycle
+          @year_of_week   ||= date.year_of_week
+          @leap_year        = options[:leap_year]  if @leap_year.nil?
+          @leap_month       = options[:leap_month] if @leap_month.nil?
+          @leap_day         = options[:leap_day]   if @leap_day.nil?
         end
       else
         @jd = date.to_date.jd
@@ -82,6 +86,15 @@ module Nii
     # @return [Integer] the date's year
     # @see Nii::Calendar::Generic#year
     def year = @year ||= @calendar.year(self)
+    
+    # @!attribute [r] gregorian_year
+    # @return [Integer]
+    # 	Related Gregorian year (numeric). For non-Gregorian calendars, this corresponds to the extended
+    #   Gregorian year in which the calendar’s year begins. Related Gregorian years are often displayed,
+    #   for example, when formatting dates in the Japanese calendar — e.g. “2012(平成24)年1月15日” — or in
+    #   the Chinese calendar — e.g. “2012壬辰年腊月初四”. 
+    # @see Nii::Calendar::Generic#gregorian_year
+    def gregorian_year = @gregorian_year ||= @calendar.gregorian_year(self)
     
     # @!attribute [r] quarter
     # @return [Integer] the date's quarter
@@ -112,6 +125,11 @@ module Nii
     # @return [Symbol] the date's week day, as a three letter symbol
     # @see Nii::Calendar::Generic#week_day
     def week_day = @week_day ||= @calendar.week_day(self)
+
+    # @!attribute [r] day_of_week
+    # @return [Integer] the date's week day, as an integer
+    # @see Nii::Calendar::Generic#day_of_week
+    def day_of_week = @day_of_week ||= @calendar.day_of_week(self)
     
     # @!attribute [r] cycle
     # @return [Integer] the date's year cycle

@@ -80,10 +80,13 @@ module Nii
     # @api internal
     def locale_data(locale, bucket, *keys, resolve_alias: true, ignore_unknown: false)
       return if ignore_unknown and !locale_known?(locale)
-      keys = keys.map { |k| Utils.string(k) }
+      keys.map! do |key|
+        key = key.data_key if key.respond_to? :data_key
+        Utils.string(key)
+      end
       raise ArgumentError, 'wrong number of arguments (given 2, expected 3+)' if keys.empty?
       if bucket == :calendars
-        return get(locale, :info, 'calendars', *keys) if INFO_CALENDARS.include? keys.first
+        bucket = :info if INFO_CALENDARS.include? keys.first
         keys.unshift('calendars')
       end
 
@@ -140,6 +143,8 @@ module Nii
 
     # @return [Nii::Calendar::Generic, nil]
     def calendar(key, raise_if_missing = true)
+      return key.to_nii_calendar if key.respond_to? :to_nii_calendar
+      return if key.nil? and not raise_if_missing
       key = normalize(:calendar, key)
       @calendars[normalize(:calendar, key)] ||= begin
         const   = key.split('-', 2).first.capitalize
@@ -222,7 +227,10 @@ module Nii
     def normalize(type = :locale, key, resolve_alias: true)
       key &&= Utils.string(key)
       return key unless resolve_alias and @aliases.include? type
-      @lock.with_read_lock { @aliases.fetch(type).fetch(key, key) }
+      @lock.with_read_lock do
+        aliases = @aliases.fetch(type)
+        aliases.fetch(key, aliases.fetch(key.downcase, key))
+      end
     end
 
     # will be called whenever we have a new data locale added

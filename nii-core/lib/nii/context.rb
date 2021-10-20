@@ -160,6 +160,10 @@ module Nii
           lookup ? locales & lookup.available_locales : locales
         elsif lookup
           LocalePreference.new(lookup.available_locales)
+        else
+          config.data.cache(:available_locales) do
+            LocalePreference.new(config.data.available_locales)
+          end
         end
       end
     end
@@ -197,13 +201,8 @@ module Nii
       @messages             = {}
       @explit_territory     = false
       @locale_as_preference = false
-      
-      case config.functions
-      when Class then @functions = config.functions.new(self)
-      when nil   then @functions = Nii::Functions.new(self)
-      else            @functions = config.functions
-      end
 
+      reset_functions
       reset_locale
       self.scope  = config.scope  if config.scope?
       self.locale = config.locale if config.locale?
@@ -213,6 +212,7 @@ module Nii
     # @api internal
     def initialize_copy(other)
       super
+      reset_functions
       @variables           = @variables.dup
       @variable_formatters = @variable_formatters.dup
       @messages            = {}
@@ -356,7 +356,7 @@ module Nii
       else
         @locale_preference    = @locale_preference_was if @locale_as_preference
         @locale_as_preference = false
-        @locale               = Locale.parse(value)
+        @locale               = Locale.parse config.data.resolve_alias(value)
         @explicit_locale      = false
       end
 
@@ -456,7 +456,7 @@ module Nii
         else
           default = default.call if default.respond_to? :call
           return default if default != Nii::UNDEFINED
-          unknown_message(message)
+          unknown_message(message, options[:namespace] || config.namespace)
         end
       end
     end
@@ -800,8 +800,8 @@ module Nii
 
     # @todo better implementation
     # @api internal
-    def unknown_message(message)
-      raise Errors::UnknownMessage, "unknown message: #{message.inspect}"
+    def unknown_message(message, namespace)
+      raise Errors::UnknownMessage, "unknown message: #{message.inspect} in namespace #{namespace.inspect}"
     end
 
     # @param force [true, false] behaves like the +force+ parameter for {#locale}.
@@ -947,6 +947,15 @@ module Nii
       end
     end
 
+    # @!attribute calendar
+    #   @return [Nii::Calendar::Generic]
+    def calendar(name = nil)
+      @calendar ||= begin
+        calendar  = config.data.calendar(locale_config.calendar) if locale_config.calendar
+        calendar || config.data.calendar(locale.calendar, false) || territory.calendars.first
+      end
+    end
+
     # Allows pattern matching based on locale.
     #
     # @example
@@ -1057,6 +1066,7 @@ module Nii
       @data_locale   = nil
       @locale_config = nil
       @timezone      = nil
+      @calendar      = nil
       @currency      = nil
       @info          = {}
     end
@@ -1067,7 +1077,9 @@ module Nii
       return unless lookup or force
       preference  = locale_preference
       preference &= available_locales if available_locales
-      @locale     = preference.first || config.fallback_locales&.first || config.fallback_locale || Nii::Locale.root
+      @locale     = preference.first
+      @locale   ||= config.fallback_locales&.first || config.fallback_locale
+      @locale   ||= available_locales&.first       || Nii::Locale.root
       normalize_locale
       @locale
     end
@@ -1085,6 +1097,14 @@ module Nii
 
       normalized.delete_if { |key, value| @locale[key] == value }
       reset_locale(@locale.with(**normalized)) if normalized.any?
+    end
+
+    def reset_functions
+      case config.functions
+      when Class then @functions = config.functions.new(self)
+      when nil   then @functions = Nii::Functions.new(self)
+      else            @functions = config.functions
+      end
     end
   end
 end

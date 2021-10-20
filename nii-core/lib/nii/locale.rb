@@ -321,6 +321,9 @@ module Nii
       false
     end
 
+    # @return [true, false] Whether or not this is the root locale
+    def root? = code == 'und'
+
     # A locale with the given attributes adjusted.
     # Will override any existing attributes.
     #
@@ -405,7 +408,8 @@ module Nii
       end
     end
 
-    alias_method :to_s, :code
+    # @return [String] code with subtags separated by the optional string argument
+    def to_s(separator = '-') = separator == '-' ? code : code.tr('-', separator)
 
     # @example
     #   Nii::Locale.parse("de-DE").subset_of? "de" # => true
@@ -548,9 +552,11 @@ module Nii
 
     # @api internal
     def glob_pattern
-      @glob_pattern ||= begin
+      @glob_pattern ||= if root?
+        '{root,und}'
+      else
         codes = [code, code.tr('-', '_'), code.downcase, code.tr('-', '_').downcase].uniq
-        codes.size == 1 ? codes.first : "{#{codes.join(',')}}"
+        codes.size == 1 ? codes.first.freeze : "{#{codes.join(',')}}".freeze
       end
     end
 
@@ -608,6 +614,7 @@ module Nii
       code.freeze
       sort_key
       lookup
+      glob_pattern
 
       @options.freeze
       super
@@ -636,6 +643,7 @@ module Nii
       code            = Nii::Parser::Locale.generate_code(**@options)
       @code, @options = Nii::Parser.locale(code)
       @lookup         = nil
+      @glob_pattern   = nil
     end
 
     def method_missing(method, *arguments, &block)

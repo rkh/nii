@@ -39,11 +39,18 @@ module Nii::Lookup
       multi       &&= ".{#{multi.join(',')}}"
 
       nesting.each do |segment|
+        if multi
+          pattern << '{' << multi << ','
+          count += 1
+        end
+
         pattern << '/'
+
         if multi
           count += 1
           pattern << '{{-,_}*' << multi << ','
         end
+
         pattern << segment
       end
 

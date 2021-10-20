@@ -13,7 +13,7 @@ module Nii::Parser
       when nil, [], ''           then return []
       when Nii::Locale           then return [input]
       when Nii::LocalePreference then return input.locales
-      when SIMPLE                then return [Nii::Locale.parse(input)]
+      when SIMPLE, Symbol        then return [Nii::Locale.parse(input)]
       when String                then return parse_accept(input)
       when Hash                  then return parse_accept(input['HTTP_ACCEPT_LANGUAGE']) if input.include? 'HTTP_ACCEPT_LANGUAGE'
       when Array                 then return input.flat_map { |e| parse(e) }
@@ -21,6 +21,10 @@ module Nii::Parser
 
       return parse(input.env) if input.respond_to? :env
       raise ArgumentError, "unable to parse locale: #{input.inspect}"
+    rescue Nii::Errors::ParseError
+      resolved = Nii::DATA.resolve_alias(input)
+      return parse(resolved) if resolved != input
+      raise
     end
 
     def parse_accept(input)

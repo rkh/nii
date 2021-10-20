@@ -14,6 +14,7 @@ module Nii
     autoload :Numeric,       'nii/formatters/numeric'
     autoload :String,        'nii/formatters/string'
     autoload :Time,          'nii/formatters/time'
+    autoload :Tod,           'nii/formatters/tod'
     autoload :TZInfo,        'nii/formatters/tzinfo'
 
     # Formats Set instances.
@@ -61,8 +62,6 @@ module Nii
         next namespace.const_get(constant) if namespace.const_defined? constant, false
         constant == 'Generic' ? namespace : return
       end
-
-      formatter = formatter.respond_to?(:new) ? formatter.new : formatter
       formatter if formatter.respond_to? :format
     end
 

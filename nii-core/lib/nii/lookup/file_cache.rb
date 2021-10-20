@@ -3,7 +3,7 @@
 module Nii::Lookup
   # @api internal
   class FileCache
-    def initialize(load_path, pattern = nil, files: nil, &callback)
+    def initialize(load_path, pattern = nil, files: nil, reload_wait: 5, &callback)
       @load_path        = load_path
       @pattern          = pattern
       @callback         = callback
@@ -11,6 +11,7 @@ module Nii::Lookup
       @time             = Time.at(0)
       @files            = nil
       @additional_files = Array(files).map { |f| Pathname.new(f) }
+      @reload_wait      = reload_wait
       reload
     end
 
@@ -19,6 +20,7 @@ module Nii::Lookup
     end
 
     def reload
+      @lock.with_read_lock { return if @time > Time.now - @reload_wait }
       @lock.with_write_lock do
         files  = []
         files += @load_path.glob(@pattern) if @pattern

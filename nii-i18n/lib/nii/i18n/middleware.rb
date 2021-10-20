@@ -41,7 +41,7 @@ module Nii::I18n
     # @return [Array<Integer, Hash{String => String}, #each>, Rack::Response] Rack response
     def call(env)
       if context = env[@env_key]
-        sync = env[@sync_key] = Synchronization.new(context)
+        sync = env[@sync_key] = Synchronize.new(context)
         sync.enable { @app.call(env) }
       elsif @complain
         raise RuntimeError, "#{@env_key} missing from Rack env"

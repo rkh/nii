@@ -231,12 +231,14 @@ module Nii::Formatters
     end
 
     def format_number(type, numbers, value, default_precision: 0, subtype: nil, rounding_increment: nil, **options)
-      system  = numbers.system(options[:numbering_system])
-      symbols = numbers.symbols(system)
-      symbols = symbols.merge('group' => '') if options[:use_grouping] == false
-      rules   = numbers.format_rules(type, subtype, system: system) if subtype
-      rules ||= numbers.format_rules(type, system: system)
-      value   = round(value, options[:round], options[:max_precision] || default_precision, rounding_increment)
+      system     = numbers.system(options[:numbering_system])
+      symbols    = numbers.symbols(system)
+      symbols    = symbols.merge('group' => '') if options[:use_grouping] == false
+      rules      = numbers.format_rules(type, subtype, system: system) if subtype
+      rules    ||= numbers.format_rules(type, system: system)
+      precision  = options[:max_precision] || default_precision
+      precision += 2 if type == :percent
+      value      = round(value, options[:round], precision, rounding_increment)
       system.format(value, rules, symbols: symbols, **options)
     end
     

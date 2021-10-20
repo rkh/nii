@@ -40,7 +40,7 @@ module Nii::Lookup
     # @return [Nii::LocalePreference]
     def available_locales(cache = !config.reload_templates?)
       return @lock.with_read_lock { @available_locales ||= available_locales(false) } if cache
-      Nii::LocalePreference.new(config.locale || scan_locales.compact.map(&:to_s).uniq) & config.available_locales
+      Nii::LocalePreference.new(config.locale || scan_locales.to_a.compact.map(&:to_s).uniq)
     end
 
     # @api internal

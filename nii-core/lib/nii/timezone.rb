@@ -277,6 +277,7 @@ module Nii
       when -14..-1             then code_for("Etc/GMT#{identifier}",     territory, config, aliases)
       when Symbol              then code_for(identifier.name,            territory, config, aliases)
       when Time                then code_for(identifier.zone,            territory, config, aliases)
+      when Meta                then code_for(identifier.name,            territory, config, aliases)
       when ANYWHERE_ON_EARTH   then code_for('Etc/GMT+12',               territory, config, aliases)
       when Hash                then identifier.fetch(territory) { identifier.fetch(Territory::WORLD_CODE) }
       when String

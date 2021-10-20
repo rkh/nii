@@ -78,17 +78,27 @@ module Nii
     # A locale preference with the same locales except without any extensions.
     #
     # @example
-    #   Nii::LocalePreference.new('en-US', 'de-DE-x-informal').without_extensions
+    #   Nii::LocalePreference.new("en-US", "de-DE-x-informal").without_extensions
     #   # => #<Nii::LocalePreference:[Nii::Locale["en-US"], Nii::Locale["de-DE"]]>
     #
     # @see Nii::Locale#without_extensions
     # @return [Nii::LocalePreference]
     def without_extensions = @without_extensions ||= LocalePreference.new(locales.map(&:without_extensions).uniq)
 
+    # A locale preference only including the list of languages.
+    #
     # @example
-    #   preferece = Nii::LocalePreference.new('de-DE', 'de-AT')
-    #   preference.subset_of? 'de'    # => true
-    #   preference.subset_of? 'de-DE' # => false
+    #   Nii::LocalePreference.new("en-US", "de-DE", "de-AT").languages
+    #   # => #<Nii::LocalePreference:[Nii::Locale["en"], Nii::Locale["de"]]>
+    #
+    # @see Nii::Locale#without_extensions
+    # @return [Nii::LocalePreference]
+    def languages = @languages ||= LocalePreference.new(locales.map(&:language).uniq)
+
+    # @example
+    #   preferece = Nii::LocalePreference.new("de-DE", "de-AT")
+    #   preference.subset_of? "de"    # => true
+    #   preference.subset_of? "de-DE" # => false
     #
     # @param other [Nii::LocalePreference, Nii::Locale, String, #to_nii_locale]
     # @return [true, false] wether or not the list of locales is a subset of the given argument
@@ -120,7 +130,7 @@ module Nii
     # @see Nii:Locale#&
     def &(other)
       return self if other.nil?
-      locales = self.locales.map { |l| l & other if l.combinable? other }.compact
+      locales = self.locales.map { |l| l & other if l.combinable? other }.compact.uniq
       LocalePreference.new(locales)
     end
 

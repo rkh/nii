@@ -20,7 +20,7 @@ module Nii::Lookup
 
     def default_formats = FORMATS
 
-    def normalize_namespace(name, message)
+    def normalize_namespace(name, message = nil)
       super(name, config.namespace)
     end
 

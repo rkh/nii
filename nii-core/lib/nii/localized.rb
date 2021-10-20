@@ -21,7 +21,7 @@ module Nii
     end
 
     def format(**options, &block) = @localized || @context.format(@object, **@options.merge(options), &block)
-    alias_method :to_s, :format
+    def to_s = format.to_s
 
     def localize(context = nil, **options)
       context = context ? Context.new(context) : @context

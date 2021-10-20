@@ -57,6 +57,17 @@ module Nii
     # @param value [String, #to_s]
     def capitalize(value) = ::Nii::Utils.string(value).capitalize
 
+    # Can be used for explicit date formatting:
+    #
+    #   example = { DATE($date, "MMMM d, yyyy") }
+    #
+    # @param value [String, ::Date, Nii::Date, Time, #to_date, #to_time]
+    # @param format [String, nil] Either a format style (like "long") or a LDML date pattern.
+    def date(value, format = nil, calendar: nil, **options)
+      options[:date_format] = format if format
+      @context.localize(::Nii::Date.new(calendar || @context.calendar, value), **options)
+    end
+
     # Explicitely formats the given value.
     #
     #   example = { FORMAT("de", as: "country") }
@@ -185,5 +196,19 @@ module Nii
     #
     # @see Nii::Info::Grammar#formality
     def tone = @context.grammar.tone
+
+    # The current date.
+    # Example:
+    #
+    #   example = Today is { TODAY() }
+    #
+    # @see #date
+    def today(...) = date(::Date.today, ...)
+
+    # @api private
+    def context = @context
+
+    # @private
+    def inspect = "#<Nii::Functions:#{@context.inspect}>"
   end
 end

@@ -8,7 +8,7 @@ module Nii::Template
     end
 
     def value(context, variables = nil)
-      context.find_message(name, namespace: bundle.namespace) || context.unknown_message(name)
+      context.find_message(name, namespace: bundle.namespace) || context.unknown_message(name, bundle.namespace)
     end
   end
 end

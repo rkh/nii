@@ -12,7 +12,7 @@ module Nii
     autoload :Synchronize, 'nii/i18n/synchronize'
 
     # @see Synchronize
-    def self.synchronize(context, &block) = Synchronization.new(context).enable(&block)
+    def self.synchronize(context, &block) = Synchronize.new(context).enable(&block)
   end
 
   # @api internal

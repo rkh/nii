@@ -14,8 +14,13 @@ module Nii::Template
 
     def resolve(context, variables, &block)
       attribute = context.get_attribute(payload.value(context, variables), name)
-      options   = arguments.transform_values { |a| a.resolve(context, variables, &block) }
-      attribute.resolve(context, options, &block)
+      if attribute.is_a? Element
+        options = arguments.transform_values { _1.resolve(context, variables, &block) }
+        attribute.resolve(context, options, &block)
+      else
+        raise ::Nii::FormatError, 'Cannot pass options to generic attributes' if arguments.any?
+        attribute
+      end
     end
 
     private
