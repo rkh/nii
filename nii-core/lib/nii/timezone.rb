@@ -493,7 +493,7 @@ module Nii
     def ===(other)
       return false if     other.is_a? String or other.is_a? Symbol
       return false unless code = Nii::Timezone.code_for(other, nil, @config, complain: false)
-      code == @code or Nii::Timezonew.new(code, nil, @config).meta_zone == meta_zone
+      code == @code or Nii::Timezone.new(code, nil, @config).meta_zone == meta_zone
     end
 
     # Allows pattern matching on the IANA code.

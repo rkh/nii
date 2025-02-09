@@ -6,5 +6,15 @@
     "coverage": true,
     "Gemfile.lock": true,
     "vendor": true,
-  }
+  },
+  "i18n-ally.localesPaths": [
+    "docs/languages",
+    "benchmark/i18n",
+    "nii-cli/locales",
+    "nii-slim/example/locales",
+    "src/docs/languages",
+    "examples/rails/config/locales",
+    "nii-i18n/lib/nii/i18n",
+    "nii-core/lib/nii/formats/messages"
+  ]
 }
