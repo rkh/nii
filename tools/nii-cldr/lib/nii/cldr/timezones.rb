@@ -69,7 +69,7 @@ module Nii::CLDR
           territory = $1 || '001'
           
           next unless bundle = locale.bundle(:dates, :timeZoneNames)
-          bundle['metazone'].each do |zone, names|
+          bundle['metazone']&.each do |zone, names|
             next unless short = names['short']
             aliases = @store[:aliases][zone]
             target  = aliases[territory] || aliases['001']

@@ -295,7 +295,7 @@ module Nii::CLDR
       modern, full    = json('cldr-core/availableLocales').fetch('availableLocales').values_at('modern', 'full')
       defaults        = json('cldr-core/defaultContent').fetch('defaultContent')
       additional      = supplemental('parentLocales').fetch('parentLocale').to_a.flatten
-      additional     += json('cldr-localenames-full/main/root/languages').dig('main', 'root', 'localeDisplayNames', 'languages').keys.reject { |k| k =~ /-alt-/}
+      # additional     += json('cldr-localenames-full/main/root/languages').dig('main', 'root', 'localeDisplayNames', 'languages').keys.reject { |k| k =~ /-alt-/}
       full            = ['root', *full, *defaults, *additional].uniq
       modern_defaults = defaults.select { |locale| modern.include? locale[/^[^\-]+/] }
       modern          = ['root', *modern, *modern_defaults].uniq
