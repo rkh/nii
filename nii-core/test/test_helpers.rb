@@ -33,7 +33,7 @@ class TestHelpers < Minitest::Test
   end
 
   def test_rack_env
-    example = Struct.new(:env) { include Nii::Helpers }.new('PATH_INFO' => '/', 'HTTP_ACCEPT_LANGUAGE' => 'fr-CH,en')
+    example = Struct.new(:env) { include Nii::Helpers }.new({'PATH_INFO' => '/', 'HTTP_ACCEPT_LANGUAGE' => 'fr-CH,en'})
     assert_equal 'fr-CH', example.nii.locale(true).to_s
   end
 
