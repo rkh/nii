@@ -61,13 +61,6 @@ module Nii::CLDR
         end
         plurals[:ranges] = data
       end
-      
-      supplemental(:grammaticalGenderFeatures, suffix: '-targets-nominal') do |data|
-        grammar               = store(:core, :info)[:grammar] ||= {}
-        gender_info           = grammar[:genders]             ||= {}
-        gender_info[:nominal] = data.fetch('grammaticalGender') { raise [data, fetch_code].inspect }
-        gender_info[:units]   = data['grammaticalGender-scope-units'] if data.include? 'grammaticalGender-scope-units'
-      end
 
       supplemental(:gender, :personList) do |data|
         grammar = store(:core, :info)[:grammar] ||= { genders: {} }
@@ -89,6 +82,16 @@ module Nii::CLDR
 
         if definiteness = data['grammaticalDefiniteness']
           grammar[:definiteness] = definiteness
+        end
+
+        if genders = data['grammaticalGender']
+          grammar[:genders]         ||= {}
+          grammar[:genders][:nominal] = genders
+        end
+
+        if genders = data['grammaticalGender-scope-units']
+          grammar[:genders]       ||= {}
+          grammar[:genders][:units] = genders
         end
       end
 
@@ -281,7 +284,7 @@ module Nii::CLDR
       path = path.join("#{entry}.json").exist? ? path.join("#{entry}.json") : path.join("#{namespace || entry}.json")
       data = JSON.load(path.read).fetch(container).fetch(fetch_code)
       data = data.fetch(namespace) if namespace
-      data = data.fetch(key.to_s) if key
+      data = data.fetch(key.to_s) { return } if key
       yield data if block_given?
       data
     end
@@ -294,9 +297,9 @@ module Nii::CLDR
 
     def parent
       @parent ||= case code
-      when 'root'           then nil
+      when 'und'            then nil
       when /^(.+)\-[^\-]+$/ then repository.locale($1)
-      else repository.locale('root')
+      else repository.locale('und')
       end
     end
 
