@@ -9,14 +9,16 @@ module Nii::Parser
     
     # Unicode locale field mapping of -u- codes. Only the ones relevant for Nii are listed.
     U_FIELDS = {
-      calendar_algorithm:   'ca', currency_format:   'cf', collation:   'co', currency:           'cu',
-      emoji_representation: 'em', first_day_of_week: 'fw', hour_cycle:  'hc', measurement_system: 'ms',
-      numbering_system:     'nu', region_override:   'rg', subdivision: 'sd', timezone:           'tz'
+      calendar_algorithm:        'ca', currency_format:   'cf', collation:   'co', currency:           'cu',
+      emoji_representation:      'em', first_day_of_week: 'fw', hour_cycle:  'hc', measurement_system: 'ms',
+      numbering_system:          'nu', region_override:   'rg', subdivision: 'sd', timezone:           'tz',
+      measurement_unit_override: 'mu'
     }
 
     # Conversion of Unicode locale parameters to LDML names
     U_SERIALIZE = {
-      measurement_system: { 'US' => 'ussystem', 'UK' => 'uksystem' }
+      measurement_system: { 'US' => 'ussystem', 'UK' => 'uksystem' },
+      measurement_unit_override: { 'fahrenheit' => 'fahrenhe' },
     }
 
     U_TAGS          = U_FIELDS.invert

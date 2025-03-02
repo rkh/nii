@@ -210,13 +210,20 @@ module Nii
     # @!attribute [rw] formality
     #   @return [String, nil]
 
-    CACHE          = Cache.new
-    KEY_ALIASES    = { territory: :region, calendar: :calendar_algorithm }
+    CACHE = Cache.new
+
+    KEY_ALIASES = {
+      territory:   :region,
+      calendar:    :calendar_algorithm,
+      temperature: :measurement_unit_override
+    }
+
     AVAILABLE_KEYS = [
       :language, :script, :region, :variants,
       *Nii::Parser::Locale::U_FIELDS.keys,
       *Nii::Parser::Locale::X_FIELDS.keys
     ]
+
     KEY_ALIASES.merge! Nii::Parser::Locale::U_TAGS.transform_keys(&:to_sym)
     ALL_KEYS = AVAILABLE_KEYS + KEY_ALIASES.keys
     private_constant :AVAILABLE_KEYS, :KEY_ALIASES, :ALL_KEYS, :CACHE
