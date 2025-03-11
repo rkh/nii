@@ -46,7 +46,14 @@ module Nii::Rails
       ActionView::Base.include        View        if defined? ActionView::Base
       ActionController::Base.include  Controller  if defined? ActionController::Base
       Types.register                              if defined? ActiveModel::Type
-      Rails::Railtie.console { Rails::ConsoleMethods.include Console }
+
+      Rails::Railtie.console do
+        if defined? Rails::ConsoleMethods
+          Rails::ConsoleMethods.include Console
+        else
+          TOPLEVEL_BINDING.eval('self').extend Console
+        end
+      end
     end
   end
 end
