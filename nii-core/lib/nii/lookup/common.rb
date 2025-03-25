@@ -27,7 +27,7 @@ module Nii::Lookup
     end
 
     # @return [Nii::Message, nil]
-    def find(locale, message, default_namespace: nil, namespace: default_namespace)
+    def find(locale, message, default_namespace: nil, namespace: default_namespace, **)
       namespace = normalize_namespace(namespace, message)
       return message.to_nii_template if message.respond_to? :to_nii_template
       return unless matches?(locale, namespace, message)
