@@ -9,7 +9,7 @@ module Nii::I18n
       @config = Nii::Config.new(config)
 
       unless @config.i18n_backend
-        i18n_backend = ::I18n.config.backend # try to capture this right before asignment
+        i18n_backend = ::I18n.config.backend # try to capture this right before assignment
         i18n_backend = i18n_backend.config.i18n_backend while i18n_backend&.config&.i18n_backend
         @config      = @config.merge(i18n_backend: i18n_backend)
       end
