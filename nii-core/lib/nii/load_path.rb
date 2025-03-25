@@ -203,7 +203,12 @@ module Nii
     #   @param pattern [String] Unix glob pattern to scan paths for.
     #   @return [Array<Pathname>]
     def glob(pattern, &block)
-      result = @lock.with_read_lock { @paths.flat_map { |path| path.glob(pattern, &block) }}
+      result = @lock.with_read_lock do
+        @paths.flat_map do |path|
+          next path if path.file? and path.fnmatch?(pattern, File::FNM_EXTGLOB)
+          path.glob(pattern, &block)
+        end
+      end
       result unless block
     end
 

@@ -78,7 +78,7 @@ module Nii::Formats
     def build_format(structure, messages)    = [Nii::Formats[Structure, structure], Nii::Formats[Messages, messages]]
     def detect_format?                       = @detect_format
     def format_config                        = config.json
-    def parse(source)                        = Nii::Parser.json(source)
+    def parse(source, **)                    = Nii::Parser.json(source)
     def compile_value(format, bundle, value) = Nii::Template::Element === value ? value : format.compile(bundle, value)
   end
 end

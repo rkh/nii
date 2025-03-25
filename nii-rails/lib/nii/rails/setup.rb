@@ -8,7 +8,7 @@ module Nii::Rails
     # @api internal
     def self.for?(application)
       return false unless defined? ::Rails::Engine
-      return appliaction < ::Rails::Engine if application.is_a? Class
+      return application < ::Rails::Engine if application.is_a? Class
       application == ::Rails or application.is_a? ::Rails::Engine
     end
 
@@ -17,12 +17,14 @@ module Nii::Rails
       application = application.application if application == ::Rails
       super
       set :reload_templates, Rails.env.development?
+      @lookup.force_cascade!
       lookup(:default, Rails.root.join('app/locales'))
       lookup(:i18n, Rails.root.join('config/locales'))
     end
 
     # @api internal
     def finalize(finalized)
+      finalized.config.lookup << Nii::I18n.lookup(finalized.config.except(:lookup))
       @application.config.nii = finalized.config
       finalize_middleware(finalized)
       finalize_i18n(finalized)

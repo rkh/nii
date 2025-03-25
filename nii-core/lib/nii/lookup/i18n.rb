@@ -26,7 +26,7 @@ module Nii::Lookup
 
     def glob_pattern_for(locale, namespace)
       return unless config.namespace == namespace
-      "**/#{SEP_GLOB}#{locale.glob_pattern}.{yml,yaml,json,rb}"
+      "**/{#{SEP_GLOB},}#{locale.glob_pattern}.{yml,yaml,json,rb}"
     end
 
     def scan_locales

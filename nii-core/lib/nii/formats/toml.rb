@@ -8,6 +8,6 @@ module Nii::Formats
 
     private
     def format_config = config.toml
-    def parse(source) = Nii::Parser.toml(source)
+    def parse(source, **) = Nii::Parser.toml(source)
   end
 end

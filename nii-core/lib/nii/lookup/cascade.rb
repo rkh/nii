@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Nii::Lookup
-  class Cascade < Common
+  class Cascade
     Nii::Lookup[:cascade] = self
 
     # @private
@@ -15,28 +15,57 @@ module Nii::Lookup
     # (see Nii::Lookup::Common#deconstruct_keys)
     def deconstruct_keys(keys) = super.merge(backends: backends)
 
-    private
-
-    def setup        = @backends = Array(config.backends).freeze
-    def reset!       = backends.each { _1.reset }
-    def scan_locales = backends.map(&:available_locales).inject(:|)
-  
-    def load_namespace(locale, namespace)
-      backends = backends_for(locale, namespace)
-      [locale, namespace, backends] if backends.any?
+    # @param config [#to_nii_config, #to_h]
+    def initialize(config)
+      config    = Nii::Config.new(config)
+      config    = Nii::Config.new(config.lookup) if config.lookup
+      @backends = Array(config.backends).freeze
     end
-    
-    def lookup((locale, namespace, backends), message)
+
+    # @return [Nii::Message, nil]
+    def find(...)
       backends.each do |backend|
-        result = backend.find(locale, message, namespace: namespace)
+        result = backend.find(...)
         return result if result
       end
       nil
     end
 
-    def backends_for(locale, namespace)
-      # this only happens on first load / reload, so filtering here may speed up things
-      backends.select { _1.matches_locale?(locale) and _1.matches_namespace?(namespace) }
+    # @return [Nii::LocalePreference]
+    def available_locales(...)
+      backends.map(&:available_locales).inject(:|)
+    end
+
+    # @api internal
+    def matches?(locale, namespace, message)
+      backends.any? { _1.matches?(locale, namespace, message) }
+    end
+
+    # @api internal
+    def matches_locale?(locale) = backends.any? { _1.matches_locale?(locale) }
+
+    # @api internal
+    def matches_namespace?(namespace)
+      backends.any? { _1.matches_namespace?(namespace) }
+    end
+
+    # Add another backend to the cascade.
+    #
+    # @param backend [Nii::Lookup::Common]
+    # @return [self]   
+    def <<(backend)
+      @backends = backends + [backend]
+      @backends.freeze
+      self
+    end
+
+    # Resets all cached and aggregated data (locales, file storage, etc).
+    # This is a full reset. For development it is faster to enabled the reload_templates option.
+    #
+    # @return [self]
+    def reset
+      backends.each { _1.reset }
+      self
     end
   end
 end
