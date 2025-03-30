@@ -1075,11 +1075,39 @@ module Nii
     # @see #locale
     def negotiate_locale(force)
       return unless lookup or force
-      preference  = locale_preference
-      preference &= available_locales if available_locales
-      @locale     = preference.first
-      @locale   ||= config.fallback_locales&.first || config.fallback_locale
-      @locale   ||= available_locales&.first       || Nii::Locale.root
+
+      if available_locales
+        preference = Nii::LocalePreference.new
+
+        locale_preference.each do |locale|
+          possible = available_locales & locale
+          break preference = possible if possible.any?
+
+          possible = available_locales & locale.slice(:language, :script, :region)
+          break preference = possible if possible.any?
+
+          preference = available_locales & locale.slice(:language, :script)
+          region     = Nii::Territory.new(locale.region, config)
+          possible   = preference.select { _1.region && region.within?(_1.region) }
+
+          if possible.empty?
+            if locale.language == "en" && region.code != "US"
+              possible = preference & "en-GB"
+              preference = possible if possible.any?
+            end
+          else
+            preference = possible
+          end
+
+          break unless preference.empty?
+        end
+      else
+        preference = locale_preference
+      end
+
+      @locale   = preference.first
+      @locale ||= config.fallback_locales&.first || config.fallback_locale
+      @locale ||= available_locales&.first       || Nii::Locale.root
       normalize_locale
       @locale
     end

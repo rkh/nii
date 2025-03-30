@@ -134,6 +134,11 @@ module Nii
       LocalePreference.new(locales)
     end
 
+    # @yield [locale] Block called for each locale.
+    # @yieldparam locale [Nii::Locale]
+    # @return [Nii::LocalePreference]
+    def select(&block) = LocalePreference.new(@locales.select(&block))
+
     # @param other [Nii::LocalePreference, Nii::Locale]
     # @return [Nii::LocalePreference]
     # @see Nii:Locale#|

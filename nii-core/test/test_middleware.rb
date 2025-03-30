@@ -46,6 +46,38 @@ class TestMiddleware < Minitest::Test
     assert_equal 'de, en', response[1]['Content-Language']
   end
 
+  def test_best_match
+    build(available_locales: ['en-US', 'en-GB', 'en-150', 'de-DE', 'de-CH'])
+
+    request 'HTTP_ACCEPT_LANGUAGE' => 'fr,en' do |context|
+      assert_equal 'en-US', context.locale.to_s
+    end
+
+    request 'HTTP_ACCEPT_LANGUAGE' => 'en-GB' do |context|
+      assert_equal 'en-GB', context.locale.to_s
+    end
+
+    request 'HTTP_ACCEPT_LANGUAGE' => 'en-IE,en-US' do |context|
+      assert_equal 'en-150', context.locale.to_s
+    end
+
+    request 'HTTP_ACCEPT_LANGUAGE' => 'en-AU,en-US' do |context|
+      assert_equal 'en-GB', context.locale.to_s
+    end
+
+    request 'HTTP_ACCEPT_LANGUAGE' => 'de' do |context|
+      assert_equal 'de-DE', context.locale.to_s
+    end
+
+    request 'HTTP_ACCEPT_LANGUAGE' => 'de-AT' do |context|
+      assert_equal 'de-DE', context.locale.to_s
+    end
+
+    request 'HTTP_ACCEPT_LANGUAGE' => 'de-CH' do |context|
+      assert_equal 'de-CH', context.locale.to_s
+    end
+  end
+
   def test_with_block
     build { locale_path }
     request 'PATH_INFO' => '/fr-CH' do |context|
