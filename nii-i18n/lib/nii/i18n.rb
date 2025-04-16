@@ -20,11 +20,7 @@ module Nii
     #
     # @yieldparam path [String] a load path
     # @return [void]
-    def self.monitor_paths(&block)
-      config = ::I18n::Config.new
-      config.load_path = ArrayMonitor.new(config.load_path) unless config.load_path.is_a?(ArrayMonitor)
-      config.load_path.callback(&block)
-    end
+    def self.monitor_paths(&block) = ::I18n::Config.new.load_path.callback(&block)
 
     # A locale lookup that stays synced with I18n.load_path.
     #

@@ -5,7 +5,9 @@ module Nii::I18n
   module Config
     # @api internal
     def load_path
-      @@_load_path ||= ArrayMonitor.new(super)
+      result = super
+      return result if result.is_a?(ArrayMonitor)
+      @@_load_path = ArrayMonitor.new(result)
     end
 
     # @api internal
