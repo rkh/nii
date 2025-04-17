@@ -85,7 +85,7 @@ module Nii
       return nii.format(message, **options) unless message.is_a? Symbol or message.is_a? String
       variables = options.merge(variables || {})
       default   = options.fetch(:default, UNDEFINED)
-      default   = -> { super(message, **options) } if default == UNDEFINED and variables.nil? and defined? super
+      default   = -> { super(message, **options) } if default == UNDEFINED and defined? super
       nii.render(message, variables, **options, default: default)
     end
     alias_method :t, :translate
