@@ -18,6 +18,20 @@ module Nii::Rails
       end
     end
 
+    module Mailer
+      include Nii::Helpers
+
+      def nii(complain = true)
+        @nii ||= begin
+          config   = Rails.configuration.respond_to?(:nii) ? Rails.configuration.nii : Nii::Config.new
+          config   = config.merge(namespace: _nii_namespace) if config.namespace.nil? and _nii_namespace
+          locale   = config.locale
+          locale ||= ::I18n.locale if defined? ::I18n
+          Nii::Context.new(locale, config)
+        end
+      end
+    end
+
     module Request
       def nii(complain = true)
         @nii ||= begin
@@ -45,6 +59,7 @@ module Nii::Rails
       ActionDispatch::Request.include Request
       ActionView::Base.include        View        if defined? ActionView::Base
       ActionController::Base.include  Controller  if defined? ActionController::Base
+      ActionMailer::Base.include    Mailer        if defined? ActionMailer::Base
       Types.register                              if defined? ActiveModel::Type
 
       Rails::Railtie.console do

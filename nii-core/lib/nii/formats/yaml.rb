@@ -8,6 +8,7 @@ module Nii::Formats
 
     private
     def format_config = config.yaml
-    def parse(source, **) = Nii::Parser.yaml(source)
+    def parse(source, **) = Nii::Parser.yaml(source, safe: safe_parse?)
+    def safe_parse? = message_format && message_format != :i18n
   end
 end
