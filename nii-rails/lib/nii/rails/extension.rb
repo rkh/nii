@@ -23,8 +23,10 @@ module Nii::Rails
 
       def nii(complain = true)
         @nii ||= begin
-          config   = Rails.configuration.respond_to?(:nii) ? Rails.configuration.nii : Nii::Config.new
-          config   = config.merge(namespace: _nii_namespace) if config.namespace.nil? and _nii_namespace
+          config    = Rails.configuration.respond_to?(:nii) ? Rails.configuration.nii : Nii::Config.new
+          namespace = _nii_namespace || config.namespace
+          namespace = [namespace, mailer_name, action_name].compact.join('/')
+          config    = config.merge(namespace: namespace) if namespace != ''
           locale   = config.locale
           locale ||= ::I18n.locale if defined? ::I18n
           Nii::Context.new(locale, config)
