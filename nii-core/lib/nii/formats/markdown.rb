@@ -7,7 +7,7 @@ module Nii::Formats
     # @api internal
     def compile_template(bundle, source)
       template = tilt_template.new { source }
-      Nii::HTML.safe(temlate.render)
+      super bundle, Nii::HTML.safe(template.render)
     end
 
     private

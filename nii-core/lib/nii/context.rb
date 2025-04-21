@@ -608,6 +608,7 @@ module Nii
       return result unless result.is_a? String
   
       result             = result.encode(encoding)
+      result             = html.safe(result) if html.safe? value
       escape_html        = false if escape_html and formatter.respond_to?(:escape?) and !formatter.escape?(value, **options)
       result             = yield(result) if block_given? and (!formatter.respond_to?(:yield?) or formatter.yield?(result))
       result             = escape_html ? html.format(result) : result
