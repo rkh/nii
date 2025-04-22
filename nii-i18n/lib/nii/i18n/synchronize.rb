@@ -58,8 +58,8 @@ module Nii::I18n
     # @api internal
     def self.delegate(*methods, setter: true)
       methods.each do |method|
-        class_eval "def #{method} = @lock.with_read_lock { @i18n.#{method} }"
-        class_eval "def #{method}=(value) @lock.with_write_lock { @i18n.#{method} = value }; end" if setter
+        class_eval "def #{method} = @i18n.#{method}"
+        class_eval "def #{method}=(value) @i18n.#{method} = value; end" if setter
       end
     end
 
@@ -71,8 +71,7 @@ module Nii::I18n
     # @param context [Nii::Context]
     def initialize(context)
       @context = Nii::Context.new(context)
-      @i18n    = I18n::Config.new
-      @lock    = Concurrent::ReadWriteLock.new
+      @i18n    = I18n::Config.new\
     end
 
     # Synchronzies I18n.locale and context.locale.
@@ -107,14 +106,14 @@ module Nii::I18n
     # @return [true, false]
     def enabled? = Thread.current[:i18n_config] == self
 
-    # Will be called by I18n.locale if synchroniztion is enabled.
+    # Will be called by I18n.locale if synchronization is enabled.
     # @api internal
-    def locale = @lock.with_read_lock { @context.locale(true).code }
+    def locale = @context.locale(true).code
     
     # Will be called by I18n.locale= if synchroniztion is enabled.
     # @api internal
     def locale=(value)
-      @lock.with_write_lock { @i18n.locale = @context.locale = value }
+      @i18n.locale = @context.locale = value
     end
 
     # @return [Nii::Context]
