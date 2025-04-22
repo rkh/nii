@@ -292,15 +292,14 @@ module Nii::CLDR
     end
 
     def load_locales
-      modern, full    = json('cldr-core/availableLocales').fetch('availableLocales').values_at('modern', 'full')
-      defaults        = json('cldr-core/defaultContent').fetch('defaultContent')
-      additional      = supplemental('parentLocales').fetch('parentLocale').to_a.flatten
-      # additional     += json('cldr-localenames-full/main/root/languages').dig('main', 'root', 'localeDisplayNames', 'languages').keys.reject { |k| k =~ /-alt-/}
-      full            = ['root', *full, *defaults, *additional].uniq
-      modern_defaults = defaults.select { |locale| modern.include? locale[/^[^\-]+/] }
-      modern          = ['root', *modern, *modern_defaults].uniq
-      full.sort_by { |e| [e == 'root' ? 0 : 1, e.count('-'), e] }.map do |code|
-        [code, Locale.new(self, code, relevant: modern.include?(code), default: defaults.include?(code))]
+      coverage    = json('cldr-core/coverageLevels').values_at('coverageLevels', 'effectiveCoverageLevels').inject(:merge)
+      defaults    = json('cldr-core/defaultContent').fetch('defaultContent')
+      additional  = json('cldr-core/availableLocales').fetch('availableLocales').values.flatten
+      additional += supplemental('parentLocales').fetch('parentLocale').to_a.flatten
+      additional += json('cldr-core/supplemental/languageData').dig('supplemental', 'languageData').keys.reject { |k| k =~ /-alt-/}
+      
+      [coverage.keys, defaults, additional].flatten.uniq.sort_by { |e| [e == 'und' ? 0 : 1, e.count('-'), e] }.map do |code|
+        [code, Locale.new(self, code, relevant: coverage[code] == "modern", default: defaults.include?(code))]
       end.compact.to_h
     end
   end
