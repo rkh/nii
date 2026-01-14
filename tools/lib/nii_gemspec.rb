@@ -18,7 +18,7 @@ module NiiGemspec
       spec.homepage              = 'https://github.com/rkh/nii'
       spec.license               = 'MIT'
       spec.files                 = Dir['{lib,data}/**/*', 'README.md', 'LICENSE']
-      spec.required_ruby_version = '~> 3.0'
+      spec.required_ruby_version = '>= 3.0'
       spec.metadata              = {
         'source_code_uri'        => spec.homepage,
         'homepage_uri'           => spec.homepage,
